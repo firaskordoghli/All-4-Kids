@@ -20,7 +20,7 @@ public class Evenement {
     private boolean etat;
     private int id_user;
 
-    public Evenement(int id_evenement, String nom, String lieu, String date, int type, int nbr_participation, boolean etat) {
+    public Evenement(int id_evenement, String nom, String lieu, String date, int type, int nbr_participation, boolean etat,int id_user) {
         this.id_evenement = id_evenement;
         this.nom = nom;
         this.lieu = lieu;
@@ -28,6 +28,7 @@ public class Evenement {
         this.type = type;
         this.nbr_participation = nbr_participation;
         this.etat = etat;
+        this.id_user = id_user ;
     }
 
     public Evenement() {

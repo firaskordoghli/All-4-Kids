@@ -5,7 +5,7 @@
  */
 package allforkids.service;
 
-import allforkids.entites.Commentaire;
+import allforkids.entites.Participevenement;
 import allforkids.util.Config;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,17 +19,16 @@ import java.util.logging.Logger;
  *
  * @author slim
  */
-public class ServiceCommentaire {
-    static Config ds = Config.getInstance();
+public class ServiceParticipevenement {
+      static Config ds = Config.getInstance();
 
-    public void insrerCommentaire(Commentaire c) {
+    public void insrerParticipevenement(Participevenement p) {
         try {
-            String req = "INSERT INTO commentaire VALUES(?,?,?,?)";
+            String req = "INSERT INTO participevenement VALUES(?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            ste.setInt(1, c.getId_commentaire());
-            ste.setString(2, c.getDescription());
-            ste.setInt(3, c.getGood());
-            ste.setInt(4, c.getBad());
+            ste.setInt(1, p.getId_evenement());
+            ste.setInt(2, p.getId_user());
+            ste.setInt(3, p.getType());
      
             ste.executeUpdate();
         } catch (SQLException ex) {
@@ -37,47 +36,45 @@ public class ServiceCommentaire {
         }
     }
 
-    public void updateCommentaire(Commentaire c, int id) {
+    public void updateParticipevenement(Participevenement p, int id,int id2) {
         try {
-            String req = "UPDATE commentaire SET  description=?, good=? ,bad=?, WHERE id_commentaire = ?";
+            String req = "UPDATE participevenement SET  type= ? WHERE  id_evenement=? and id_user = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
-            ste.setString(1, c.getDescription());
-            ste.setInt(2, c.getGood());
-            ste.setInt(3, c.getBad());
-            ste.setInt(4, id);
+            ste.setInt(1, p.getType());
+            ste.setInt(2, id);
+            ste.setInt(3, id2);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void deleteCommentaire(int id) {
+    public static void deleteParticipevenement(int id , int id2) {
         try {
-            String req = "DELETE FROM commentaire WHERE id_commentaire = ?";
+            String req = "DELETE FROM participevenement WHERE id_evenement = ? and id_user = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
+            ste.setInt(2, id2);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public List<Commentaire> selectCommentaire() {
-        List<Commentaire> list = new ArrayList<>();
+    public List<Participevenement> selectParticipevenement() {
+        List<Participevenement> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM commentaire ";
+            String req = "SELECT * FROM participevenement ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
-                        new Commentaire(
-                                result.getInt("id_commentaire"),
-                                result.getString("description"),
-                                result.getInt("good"),
-                                result.getInt("bad")
-                                
+                        new Participevenement(
+                                result.getInt("id_evenement"),
+                                result.getInt("id_user"),
+                                result.getInt("type")
                               
                         )
                 );

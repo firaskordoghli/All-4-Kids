@@ -5,7 +5,7 @@
  */
 package allforkids.service;
 
-import allforkids.entites.Commentaire;
+import allforkids.entites.Livre;
 import allforkids.util.Config;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,42 +19,46 @@ import java.util.logging.Logger;
  *
  * @author slim
  */
-public class ServiceCommentaire {
-    static Config ds = Config.getInstance();
+public class ServiceLivre {
+       static Config ds = Config.getInstance();
 
-    public void insrerCommentaire(Commentaire c) {
+    public void insrerLivre(Livre l) {
         try {
-            String req = "INSERT INTO commentaire VALUES(?,?,?,?)";
+            String req = "INSERT INTO livre VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            ste.setInt(1, c.getId_commentaire());
-            ste.setString(2, c.getDescription());
-            ste.setInt(3, c.getGood());
-            ste.setInt(4, c.getBad());
-     
+            ste.setInt(1, l.getId_livre());
+            ste.setString(2,l.getNom());
+            ste.setString(3, l.getCategorie());
+            ste.setString(4, l.getDescription());
+            ste.setString(5, l.getType());
+            ste.setInt(6, l.getGood());
+            ste.setInt(7, l.getBad());
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void updateCommentaire(Commentaire c, int id) {
+    public void updateLivre(Livre l, int id) {
         try {
-            String req = "UPDATE commentaire SET  description=?, good=? ,bad=?, WHERE id_commentaire = ?";
+            String req = "UPDATE livre SET  nom= ?,categorie=? ,description=?,type = ? ,good=? , bad=?  WHERE id_livre = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-             
-            ste.setString(1, c.getDescription());
-            ste.setInt(2, c.getGood());
-            ste.setInt(3, c.getBad());
-            ste.setInt(4, id);
+           ste.setString(1,l.getNom());
+            ste.setString(2, l.getCategorie());
+            ste.setString(3, l.getDescription());
+            ste.setString(4, l.getType());
+            ste.setInt(5, l.getGood());
+            ste.setInt(6, l.getBad());
+            ste.setInt(7, id);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void deleteCommentaire(int id) {
+    public static void deleteLivre(int id) {
         try {
-            String req = "DELETE FROM commentaire WHERE id_commentaire = ?";
+            String req = "DELETE FROM livre WHERE id_livre = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
@@ -63,22 +67,25 @@ public class ServiceCommentaire {
         }
     }
 
-    public List<Commentaire> selectCommentaire() {
-        List<Commentaire> list = new ArrayList<>();
+    public List<Livre> selectLivre() {
+        List<Livre> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM commentaire ";
+            String req = "SELECT * FROM livre ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
-                        new Commentaire(
-                                result.getInt("id_commentaire"),
+                        new Livre(
+                                result.getInt("id_livre"),
+                                result.getString("nom"),
+                                result.getString("categorie"),
                                 result.getString("description"),
+                                result.getString("type"),
                                 result.getInt("good"),
                                 result.getInt("bad")
                                 
-                              
+                           
                         )
                 );
             }

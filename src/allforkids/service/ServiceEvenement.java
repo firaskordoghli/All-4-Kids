@@ -33,6 +33,7 @@ public class ServiceEvenement {
             ste.setInt(5, e.getType());
             ste.setInt(6, e.getNbr_participation());
             ste.setBoolean(7, e.isEtat());
+            ste.setInt(8, e.getId_user());
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +84,8 @@ public class ServiceEvenement {
                                 result.getString("prenom"),
                                 result.getInt("type"),
                                 result.getInt("nbr_participation"),
-                                result.getBoolean("etat")
+                                result.getBoolean("etat"),
+                                result.getInt("id_user")
                                 
                         )
                 );

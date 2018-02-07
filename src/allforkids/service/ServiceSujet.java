@@ -5,7 +5,7 @@
  */
 package allforkids.service;
 
-import allforkids.entites.Commentaire;
+import allforkids.entites.Sujet;
 import allforkids.util.Config;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,42 +19,46 @@ import java.util.logging.Logger;
  *
  * @author slim
  */
-public class ServiceCommentaire {
-    static Config ds = Config.getInstance();
+public class ServiceSujet {
+      static Config ds = Config.getInstance();
 
-    public void insrerCommentaire(Commentaire c) {
+    public void insrerSujet(Sujet s) {
         try {
-            String req = "INSERT INTO commentaire VALUES(?,?,?,?)";
+            String req = "INSERT INTO sujet VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            ste.setInt(1, c.getId_commentaire());
-            ste.setString(2, c.getDescription());
-            ste.setInt(3, c.getGood());
-            ste.setInt(4, c.getBad());
-     
+            ste.setInt(1, s.getId_sujet());
+            ste.setString(2,s.getTitle());
+            ste.setString(3, s.getDescription());
+            ste.setString(4, s.getTag());
+            ste.setInt(5, s.getGood());
+            ste.setInt(6, s.getBad());
+            ste.setBoolean(7, s.isVisibilite());
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void updateCommentaire(Commentaire c, int id) {
+    public void updateSujet(Sujet s, int id) {
         try {
-            String req = "UPDATE commentaire SET  description=?, good=? ,bad=?, WHERE id_commentaire = ?";
+            String req = "UPDATE sujet SET  title= ? ,description=?,tag = ? ,good=? , bad=?,visibilite=? WHERE id_Sujet = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-             
-            ste.setString(1, c.getDescription());
-            ste.setInt(2, c.getGood());
-            ste.setInt(3, c.getBad());
-            ste.setInt(4, id);
+           ste.setString(1,s.getTitle());
+            ste.setString(2, s.getDescription());
+            ste.setString(3, s.getTag());
+            ste.setInt(4, s.getGood());
+            ste.setInt(5, s.getBad());
+            ste.setBoolean(6, s.isVisibilite());
+            ste.setInt(7, id);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void deleteCommentaire(int id) {
+    public static void deleteSujet(int id) {
         try {
-            String req = "DELETE FROM commentaire WHERE id_commentaire = ?";
+            String req = "DELETE FROM sujet WHERE id_sujet = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
@@ -63,22 +67,24 @@ public class ServiceCommentaire {
         }
     }
 
-    public List<Commentaire> selectCommentaire() {
-        List<Commentaire> list = new ArrayList<>();
+    public List<Sujet> selectSujet() {
+        List<Sujet> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM commentaire ";
+            String req = "SELECT * FROM sujet ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
-                        new Commentaire(
-                                result.getInt("id_commentaire"),
+                        new Sujet(
+                                result.getInt("id_sujet"),
+                                result.getString("title"),
                                 result.getString("description"),
+                                result.getString("tag"),
                                 result.getInt("good"),
-                                result.getInt("bad")
-                                
-                              
+                                result.getInt("bad"),
+                                result.getBoolean("visibilite")
+                           
                         )
                 );
             }
