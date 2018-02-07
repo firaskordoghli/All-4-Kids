@@ -34,6 +34,16 @@ public class User {
         this.role = role;
     }
 
+    public User(String cin, String nom, String prenom, String mail, String date, String picture, int role) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.date = date;
+        this.picture = picture;
+        this.role = role;
+    }
+
     public User() {
     }
 
