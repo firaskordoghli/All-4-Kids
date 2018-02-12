@@ -7,6 +7,7 @@ package allforkids.service;
 
 import allforkids.entites.User;
 import allforkids.util.Config;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,7 @@ public class ServiceUser {
 
     public void insrerUser(User u) {
         try {
+         java.sql.Date sqldate = new Date(u.getDate().getTime())   ;
             String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, u.getId());
@@ -32,7 +34,7 @@ public class ServiceUser {
             ste.setString(3, u.getNom());
             ste.setString(4, u.getPrenom());
             ste.setString(5, u.getMail());
-            ste.setString(6, u.getDate());
+            ste.setDate(6, sqldate);
             ste.setString(7, u.getPicture());
             ste.setInt(8, u.getRole());
             ste.executeUpdate();
@@ -43,13 +45,14 @@ public class ServiceUser {
 
     public void updateUser(User u, int id) {
         try {
-            String req = "UPDATE user SET  cin= ? ,nom=?,prenom = ? ,mail=? , date=?,picture=?,role=?, WHERE id_user = ?";
+            java.sql.Date sqldate = new Date(u.getDate().getTime())   ;
+            String req = "UPDATE user SET  cin= ? ,nom=?,prenom = ? ,email=? , date=?,picture=?,role=? WHERE id_user = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, u.getCin());
             ste.setString(2, u.getNom());
             ste.setString(3, u.getPrenom());
             ste.setString(4, u.getMail());
-            ste.setString(5, u.getDate());
+            ste.setDate(5,sqldate);
             ste.setString(6, u.getPicture());
             ste.setInt(7, u.getRole());
             ste.setInt(8, id);
@@ -84,8 +87,8 @@ public class ServiceUser {
                                 result.getString("cin"),
                                 result.getString("nom"),
                                 result.getString("prenom"),
-                                result.getString("mail"),
-                                result.getString("date"),
+                                result.getString("email"),
+                                result.getDate("date"),
                                 result.getString("picture"),
                                 result.getInt("role")
                         )

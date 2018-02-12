@@ -31,6 +31,16 @@ public class Etablissement {
         this.ville = ville;
     }
 
+    public Etablissement(boolean verification, float note, String nom, String description, String type, String region, String ville) {
+        this.verification = verification;
+        this.note = note;
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.region = region;
+        this.ville = ville;
+    }
+
     public Etablissement() {
     }
 

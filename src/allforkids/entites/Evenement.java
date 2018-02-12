@@ -5,6 +5,8 @@
  */
 package allforkids.entites;
 
+import java.util.Date;
+
 /**
  *
  * @author FATNASSI
@@ -14,13 +16,13 @@ public class Evenement {
     private int id_evenement;
     private String nom;
     private String lieu;
-    private String date;
+    private Date date;
     private int type;
     private int nbr_participation;
     private boolean etat;
     private int id_user;
 
-    public Evenement(int id_evenement, String nom, String lieu, String date, int type, int nbr_participation, boolean etat,int id_user) {
+    public Evenement(int id_evenement, String nom, String lieu, Date date, int type, int nbr_participation, boolean etat,int id_user) {
         this.id_evenement = id_evenement;
         this.nom = nom;
         this.lieu = lieu;
@@ -29,6 +31,16 @@ public class Evenement {
         this.nbr_participation = nbr_participation;
         this.etat = etat;
         this.id_user = id_user ;
+    }
+
+    public Evenement(String nom, String lieu, Date date, int type, int nbr_participation, boolean etat, int id_user) {
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.type = type;
+        this.nbr_participation = nbr_participation;
+        this.etat = etat;
+        this.id_user = id_user;
     }
 
     public Evenement() {
@@ -58,11 +70,11 @@ public class Evenement {
         this.lieu = lieu;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

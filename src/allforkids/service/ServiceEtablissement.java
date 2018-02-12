@@ -43,7 +43,7 @@ public class ServiceEtablissement {
 
     public void updateEtablissement(Etablissement e, int id) {
         try {
-            String req = "UPDATE etablissement SET  verification= ? ,note=?,nom = ? ,description=? , type=?,region=?,ville=?, WHERE id_etablissement = ?";
+            String req = "UPDATE etablissement SET  verification= ? ,note=?,nom = ? ,description=? , type=?,region=?,ville=? WHERE id_etablissement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
             ste.setBoolean(1, e.isVerification());

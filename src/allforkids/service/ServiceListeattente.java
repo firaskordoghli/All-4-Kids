@@ -38,7 +38,7 @@ public class ServiceListeattente {
 
     public void updateListeattente(Listeattente l, int id, int id2) {
         try {
-            String req = "UPDATE liste_attente SET  num= ? , WHERE  id_evenmment= ? and id_user = ?";
+            String req = "UPDATE liste_attente SET  num= ?  WHERE  id_evenmment= ? and id_user = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
             ste.setInt(1, l.getNum());

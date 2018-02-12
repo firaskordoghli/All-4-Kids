@@ -28,6 +28,16 @@ public class Livre {
         this.bad = bad;
     }
 
+    public Livre( String nom, String categorie, String description, String type, int good, int bad) {
+       
+        this.nom = nom;
+        this.categorie = categorie;
+        this.description = description;
+        this.type = type;
+        this.good = good;
+        this.bad = bad;
+    }
+
     public Livre() {
     }
 

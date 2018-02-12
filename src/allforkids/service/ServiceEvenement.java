@@ -7,6 +7,7 @@ package allforkids.service;
 
 import allforkids.entites.Evenement;
 import allforkids.util.Config;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,38 +16,38 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author FATNASSI
- */
 public class ServiceEvenement {
-    static Config ds = Config.getInstance();
 
-    public void insrerUser(Evenement e) {
+    static Config ds = Config.getInstance();
+private final static Logger log =  Logger.getLogger(ServiceEvenement.class.getName());
+    public void insrerEvenement(Evenement e) {
         try {
+            java.sql.Date sqldate = new Date(e.getDate().getTime());
             String req = "INSERT INTO evenement VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, e.getId_evenement());
             ste.setString(2, e.getNom());
             ste.setString(3, e.getLieu());
-            ste.setString(4, e.getDate());
+            ste.setDate(4, sqldate);
             ste.setInt(5, e.getType());
             ste.setInt(6, e.getNbr_participation());
             ste.setBoolean(7, e.isEtat());
             ste.setInt(8, e.getId_user());
             ste.executeUpdate();
         } catch (SQLException ex) {
+            log.log(Level.INFO,"Erorr ServiceEvenement.insrerEvenement : " +ex.getMessage());
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void updateUser(Evenement e, int id_evenement) {
+    public void updateEvenement(Evenement e, int id_evenement) {
         try {
-            String req = "UPDATE evenement SET  nom= ? ,lieu=?,date = ? ,type=? , nbr_participation=?,etat=?, WHERE id_evenement = ?";
+            java.sql.Date sqldate = new Date(e.getDate().getTime());
+            String req = "UPDATE evenement SET  nom= ? ,lieu=?,date = ? ,type=? , nbr_participation=?,etat=? WHERE id_evenement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, e.getNom());
             ste.setString(2, e.getLieu());
-            ste.setString(3, e.getDate());
+            ste.setDate(3, sqldate);
             ste.setInt(4, e.getType());
             ste.setInt(5, e.getNbr_participation());
             ste.setBoolean(6, e.isEtat());
@@ -57,9 +58,9 @@ public class ServiceEvenement {
         }
     }
 
-    public static void deleteUser(int id) {
+    public static void deleteEvenement(int id) {
         try {
-            String req = "DELETE FROM user WHERE id = ?";
+            String req = "DELETE FROM evenement WHERE id = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
@@ -81,12 +82,11 @@ public class ServiceEvenement {
                                 result.getInt("id_evenement"),
                                 result.getString("nom"),
                                 result.getString("lieu"),
-                                result.getString("prenom"),
+                                result.getDate("prenom"),
                                 result.getInt("type"),
                                 result.getInt("nbr_participation"),
                                 result.getBoolean("etat"),
                                 result.getInt("id_user")
-                                
                         )
                 );
             }
@@ -95,5 +95,5 @@ public class ServiceEvenement {
         }
         return list;
     }
-    
+
 }

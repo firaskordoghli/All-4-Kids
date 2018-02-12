@@ -22,6 +22,12 @@ public class Commentaire {
         this.bad = bad;
     }
 
+    public Commentaire(String description, int good, int bad) {
+        this.description = description;
+        this.good = good;
+        this.bad = bad;
+    }
+
     public Commentaire() {
     }
 

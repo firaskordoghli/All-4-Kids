@@ -5,6 +5,8 @@
  */
 package allforkids.entites;
 
+import java.util.Date;
+
 /**
  *
  * @author slim
@@ -13,7 +15,7 @@ public class Covoiturage {
 
     private int id_covoiturage;
     private String type;
-    private String time;
+    private Date time;
     private String depart;
     private String arrive;
     private int nbr_place;
@@ -21,8 +23,19 @@ public class Covoiturage {
     private int etat;
     private int id_user;
 
-    public Covoiturage(int id_covoiturage, String type, String time, String depart, String arrive, int nbr_place, float prix, int etat,int id_user) {
+    public Covoiturage(int id_covoiturage, String type, Date time, String depart, String arrive, int nbr_place, float prix, int etat,int id_user) {
         this.id_covoiturage = id_covoiturage;
+        this.type = type;
+        this.time = time;
+        this.depart = depart;
+        this.arrive = arrive;
+        this.nbr_place = nbr_place;
+        this.prix = prix;
+        this.etat = etat;
+        this.id_user = id_user;
+    }
+
+    public Covoiturage(String type, Date time, String depart, String arrive, int nbr_place, float prix, int etat, int id_user) {
         this.type = type;
         this.time = time;
         this.depart = depart;
@@ -52,11 +65,11 @@ public class Covoiturage {
         this.type = type;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

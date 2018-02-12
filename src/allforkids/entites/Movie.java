@@ -21,6 +21,11 @@ public class Movie {
         this.movie = movie;
     }
 
+    public Movie(String categorie, String movie) {
+        this.categorie = categorie;
+        this.movie = movie;
+    }
+
     public Movie() {
     }
 

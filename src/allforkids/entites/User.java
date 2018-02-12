@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package allforkids.entites;
-
+import java.util.Date;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -19,11 +19,11 @@ public class User {
     private String nom;
     private String prenom;
     private String mail;
-    private String date;
+    private Date date;
     private String picture;
     private int role;
 
-    public User(int id, String cin, String nom, String prenom, String mail, String date, String picture, int role) {
+    public User(int id, String cin, String nom, String prenom, String mail, Date date, String picture, int role) {
         this.id = id;
         this.cin = cin;
         this.nom = nom;
@@ -34,7 +34,7 @@ public class User {
         this.role = role;
     }
 
-    public User(String cin, String nom, String prenom, String mail, String date, String picture, int role) {
+    public User(String cin, String nom, String prenom, String mail, Date date, String picture, int role) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -87,11 +87,11 @@ public class User {
         this.mail = mail;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -139,7 +139,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "cin=" + cin + ", nom=" + ", prenom=" + prenom + ", mail=" + mail + ", date=" + date + ", picture=" + picture + ", role=" + role + '}';
+        return "User{" + "cin=" + cin + ", nom=" + ", prenom=" + prenom + ", mail=" + mail + ", date=" + date.toString() + ", picture=" + picture + ", role=" + role + '}';
     }
 
 }

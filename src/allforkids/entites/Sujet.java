@@ -29,6 +29,15 @@ public class Sujet {
         this.visibilite = visibilite;
     }
 
+    public Sujet(String title, String description, String tag, int good, int bad, boolean visibilite) {
+        this.title = title;
+        this.description = description;
+        this.tag = tag;
+        this.good = good;
+        this.bad = bad;
+        this.visibilite = visibilite;
+    }
+
     public Sujet() {
     }
 

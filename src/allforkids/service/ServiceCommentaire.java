@@ -39,7 +39,7 @@ public class ServiceCommentaire {
 
     public void updateCommentaire(Commentaire c, int id) {
         try {
-            String req = "UPDATE commentaire SET  description=?, good=? ,bad=?, WHERE id_commentaire = ?";
+            String req = "UPDATE commentaire SET  description=?, good=? ,bad=? WHERE id_commentaire = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
             ste.setString(1, c.getDescription());
