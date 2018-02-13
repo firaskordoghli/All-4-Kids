@@ -21,6 +21,30 @@ public class Evenement {
     private int nbr_participation;
     private boolean etat;
     private int id_user;
+    private String 	photo ;
+
+    public Evenement(String nom, String lieu, Date date, int type, int nbr_participation, boolean etat, int id_user, String photo) {
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.type = type;
+        this.nbr_participation = nbr_participation;
+        this.etat = etat;
+        this.id_user = id_user;
+        this.photo = photo;
+    }
+
+    public Evenement(int id_evenement, String nom, String lieu, Date date, int type, int nbr_participation, boolean etat, int id_user, String photo) {
+        this.id_evenement = id_evenement;
+        this.nom = nom;
+        this.lieu = lieu;
+        this.date = date;
+        this.type = type;
+        this.nbr_participation = nbr_participation;
+        this.etat = etat;
+        this.id_user = id_user;
+        this.photo = photo;
+    }
 
     public Evenement(int id_evenement, String nom, String lieu, Date date, int type, int nbr_participation, boolean etat,int id_user) {
         this.id_evenement = id_evenement;
@@ -43,12 +67,26 @@ public class Evenement {
         this.id_user = id_user;
     }
 
+    public Evenement(String nom, String lieu) {
+        this.nom = nom;
+        this.lieu = lieu;
+    }
+
     public Evenement() {
     }
 
     public int getId_evenement() {
         return id_evenement;
     }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+    
 
     public void setId_evenement(int id_evenement) {
         this.id_evenement = id_evenement;

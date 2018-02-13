@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.AjoutEvenmentController">
+   <children>
+      <Label layoutX="218.0" layoutY="109.0" text="Lieu" />
+      <Label layoutX="218.0" layoutY="54.0" text="Nom" />
+      <TextField id="lieu" fx:id="tflieu" layoutX="293.0" layoutY="104.0" />
+      <TextField id="Nom" fx:id="tfNom" layoutX="293.0" layoutY="49.0" />
+      <Button layoutX="312.0" layoutY="321.0" mnemonicParsing="false" onAction="#saveEvenment" prefHeight="31.0" prefWidth="165.0" text="Enregistre" />
+      <DatePicker id="date" fx:id="tfDate" layoutX="291.0" layoutY="148.0" prefHeight="31.0" prefWidth="187.0" />
+      <TextField id="type" fx:id="tftype" layoutX="293.0" layoutY="200.0" />
+      <TextField id="nb" fx:id="tfnb" layoutX="291.0" layoutY="247.0" />
+      <Label layoutX="215.0" layoutY="153.0" text="Date" />
+      <Label layoutX="217.0" layoutY="205.0" text="type" />
+      <Label layoutX="217.0" layoutY="263.0" text="nb" />
+   </children>
+</AnchorPane>
