@@ -8,8 +8,17 @@ and open the template in the editor.
     Author     : DELL
 */
 
+<<<<<<< HEAD
 .root{
     -fx-background-image: url("b1.jpg");
     -fx-background-repeat: stretch; 
     -fx-background-position: center center;
+=======
+#pane{
+    -fx-background-image: url("https://www.google.com/images/srpr/logo3w.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 900 506;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+>>>>>>> ac7fe3ddbfeba4f58fd2116da9ca185b0786bb2d
 }
