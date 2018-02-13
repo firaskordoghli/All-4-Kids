@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceUser.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Login.fxml</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/LoginController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/User.java</file>
+        </group>
     </open-files>
 </project-private>

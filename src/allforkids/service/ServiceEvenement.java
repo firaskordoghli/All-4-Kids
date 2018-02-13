@@ -19,11 +19,13 @@ import java.util.logging.Logger;
 public class ServiceEvenement {
 
     static Config ds = Config.getInstance();
-private final static Logger log =  Logger.getLogger(ServiceEvenement.class.getName());
+    private final static Logger log = Logger.getLogger(ServiceEvenement.class.getName());
+
     public void insrerEvenement(Evenement e) {
         try {
+
             java.sql.Date sqldate = new Date(e.getDate().getTime());
-            String req = "INSERT INTO evenement VALUES(?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO evenement VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, e.getId_evenement());
             ste.setString(2, e.getNom());
@@ -33,9 +35,10 @@ private final static Logger log =  Logger.getLogger(ServiceEvenement.class.getNa
             ste.setInt(6, e.getNbr_participation());
             ste.setBoolean(7, e.isEtat());
             ste.setInt(8, e.getId_user());
+            ste.setString(9, e.getPhoto());
             ste.executeUpdate();
         } catch (SQLException ex) {
-            log.log(Level.INFO,"Erorr ServiceEvenement.insrerEvenement : " +ex.getMessage());
+            log.log(Level.INFO, "{0}Erorr ServiceEvenement.insrerEvenement : ", ex.getMessage());
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -82,11 +85,12 @@ private final static Logger log =  Logger.getLogger(ServiceEvenement.class.getNa
                                 result.getInt("id_evenement"),
                                 result.getString("nom"),
                                 result.getString("lieu"),
-                                result.getDate("prenom"),
+                                result.getDate("date"),
                                 result.getInt("type"),
                                 result.getInt("nbr_participation"),
                                 result.getBoolean("etat"),
-                                result.getInt("id_user")
+                                result.getInt("id_user"),
+                                result.getString("photo")
                         )
                 );
             }
@@ -94,6 +98,24 @@ private final static Logger log =  Logger.getLogger(ServiceEvenement.class.getNa
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    public String getImgByid(int id)
+    { 
+      String s = "" ;  
+           try {
+            String req = "SELECT * FROM evenement where id_evenement=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+        
+            ste.setInt(1,id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                s = result.getString("photo");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return s ; 
     }
 
 }

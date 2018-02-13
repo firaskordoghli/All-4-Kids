@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Label;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ServiceUser {
 
     public void insrerUser(User u) {
         try {
-         java.sql.Date sqldate = new Date(u.getDate().getTime())   ;
+            java.sql.Date sqldate = new Date(u.getDate().getTime());
             String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, u.getId());
@@ -45,14 +46,14 @@ public class ServiceUser {
 
     public void updateUser(User u, int id) {
         try {
-            java.sql.Date sqldate = new Date(u.getDate().getTime())   ;
+            java.sql.Date sqldate = new Date(u.getDate().getTime());
             String req = "UPDATE user SET  cin= ? ,nom=?,prenom = ? ,email=? , date=?,picture=?,role=? WHERE id_user = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, u.getCin());
             ste.setString(2, u.getNom());
             ste.setString(3, u.getPrenom());
             ste.setString(4, u.getMail());
-            ste.setDate(5,sqldate);
+            ste.setDate(5, sqldate);
             ste.setString(6, u.getPicture());
             ste.setInt(7, u.getRole());
             ste.setInt(8, id);
@@ -90,7 +91,8 @@ public class ServiceUser {
                                 result.getString("email"),
                                 result.getDate("date"),
                                 result.getString("picture"),
-                                result.getInt("role")
+                                result.getInt("role"),
+                                result.getString("pass")
                         )
                 );
             }
@@ -98,5 +100,40 @@ public class ServiceUser {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    public User GetUserByMail(String e, Label l) {
+        try {
+            String req = "SELECT * FROM user where email=?  ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setString(1, e);
+          
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+              User  u = new User(
+                        result.getInt("id_user"),
+                        result.getString("cin"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("email"),
+                        result.getDate("date"),
+                        result.getString("picture"),
+                        result.getInt("role"),
+                
+                        result.getString("pass")
+                );
+                return u;
+            }
+
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            l.setText("verifier votre information ");
+
+        }
+        return null ;
+
     }
 }
