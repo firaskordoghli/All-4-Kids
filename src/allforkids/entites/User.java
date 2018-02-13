@@ -22,8 +22,12 @@ public class User {
     private Date date;
     private String picture;
     private int role;
+    private String pass;
 
-    public User(int id, String cin, String nom, String prenom, String mail, Date date, String picture, int role) {
+    public User() {
+    }
+
+    public User(int id, String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass) {
         this.id = id;
         this.cin = cin;
         this.nom = nom;
@@ -32,19 +36,7 @@ public class User {
         this.date = date;
         this.picture = picture;
         this.role = role;
-    }
-
-    public User(String cin, String nom, String prenom, String mail, Date date, String picture, int role) {
-        this.cin = cin;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.mail = mail;
-        this.date = date;
-        this.picture = picture;
-        this.role = role;
-    }
-
-    public User() {
+        this.pass = pass;
     }
 
     public int getId() {
@@ -111,16 +103,27 @@ public class User {
         this.role = role;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + this.id;
-        hash = 47 * hash + Objects.hashCode(this.mail);
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + Objects.hashCode(this.mail);
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -141,5 +144,5 @@ public class User {
     public String toString() {
         return "User{" + "cin=" + cin + ", nom=" + ", prenom=" + prenom + ", mail=" + mail + ", date=" + date.toString() + ", picture=" + picture + ", role=" + role + '}';
     }
-
+  
 }

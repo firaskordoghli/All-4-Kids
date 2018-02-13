@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author DELL
  */
-public class Jok extends Application {
+public class jok extends Application {
     
     @Override
     public void start(Stage primaryStage) {
