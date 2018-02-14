@@ -7,12 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<<<<<<< HEAD
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="allforkids.gui.LoginController">
-=======
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.LoginController">
->>>>>>> ac7fe3ddbfeba4f58fd2116da9ca185b0786bb2d
    <children>
       <Label layoutX="117.0" layoutY="85.0" text="Email" />
       <Label layoutX="121.0" layoutY="192.0" text="password" />
