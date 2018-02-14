@@ -23,10 +23,10 @@ public class NewMain {
     public static void main(String[] args) {
         /* User u = new User( "dgh", "dhd", "dfg", "fvdg", new Date(), "sgsg", 1, "22");
             User u1 = new User( "0747", "hamdi", "slim", "sl.@e.net", new Date(), "dde", 1,"");*/
-        ServiceUser s = new ServiceUser();
-         Evenement e = new Evenement("ss","ss",new Date(5, 5, 5),1,5,false,6);
-         ServiceEvenement es = new ServiceEvenement();
-         es.insrerEvenement(e);
+     //   ServiceUser s = new ServiceUser();
+   //      Evenement e = new Evenement("ss","ss",new Date(5, 5, 5),1,5,false,6);
+       //  ServiceEvenement es = new ServiceEvenement();
+        // es.insrerEvenement(e);
        //s.insrerUser(u);
         //s.updateUser(u1, 4);
         //s.deleteUser(8);
