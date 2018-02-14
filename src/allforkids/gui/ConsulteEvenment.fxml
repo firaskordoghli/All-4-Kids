@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<!--<?import com.jfoenix.controls.JFXButton?>-->
+
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="754.0" prefWidth="1152.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.ConsulteEvenmentController">
    <children>
-      <ListView fx:id="lisEvents" layoutX="257.0" layoutY="79.0" onMouseClicked="#afficherImage" prefHeight="362.0" prefWidth="658.0" />
-      <ImageView fx:id="eventIMG" fitHeight="202.0" fitWidth="223.0" layoutX="915.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="detailsBt" layoutX="963.0" layoutY="377.0" mnemonicParsing="false" onAction="#showDetails" prefHeight="31.0" prefWidth="127.0" text="details" />
+      <ListView fx:id="lisEvents" layoutX="60.0" layoutY="118.0" onMouseClicked="#afficherImage" prefHeight="622.0" prefWidth="658.0" style="-fx-background-color: #7feaff;" />
+      <AnchorPane fx:id="detail" layoutX="806.0" layoutY="118.0" prefHeight="622.0" prefWidth="307.0" style="-fx-background-color: #7feaff;">
+         <children>
+            <AnchorPane prefHeight="49.0" prefWidth="307.0" style="-fx-background-color: #00ccbb;">
+               <children>
+                  <Label fx:id="titre" layoutX="127.0" layoutY="9.0" text="Titre" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="eventIMG" fitHeight="275.0" fitWidth="304.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane layoutY="324.0" prefHeight="49.0" prefWidth="307.0" style="-fx-background-color: #00ccbb;">
+               <children>
+                  <Label fx:id="date" layoutX="110.0" layoutY="9.0" text="20/20/20" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label fx:id="nbp" layoutY="410.0" prefHeight="175.0" prefWidth="306.0" text="**************************************************************************************************************************************" wrapText="true" />
+            <!--<JFXButton layoutX="18.0" layoutY="571.0" prefHeight="31.0" prefWidth="271.0" style="-fx-background-color: #00ccbb;" text="S'inscrir" textFill="WHITE">
+               <font>
+                  <Font name="DK Cool Crayon" size="20.0" />
+               </font>
+            </JFXButton>-->
+         </children>
+      </AnchorPane>
+      <Label layoutX="532.0" layoutY="32.0" text="Titre" textFill="#1b1a1a">
+         <font>
+            <Font name="DK Cool Crayon" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
