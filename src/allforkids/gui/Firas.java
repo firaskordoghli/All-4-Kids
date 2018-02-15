@@ -5,12 +5,15 @@
  */
 package allforkids.gui;
 
-import java.io.IOException;
+import com.jfoenix.controls.JFXDecorator;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Border;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -18,12 +21,22 @@ import javafx.stage.Stage;
  */
 public class Firas extends Application {
     
+
+    
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        JFXDecorator decorator=new JFXDecorator(stage, root, false, false, true);
+        decorator.setCustomMaximize(false);
+        decorator.setBorder(Border.EMPTY);
+        
+        Scene scene = new Scene(decorator);
+        scene.getStylesheets().add(Firas.class.getResource("/styles/styles.css").toExternalForm());
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        
+        stage.setIconified(false);
+        stage.show();
     }
 
     /**
