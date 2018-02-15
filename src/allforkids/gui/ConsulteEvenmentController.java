@@ -20,11 +20,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javax.imageio.ImageIO;
 
 /**
@@ -47,7 +49,13 @@ public class ConsulteEvenmentController implements Initializable {
     @FXML
     private ImageView eventIMG;
     @FXML
-    private Button detailsBt;
+    private AnchorPane detail;
+    @FXML
+    private Label titre;
+    @FXML
+    private Label date;
+    @FXML
+    private Label nbp;
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,14 +90,16 @@ public class ConsulteEvenmentController implements Initializable {
     @FXML
     private void afficherImage(MouseEvent me) throws IOException {
        
-         
-             event= lisEvents.getSelectionModel().getSelectedItem();
            
-             
+                 
+             event= lisEvents.getSelectionModel().getSelectedItem();
+            nbp.setText("Nombre de particpent :"+event.getNbr_participation()+"     ");
+              titre.setText(event.getNom());
+              date.setText(event.getDate().toString());
                  String url=s.getImgByid(event.getId_evenement());
-        
+          
                 Image image =new Image(new FileInputStream(url));
-         
+           
          eventIMG.setImage(image);
              
            
@@ -97,10 +107,5 @@ public class ConsulteEvenmentController implements Initializable {
 
     }
 
-    @FXML
-    private void showDetails(ActionEvent event) {
-        
-        
-    }
     
 }
