@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.AcceuilController">
    <children>
-      <AnchorPane layoutX="507.0" layoutY="14.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
+      <AnchorPane id="transport" layoutX="786.0" layoutY="129.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
          <children>
             <ImageView fitHeight="143.0" fitWidth="164.0" layoutX="18.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -22,7 +22,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="507.0" layoutY="247.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #ffff66;">
+      <AnchorPane layoutX="786.0" layoutY="362.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #ffff66;">
          <children>
             <ImageView fitHeight="143.0" fitWidth="164.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +36,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="295.0" layoutY="249.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #ff3366;">
+      <AnchorPane layoutX="574.0" layoutY="364.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #ff3366;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -50,9 +50,9 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="86.0" layoutY="16.0" prefHeight="222.0" prefWidth="410.0" style="-fx-background-color: #2e55af;">
+      <AnchorPane layoutX="365.0" layoutY="131.0" prefHeight="222.0" prefWidth="410.0" style="-fx-background-color: #2e55af;">
          <children>
-            <Label layoutX="24.0" layoutY="14.0" text="Bienvenu au All for kids" textFill="WHITE">
+            <Label layoutX="24.0" layoutY="14.0" prefHeight="45.0" prefWidth="269.0" text="Bienvenu Firas 1" textFill="WHITE">
                <font>
                   <Font name="DK Cool Crayon" size="30.0" />
                </font>
@@ -69,7 +69,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="82.0" layoutY="249.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #00ff99;">
+      <AnchorPane layoutX="361.0" layoutY="364.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #00ff99;">
          <children>
             <ImageView fitHeight="143.0" fitWidth="200.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
