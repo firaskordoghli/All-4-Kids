@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.AcceuilController">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.AcceuilController">
    <children>
       <AnchorPane layoutX="507.0" layoutY="14.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
          <children>
@@ -64,7 +64,7 @@
             </Label>
             <ImageView fitHeight="103.0" fitWidth="124.0" layoutX="10.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Desktop/PI%20dev/1/icon/home-icon.png" />
+                  <Image url="@../icons/home-icon.png" />
                </image>
             </ImageView>
          </children>
