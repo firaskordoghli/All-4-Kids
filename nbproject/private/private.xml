@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/Tests/NewMain.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/jok.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceCovoiturage.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/util/Config.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/TrasnportController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/nbproject/jfx-impl.xml</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/FormulaireCov.fxml</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/util/allforkids.sql</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceTansportpublic.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Acceuil.fxml</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AcceuilController.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AllForKids.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ConsulteEvenmentController.java</file>
         </group>
     </open-files>
 </project-private>

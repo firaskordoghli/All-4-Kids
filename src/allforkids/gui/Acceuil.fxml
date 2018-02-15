@@ -69,9 +69,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="82.0" layoutY="247.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #00ff99;">
+      <AnchorPane layoutX="82.0" layoutY="249.0" prefHeight="222.0" prefWidth="200.0" style="-fx-background-color: #00ff99;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="8.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="143.0" fitWidth="200.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../Desktop/PI%20dev/1/icon/Video_game_controller_icon_designed_by_Maico_Amorim.svg.png" />
                </image>
