@@ -12,7 +12,7 @@ package allforkids.entites;
 public class Etablissement {
 
     private int id;
-    private boolean verification;
+   private boolean verification;
     private float note;
     private String nom;
     private String description;
@@ -20,20 +20,22 @@ public class Etablissement {
     private String region;
     private String ville;
 
-    public Etablissement(int id, boolean verification, float note, String nom, String description, String type, String region, String ville) {
+    public Etablissement(/*int id*,/* float note,*/ String nom, String type, String region, String ville, String description,boolean verification,float note) {
         this.id = id;
-        this.verification = verification;
-        this.note = note;
+        /*this.verification = verification;*/
+        //this.note = note;
         this.nom = nom;
         this.description = description;
         this.type = type;
         this.region = region;
         this.ville = ville;
+        this.verification=verification;
+        this.note=note;
     }
 
-    public Etablissement(boolean verification, float note, String nom, String description, String type, String region, String ville) {
-        this.verification = verification;
-        this.note = note;
+    public Etablissement(/*boolean verification,*float note, */ String nom, String type, String region, String ville, String description) {
+       /* this.verification = verification;*/
+       // this.note = note;
         this.nom = nom;
         this.description = description;
         this.type = type;
@@ -56,12 +58,12 @@ public class Etablissement {
         return verification;
     }
 
-    public void setVerification(boolean verification) {
+   public void setVerification(boolean verification) {
         this.verification = verification;
     }
 
-    public float getNote() {
-        return note;
+   public float getNote() {
+       return note;
     }
 
     public void setNote(float note) {
@@ -110,7 +112,7 @@ public class Etablissement {
 
     @Override
     public String toString() {
-        return "etablissement{" + "verification=" + verification + ", note=" + note + ", nom=" + nom + ", description=" + description + ", type=" + type + ", region=" + region + ", ville=" + ville + '}';
+        return "etablissement{" + /*"verification=" + verification + ", note=" + note +*/ ", nom=" + nom + ", description=" + description + ", type=" + type + ", region=" + region + ", ville=" + ville + '}';
     }
 
     @Override

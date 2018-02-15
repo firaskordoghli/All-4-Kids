@@ -20,27 +20,30 @@ import java.util.logging.Logger;
  * @author slim
  */
 public class ServiceEtablissement {
-    
+
     static Config ds = Config.getInstance();
 
     public void insrerEtablissement(Etablissement e) {
         try {
-            String req = "INSERT INTO etablissement VALUES(?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO `etablissement`(`nom`, `type`, `region`, `ville`, `description`,`verification`,`note`) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            ste.setInt(1, e.getId());
-            ste.setBoolean(2, e.isVerification());
-            ste.setFloat(3, e.getNote());
-            ste.setString(4, e.getNom());
+            // ste.setInt(1, e.getId());
+         
+            //ste.setFloat(3, e.getNote());*/
+            ste.setString(1, e.getNom());
+            ste.setString(2, e.getType());
+            ste.setString(3, e.getRegion());
+            ste.setString(4, e.getVille());
             ste.setString(5, e.getDescription());
-            ste.setString(6, e.getType());
-            ste.setString(7, e.getRegion());
-            ste.setString(8, e.getVille());
+            ste.setBoolean(6, e.isVerification());
+            ste.setFloat(7, e.getNote());
+
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /*
     public void updateEtablissement(Etablissement e, int id) {
         try {
             String req = "UPDATE etablissement SET  verification= ? ,note=?,nom = ? ,description=? , type=?,region=?,ville=? WHERE id_etablissement = ?";
@@ -97,5 +100,5 @@ public class ServiceEtablissement {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-    }
+    }*/
 }
