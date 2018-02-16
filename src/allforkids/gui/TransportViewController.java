@@ -44,7 +44,7 @@ public class TransportViewController implements Initializable {
         // TODO
     }
 
-    private void switchToBus(MouseEvent event) {
+    public void switchToBus(MouseEvent event) {
             try {
                 paneBus.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("BusView.fxml"));

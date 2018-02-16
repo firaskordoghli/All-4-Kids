@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.TransportViewController">
+   <children>
+      <HBox fx:id="boxMenus" layoutX="484.0" layoutY="218.0" prefHeight="336.0" prefWidth="400.0" style="-fx-background-color: #666666;">
+         <children>
+            <AnchorPane fx:id="paneBus" onMouseClicked="#switchToBus" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #999999;" />
+            <AnchorPane fx:id="paneCovoiturage" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7f7f7f;" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
