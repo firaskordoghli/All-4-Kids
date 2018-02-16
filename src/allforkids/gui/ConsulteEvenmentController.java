@@ -42,7 +42,7 @@ public class ConsulteEvenmentController implements Initializable {
      */
      
      private ListView<String> list;
-     Evenement event;
+     private Evenement event;
      private ServiceEvenement s = new ServiceEvenement();
     @FXML
     private ListView<Evenement> lisEvents;
