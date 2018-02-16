@@ -28,16 +28,17 @@ public class ServiceUser {
     public void insrerUser(User u) {
         try {
             java.sql.Date sqldate = new Date(u.getDate().getTime());
-            String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, u.getId());
             ste.setString(2, u.getCin());
             ste.setString(3, u.getNom());
             ste.setString(4, u.getPrenom());
-            ste.setString(5, u.getMail());
-            ste.setDate(6, sqldate);
-            ste.setString(7, u.getPicture());
-            ste.setInt(8, u.getRole());
+            ste.setString(5, u.getPass());
+            ste.setString(6, u.getMail());
+            ste.setDate(7, sqldate);
+            ste.setString(8, u.getPicture());
+            ste.setInt(9, u.getRole());
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -136,4 +137,7 @@ public class ServiceUser {
         return null ;
 
     }
+    
+      
+        
 }
