@@ -56,5 +56,9 @@ public class TransportViewController implements Initializable {
                 Logger.getLogger(TransportViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }    
+
+    @FXML
+    private void switchToUsers(MouseEvent event) {
+    }
     
 }
