@@ -5,6 +5,7 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import java.io.IOException;
@@ -63,6 +64,7 @@ public class LoginController implements Initializable {
         if (su.GetUserByMail(email,lb) != null) {
             if (u.getPass().equals(mdp)) {
                 //ajouter une variable ou id 
+                Session.setIdThisUser(u.getId());
                 if (u.getRole() == 1) {
                     // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Login.fxml"));

@@ -5,6 +5,7 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.Validation;
@@ -13,7 +14,9 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -111,16 +114,19 @@ public class CreationCompteController implements Initializable {
      public boolean controleSaisie() throws IOException, SQLException {
         boolean saisie = true;
         ServiceUser us = new ServiceUser();
- 
+  String z;
+           int r=0;
+            z=RoleC.getValue();
+            if(z=="Enfant") r=1;
+            else if (z=="Parent") r=2;
+            else if (z=="Eatblissement") r=3;
        
  if (!Validation.textalphabet(NomC, Nom, "* le nom de doit contenir que des lettre")) {
             saisie = false;
         }
 
         
-          if (!Validation.texNum(CinC, Cin, "* le nom de doit contenir que des numero")) {
-            saisie = false;
-        }
+          
         if (!Validation.textalphabet(PrenomC, Prenom, "* le prenom de doit contenir que des lettre")) {
             saisie = false;
         }
@@ -145,10 +151,13 @@ public class CreationCompteController implements Initializable {
         if (!Validation.textValidation(MailC, Mail, "* tout les champs doivent etre remplis")) {
             saisie = false;
         }
-        
+        if((r ==3)||(r==2)){
           if (!Validation.textValidation(CinC, Cin, "* tout les champs doivent etre remplis")) {
             saisie = false;
+            if (!Validation.texNum(CinC, Cin, "* le nom de doit contenir que des numero")) {
+            saisie = false;
         }
+        }}
           
         
         if (!Validation.textValidation(PassC, Pass, "* tout les champs doivent etre remplis")) {
@@ -187,7 +196,7 @@ public class CreationCompteController implements Initializable {
 
 
     @FXML
-    private void valider(ActionEvent event) throws IOException, SQLException {
+    private void valider(ActionEvent event) throws IOException, SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
         Validation v = new Validation();
       
               ServiceUser a = new ServiceUser();
@@ -203,7 +212,7 @@ public class CreationCompteController implements Initializable {
             else if (z=="Parent") r=2;
             else if (z=="Eatblissement") r=3;
             
-            User u = new User(CinC.getText(), NomC.getText(), PrenomC.getText(), MailC.getText(), date, "1", r, PassC.getText());
+            User u = new User(CinC.getText(), NomC.getText(), PrenomC.getText(), MailC.getText(), date, "1", r, a.MD5(PassC.getText()));
             a.insrerUser(u);
             
             

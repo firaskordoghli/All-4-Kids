@@ -7,6 +7,10 @@ package allforkids.service;
 
 import allforkids.entites.User;
 import allforkids.util.Config;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -138,6 +142,17 @@ public class ServiceUser {
 
     }
     
-      
+     public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException
+        {
+            byte[] bytesOfMessage = password.getBytes("UTF-8");
+      MessageDigest md = MessageDigest.getInstance("MD5");
+      byte[] thedigest = md.digest(bytesOfMessage);
+      BigInteger bigInt = new BigInteger(1,thedigest);
+      String hashtext = bigInt.toString(16);
+      while(hashtext.length() < 32 ){
+            hashtext = "0"+hashtext;
+       }
+      return hashtext;
+        }  
         
 }
