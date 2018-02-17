@@ -22,7 +22,19 @@ import java.util.logging.Logger;
  */
 public class ServiceCovoiturage {
        static Config ds = Config.getInstance();
-
+       
+    public void ajoucov(Covoiturage c) {
+            try {
+                String req = "INSERT INTO `cov`(`depart`, `arrive`) VALUES (?,?)";
+                PreparedStatement ste = ds.getConnection().prepareStatement(req);
+                ste.setString(1, c.getDepart());
+                ste.setString(2, c.getArrive());
+                ste.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
     public void insrerCovoiturage(Covoiturage c) {
         try {
             java.sql.Date sqldate = new Date(c.getTime().getTime())   ;
