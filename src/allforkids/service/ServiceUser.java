@@ -7,6 +7,10 @@ package allforkids.service;
 
 import allforkids.entites.User;
 import allforkids.util.Config;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,16 +32,17 @@ public class ServiceUser {
     public void insrerUser(User u) {
         try {
             java.sql.Date sqldate = new Date(u.getDate().getTime());
-            String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, u.getId());
             ste.setString(2, u.getCin());
             ste.setString(3, u.getNom());
             ste.setString(4, u.getPrenom());
-            ste.setString(5, u.getMail());
-            ste.setDate(6, sqldate);
-            ste.setString(7, u.getPicture());
-            ste.setInt(8, u.getRole());
+            ste.setString(5, u.getPass());
+            ste.setString(6, u.getMail());
+            ste.setDate(7, sqldate);
+            ste.setString(8, u.getPicture());
+            ste.setInt(9, u.getRole());
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -136,4 +141,18 @@ public class ServiceUser {
         return null ;
 
     }
+    
+     public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException
+        {
+            byte[] bytesOfMessage = password.getBytes("UTF-8");
+      MessageDigest md = MessageDigest.getInstance("MD5");
+      byte[] thedigest = md.digest(bytesOfMessage);
+      BigInteger bigInt = new BigInteger(1,thedigest);
+      String hashtext = bigInt.toString(16);
+      while(hashtext.length() < 32 ){
+            hashtext = "0"+hashtext;
+       }
+      return hashtext;
+        }  
+        
 }
