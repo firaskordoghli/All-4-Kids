@@ -117,5 +117,32 @@ public class ServiceEvenement {
         
         return s ; 
     }
-
+    public Evenement  getIdByName(String nom )
+    { 
+      Evenement e = new Evenement() ;  
+           try {
+            String req = "SELECT * FROM evenement where nom=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+        
+            ste.setString(1,nom);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                e.setId_evenement( result.getInt("id_evenement"));
+                e.setNom(result.getString("nom"));
+                e.setLieu(result.getString("lieu"));
+                e.setDate(result.getDate("date"));
+                e.setType(result.getInt("type"));
+                e.setNbr_participation(result.getInt("nbr_participation"));
+                e.setEtat(result.getBoolean("etat"));
+                e.setId_user(result.getInt("id_user"));
+                e.setPhoto(result.getString("photo"));
+                  
+            }
+            return e ;
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return e ; 
+    }
 }

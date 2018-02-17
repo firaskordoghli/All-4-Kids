@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.AcceuilController">
+   <children>
+      <HBox fx:id="boxMenusUp" layoutX="113.0" layoutY="6.0" prefHeight="310.0" prefWidth="1222.0" spacing="20.0">
+         <children>
+            <AnchorPane prefHeight="370.0" prefWidth="763.0" style="-fx-background-color: #085bb9;" styleClass="root">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="268.0" layoutX="19.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/home-.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="19.0" layoutY="12.0" text="Bienvenue au All for Kids" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="55.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="271.0" layoutY="133.0" prefHeight="201.0" prefWidth="469.0" text="Ceci est votre tableau de bord de l'application ici, vous pouvez facilement accéder aux applications les plus Ceci est votre tableau de bord de l'application ici, vous pouvez facilement accéder aux applications les plus importantes" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="DK Cool Crayon" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneDivertissement" layoutX="10.0" layoutY="10.0" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #ffff66;">
+               <children>
+                  <ImageView fitHeight="255.0" fitWidth="255.0" layoutX="66.0" layoutY="14.0" onMouseClicked="#switchToDivertissement" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/baloons.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="11.0" layoutY="250.0" text="Divertissement" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="46.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox fx:id="boxMenusDown" layoutX="116.0" layoutY="370.0" prefHeight="370.0" prefWidth="1224.0" spacing="20.0">
+         <children>
+            <AnchorPane fx:id="paneTransport" onMouseClicked="#switchToTransport" prefHeight="354.0" prefWidth="363.0" style="-fx-background-color: #993399;" styleClass="root">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="298.0" layoutX="40.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/car.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="61.0" layoutY="270.0" text="Transport" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneForum" layoutX="10.0" layoutY="10.0" onMouseClicked="#switchToForum" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #ff3366;">
+               <children>
+                  <ImageView fitHeight="231.0" fitWidth="267.0" layoutX="59.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/forum.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="120.0" layoutY="274.0" text="Forum" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneEtablissement" layoutX="393.0" layoutY="10.0" onMouseClicked="#switchToEtablissement" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #00ff99;">
+               <children>
+                  <ImageView fitHeight="235.0" fitWidth="355.0" layoutX="75.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/building.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="273.0" text="Etablissement" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="46.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
