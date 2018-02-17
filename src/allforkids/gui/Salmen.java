@@ -7,26 +7,27 @@ package allforkids.gui;
 
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+
 
 /**
  *
  * @author FATNASSI
  */
-public class salmen extends Application {
+
+public class Salmen extends Application {
     
-     @Override
+    @Override
     public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("Etablissemnt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AddEtablissment.fxml"));
         
         Scene scene = new Scene(root);
+        
         stage.setScene(scene);
         stage.show();
     }

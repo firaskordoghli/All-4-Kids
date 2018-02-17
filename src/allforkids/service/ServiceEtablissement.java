@@ -25,7 +25,7 @@ public class ServiceEtablissement {
 
     public void insrerEtablissement(Etablissement e) {
         try {
-            String req = "INSERT INTO `etablissement`(`nom`, `type`, `region`, `ville`, `description`,`verification`,`note`) VALUES (?,?,?,?,?,?,?)";
+            String req = "INSERT INTO `etablissement`(`nom`, `type`, `region`, `ville`, `description`,`image`) VALUES (?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             // ste.setInt(1, e.getId());
          
@@ -35,21 +35,19 @@ public class ServiceEtablissement {
             ste.setString(3, e.getRegion());
             ste.setString(4, e.getVille());
             ste.setString(5, e.getDescription());
-            ste.setBoolean(6, e.isVerification());
-            ste.setFloat(7, e.getNote());
+            ste.setString(6, e.getImage());
 
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /*
+    
     public void updateEtablissement(Etablissement e, int id) {
         try {
-            String req = "UPDATE etablissement SET  verification= ? ,note=?,nom = ? ,description=? , type=?,region=?,ville=? WHERE id_etablissement = ?";
+            String req = "UPDATE etablissement SET note=?,nom = ? ,description=? , type=?,region=?,ville=? WHERE id_etablissement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
-            ste.setBoolean(1, e.isVerification());
             ste.setFloat(2, e.getNote());
             ste.setString(3, e.getNom());
             ste.setString(4, e.getDescription());
@@ -84,14 +82,14 @@ public class ServiceEtablissement {
             while (result.next()) {
                 list.add(
                         new Etablissement(
-                                result.getInt("id_etablissement"),
-                                result.getBoolean("verification"),
-                                result.getFloat("not"),
+                               /* result.getInt("id_etablissement"),
+                                result.getFloat("note"),*/
                                 result.getString("nom"),
                                 result.getString("description"),
                                 result.getString("type"),
                                 result.getString("region"),
-                                result.getString("ville")
+                                result.getString("ville"),
+                                result.getString("image")
  
                         )
                 );
@@ -100,5 +98,5 @@ public class ServiceEtablissement {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-    }*/
+    }
 }
