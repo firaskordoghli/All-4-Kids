@@ -5,6 +5,7 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import java.io.IOException;
@@ -60,9 +61,10 @@ public class LoginController implements Initializable {
 
         ServiceUser su = new ServiceUser();
         User u = su.GetUserByMail(email,lb);
-        /*if (su.GetUserByMail(email,lb) != null) {
+        if (su.GetUserByMail(email,lb) != null) {
             if (u.getPass().equals(mdp)) {
                 //ajouter une variable ou id 
+                Session.setIdThisUser(u.getId());
                 if (u.getRole() == 1) {
                     // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -79,8 +81,20 @@ public class LoginController implements Initializable {
              
             }else {ErrPass.setText("verrifer votre passe");}
 
-        }else{ErrMail.setText("verrifier votre mail");}*/
+        }else{ErrMail.setText("verrifier votre mail");}
     ErrMail.setText(u.toString());
+    }
+
+    @FXML
+    private void valider(ActionEvent event) throws IOException {
+         Parent root =FXMLLoader.load(getClass().getResource("CreationCompte.fxml"));
+                  Scene scene = new Scene(root);
+
+                        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                        app_stage.setScene(scene);
+
+                        app_stage.show();
     }
 
 }

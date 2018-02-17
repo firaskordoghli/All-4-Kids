@@ -7,6 +7,7 @@ package allforkids.gui;
 
 import java.io.IOException;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,9 @@ public class Rayen extends Application {
         
        stage.setScene(scene);
         stage.show();
+        
+        
+        
     }
 
     /**

@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -38,6 +40,8 @@ public class AddEtablissmentController implements Initializable {
     private JFXButton enregistrer;
     @FXML
     private JFXButton annuler;
+    @FXML
+    private AnchorPane addetablissement;
 
     /**
      * Initializes the controller class.
@@ -72,6 +76,8 @@ public class AddEtablissmentController implements Initializable {
 
     @FXML
     private void annulerajout(ActionEvent event) {
+        Stage stage =(Stage) addetablissement.getScene().getWindow();
+        stage.close();
     }
     
 }
