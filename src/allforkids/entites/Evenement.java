@@ -17,24 +17,15 @@ public class Evenement {
     private String nom;
     private String lieu;
     private Date date;
-    private int type;
+    private String type;
     private int nbr_participation;
     private boolean etat;
     private int id_user;
-    private String 	photo ;
+    private String photo ;
+    private Double latitude ;
+    private Double longitude ;
 
-    public Evenement(String nom, String lieu, Date date, int type, int nbr_participation, boolean etat, int id_user, String photo) {
-        this.nom = nom;
-        this.lieu = lieu;
-        this.date = date;
-        this.type = type;
-        this.nbr_participation = nbr_participation;
-        this.etat = etat;
-        this.id_user = id_user;
-        this.photo = photo;
-    }
-
-    public Evenement(int id_evenement, String nom, String lieu, Date date, int type, int nbr_participation, boolean etat, int id_user, String photo) {
+    public Evenement(int id_evenement, String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude) {
         this.id_evenement = id_evenement;
         this.nom = nom;
         this.lieu = lieu;
@@ -44,20 +35,11 @@ public class Evenement {
         this.etat = etat;
         this.id_user = id_user;
         this.photo = photo;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
-    public Evenement(int id_evenement, String nom, String lieu, Date date, int type, int nbr_participation, boolean etat,int id_user) {
-        this.id_evenement = id_evenement;
-        this.nom = nom;
-        this.lieu = lieu;
-        this.date = date;
-        this.type = type;
-        this.nbr_participation = nbr_participation;
-        this.etat = etat;
-        this.id_user = id_user ;
-    }
-
-    public Evenement(String nom, String lieu, Date date, int type, int nbr_participation, boolean etat, int id_user) {
+    public Evenement(String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude) {
         this.nom = nom;
         this.lieu = lieu;
         this.date = date;
@@ -65,13 +47,12 @@ public class Evenement {
         this.nbr_participation = nbr_participation;
         this.etat = etat;
         this.id_user = id_user;
+        this.photo = photo;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
-    public Evenement(String nom, String lieu) {
-        this.nom = nom;
-        this.lieu = lieu;
-    }
-
+   
     public Evenement() {
     }
 
@@ -116,11 +97,11 @@ public class Evenement {
         this.date = date;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -146,6 +127,22 @@ public class Evenement {
 
     public void setId_user(int id_user) {
         this.id_user = id_user;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
     
     
