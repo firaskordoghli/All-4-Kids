@@ -107,7 +107,7 @@ public class EvenementController implements Initializable {
     private void inscription(ActionEvent ev) {
          String l = listevent.getSelectionModel().getSelectedItem().getText();
             event = s.getIdByName(l);
-          Participevenement p = new Participevenement(event.getId_evenement(),6,event.getType());
+          Participevenement p = new Participevenement(event.getId_evenement(),6,6);
           ServiceParticipevenement sp = new ServiceParticipevenement();
           sp.insrerParticipevenement(p);
          
