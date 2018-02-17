@@ -12,35 +12,32 @@ package allforkids.entites;
 public class Etablissement {
 
     private int id;
-   private boolean verification;
-    private float note;
     private String nom;
     private String description;
     private String type;
     private String region;
     private String ville;
+    private String image;
 
-    public Etablissement(/*int id*,/* float note,*/ String nom, String type, String region, String ville, String description,boolean verification,float note) {
+    public Etablissement(int id,String nom, String type, String region, String ville, String description,String image) {
+       
         this.id = id;
-        /*this.verification = verification;*/
-        //this.note = note;
         this.nom = nom;
         this.description = description;
         this.type = type;
         this.region = region;
         this.ville = ville;
-        this.verification=verification;
-        this.note=note;
+        this.image=image;
     }
 
-    public Etablissement(/*boolean verification,*float note, */ String nom, String type, String region, String ville, String description) {
-       /* this.verification = verification;*/
-       // this.note = note;
+    public Etablissement(String nom, String type, String region, String ville, String description,String image) {
+     
         this.nom = nom;
         this.description = description;
         this.type = type;
         this.region = region;
         this.ville = ville;
+        this.image=image;
     }
 
     public Etablissement() {
@@ -54,21 +51,9 @@ public class Etablissement {
         this.id = id;
     }
 
-    public boolean isVerification() {
-        return verification;
-    }
+    
 
-   public void setVerification(boolean verification) {
-        this.verification = verification;
-    }
-
-   public float getNote() {
-       return note;
-    }
-
-    public void setNote(float note) {
-        this.note = note;
-    }
+   
 
     public String getNom() {
         return nom;
@@ -110,6 +95,15 @@ public class Etablissement {
         this.ville = ville;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    
     @Override
     public String toString() {
         return "etablissement{" + /*"verification=" + verification + ", note=" + note +*/ ", nom=" + nom + ", description=" + description + ", type=" + type + ", region=" + region + ", ville=" + ville + '}';
