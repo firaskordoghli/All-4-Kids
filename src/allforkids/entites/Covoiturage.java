@@ -49,6 +49,11 @@ public class Covoiturage {
     public Covoiturage() {
     }
 
+    public Covoiturage(String depart, String arrive) {
+        this.depart = depart;
+        this.arrive = arrive;
+    }
+
     public int getId_covoiturage() {
         return id_covoiturage;
     }
