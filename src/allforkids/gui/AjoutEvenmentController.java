@@ -51,10 +51,10 @@ public class AjoutEvenmentController implements Initializable {
 
         LocalDate d = tfDate.getValue() ;
     Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Evenement e =new Evenement(tfNom.getText()
-                ,tflieu.getText(),date,Integer.parseInt(tftype.getText())
-            ,Integer.parseInt(tfnb.getText()),false,6);
-        eService.insrerEvenement(e);
+       // Evenement e =new Evenement(tfNom.getText()
+      //          ,tflieu.getText(),date,Integer.parseInt(tftype.getText())
+       //     ,Integer.parseInt(tfnb.getText()),false,6);
+      //  eService.insrerEvenement(e);
         tfNom.clear();
         tflieu.clear();
      

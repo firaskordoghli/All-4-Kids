@@ -37,6 +37,7 @@ public class CovFormulaireController implements Initializable {
         // TODO
     }    
     
+    @FXML
     public void addCov (ActionEvent event){
     ServiceCovoiturage cService = new ServiceCovoiturage();
     Covoiturage c = new Covoiturage(depart.getText(),arrive.getText());
