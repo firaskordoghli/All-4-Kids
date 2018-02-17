@@ -12,7 +12,6 @@ package allforkids.entites;
 public class Etablissement {
 
     private int id;
-    private float note;
     private String nom;
     private String description;
     private String type;
@@ -20,7 +19,7 @@ public class Etablissement {
     private String ville;
     private String image;
 
-    public Etablissement(int id,String nom, String type, String region, String ville, String description,float note,String image) {
+    public Etablissement(int id,String nom, String type, String region, String ville, String description,String image) {
        
         this.id = id;
         this.nom = nom;
@@ -28,7 +27,6 @@ public class Etablissement {
         this.type = type;
         this.region = region;
         this.ville = ville;
-        this.note=note;
         this.image=image;
     }
 
@@ -55,13 +53,7 @@ public class Etablissement {
 
     
 
-   public float getNote() {
-       return note;
-    }
-
-    public void setNote(float note) {
-        this.note = note;
-    }
+   
 
     public String getNom() {
         return nom;

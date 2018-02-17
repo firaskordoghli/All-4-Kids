@@ -27,9 +27,7 @@ public class ServiceEtablissement {
         try {
             String req = "INSERT INTO `etablissement`(`nom`, `type`, `region`, `ville`, `description`,`image`) VALUES (?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            // ste.setInt(1, e.getId());
-         
-            //ste.setFloat(3, e.getNote());*/
+            
             ste.setString(1, e.getNom());
             ste.setString(2, e.getType());
             ste.setString(3, e.getRegion());
@@ -45,16 +43,16 @@ public class ServiceEtablissement {
     
     public void updateEtablissement(Etablissement e, int id) {
         try {
-            String req = "UPDATE etablissement SET note=?,nom = ? ,description=? , type=?,region=?,ville=? WHERE id_etablissement = ?";
+            String req = "UPDATE etablissement SET nom =?,type=?,region=?,ville=?,description=?,image=? WHERE id_etablissement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
-            ste.setFloat(2, e.getNote());
-            ste.setString(3, e.getNom());
-            ste.setString(4, e.getDescription());
-            ste.setString(5, e.getType());
-            ste.setString(6, e.getRegion());
-            ste.setString(7, e.getVille());
-            ste.setInt(8, id);
+            ste.setString(1, e.getNom());
+            ste.setString(2, e.getType());
+            ste.setString(3, e.getRegion());
+            ste.setString(4, e.getVille());
+            ste.setString(5, e.getDescription());
+            ste.setString(6, e.getImage());
+            ste.setInt(7, id);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,13 +80,12 @@ public class ServiceEtablissement {
             while (result.next()) {
                 list.add(
                         new Etablissement(
-                               /* result.getInt("id_etablissement"),
-                                result.getFloat("note"),*/
+                                result.getInt("id_etablissement"),
                                 result.getString("nom"),
-                                result.getString("description"),
                                 result.getString("type"),
                                 result.getString("region"),
                                 result.getString("ville"),
+                                result.getString("description"),
                                 result.getString("image")
  
                         )
