@@ -6,6 +6,7 @@
 package allforkids.service;
 
 import allforkids.entites.Covoiturage;
+import allforkids.entites.Transport;
 import allforkids.util.Config;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -23,17 +24,25 @@ import java.util.logging.Logger;
 public class ServiceCovoiturage {
        static Config ds = Config.getInstance();
        
-    public void ajoucov(Covoiturage c) {
-            try {
-                String req = "INSERT INTO `cov`(`depart`, `arrive`) VALUES (?,?)";
-                PreparedStatement ste = ds.getConnection().prepareStatement(req);
-                ste.setString(1, c.getDepart());
-                ste.setString(2, c.getArrive());
-                ste.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    
+    public void insrerCovoiturage(Transport t) {
+        try {
+            String req = "INSERT INTO trasnsport VALUES(?,?,?,?,?,?,?,?)";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setString(1, t.getRegion());
+            ste.setString(2, t.getVille());
+            ste.setString(3, t.getDepart());
+            ste.setString(4, t.getArrivé());
+            ste.setString(5, t.getDescription());
+            ste.setString(6, t.getTelephone());
+            ste.setString(7, t.getPlace());
+            ste.setString(8, t.getFrais());
+            
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
     
     public void insrerCovoiturage(Covoiturage c) {
         try {

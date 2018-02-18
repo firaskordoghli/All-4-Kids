@@ -6,14 +6,17 @@
 package allforkids.gui;
 
 import allforkids.entites.Covoiturage;
+import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -28,6 +31,24 @@ public class CovFormulaireController implements Initializable {
     private JFXTextField arrive;
     @FXML
     private JFXButton add;
+    @FXML
+    private JFXTextField Region;
+    @FXML
+    private JFXTextField ville;
+    @FXML
+    private JFXTextField arrivé;
+    @FXML
+    private JFXTextArea description;
+    @FXML
+    private JFXTextField telephone;
+    @FXML
+    private JFXTextField placeDispo;
+    @FXML
+    private JFXTextField fraix;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button delButton;
 
     /**
      * Initializes the controller class.
@@ -40,8 +61,9 @@ public class CovFormulaireController implements Initializable {
     @FXML
     public void addCov (ActionEvent event){
     ServiceCovoiturage cService = new ServiceCovoiturage();
-    Covoiturage c = new Covoiturage(depart.getText(),arrive.getText());
-    cService.ajoucov(c);
+    Transport t = new Transport(Region.getText(),ville.getText(),depart.getText(),arrivé.getText(),
+            description.getText(),telephone.getText(),placeDispo.getText(),fraix.getText());
+    cService.insrerCovoiturage(t);
     }
     
 }
