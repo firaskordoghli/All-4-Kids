@@ -63,7 +63,7 @@ public class CovFormulaireController implements Initializable {
     ServiceCovoiturage cService = new ServiceCovoiturage();
     Transport t = new Transport(Region.getText(),ville.getText(),depart.getText(),arrivé.getText(),
             description.getText(),telephone.getText(),placeDispo.getText(),fraix.getText());
-    cService.insrerCovoiturage(t);
+    cService.insrerCov(t);
     }
     
 }

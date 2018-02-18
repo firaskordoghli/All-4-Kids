@@ -14,7 +14,7 @@ public class Transport {
     private String region;
     private String ville;
     private String depart;
-    private String arrivé;
+    private String arrivé;  
     private String description;
     private String telephone;
     private String place;
