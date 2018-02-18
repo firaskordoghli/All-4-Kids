@@ -30,27 +30,47 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="Region">
+=======
+                  <JFXTextField fx:id="Region" labelFloat="true" promptText="Region">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
                   </JFXTextField>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="Ville" GridPane.rowIndex="1">
+=======
+                  <JFXTextField fx:id="ville" labelFloat="true" promptText="Ville" GridPane.rowIndex="1">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
                   </JFXTextField>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="Depart" GridPane.rowIndex="2">
+=======
+                  <JFXTextField fx:id="depart" labelFloat="true" promptText="Depart" GridPane.rowIndex="2">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
                   </JFXTextField>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="Arrivé" GridPane.rowIndex="3">
+=======
+                  <JFXTextField fx:id="arrivé" labelFloat="true" promptText="Arrivé" GridPane.rowIndex="3">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
                   </JFXTextField>
+<<<<<<< HEAD
                   <JFXTextArea labelFloat="true" promptText="Description" GridPane.rowIndex="4" />
+=======
+                  <JFXTextArea fx:id="description" labelFloat="true" promptText="Description" GridPane.rowIndex="4" />
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                </children>
             </GridPane>
             <Pane layoutX="18.0" layoutY="-35.0" prefHeight="52.0" prefWidth="272.0" style="-fx-background-color: #1f487e; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);;">
@@ -109,17 +129,29 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="telephone">
+=======
+                  <JFXTextField fx:id="telephone" labelFloat="true" promptText="telephone">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
                   </JFXTextField>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="place disponible" GridPane.rowIndex="1">
+=======
+                  <JFXTextField fx:id="placeDispo" labelFloat="true" promptText="place disponible" GridPane.rowIndex="1">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
                   </JFXTextField>
+<<<<<<< HEAD
                   <JFXTextField labelFloat="true" promptText="fraix" text="gratuis" GridPane.rowIndex="2">
+=======
+                  <JFXTextField fx:id="fraix" labelFloat="true" promptText="frais" text="gratuis" GridPane.rowIndex="2">
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
                      <font>
                         <Font name="DK Cool Crayon" size="14.0" />
                      </font>
@@ -149,8 +181,13 @@
       </AnchorPane>
       <Pane layoutX="628.0" layoutY="486.0" prefHeight="84.0" prefWidth="348.0" style="-fx-background-color: #ffffff;">
          <children>
+<<<<<<< HEAD
             <Button layoutX="20.0" layoutY="13.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="139.0" text="enregistrer" />
             <Button layoutX="187.0" layoutY="13.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="139.0" text="effacer" />
+=======
+            <Button fx:id="addButton" layoutX="20.0" layoutY="13.0" mnemonicParsing="false" onAction="#addCov" prefHeight="52.0" prefWidth="139.0" text="enregistrer" />
+            <Button fx:id="delButton" layoutX="187.0" layoutY="13.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="139.0" text="effacer" />
+>>>>>>> 4be1b363130dd6f76e211c7ba3b1170976f88404
          </children>
       </Pane>
    </children>
