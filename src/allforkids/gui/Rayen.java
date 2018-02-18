@@ -35,7 +35,7 @@ public class Rayen extends Application {
        stage.setScene(scene);
         stage.show();
         
-        scene.getStylesheets().add(Rayen.class.getResource("/styles/styles.css").toExternalForm());
+//        scene.getStylesheets().add(Rayen.class.getResource("/styles/styles.css").toExternalForm());
         
     }
 

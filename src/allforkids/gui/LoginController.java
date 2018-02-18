@@ -67,7 +67,7 @@ public class LoginController implements Initializable {
                 Session.setIdThisUser(u.getId());
                 if (u.getRole() == 1) {
                     // envoi vers page admin 
-                 Parent root =FXMLLoader.load(getClass().getResource("Login.fxml"));
+                 Parent root =FXMLLoader.load(getClass().getResource("Profil.fxml"));
                   Scene scene = new Scene(root);
 
                         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
