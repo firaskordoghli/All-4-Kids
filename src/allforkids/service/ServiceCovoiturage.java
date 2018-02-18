@@ -80,7 +80,7 @@ public class ServiceCovoiturage {
     public List<Transport> selectCov() {
         List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM transport ";
+            String req = "SELECT * FROM trasnsport ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
@@ -90,11 +90,11 @@ public class ServiceCovoiturage {
                                 result.getString("region"),
                                 result.getString("ville"),
                                 result.getString("depart"),
-                               result.getString("description"),
-                                 result.getString("telephone"),
-                                 result.getString("place"),
-                                 result.getString("frais"),
-                                 result.getString("type")
+                                result.getString("description"),
+                                result.getString("telephone"),
+                                result.getString("place"),
+                                result.getString("frais"),
+                                result.getString("type")
                         )
                 );
             }
