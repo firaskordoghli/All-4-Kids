@@ -80,21 +80,23 @@ public class ServiceCovoiturage {
     public List<Transport> selectCov() {
         List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM transport ";
+            String req = "SELECT * FROM trasnsport ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
                         new Transport(
+                                result.getInt("id_transport"),
                                 result.getString("region"),
                                 result.getString("ville"),
                                 result.getString("depart"),
-                               result.getString("description"),
-                                 result.getString("telephone"),
-                                 result.getString("place"),
-                                 result.getString("frais"),
-                                 result.getString("type")
+                                result.getString("arrivé"),
+                                result.getString("description"),
+                                result.getString("telephone"),
+                                result.getString("place"),
+                                result.getString("frais"),
+                                result.getInt("type")
                         )
                 );
             }
@@ -104,25 +106,26 @@ public class ServiceCovoiturage {
         return list;
     }
     
-    public List<Covoiturage> selectCovoiturage() {
-        List<Covoiturage> list = new ArrayList<>();
+    public List<Transport> selectCovById(int id) {
+        List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM covoiturage ";
+            String req = "SELECT * FROM trasnsport where id_transport = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-
+            ste.setInt(1,id);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
-                        new Covoiturage(
-                                result.getInt("id_covoiturage"),
-                                result.getString("type"),
-                                result.getDate("time"),
-                               result.getString("depart"),
-                                 result.getString("arrive"),
-                                 result.getInt("nbr_place"),
-                                 result.getFloat("prix"),
-                                 result.getInt("etat"),
-                                 result.getInt("id_user")
+                        new Transport(
+                                result.getInt("id_transport"),
+                                result.getString("region"),
+                                result.getString("ville"),
+                                result.getString("depart"),
+                                result.getString("arrivé"),
+                                result.getString("description"),
+                                result.getString("telephone"),
+                                result.getString("place"),
+                                result.getString("frais"),
+                                result.getInt("type")
                         )
                 );
             }
@@ -131,4 +134,7 @@ public class ServiceCovoiturage {
         }
         return list;
     }
+    
+    
+
 }

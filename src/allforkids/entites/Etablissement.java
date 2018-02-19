@@ -39,6 +39,12 @@ public class Etablissement {
         this.ville = ville;
         this.image=image;
     }
+    public Etablissement(String nom, String type) {
+     
+        this.nom = nom;
+        this.type = type;
+    }
+
 
     public Etablissement() {
     }
