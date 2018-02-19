@@ -6,11 +6,13 @@
 package allforkids.service;
 
 import allforkids.entites.User;
+import allforkids.util.BCrypt;
 import allforkids.util.Config;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -154,5 +157,80 @@ public class ServiceUser {
        }
       return hashtext;
         }  
+
+      public User recevoirUser(String username) {
+        return null;
+       /* try {
+          String req = "select username,email,password,nom,prenom,enabled,id,roles from utilisateur where username=?";
+            PreparedStatement ps = Connection.prepareStatement(req);
+            ps.setString(1,username);
+            ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+               // User user = new User( rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(6),rs.getInt(7));
+              //  user.setRoles(rs.getString(8));
+                //return user;
+            }
+                    
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            l.setText("* verifier vos informations !");
+        }
+        return null;*/
+      }
         
+        
+         public void changerMDP(String newMdp,int id)
+        {
+         /*   try {
+            String reqUpdate = "update utilisateur set password=? where id=?";
+            PreparedStatement ps = Connection.prepareStatement(reqUpdate);
+          //  ps.setString(1, u.getEmail()); 
+            ps.setString(1, BCrypt.hashpw(newMdp,BCrypt.gensalt()));   
+          //  ps.setString(3, u.getNom());
+         //   ps.setString(4, u.getPrenom());
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            
+            System.out.println("envoyé");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }*/
+        }
+
+     public User GetUserById(int id) {
+        try {
+            String req = "SELECT * FROM user where id_user=?  ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            
+          ste.setInt(1, id);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+              User  u = new User(
+                        result.getInt("id_user"),
+                        result.getString("cin"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("email"),
+                        result.getDate("date"),
+                        result.getString("picture"),
+                        result.getInt("role"),
+                
+                        result.getString("pass")
+                );
+                return u;
+            }
+
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+           
+
+        }
+        return null ;
+
+    }
+    
 }
