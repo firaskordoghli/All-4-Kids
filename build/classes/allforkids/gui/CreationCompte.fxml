@@ -23,7 +23,6 @@
       <JFXTextField fx:id="PrenomC" layoutX="188.0" layoutY="207.0" prefHeight="17.0" prefWidth="135.0" />
       <JFXTextField fx:id="MailC" layoutX="188.0" layoutY="279.0" prefHeight="17.0" prefWidth="135.0" />
       <JFXTextField fx:id="CinC" layoutX="193.0" layoutY="351.0" prefHeight="17.0" prefWidth="135.0" />
-      <JFXTextField fx:id="PhotoC" layoutX="592.0" layoutY="108.0" prefHeight="17.0" prefWidth="135.0" />
       <Label fx:id="Nom" layoutX="193.0" layoutY="163.0" textFill="RED" />
       <Label fx:id="Prenom" layoutX="193.0" layoutY="232.0" textFill="RED" />
       <Label fx:id="Mail" layoutX="193.0" layoutY="304.0" textFill="RED" />
@@ -44,5 +43,7 @@
       <Label layoutX="461.0" layoutY="420.0" text="Role" />
       <JFXPasswordField fx:id="PassC" layoutX="592.0" layoutY="195.0" />
       <JFXPasswordField fx:id="PassCC" layoutX="592.0" layoutY="292.0" />
+      <JFXButton fx:id="photoC" layoutX="644.0" layoutY="118.0" onAction="#photoo"  text="ajouter" />
+      
    </children>
 </AnchorPane>

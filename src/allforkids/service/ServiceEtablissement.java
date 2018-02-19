@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -87,6 +89,27 @@ public class ServiceEtablissement {
                                 result.getString("ville"),
                                 result.getString("description"),
                                 result.getString("image")
+ 
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public ObservableList<Etablissement> selectEtablissement1() throws SQLException {
+        ObservableList<Etablissement> list =FXCollections.observableArrayList();
+        try {
+            String req = "SELECT * FROM etablissement ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Etablissement(
+                                result.getString("nom"),
+                                result.getString("type")
  
                         )
                 );

@@ -6,6 +6,7 @@
 package allforkids.service;
 
 import allforkids.entites.Covoiturage;
+import allforkids.entites.Transport;
 import allforkids.util.Config;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,44 +19,32 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author slim
+ * @author firas
  */
 public class ServiceCovoiturage {
        static Config ds = Config.getInstance();
        
-    public void ajoucov(Covoiturage c) {
-            try {
-                String req = "INSERT INTO `cov`(`depart`, `arrive`) VALUES (?,?)";
-                PreparedStatement ste = ds.getConnection().prepareStatement(req);
-                ste.setString(1, c.getDepart());
-                ste.setString(2, c.getArrive());
-                ste.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     
-    public void insrerCovoiturage(Covoiturage c) {
+    public void insrerCov(Transport t) {
         try {
-            java.sql.Date sqldate = new Date(c.getTime().getTime())   ;
-            String req = "INSERT INTO covoiturage VALUES(?,?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais)"
+                    + " VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            ste.setInt(1, c.getId_covoiturage());
-            ste.setString(2, c.getType());
-            ste.setDate(3, sqldate);
-            ste.setString(4, c.getDepart());
-            ste.setString(5, c.getArrive());
-            ste.setInt(6, c.getNbr_place());
-            ste.setFloat(7, c.getPrix());
-            ste.setInt(8, c.getEtat());
-            ste.setInt(9, c.getId_user());
-     
+            ste.setString(1, t.getRegion());
+            ste.setString(2, t.getVille());
+            ste.setString(3, t.getDepart());
+            ste.setString(4, t.getArrivé());
+            ste.setString(5, t.getDescription());
+            ste.setString(6, t.getTelephone());
+            ste.setString(7, t.getPlace());
+            ste.setString(8, t.getFrais());
+            
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public void updateCovoiturage(Covoiturage c, int id) {
         try {
             java.sql.Date sqldate = new Date(c.getTime().getTime())   ;
@@ -87,26 +76,27 @@ public class ServiceCovoiturage {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public List<Covoiturage> selectCovoiturage() {
-        List<Covoiturage> list = new ArrayList<>();
+    
+    public List<Transport> selectCov() {
+        List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM covoiturage ";
+            String req = "SELECT * FROM trasnsport ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
-                        new Covoiturage(
-                                result.getInt("id_covoiturage"),
-                                result.getString("type"),
-                                result.getDate("time"),
-                               result.getString("depart"),
-                                 result.getString("arrive"),
-                                 result.getInt("nbr_place"),
-                                 result.getFloat("prix"),
-                                 result.getInt("etat"),
-                                 result.getInt("id_user")
+                        new Transport(
+                                result.getInt("id_transport"),
+                                result.getString("region"),
+                                result.getString("ville"),
+                                result.getString("depart"),
+                                result.getString("arrivé"),
+                                result.getString("description"),
+                                result.getString("telephone"),
+                                result.getString("place"),
+                                result.getString("frais"),
+                                result.getInt("type")
                         )
                 );
             }
@@ -115,4 +105,36 @@ public class ServiceCovoiturage {
         }
         return list;
     }
+    
+    public List<Transport> selectCovById(int id) {
+        List<Transport> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM trasnsport where id_transport = ?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1,id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Transport(
+                                result.getInt("id_transport"),
+                                result.getString("region"),
+                                result.getString("ville"),
+                                result.getString("depart"),
+                                result.getString("arrivé"),
+                                result.getString("description"),
+                                result.getString("telephone"),
+                                result.getString("place"),
+                                result.getString("frais"),
+                                result.getInt("type")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+    
+
 }

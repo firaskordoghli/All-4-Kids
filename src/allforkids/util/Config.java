@@ -34,7 +34,7 @@ public class Config {
     private String password = "";
     private Connection connection;
 
-    private Config() {
+    public Config() {
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
