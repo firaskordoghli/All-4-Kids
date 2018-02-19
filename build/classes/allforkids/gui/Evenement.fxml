@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.lynden.gmapsfx.GoogleMapView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -27,16 +26,20 @@
                                  </font>
                               </Label>
                               <ImageView fx:id="img" fitHeight="192.0" fitWidth="298.0" layoutX="3.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="description" layoutX="5.0" layoutY="278.0" prefHeight="108.0" prefWidth="299.0" text="description" textFill="#f5f5f5">
+                              <Label fx:id="description" layoutX="5.0" layoutY="268.0" prefHeight="104.0" prefWidth="299.0" text="description" textFill="#f5f5f5">
                                  <font>
                                     <Font name="DK Cool Crayon" size="15.0" />
                                  </font>
                               </Label>
-                              <JFXButton fx:id="inscript" layoutX="15.0" layoutY="410.0" onAction="#inscription" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #00ccbb;" text="S'inscrir" textFill="#f8f5f5">
+                              <JFXButton fx:id="inscript" layoutX="15.0" layoutY="437.0" onAction="#inscription" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #00ccbb;" text="S'inscrir" textFill="#f8f5f5">
                                  <font>
                                     <Font name="DK Cool Crayon" size="15.0" />
                                  </font>
                               </JFXButton>
+                              <JFXButton layoutX="163.0" layoutY="382.0" onAction="#afficherMap" prefHeight="31.0" prefWidth="106.0" text="MapView" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font></JFXButton>
                            </children>
                         </AnchorPane>
                      </children>
@@ -55,9 +58,7 @@
             <Tab fx:id="inscrit" text="Evenement Inscrit">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <GoogleMapView fx:id="mapView" layoutX="132.0" layoutY="78.0" prefHeight="405.0" prefWidth="675.0" />
-                     </children></AnchorPane>
+                    </AnchorPane>
               </content>
             </Tab>
         </tabs>
