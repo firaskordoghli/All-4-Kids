@@ -41,22 +41,26 @@
       </AnchorPane>
       <JFXTabPane layoutX="254.0" layoutY="197.0" prefHeight="419.0" prefWidth="602.0">
          <tabs>
-            <Tab text="Untitled Tab">
+            <Tab text="Liste des Covoiturage disponible">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="602.0" style="-fx-background-color: #646873;">
                      <children>
-                        <TableView fx:id="tableTransport" layoutX="20.0" layoutY="40.0" prefHeight="221.0" prefWidth="568.0">
+                        <TableView fx:id="tableTransport" layoutX="17.0" layoutY="15.0" prefHeight="349.0" prefWidth="568.0">
                           <columns>
                             <TableColumn fx:id="depart" prefWidth="177.0" text="Depart" />
-                            <TableColumn fx:id="arrivé" prefWidth="156.0" text="Arrivée" />
-                              <TableColumn fx:id="place" prefWidth="149.0" text="Place dispo" />
+                            <TableColumn fx:id="arrivé" prefWidth="168.0" text="Arrivée" />
+                              <TableColumn fx:id="place" prefWidth="159.0" text="Place dispo" />
+                              <TableColumn prefWidth="63.0">
+                                 <graphic>
+                                    <Button fx:id="load" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="refresh" />
+                                 </graphic>
+                              </TableColumn>
                           </columns>
                         </TableView>
-                        <Button fx:id="load" layoutX="275.0" layoutY="300.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="refresh" />
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Untitled Tab">
+            <Tab text="Historique">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #e66a43;" />
               </content>
@@ -150,6 +154,5 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Button layoutX="989.0" layoutY="686.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="177.0" text="Button" />
    </children>
 </AnchorPane>
