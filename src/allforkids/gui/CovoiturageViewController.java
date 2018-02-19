@@ -5,6 +5,7 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Evenement;
 import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
 import java.net.URL;
@@ -15,9 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -40,7 +43,12 @@ public class CovoiturageViewController implements Initializable {
     private final ServiceCovoiturage s = new ServiceCovoiturage();
     
     ObservableList<Transport> data;
+    @FXML
+    private Label region;
+    @FXML
+    private Label ville;
     
+    private Transport row;
     /**
      * Initializes the controller class.
      */
@@ -49,6 +57,7 @@ public class CovoiturageViewController implements Initializable {
     showTransport();
     }
     
+    @FXML
     public void loadDataFromDatabase(ActionEvent event) {
        showTransport();
     }
@@ -64,5 +73,14 @@ public class CovoiturageViewController implements Initializable {
 
         tableTransport.setItems(null);
         tableTransport.setItems(data);
+    }
+    
+    public void showDetail(MouseEvent D)
+    {
+        // TODO
+        row = tableTransport.getSelectionModel().getSelectedItem();
+        region.setText(row.getRegion());
+        ville.setText(row.getVille());
+        
     }
 }
