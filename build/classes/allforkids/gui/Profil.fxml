@@ -12,34 +12,21 @@
    <children>
       <AnchorPane layoutX="204.0" prefHeight="594.0" prefWidth="627.0">
          <children>
-<<<<<<< HEAD
             <Pane layoutY="49.0" prefHeight="158.0" prefWidth="627.0" style="-fx-background-color: #00ccbb;">
-=======
-            <Pane layoutY="49.0" prefHeight="158.0" prefWidth="600.0" style="-fx-background-color: #00ccbb;">
->>>>>>> 06dab271b1fa805282793c743f12e9774603a951
                <children>
                   <JFXTextField layoutX="38.0" layoutY="23.0" prefHeight="25.0" prefWidth="268.0" promptText="recherche " />
                   <JFXButton fx:id="edit" layoutX="546.0" layoutY="96.0" onAction="#Modifier" text="Edit" />
                </children>
             </Pane>
-<<<<<<< HEAD
             <ImageView fx:id="photo" fitHeight="179.0" fitWidth="102.0" layoutX="50.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" styleClass="arrondie">
-=======
-            <ImageView fitHeight="179.0" fitWidth="102.0" layoutX="50.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" styleClass="arrondie">
->>>>>>> 06dab271b1fa805282793c743f12e9774603a951
                <image>
                   <Image url="@../../../../../../Desktop/11.jpg" />
                </image>
             </ImageView>
-<<<<<<< HEAD
             <Label fx:id="prenom" layoutX="281.0" layoutY="313.0" text="Label" />
             <Label layoutX="185.0" layoutY="379.0" text="Label" />
             <Label fx:id="test" layoutX="164.0" layoutY="458.0" text="Label" />
             <Label fx:id="NomPrenom" layoutX="183.0" layoutY="231.0" prefHeight="17.0" prefWidth="129.0" />
-=======
-            <JFXTextField layoutX="424.0" layoutY="385.0" prefHeight="25.0" prefWidth="177.0" />
-            <Label fx:id="NomP" layoutX="185.0" layoutY="239.0" prefHeight="17.0" prefWidth="129.0" text="cvxwvd" />
->>>>>>> 06dab271b1fa805282793c743f12e9774603a951
          </children>
       </AnchorPane>
    </children>
