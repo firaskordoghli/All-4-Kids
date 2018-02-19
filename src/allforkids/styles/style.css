@@ -123,3 +123,9 @@ TiTled pane Customusation
     -fx-text-fill:white;
     -fx-font-size:14;
 }
+
+.arrondie {
+-moz-border-radius:7px;
+-webkit-border-radius:7px;
+border-radius:7px;
+}

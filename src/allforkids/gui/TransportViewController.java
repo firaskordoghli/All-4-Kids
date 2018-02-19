@@ -55,10 +55,21 @@ public class TransportViewController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(TransportViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }    
+        }   
+    
+    public void switchToCov(MouseEvent event) {
+            try {
+                paneCovoiturage.getScene().getWindow().hide();
+                Parent root = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+                Scene scene = new Scene(root);
+                Stage driverStage = new Stage();
+                driverStage.setScene(scene);
+                driverStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(TransportViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
-    @FXML
-    private void switchToUsers(MouseEvent event) {
-    }
+
     
 }

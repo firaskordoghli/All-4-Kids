@@ -21,6 +21,7 @@ import javafx.stage.Stage;
  *
  * @author casa-net
  */
+
 public class Rayen extends Application {
     
     @Override
@@ -34,7 +35,7 @@ public class Rayen extends Application {
        stage.setScene(scene);
         stage.show();
         
-        
+//        scene.getStylesheets().add(Rayen.class.getResource("/styles/styles.css").toExternalForm());
         
     }
 
