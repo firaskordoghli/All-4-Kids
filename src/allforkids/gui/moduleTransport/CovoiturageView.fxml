@@ -52,7 +52,7 @@
                               <TableColumn fx:id="place" prefWidth="80.3333740234375" text="Place dispo" />
                           </columns>
                         </TableView>
-                        <Button fx:id="load" layoutX="275.0" layoutY="300.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Button" />
+                        <Button fx:id="load" layoutX="275.0" layoutY="300.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="refresh" />
                      </children></AnchorPane>
               </content>
             </Tab>

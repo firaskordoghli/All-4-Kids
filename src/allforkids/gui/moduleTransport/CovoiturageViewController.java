@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package allforkids.gui;
+package allforkids.gui.moduleTransport;
 
 import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
@@ -46,11 +46,15 @@ public class CovoiturageViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    showTransport();
     }
     
     public void loadDataFromDatabase(ActionEvent event) {
-        // TODO
+       showTransport();
+    }
+    public void showTransport()
+    {
+     // TODO
         data = FXCollections.observableArrayList();
         data.addAll(s.selectCov());
         

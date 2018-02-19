@@ -87,14 +87,16 @@ public class ServiceCovoiturage {
             while (result.next()) {
                 list.add(
                         new Transport(
+                                result.getInt("id_transport"),
                                 result.getString("region"),
                                 result.getString("ville"),
                                 result.getString("depart"),
+                                result.getString("arrivé"),
                                 result.getString("description"),
                                 result.getString("telephone"),
                                 result.getString("place"),
                                 result.getString("frais"),
-                                result.getString("type")
+                                result.getInt("type")
                         )
                 );
             }
