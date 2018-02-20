@@ -12,10 +12,11 @@
    <children>
       <AnchorPane layoutX="204.0" prefHeight="594.0" prefWidth="627.0">
          <children>
-            <Pane layoutY="49.0" prefHeight="158.0" prefWidth="627.0" style="-fx-background-color: #00ccbb;">
+            <Pane layoutX="14.0" layoutY="25.0" prefHeight="158.0" prefWidth="627.0" style="-fx-background-color: #00ccbb;">
                <children>
                   <JFXTextField layoutX="38.0" layoutY="23.0" prefHeight="25.0" prefWidth="268.0" promptText="recherche " />
                   <JFXButton fx:id="edit" layoutX="546.0" layoutY="96.0" onAction="#Modifier" text="Edit" />
+                  <JFXButton fx:id="out" layoutX="537.0" layoutY="47.0" onAction="#Logout" text="logout" />
                </children>
             </Pane>
             <ImageView fx:id="photo" fitHeight="179.0" fitWidth="102.0" layoutX="50.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" styleClass="arrondie">
