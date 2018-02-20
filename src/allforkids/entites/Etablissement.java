@@ -39,8 +39,8 @@ public class Etablissement {
         this.ville = ville;
         this.image=image;
     }
-    public Etablissement(String nom, String type) {
-     
+    public Etablissement(int id,String nom, String type) {
+        this.id = id;
         this.nom = nom;
         this.type = type;
     }
