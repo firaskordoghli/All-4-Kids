@@ -10,6 +10,7 @@ import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
 import allforkids.util.Validation;
+import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -33,6 +34,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JSpinner;
+import org.apache.commons.httpclient.URIException;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.http.Header;
 import org.openqa.selenium.remote.http.HttpClient;
 import org.openqa.selenium.remote.http.HttpRequest;
@@ -63,9 +66,12 @@ public class LoginController implements Initializable {
     private Label MailC;
     @FXML
     private Label PassC;
-    private Label test;
     @FXML
-    private JFXButton face;
+    private static Label test;
+    @FXML
+    private JFXButton facebook;
+    public static String maill ;
+    public static String passl ;
 
     /**
      * Initializes the controller class.
@@ -143,6 +149,7 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
     }
+<<<<<<< HEAD
 }
 
    /* private static void face(String email, String password)  {
@@ -207,14 +214,15 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
         
+=======
+>>>>>>> a8f3fb7c91c9a6329f7efc018b8ee79b2e886e1d
     
-      
+        
     }
 
-    @FXML
-    private void face(ActionEvent event) {
-    }
-}
+   
+    
+
 
 
 

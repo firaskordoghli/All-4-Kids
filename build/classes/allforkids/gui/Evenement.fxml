@@ -50,7 +50,11 @@
                                  </font></JFXButton>
                            </children>
                         </AnchorPane>
+<<<<<<< HEAD
+                        <AnchorPane layoutX="608.0" layoutY="17.0" onMouseClicked="#ajoutCov" prefHeight="50.0" prefWidth="231.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
+=======
                         <AnchorPane layoutX="608.0" layoutY="17.0" prefHeight="50.0" prefWidth="231.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
+>>>>>>> d78ceb2a5fc049fa54a7f051f23b19cac0643e55
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
