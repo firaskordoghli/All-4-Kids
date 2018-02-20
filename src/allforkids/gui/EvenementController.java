@@ -184,7 +184,7 @@ public class EvenementController implements Initializable , MapComponentInitiali
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
         mtype.setItems(ob);
-         List<Evenement> me = s.selectMesEvenement(4);
+         List<Evenement> me = s.selectMesEvenement(6);
          for (Evenement ev : me) {
             try {
 
@@ -205,8 +205,9 @@ public class EvenementController implements Initializable , MapComponentInitiali
          
         /************Fin Mes Evenement***********/
         
-        modifay.setVisible(false);
+       
         detail.setVisible(false);
+         modifay.setVisible(false);
         mapp.setVisible(false);
     }
 
@@ -313,6 +314,12 @@ public class EvenementController implements Initializable , MapComponentInitiali
          event = s.getIdByName(l);
          int id = event.getId_evenement();
          s.deleteEvenement(id);
+   int a =     myevent.getSelectionModel().getSelectedIndex();
+      myevent.getItems().remove(a);
+        modifay.setVisible(false);
+        mapp.setVisible(false);
+      
+         
     }
 
     @FXML
