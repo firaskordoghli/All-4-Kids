@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="149.0" styleClass="card-unpadded" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalfx.DrawerController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="149.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.DrawerController">
    <children>
-      <ImageView fitHeight="171.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="142.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/Logo%204kids.png" />
-         </image></ImageView>
-      <JFXButton fx:id="homeBtn" accessibleText="acceuilMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Acceuil" />
-      <JFXButton fx:id="doctorBtn" accessibleText="transportMenu" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Transport" />
-      <JFXButton fx:id="appointmentBtn" accessibleText="établissementMenu" layoutX="10.0" layoutY="53.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Etablissement" />
-      <JFXButton fx:id="paymentBtn" accessibleText="divertissementMenu" layoutX="10.0" layoutY="96.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Divertissement" />
-      <JFXButton fx:id="logoutBtn" accessibleText="forumMenu" layoutX="10.0" layoutY="182.0" onAction="#logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Forum" />
-      <JFXButton fx:id="exitBtn" accessibleText="exitMenu" layoutX="10.0" layoutY="182.0" onAction="#exit" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Exit" />
-      <JFXButton prefHeight="227.0" prefWidth="152.0" styleClass="drawer-buttons" text="  " />
+         </image>
+      </ImageView>
+      <Separator prefWidth="200.0" />
+      <JFXButton fx:id="acceuilBtn" prefHeight="57.0" prefWidth="149.0" text="Acceuil" />
+      <JFXButton fx:id="transportBtn" layoutX="10.0" layoutY="154.0" prefHeight="57.0" prefWidth="149.0" text="Transport" />
+      <JFXButton fx:id="etablissementBtn" layoutX="10.0" layoutY="211.0" prefHeight="57.0" prefWidth="149.0" text="Etablissement" />
+      <JFXButton fx:id="divertissementBtn" layoutX="10.0" layoutY="268.0" prefHeight="57.0" prefWidth="149.0" text="Divertissement" />
+      <JFXButton fx:id="forumBtn" layoutX="10.0" layoutY="325.0" prefHeight="57.0" prefWidth="149.0" text="Forum" />
+      <JFXButton fx:id="reclamationBtn" layoutX="10.0" layoutY="382.0" prefHeight="57.0" prefWidth="149.0" text="Reclamation" />
+      <JFXButton fx:id="deconnectéBtn" layoutX="10.0" layoutY="439.0" prefHeight="57.0" prefWidth="149.0" text="Deconnecté" />
+      <JFXButton fx:id="quitéBtn" layoutX="10.0" layoutY="496.0" onAction="#exit" prefHeight="57.0" prefWidth="149.0" text="Quité" />
    </children>
 </VBox>
