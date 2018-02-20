@@ -6,6 +6,8 @@
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Kordoghli.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeViewController.java</file>
 =======
@@ -27,14 +29,17 @@
 =======
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
 =======
+>>>>>>> 1a300640ba153c058afd2426dae327a9101aae2e
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AjoutEvenmentController.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Evenement.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CreationCompteController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AjoutEvenment.fxml</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/slim.java</file>
+<<<<<<< HEAD
+=======
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/GoogleMapEvenementController.java</file>
 >>>>>>> a4171f7d6d6cb6529e089e6f596d7b3ddb0cebba
 >>>>>>> 6014b47db98c5a6c41ed9659e3e69c4932b226be
 >>>>>>> 90232aeb6fd2e97ff23c2ddc810cbff7951f0200
+>>>>>>> 1a300640ba153c058afd2426dae327a9101aae2e
         </group>
     </open-files>
 </project-private>

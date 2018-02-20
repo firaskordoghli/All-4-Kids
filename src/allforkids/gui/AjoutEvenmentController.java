@@ -85,8 +85,8 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     @FXML
     private GoogleMapView mapView;
     GoogleMap map;
-   public static Double longe  ;
-   public static Double altud  ;
+   private static Double longe  ;
+   private static Double altud  ;
    private static String imgg="" ;
     @FXML
     private Label Imegee;
@@ -168,7 +168,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         if (!Validation.texAlphNum(tflieu, Lieu, "* le prenom de doit contenir que des lettre")) {
             saisie = false;
         }
-        if (!Validation.texNum(tfnb, Nb, "* verifier votre mail")) {
+        if (!Validation.texNum(tfnb, Nb, "* Nb Doit contenir que des Nombre")) {
             saisie = false;
         }
 
@@ -219,7 +219,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
 
     @Override
     public void mapInitialized() {
-        //Set the initial properties of the map.
+    
         MapOptions mapOptions = new MapOptions();
 
         mapOptions.center(new LatLong(36.862499, 10.195556))

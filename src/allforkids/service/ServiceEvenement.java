@@ -154,4 +154,33 @@ public class ServiceEvenement {
 
         return e;
     }
+      public List<Evenement> selectMesEvenement( int id) {
+        List<Evenement> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM evenement Where id_user = ? ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Evenement(
+                                result.getInt("id_evenement"),
+                                result.getString("nom"),
+                                result.getString("lieu"),
+                                result.getDate("date"),
+                                result.getString("type"),
+                                result.getInt("nbr_participation"),
+                                result.getBoolean("etat"),
+                                result.getInt("id_user"),
+                                result.getString("photo"),
+                                result.getDouble("latitude"),
+                                result.getDouble("longitude")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }
