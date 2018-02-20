@@ -22,7 +22,7 @@ public class Salmen extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Ajouter Etablissement");
-        Parent root = FXMLLoader.load(getClass().getResource("ListEtablissement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
 
         Scene scene = new Scene(root);
 
