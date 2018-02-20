@@ -10,6 +10,7 @@ import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
 import allforkids.util.Validation;
+import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -33,6 +34,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JSpinner;
+import org.apache.commons.httpclient.URIException;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.http.Header;
 import org.openqa.selenium.remote.http.HttpClient;
 import org.openqa.selenium.remote.http.HttpRequest;
@@ -63,9 +66,12 @@ public class LoginController implements Initializable {
     private Label MailC;
     @FXML
     private Label PassC;
-    private Label test;
     @FXML
-    private JFXButton face;
+    private static Label test;
+    @FXML
+    private JFXButton facebook;
+    public static String maill ;
+    public static String passl ;
 
     /**
      * Initializes the controller class.
@@ -143,77 +149,13 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
     }
-
-    private static void face(String email, String password)  {
-     /*   String accessToken="EAACEdEose0cBABdjq4NtQUnLhajFvfNIISUe7cvsYDYUonif1ZBXuRYFhs2I61E5YOG8VATaIocFIe5fZBlWClk76FXDPMteuwIwOIEt4HIuFZCvQ6u5ZCLQgnWKlYbBeUgHvQBlPpcTBEvRpvrYxO2MEpH9EzZCNDiZBtaa30PZBuX4U7ZBstoFIgStBFRX3LLruD8UMikTwQZDZD";
-  
-       FacebookClient facebookClient = new DefaultFacebookClient(accessToken);
-        ServiceUser a = facebookClient.fetchObject("me", ServiceUser.class);*/
-     
- 
-        try {
-
-            HttpClient http = new HttpClient() {
-                @Override
-                public HttpResponse execute(HttpRequest request, boolean followRedirects) throws IOException {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-
-                @Override
-                public HttpResponse execute(HttpRequest request) throws IOException {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-
-                @Override
-                public void close() throws IOException {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-            };
-
-            http.getHostConfiguration().setHost("www.facebook.com");
-            String api_key = "key";
-            String secret = "sec";
-            FacebookJaxbRestClient client = new FacebookJaxbRestClient(api_key, secret);
-                System.out.println("====>"+client.isDesktop());
-
-            String token = client.auth_createToken();
-            System.out.println(" :::::::"+token);
-            System.out.println(" :::::::::: "+token);
-            PostMethod post = new PostMethod("/login.php?");
-
-            post.addParameter("api_key", api_key);
-
-
-            post.addParameter("email", email);
-            post.addParameter("pass", password);
-
-
-            int postStatus = http.executeMethod(post);
-                System.out.println("url : " + post.getURI());
-            System.out.println("Response : " + postStatus);
-            for (Header h : post.getResponseHeaders()) {
-                System.out.println(h);
-            }
-            session = client.auth_getSession(token); // Here I am getting error
-            System.out.println("Session string: " + session);
-            long userid = client.users_getLoggedInUser();
-            //System.out.println("User Id is : " + userid);*/
-        } catch (FacebookException fe) {
-
-            fe.printStackTrace();
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
     
-      
+        
     }
 
-    @FXML
-    private void face(ActionEvent event) {
-    }
-}
+   
+    
+
 
 
 
