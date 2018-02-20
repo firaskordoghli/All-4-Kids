@@ -24,6 +24,7 @@ import javafx.stage.Stage;
  *
  * @author FATNASSI
  */
+
 public class AddEtablissmentController implements Initializable {
 
     @FXML

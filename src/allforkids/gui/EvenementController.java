@@ -184,7 +184,7 @@ public class EvenementController implements Initializable , MapComponentInitiali
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
         mtype.setItems(ob);
-         List<Evenement> me = s.selectMesEvenement(6);
+         List<Evenement> me = s.selectMesEvenement(4);
          for (Evenement ev : me) {
             try {
 
@@ -309,6 +309,10 @@ public class EvenementController implements Initializable , MapComponentInitiali
 
     @FXML
     private void deleteEvenement(ActionEvent even) {
+         String l = myevent.getSelectionModel().getSelectedItem().getText();
+         event = s.getIdByName(l);
+         int id = event.getId_evenement();
+         s.deleteEvenement(id);
     }
 
     @FXML

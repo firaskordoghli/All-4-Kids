@@ -66,9 +66,9 @@ public class ServiceEvenement {
         }
     }
 
-    public static void deleteEvenement(int id) {
+    public  void deleteEvenement(int id) {
         try {
-            String req = "DELETE FROM evenement WHERE id = ?";
+            String req = "DELETE FROM evenement WHERE id_evenement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
