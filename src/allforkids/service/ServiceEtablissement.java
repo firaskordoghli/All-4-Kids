@@ -133,10 +133,10 @@ public class ServiceEtablissement {
                 Etablissement u = new Etablissement(
                         result.getInt("id_etablissement"),
                         result.getString("nom"),
-                        result.getString("description"),
                         result.getString("type"),
                         result.getString("region"),
                         result.getString("ville"),
+                        result.getString("description"),
                         result.getString("image")
                 );
                 return u;

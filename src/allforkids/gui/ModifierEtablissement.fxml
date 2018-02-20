@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.ModifierEtablissementController">
+   <children>
+      <JFXTextField fx:id="nom" layoutX="156.0" layoutY="14.0" prefHeight="25.0" prefWidth="195.0" />
+      <JFXComboBox fx:id="type" layoutX="14.0" layoutY="80.0" prefHeight="25.0" prefWidth="183.0" />
+      <JFXComboBox fx:id="region" layoutX="14.0" layoutY="147.0" prefHeight="25.0" prefWidth="183.0" />
+      <JFXComboBox fx:id="ville" layoutX="14.0" layoutY="211.0" prefHeight="25.0" prefWidth="183.0" />
+      <JFXTextField fx:id="description" layoutX="14.0" layoutY="266.0" prefHeight="37.0" prefWidth="183.0" />
+      <JFXButton fx:id="boutonimage" layoutX="468.0" layoutY="39.0" text="Changer image" />
+      <JFXButton fx:id="boutonvalide" layoutX="416.0" layoutY="346.0" onAction="#modifer" prefHeight="25.0" prefWidth="158.0" text="Valider" />
+   </children>
+</AnchorPane>
