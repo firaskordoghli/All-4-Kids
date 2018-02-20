@@ -141,8 +141,8 @@ public class EvenementController implements Initializable , MapComponentInitiali
     private AnchorPane mapp;
     @FXML
     private GoogleMapView mapviw;
-    private static Double longe  ;
-   private static Double altud  ;
+    public static Double longe  ;
+   public static Double altud  ;
     /**
      * Initializes the controller class.
      */
@@ -216,6 +216,9 @@ public class EvenementController implements Initializable , MapComponentInitiali
         detail.setVisible(true);
         String l = listevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
+        altud= event.getLatitude();
+        longe= event.getLongitude();
+        event = s.getIdByName(l);
         titre.setText(l);
         description.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
         Image image = new Image(new FileInputStream(event.getPhoto()));
@@ -243,7 +246,7 @@ public class EvenementController implements Initializable , MapComponentInitiali
           Parent  root1 = (Parent)fxmlLoader.load();
             GoogleMapEvenementController c = fxmlLoader.getController();
             
-            c.setNom(titre.getText());
+            
             Scene scene = new Scene(root1);
             Stage stage = new Stage();
             stage.setScene(scene);
