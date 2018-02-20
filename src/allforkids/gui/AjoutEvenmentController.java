@@ -87,6 +87,9 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     GoogleMap map;
    public static Double longe  ;
    public static Double altud  ;
+   private static String imgg="" ;
+    @FXML
+    private Label Imegee;
 
     /**
      * Initializes the controller class.
@@ -109,19 +112,18 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
 
     @FXML
     private void saveEvenment(ActionEvent event) throws IOException, SQLException {
-        ServiceEvenement eService = new ServiceEvenement();
-        System.out.println(tfNom.getText());
+   
+        if (this.controleSaisie()) {
+                ServiceEvenement eService = new ServiceEvenement();
+       
 
         LocalDate d = tfDate.getValue();
          Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
          
          Evenement e =new Evenement(tfNom.getText()
                  ,tflieu.getText(),date,tftype.getValue()
-            ,Integer.parseInt(tfnb.getText()),false,6,"",altud,longe);
+            ,Integer.parseInt(tfnb.getText()),false,6,imgg,altud,longe);
           eService.insrerEvenement(e);
-        if (this.controleSaisie()) {
-            tfNom.clear();
-            tflieu.clear();
         }
     }
 
@@ -145,11 +147,13 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
             File fileoutput = new File("src/icons/" + name + ".png");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
             ImageIO.write(BI, "png", fileoutput);
+            imgg=  "src/icons/" + name + ".png";
         } else {
             File fileoutput = new File("src/icons/" + name + ".jpeg");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
 
             ImageIO.write(BI, "jpeg", fileoutput);
+             imgg=  "src/icons/" + name + ".png";
         }
     }
 
@@ -206,6 +210,9 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
             } else {
                 Datee.setText("");
             }
+        }
+        if(imgg.equals("")){
+           Imegee.setText("*vous devez ajouter une image");
         }
         return saisie;
     }
