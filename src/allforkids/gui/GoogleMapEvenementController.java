@@ -46,23 +46,22 @@ public class GoogleMapEvenementController implements Initializable , MapComponen
     public void initialize(URL url, ResourceBundle rb) {
        mapView.addMapInializedListener(this);
      }   
-    public void setNom(String l){
-        titre.setText(l);
-    }
+  
    ServiceEvenement se = new ServiceEvenement();
       
      
     @Override
     public void mapInitialized() {
+       Double altud = EvenementController.altud ;
+       Double longe = EvenementController.longe ;
         
-         Evenement e = se.getIdByName("slim");
-      LatLong location = new LatLong(e.getLatitude(), e.getLongitude());
+      LatLong location = new LatLong(altud , longe);
 
 
        
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(new LatLong(e.getLatitude(), e.getLongitude()))
+        mapOptions.center(new LatLong(altud, longe))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
                 .panControl(false)
@@ -76,7 +75,7 @@ public class GoogleMapEvenementController implements Initializable , MapComponen
 
    
         MarkerOptions markerOptions1 = new MarkerOptions();
-        markerOptions1.position(location).visible(Boolean.TRUE).title(e.getNom());
+        markerOptions1.position(location).visible(Boolean.TRUE).title("Event");
         Marker marker = new Marker(markerOptions1);
         map.addMarker(marker);
 
