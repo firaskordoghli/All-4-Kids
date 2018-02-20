@@ -8,19 +8,28 @@ package allforkids.gui;
 import allforkids.entites.Evenement;
 import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -49,6 +58,10 @@ public class CovoiturageViewController implements Initializable {
     private Label ville;
     
     private Transport row;
+    @FXML
+    private AnchorPane ajoutCovoiturage;
+    @FXML
+    private VBox detailsBox;
     /**
      * Initializes the controller class.
      */
@@ -75,6 +88,7 @@ public class CovoiturageViewController implements Initializable {
         tableTransport.setItems(data);
     }
     
+    @FXML
     public void showDetail(MouseEvent D)
     {
         // TODO
@@ -82,5 +96,28 @@ public class CovoiturageViewController implements Initializable {
         region.setText(row.getRegion());
         ville.setText(row.getVille());
         
+    }
+    
+    @FXML
+    public void ajoutCov(MouseEvent event) {
+            try {
+                ajoutCovoiturage.getScene().getWindow().hide();
+                Parent root = FXMLLoader.load(getClass().getResource("CovFormulaire.fxml"));
+                Scene scene = new Scene(root);
+                Stage driverStage = new Stage();
+                driverStage.setScene(scene);
+                driverStage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CovoiturageViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    @FXML
+    private void deleteCov(ActionEvent event) {
+        row = tableTransport.getSelectionModel().getSelectedItem();
+        int id = row.getId_transport();
+        s.deleteCovoiturage(id);
+          int a = tableTransport.getSelectionModel().getFocusedIndex();
+          tableTransport.getItems().remove(a);
     }
 }

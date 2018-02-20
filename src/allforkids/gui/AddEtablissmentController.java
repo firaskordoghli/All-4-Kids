@@ -8,47 +8,89 @@ package allforkids.gui;
 import allforkids.entites.Etablissement;
 import allforkids.service.ServiceEtablissement;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
  *
  * @author FATNASSI
  */
+
 public class AddEtablissmentController implements Initializable {
 
     @FXML
     private JFXTextField nom;
     @FXML
-    private JFXTextField type;
+    private JFXComboBox<String> type;
+    
     @FXML
-    private JFXTextField region;
+    private JFXComboBox<String> region;
     @FXML
-    private JFXTextField ville;
+    private JFXComboBox<String> ville;
     @FXML
     private JFXTextField description;
-    @FXML
-    private JFXTextField image;
     @FXML
     private JFXButton enregistrer;
     @FXML
     private JFXButton annuler;
     @FXML
     private AnchorPane addetablissement;
+    @FXML
+    private JFXButton buttonimage;
+    
+    private static String src="" ;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
+        type.getItems().addAll(
+                                "Garderie",
+                                "jardin d'enfant",
+                                "ecole primaire",
+                                "colége",
+                                "lycée"
+                                        
+                );
+        type.setPromptText("Type établissement");
+        
+        region.getItems().addAll(
+                                "Garderie",
+                                "jardin d'enfant",
+                                "ecole primaire",
+                                "colége",
+                                "lycée"
+                                        
+                );
+        region.setPromptText("Type établissement");
+        
+        ville.getItems().addAll(
+                                "Garderie",
+                                "jardin d'enfant",
+                                "ecole primaire",
+                                "colége",
+                                "lycée"
+                                        
+                );
+        ville.setPromptText("Type établissement");
+        
     }    
 
     @FXML
@@ -56,19 +98,15 @@ public class AddEtablissmentController implements Initializable {
         
        ServiceEtablissement eService = new ServiceEtablissement();
         Etablissement e =new Etablissement(nom.getText()
-                                            ,type.getText()
-                                            ,region.getText()
-                                            ,ville.getText()
+                                            ,type.getSelectionModel().getSelectedItem()
+                                            ,region.getSelectionModel().getSelectedItem()
+                                            ,ville.getSelectionModel().getSelectedItem()
                                             ,description.getText()
-                                            ,image.getText());
+                                            ,src);
         
         eService.insrerEtablissement(e);
         nom.clear();
-        type.clear();
-        region.clear();
-        ville.clear();
         description.clear();
-        image.clear();
         
         
         
@@ -78,6 +116,36 @@ public class AddEtablissmentController implements Initializable {
     private void annulerajout(ActionEvent event) {
         Stage stage =(Stage) addetablissement.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void ajouterimage(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FileChooser fil = new FileChooser();
+        fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
+        File selectedFile = fil.showOpenDialog(stage);
+        Image buttonimage = new Image(selectedFile.toURI().toString());
+        String p = selectedFile.getPath();
+
+        String name = nom.getText();
+
+        save(buttonimage, name, p);
+    }
+    
+    public void save(Image image, String name, String p) throws IOException {
+        if (p.indexOf(".png") != -1) {
+            File fileoutput = new File("src/icons/" + name + ".png");
+            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
+            ImageIO.write(BI, "png", fileoutput);
+            src=  "src/icons/" + name + ".png";
+        } else {
+            File fileoutput = new File("src/icons/" + name + ".jpeg");
+            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
+
+            ImageIO.write(BI, "jpeg", fileoutput);
+             src=  "src/icons/" + name + ".png";
+        }
     }
     
 }

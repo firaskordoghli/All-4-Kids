@@ -66,9 +66,9 @@ public class ServiceCovoiturage {
         }
     }
 
-    public static void deleteCovoiturage(int id) {
+    public  void deleteCovoiturage(int id) {
         try {
-            String req = "DELETE FROM covoiturage WHERE id_covoiturage = ?";
+            String req = "DELETE FROM trasnsport WHERE id_transport = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
