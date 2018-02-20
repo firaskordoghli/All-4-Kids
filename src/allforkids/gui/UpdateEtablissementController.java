@@ -76,8 +76,8 @@ public class UpdateEtablissementController implements Initializable {
         Etablissement e = sr1.GetEtablissemebtById(10);
 
         nometablissemnt.setText(e.getNom());
-        description.setText(e.getDescription());
         typeet.setValue(e.getType());
+        description.setText(e.getDescription());
         regionet.setValue(e.getRegion());
         ville.setValue(e.getVille());
 

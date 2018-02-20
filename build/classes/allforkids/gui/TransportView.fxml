@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.TransportViewController">
+   <children>
+      <HBox fx:id="boxMenus" layoutX="298.0" layoutY="134.0" prefHeight="517.0" prefWidth="772.0" spacing="20.0">
+         <children>
+            <AnchorPane fx:id="paneCovoiturage" onMouseClicked="#switchToCov" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #00ff99;" styleClass="root">
+               <children>
+                  <ImageView fitHeight="259.0" fitWidth="352.0" layoutX="11.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/car.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="48.0" layoutY="321.0" text="Covoiturage" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="106.0" layoutY="417.0" prefHeight="51.0" prefWidth="171.0" text="Manage users,add,edit,delete and user logs" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Roboto Medium" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneBus" layoutX="10.0" layoutY="10.0" onMouseClicked="#switchToBus" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #ff2600;">
+               <children>
+                  <ImageView fitHeight="259.0" fitWidth="352.0" layoutX="11.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/bus.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="157.0" layoutY="322.0" text="Bus" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="106.0" layoutY="417.0" prefHeight="51.0" prefWidth="171.0" text="Manage users,add,edit,delete and user logs" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Roboto Medium" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
