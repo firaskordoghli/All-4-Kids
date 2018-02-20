@@ -63,7 +63,6 @@ public class LoginController implements Initializable {
     private Label MailC;
     @FXML
     private Label PassC;
-    @FXML
     private Label test;
     @FXML
     private JFXButton face;
@@ -84,8 +83,7 @@ public class LoginController implements Initializable {
  
         ServiceUser su = new ServiceUser();
         User u = su.GetUserByMail(email,lb);
-       // test.setText(u.getMail());
-        test.setText(u.getPass());
+       
         if (su.GetUserByMail(email,lb) != null) {
            if (BCrypt.checkpw(pass.getText(),u.getPass())) {
                 
@@ -146,7 +144,6 @@ public class LoginController implements Initializable {
                         app_stage.show();
     }
 
-    @FXML
     private static void face(String email, String password)  {
      /*   String accessToken="EAACEdEose0cBABdjq4NtQUnLhajFvfNIISUe7cvsYDYUonif1ZBXuRYFhs2I61E5YOG8VATaIocFIe5fZBlWClk76FXDPMteuwIwOIEt4HIuFZCvQ6u5ZCLQgnWKlYbBeUgHvQBlPpcTBEvRpvrYxO2MEpH9EzZCNDiZBtaa30PZBuX4U7ZBstoFIgStBFRX3LLruD8UMikTwQZDZD";
   
@@ -211,6 +208,10 @@ public class LoginController implements Initializable {
         
     
       
+    }
+
+    @FXML
+    private void face(ActionEvent event) {
     }
 }
 

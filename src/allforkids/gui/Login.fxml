@@ -51,7 +51,6 @@
                   </Label>
                   <Label fx:id="MailC" layoutX="101.0" layoutY="98.0" />
                   <Label fx:id="PassC" layoutX="101.0" layoutY="158.0" />
-                  <Label fx:id="test" layoutX="54.0" layoutY="304.0" prefHeight="17.0" prefWidth="202.0" text="Label" textFill="RED" />
                   <JFXButton fx:id="face" layoutX="35.0" layoutY="227.0" onAction="#face" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: red;" text="facebook" />
                </children>
             </AnchorPane>
