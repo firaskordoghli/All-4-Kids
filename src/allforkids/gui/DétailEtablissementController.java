@@ -90,7 +90,7 @@ public class DétailEtablissementController implements Initializable {
     private void UpdateEtablissement(ActionEvent event) throws IOException {
         Stage stage = new Stage();
              stage.setTitle("Ajouter Etablissement");
-        Parent root = FXMLLoader.load(getClass().getResource("UpdateEtablissement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ModifierEtablissement.fxml"));
         
         Scene scene = new Scene(root);
         
