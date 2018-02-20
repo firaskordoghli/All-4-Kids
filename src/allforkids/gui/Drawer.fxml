@@ -14,12 +14,12 @@
          </image>
       </ImageView>
       <Separator prefWidth="200.0" />
-      <JFXButton fx:id="acceuilBtn" prefHeight="57.0" prefWidth="149.0" text="Acceuil" />
-      <JFXButton fx:id="transportBtn" layoutX="10.0" layoutY="154.0" prefHeight="57.0" prefWidth="149.0" text="Transport" />
-      <JFXButton fx:id="etablissementBtn" layoutX="10.0" layoutY="211.0" prefHeight="57.0" prefWidth="149.0" text="Etablissement" />
-      <JFXButton fx:id="divertissementBtn" layoutX="10.0" layoutY="268.0" prefHeight="57.0" prefWidth="149.0" text="Divertissement" />
-      <JFXButton fx:id="forumBtn" layoutX="10.0" layoutY="325.0" prefHeight="57.0" prefWidth="149.0" text="Forum" />
-      <JFXButton fx:id="reclamationBtn" layoutX="10.0" layoutY="382.0" prefHeight="57.0" prefWidth="149.0" text="Reclamation" />
+      <JFXButton fx:id="acceuilBtn" accessibleText="acceuilMenu" prefHeight="57.0" prefWidth="149.0" text="Acceuil" />
+      <JFXButton fx:id="transportBtn" accessibleText="transportMenu" layoutX="10.0" layoutY="154.0" prefHeight="57.0" prefWidth="149.0" text="Transport" />
+      <JFXButton fx:id="etablissementBtn" accessibleText="etablissmentMenu" layoutX="10.0" layoutY="211.0" prefHeight="57.0" prefWidth="149.0" text="Etablissement" />
+      <JFXButton fx:id="divertissementBtn" accessibleText="divertissementMeni" layoutX="10.0" layoutY="268.0" prefHeight="57.0" prefWidth="149.0" text="Divertissement" />
+      <JFXButton fx:id="forumBtn" accessibleText="forumMenu" layoutX="10.0" layoutY="325.0" prefHeight="57.0" prefWidth="149.0" text="Forum" />
+      <JFXButton fx:id="reclamationBtn" accessibleText="reclamationMenu" layoutX="10.0" layoutY="382.0" prefHeight="57.0" prefWidth="149.0" text="Reclamation" />
       <JFXButton fx:id="deconnectéBtn" layoutX="10.0" layoutY="439.0" prefHeight="57.0" prefWidth="149.0" text="Deconnecté" />
       <JFXButton fx:id="quitéBtn" layoutX="10.0" layoutY="496.0" onAction="#exit" prefHeight="57.0" prefWidth="149.0" text="Quité" />
    </children>

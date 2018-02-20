@@ -32,6 +32,8 @@ public class HomeController implements Initializable {
     private JFXDrawer drawer;
     @FXML
     private JFXHamburger hamburger;
+    @FXML
+    private AnchorPane holderPane;
 
     /**
      * Initializes the controller class.
@@ -55,11 +57,54 @@ public class HomeController implements Initializable {
         
         try {
             VBox sidePane = FXMLLoader.load(getClass().getResource("Drawer.fxml"));
-            drawer.setSidePane(sidePane);
+            
+            AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
+            AnchorPane transportPane = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
+            AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("ConsulteEvenment.fxml"));
+            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("AddEtablissment.fxml"));
 
+            setNode(acceuil);
+            drawer.setSidePane(sidePane);
+            
+            for (Node node : sidePane.getChildren()){
+                
+                if (node.getAccessibleText() != null) {
+                    node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent ev) -> {
+                        switch (node.getAccessibleText()) {
+                            case "acceuilMenu":
+                                drawer.close();
+                                setNode(acceuil);
+                                break;
+                            case "transportMenu":
+                                drawer.close();                               
+                                setNode(transportPane);
+                                break;
+                            case "etablissmentMenu":
+                                drawer.close();
+                                setNode(etablissementPane);
+                                break;
+                            case "divertissementMeni":
+                                drawer.close();                                
+                                setNode(evenmentPane);
+                                break;
+                        }
+                    });
+                }
+                
+            }
+                
         } catch (IOException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
+    
+    
+    
+    
+    private void setNode(Node node) {
+        holderPane.getChildren().clear();
+        holderPane.getChildren().add((Node) node);
+    }
+    
     
 }
