@@ -184,7 +184,7 @@ public class EvenementController implements Initializable , MapComponentInitiali
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
         mtype.setItems(ob);
-         List<Evenement> me = s.selectMesEvenement(4);
+         List<Evenement> me = s.selectMesEvenement(6);
          for (Evenement ev : me) {
             try {
 
