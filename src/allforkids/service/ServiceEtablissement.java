@@ -149,4 +149,27 @@ public class ServiceEtablissement {
         return null;
 
     }
+    public static int GetLastId(){
+        try {
+            String req = "SELECT  Max(id_etablissement) as id FROM etablissement  ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            //ste.setInt(1, id);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                int a=result.getInt("id");
+
+                
+                
+                return a+1;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return 0;
+        
+    }
 }

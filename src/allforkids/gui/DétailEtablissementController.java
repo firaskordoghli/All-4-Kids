@@ -57,8 +57,8 @@ public class DétailEtablissementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ServiceEtablissement sr1= new ServiceEtablissement();
-        
-        Etablissement e = sr1.GetEtablissemebtById(10);
+     
+        Etablissement e = sr1.GetEtablissemebtById(ListEtablissementController.nb);
         nometablissement.setText(e.getNom());
         description.setText(e.getDescription());
         type.setText(e.getType());
@@ -78,11 +78,19 @@ public class DétailEtablissementController implements Initializable {
     
 
     @FXML
-    private void DeleteEtablissement(ActionEvent event) {
+    private void DeleteEtablissement(ActionEvent event) throws IOException {
         ServiceEtablissement sr1= new ServiceEtablissement();
         
-        sr1.deleteEtablissement(9);
+        sr1.deleteEtablissement(ListEtablissementController.nb);
+          Stage stage = new Stage();
+             stage.setTitle("List  Etablissement");
+        Parent root = FXMLLoader.load(getClass().getResource("ListEtablissement.fxml"));
         
+        Scene scene = new Scene(root);
+        
+        
+        stage.setScene(scene);
+        stage.show();
         
     }
 

@@ -7,18 +7,21 @@ package allforkids.gui;
 
 import allforkids.entites.Etablissement;
 import allforkids.service.ServiceEtablissement;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,7 +45,9 @@ public class ListEtablissementController implements Initializable {
     @FXML
     private TableColumn<Etablissement, String> typeCol;
 
-   // static int nb ;
+   public static int nb ;
+    @FXML
+    private JFXButton ajout;
     /**
      * Initializes the controller class.
      */
@@ -53,7 +58,7 @@ public class ListEtablissementController implements Initializable {
          ServiceEtablissement sr1= new ServiceEtablissement();
          try {
              tableview.setItems(sr1.selectEtablissement1());
-    //        nb=tableview.getSelectionModel().getSelectedItem().getId();
+          
                
           } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,8 +68,22 @@ public class ListEtablissementController implements Initializable {
     @FXML
     private void consulter(MouseEvent event) throws IOException {
         Stage stage = new Stage();
+    nb=tableview.getSelectionModel().getSelectedItem().getId();
              stage.setTitle("Ajouter Etablissement");
         Parent root = FXMLLoader.load(getClass().getResource("DétailEtablissement.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void add(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+             stage.setTitle("Ajouter Etablissement");
+        Parent root = FXMLLoader.load(getClass().getResource("AddEtablissment.fxml"));
         
         Scene scene = new Scene(root);
         
