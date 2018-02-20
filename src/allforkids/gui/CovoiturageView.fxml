@@ -222,7 +222,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton prefHeight="82.0" prefWidth="177.0" style="-fx-background-color: #ffc425;" text="suprimer">
+                        <JFXButton onAction="#deleteCov" prefHeight="82.0" prefWidth="177.0" style="-fx-background-color: #ffc425;" text="suprimer">
                            <font>
                               <Font name="DK Cool Crayon" size="12.0" />
                            </font>

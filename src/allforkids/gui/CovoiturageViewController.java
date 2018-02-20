@@ -98,6 +98,7 @@ public class CovoiturageViewController implements Initializable {
         
     }
     
+    @FXML
     public void ajoutCov(MouseEvent event) {
             try {
                 ajoutCovoiturage.getScene().getWindow().hide();
@@ -110,4 +111,13 @@ public class CovoiturageViewController implements Initializable {
                 Logger.getLogger(CovoiturageViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+    @FXML
+    private void deleteCov(ActionEvent event) {
+        row = tableTransport.getSelectionModel().getSelectedItem();
+        int id = row.getId_transport();
+        s.deleteCovoiturage(id);
+          int a = tableTransport.getSelectionModel().getFocusedIndex();
+          tableTransport.getItems().remove(a);
+    }
 }
