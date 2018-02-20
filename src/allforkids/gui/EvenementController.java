@@ -205,8 +205,9 @@ public class EvenementController implements Initializable , MapComponentInitiali
          
         /************Fin Mes Evenement***********/
         
-        modifay.setVisible(false);
+       
         detail.setVisible(false);
+         modifay.setVisible(false);
         mapp.setVisible(false);
     }
 
@@ -313,6 +314,12 @@ public class EvenementController implements Initializable , MapComponentInitiali
          event = s.getIdByName(l);
          int id = event.getId_evenement();
          s.deleteEvenement(id);
+   int a =     myevent.getSelectionModel().getSelectedIndex();
+      myevent.getItems().remove(a);
+        modifay.setVisible(false);
+        mapp.setVisible(false);
+      
+         
     }
 
     @FXML
