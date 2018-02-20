@@ -91,7 +91,7 @@ public class LoginController implements Initializable {
                 Session.setIdThisUser(u.getId());
                 if (u.getRole() == 1) {
                     // envoi vers page admin 
-                 Parent root =FXMLLoader.load(getClass().getResource("Profil.fxml"));
+                 Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);
 
                         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -101,7 +101,7 @@ public class LoginController implements Initializable {
                         app_stage.show();
                 } else if (u.getRole() == 2) {
                        // envoi vers page admin 
-                 Parent root =FXMLLoader.load(getClass().getResource("Profil.fxml"));
+                 Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);
 
                         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -143,15 +143,16 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
     }
+}
 
-    private static void face(String email, String password)  {
+   /* private static void face(String email, String password)  {
      /*   String accessToken="EAACEdEose0cBABdjq4NtQUnLhajFvfNIISUe7cvsYDYUonif1ZBXuRYFhs2I61E5YOG8VATaIocFIe5fZBlWClk76FXDPMteuwIwOIEt4HIuFZCvQ6u5ZCLQgnWKlYbBeUgHvQBlPpcTBEvRpvrYxO2MEpH9EzZCNDiZBtaa30PZBuX4U7ZBstoFIgStBFRX3LLruD8UMikTwQZDZD";
   
        FacebookClient facebookClient = new DefaultFacebookClient(accessToken);
         ServiceUser a = facebookClient.fetchObject("me", ServiceUser.class);*/
      
  
-        try {
+       /* try {
 
             HttpClient http = new HttpClient() {
                 @Override
@@ -170,7 +171,7 @@ public class LoginController implements Initializable {
                 }
             };
 
-            http.getHostConfiguration().setHost("www.facebook.com");
+         /*   http.getHostConfiguration().setHost("www.facebook.com");
             String api_key = "key";
             String secret = "sec";
             FacebookJaxbRestClient client = new FacebookJaxbRestClient(api_key, secret);
@@ -198,7 +199,7 @@ public class LoginController implements Initializable {
             System.out.println("Session string: " + session);
             long userid = client.users_getLoggedInUser();
             //System.out.println("User Id is : " + userid);*/
-        } catch (FacebookException fe) {
+     /*   } catch (FacebookException fe) {
 
             fe.printStackTrace();
 
