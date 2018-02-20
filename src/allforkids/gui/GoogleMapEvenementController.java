@@ -70,7 +70,7 @@ public class GoogleMapEvenementController implements Initializable , MapComponen
                 .scaleControl(false)
                 .streetViewControl(false)
                 .zoomControl(false)
-                .zoom(9);
+                .zoom(12);
 
         GoogleMap map = mapView.createMap(mapOptions);
 
