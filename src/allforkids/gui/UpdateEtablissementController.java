@@ -73,7 +73,7 @@ public class UpdateEtablissementController implements Initializable {
         ville.setPromptText("Type établissement");
 
         ServiceEtablissement sr1 = new ServiceEtablissement();
-        Etablissement e = sr1.GetEtablissemebtById(9);
+        Etablissement e = sr1.GetEtablissemebtById(10);
 
         nometablissemnt.setText(e.getNom());
         description.setText(e.getDescription());
