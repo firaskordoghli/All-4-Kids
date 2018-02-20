@@ -131,7 +131,6 @@ public class EvenementController implements Initializable , MapComponentInitiali
     private Label enom;
     @FXML
     private Label nlieu;
-    @FXML
     private Label ndate;
     @FXML
     private Label nnb;
@@ -442,5 +441,6 @@ public class EvenementController implements Initializable , MapComponentInitiali
              longe  = latLong.getLongitude();
         });
     }
+
    
 }

@@ -19,6 +19,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -72,24 +73,24 @@ public class AddEtablissmentController implements Initializable {
         type.setPromptText("Type établissement");
         
         region.getItems().addAll(
-                                "Garderie",
-                                "jardin d'enfant",
-                                "ecole primaire",
-                                "colége",
-                                "lycée"
+                                "Tunis",
+                                "Kairoun",
+                                "Nabeul",
+                                "Bizerte",
+                                "Sousse"
                                         
                 );
-        region.setPromptText("Type établissement");
+        region.setPromptText("Region établissement");
         
         ville.getItems().addAll(
-                                "Garderie",
-                                "jardin d'enfant",
-                                "ecole primaire",
-                                "colége",
-                                "lycée"
+                                "Centre ville",
+                                "Ariana",
+                                "Hay Tahrire",
+                                "Bardo",
+                                "Manar"
                                         
                 );
-        ville.setPromptText("Type établissement");
+        ville.setPromptText("Ville établissement");
         
     }    
 
@@ -127,24 +128,24 @@ public class AddEtablissmentController implements Initializable {
         File selectedFile = fil.showOpenDialog(stage);
         Image buttonimage = new Image(selectedFile.toURI().toString());
         String p = selectedFile.getPath();
-
+        int id =ServiceEtablissement.GetLastId();
         String name = nom.getText();
 
-        save(buttonimage, name, p);
+        save(buttonimage,id , name, p);
     }
     
-    public void save(Image image, String name, String p) throws IOException {
+    public void save(Image image,int id, String name, String p) throws IOException {
         if (p.indexOf(".png") != -1) {
-            File fileoutput = new File("src/icons/" + name + ".png");
+            File fileoutput = new File("src/icons/" + id  + name + ".png");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
             ImageIO.write(BI, "png", fileoutput);
-            src=  "src/icons/" + name + ".png";
+            src=  "src/icons/" + id + name + ".png";
         } else {
-            File fileoutput = new File("src/icons/" + name + ".jpeg");
+            File fileoutput = new File("src/icons/" + id + name + ".jpeg");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
 
             ImageIO.write(BI, "jpeg", fileoutput);
-             src=  "src/icons/" + name + ".png";
+             src=  "src/icons/" + id + name + ".png";
         }
     }
     
