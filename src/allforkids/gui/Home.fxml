@@ -23,6 +23,6 @@
          </center>
       </JFXToolbar>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="67.0" prefHeight="684.0" prefWidth="149.0" />
-      <AnchorPane fx:id="holderPane" layoutX="100.0" layoutY="68.0" prefHeight="716.0" prefWidth="1166.0" />
+      <AnchorPane fx:id="holderPane" layoutX="149.0" layoutY="67.0" prefHeight="600.0" prefWidth="1080.0" />
    </children>
 </AnchorPane>

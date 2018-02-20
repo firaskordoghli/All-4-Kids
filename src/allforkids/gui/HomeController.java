@@ -26,8 +26,9 @@ import javafx.scene.layout.VBox;
  *
  * @author DELL
  */
-public class HomeController implements Initializable {
 
+public class HomeController //implements Initializable {
+        {
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -38,7 +39,8 @@ public class HomeController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
+/*    @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
@@ -106,5 +108,6 @@ public class HomeController implements Initializable {
         holderPane.getChildren().add((Node) node);
     }
     
-    
+    */
 }
+

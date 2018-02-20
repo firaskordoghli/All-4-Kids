@@ -9,6 +9,7 @@ import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,10 +18,15 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -39,6 +45,8 @@ public class ProfilController implements Initializable {
     private Label prenom;
     @FXML
     private Label test;
+    @FXML
+    private JFXButton out;
 
     /**
      * Initializes the controller class.
@@ -58,4 +66,16 @@ public class ProfilController implements Initializable {
     @FXML
     private void Modifier(ActionEvent event) {
     }
+
+    @FXML
+    private void Logout(ActionEvent event) throws IOException {
+          Parent root =FXMLLoader.load(getClass().getResource("Login.fxml"));
+                  Scene scene = new Scene(root);
+
+                        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                        app_stage.setScene(scene);
+
+                        app_stage.show();
+}
 }

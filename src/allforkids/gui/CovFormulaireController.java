@@ -9,14 +9,18 @@ import allforkids.entites.Covoiturage;
 import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -24,13 +28,10 @@ import javafx.scene.control.Button;
  * @author DELL
  */
 public class CovFormulaireController implements Initializable {
-
+    
+    ObservableList<String> typeList = FXCollections.observableArrayList("auccasionellement", "regulierement");
     @FXML
     private JFXTextField depart;
-    @FXML
-    private JFXTextField arrive;
-    @FXML
-    private JFXButton add;
     @FXML
     private JFXTextField Region;
     @FXML
@@ -49,6 +50,8 @@ public class CovFormulaireController implements Initializable {
     private Button addButton;
     @FXML
     private Button delButton;
+    @FXML
+    private ComboBox type;
 
     /**
      * Initializes the controller class.
@@ -56,6 +59,8 @@ public class CovFormulaireController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        type.setValue("");
+        type.setItems(typeList);
     }    
     
     @FXML
