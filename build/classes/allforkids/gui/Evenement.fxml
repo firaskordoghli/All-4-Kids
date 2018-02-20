@@ -12,49 +12,52 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.EvenementController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.EvenementController">
    <children>
-      <TabPane layoutX="177.0" layoutY="43.0" prefHeight="539.0" prefWidth="1001.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="19.0" layoutY="15.0" prefHeight="539.0" prefWidth="1001.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="consultt" text="Evenement">
                <content>
                   <AnchorPane prefHeight="470.0" prefWidth="1165.0">
                      <children>
                         <ListView fx:id="listevent" layoutX="14.0" layoutY="8.0" onMouseClicked="#afficherImage" prefHeight="471.0" prefWidth="539.0" />
-                        <AnchorPane fx:id="detail" layoutX="605.0" layoutY="70.0" prefHeight="404.0" prefWidth="280.0">
+                        <AnchorPane fx:id="detail" layoutX="605.0" layoutY="70.0" prefHeight="404.0" prefWidth="223.0">
                            <children>
-                              <Label fx:id="titre" alignment="CENTER" layoutX="2.0" prefHeight="50.0" prefWidth="276.0" style="-fx-background-color: #009ed8; -fx-background-radius: 5;" text="Label" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                              <Label fx:id="titre" alignment="CENTER" layoutX="2.0" prefHeight="50.0" prefWidth="232.0" style="-fx-background-color: #009ed8; -fx-background-radius: 5;" text="Label" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                                  <font>
                                     <Font name="DK Cool Crayon" size="15.0" />
                                  </font>
                               </Label>
-                              <ImageView fx:id="img" fitHeight="184.0" fitWidth="278.0" layoutX="2.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="description" layoutX="2.0" layoutY="255.0" prefHeight="96.0" prefWidth="276.0" style="-fx-background-color: #ffffff;" text="description" textAlignment="CENTER">
+                              <ImageView fx:id="img" fitHeight="184.0" fitWidth="231.0" layoutX="2.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="description" layoutX="2.0" layoutY="255.0" prefHeight="96.0" prefWidth="230.0" style="-fx-background-color: #ffffff;" text="description" textAlignment="CENTER">
                                  <font>
                                     <Font name="DK Cool Crayon" size="15.0" />
                                  </font>
                               </Label>
-                              <JFXButton fx:id="inscript" layoutX="1.0" layoutY="359.0" onAction="#inscription" prefHeight="45.0" prefWidth="137.0" style="-fx-background-color: #329932;" text="S'inscrir" textFill="#f8f5f5">
+                              <JFXButton fx:id="inscript" layoutX="1.0" layoutY="359.0" onAction="#inscription" prefHeight="45.0" prefWidth="113.0" style="-fx-background-color: #329932;" text="S'inscrir" textFill="#f8f5f5">
                                  <font>
                                     <Font name="DK Cool Crayon" size="15.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutX="143.0" layoutY="359.0" onAction="#afficherMap" prefHeight="45.0" prefWidth="137.0" style="-fx-background-color: #ffc425;" text="MapView" textFill="WHITE">
+                              <JFXButton layoutX="118.0" layoutY="359.0" onAction="#afficherMap" prefHeight="45.0" prefWidth="113.0" style="-fx-background-color: #ffc425;" text="MapView" textFill="WHITE">
                                  <font>
                                     <Font name="DK Cool Crayon" size="15.0" />
                                  </font></JFXButton>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="608.0" layoutY="17.0" onMouseClicked="#ajoutCov" prefHeight="50.0" prefWidth="274.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
+                        <AnchorPane layoutX="608.0" layoutY="17.0" prefHeight="50.0" prefWidth="231.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/plus.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="60.0" layoutY="3.0" prefHeight="42.0" prefWidth="214.0" text="Ajouter un nouveau evenement" textFill="WHITE" wrapText="true">
+                              <Label layoutX="60.0" layoutY="3.0" prefHeight="42.0" prefWidth="162.0" text="Ajouter un nouveau evenement" textFill="WHITE" wrapText="true">
                                  <font>
                                     <Font name="DK Cool Crayon" size="12.0" />
                                  </font>
@@ -69,39 +72,107 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="myevent" layoutX="30.0" layoutY="14.0" onMouseClicked="#affichemodifay" prefHeight="655.0" prefWidth="491.0" style="-fx-background-color: #00ccbb;" />
-                        <AnchorPane fx:id="modifay" layoutX="527.0" layoutY="14.0" prefHeight="647.0" prefWidth="432.0" style="-fx-background-color: #00ccbb;">
+                        <ListView fx:id="myevent" layoutX="5.0" layoutY="6.0" onMouseClicked="#affichemodifay" prefHeight="502.0" prefWidth="539.0" />
+                        <AnchorPane fx:id="modifay" layoutX="555.0" layoutY="5.0" prefHeight="501.0" prefWidth="432.0">
                            <children>
-                              <Label layoutX="40.0" layoutY="26.0" text="Nom" />
-                              <Label layoutX="40.0" layoutY="83.0" text="addresse " />
-                              <Label layoutX="40.0" layoutY="132.0" text="Date" />
-                              <Label layoutX="40.0" layoutY="172.0" text="Temp" />
-                              <Label layoutX="40.0" layoutY="219.0" prefHeight="21.0" prefWidth="42.0" text="Type" />
-                              <Label layoutX="-1.0" layoutY="278.0" text="Nombre de particpant" />
-                              <Label layoutX="19.0" layoutY="334.0" prefHeight="21.0" prefWidth="42.0" text="Etat" />
-                              <Label layoutX="18.0" layoutY="366.0" text="Description" />
-                              <Label layoutX="30.0" layoutY="435.0" prefHeight="21.0" prefWidth="59.0" text="Image" />
-                              <JFXButton fx:id="mimage" layoutX="310.0" layoutY="429.0" onAction="#Modifierimg" prefHeight="33.0" prefWidth="81.0" text="Modifier " />
-                              <ImageView fx:id="mimg" fitHeight="82.0" fitWidth="194.0" layoutX="101.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true" />
-                              <JFXButton fx:id="update" layoutX="114.0" layoutY="592.0" onAction="#UpdateEvenement" text="Modifier" />
-                              <JFXButton fx:id="delete" layoutX="279.0" layoutY="592.0" onAction="#deleteEvenement" text="Supprimer" />
-                              <ChoiceBox fx:id="mtype" layoutX="193.0" layoutY="225.0" prefHeight="31.0" prefWidth="193.0" />
-                              <Label fx:id="metat" layoutX="244.0" layoutY="334.0" text="Label" textFill="WHITE" />
-                              <TextField fx:id="mnom" layoutX="193.0" layoutY="21.0" prefHeight="31.0" prefWidth="190.0" />
-                              <TextField fx:id="mlieu" layoutX="193.0" layoutY="78.0" prefHeight="31.0" prefWidth="188.0" />
-                              <TextField fx:id="mtemp" layoutX="193.0" layoutY="178.0" prefHeight="31.0" prefWidth="191.0" />
-                              <TextField fx:id="mnb" layoutX="194.0" layoutY="273.0" prefHeight="31.0" prefWidth="192.0" />
-                              <TextField fx:id="mdescription" layoutX="197.0" layoutY="361.0" />
-                              <DatePicker fx:id="mdate" layoutX="192.0" layoutY="127.0" prefHeight="31.0" prefWidth="193.0" />
-                              <Label fx:id="enom" layoutX="194.0" layoutY="57.0" textFill="RED" />
-                              <Label fx:id="nlieu" layoutX="194.0" layoutY="109.0" textFill="RED" />
-                              <Label fx:id="ndate" layoutX="197.0" layoutY="158.0" textFill="RED" />
-                              <Label fx:id="nnb" layoutX="197.0" layoutY="304.0" textFill="RED" />
-                              <Label fx:id="nimg" layoutX="346.0" layoutY="465.0" textFill="#ff0505" />
-                           </children></AnchorPane>
-                        <AnchorPane fx:id="mapp" layoutX="962.0" layoutY="156.0" prefHeight="379.0" prefWidth="280.0" style="-fx-background-color: #00ccbb;">
-                           <children>
-                              <GoogleMapView fx:id="mapviw" layoutY="-4.0" prefHeight="383.0" prefWidth="279.0" />
+                              <Label layoutX="110.0" layoutY="255.0" prefHeight="22.0" prefWidth="52.0" text="Image:">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="14.0" />
+                                 </font></Label>
+                              <JFXButton fx:id="mimage" layoutX="14.0" layoutY="457.0" onAction="#Modifierimg" prefHeight="43.0" prefWidth="125.0" style="-fx-background-color: #ffc425;" text="Modifier image" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="12.0" />
+                                 </font></JFXButton>
+                              <ImageView fx:id="mimg" fitHeight="108.0" fitWidth="120.0" layoutX="144.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true" />
+                              <JFXButton fx:id="update" layoutX="150.0" layoutY="457.0" onAction="#UpdateEvenement" prefHeight="43.0" prefWidth="125.0" style="-fx-background-color: #329932;" text="Modifier" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="14.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="delete" layoutX="288.0" layoutY="457.0" onAction="#deleteEvenement" prefHeight="43.0" prefWidth="125.0" style="-fx-background-color: #c4232b;" text="Supprimer" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="14.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label fx:id="nimg" layoutX="350.0" layoutY="393.0" prefHeight="17.0" prefWidth="16.0" textFill="#ff0505" />
+                              <GridPane layoutX="4.0" layoutY="3.0" prefHeight="199.0" prefWidth="402.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.3333740234375" minWidth="10.0" prefWidth="73.3333740234375" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.6666259765625" minWidth="10.0" prefWidth="112.33331298828125" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.3333740234375" minWidth="10.0" prefWidth="114.66668701171875" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="39.66667175292969" minHeight="10.0" prefHeight="31.666671752929688" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="39.66667175292969" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="43.66667175292969" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="107.0" minHeight="0.0" prefHeight="36.333343505859375" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="113.33332824707031" minHeight="4.333343505859375" prefHeight="38.666656494140625" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Nom:">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="mnom" prefHeight="31.0" prefWidth="190.0" GridPane.columnIndex="1" />
+                                    <Label text="addresse :" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="mlieu" prefHeight="31.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="Date:" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="mdate" prefHeight="31.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label text="Temp:" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="mtemp" prefHeight="31.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label prefHeight="21.0" prefWidth="42.0" text="Type:" GridPane.columnIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="mtype" prefHeight="31.0" prefWidth="193.0" GridPane.columnIndex="3" />
+                                    <Label text="Nombre de particpant" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="mnb" prefHeight="31.0" prefWidth="192.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <Label text="Description:" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="mdescription" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                    <Label prefHeight="21.0" prefWidth="42.0" text="Etat:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="metat" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="enom" prefHeight="17.0" prefWidth="21.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="nlieu" prefHeight="17.0" prefWidth="79.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="nnb" prefHeight="17.0" prefWidth="19.0" textFill="RED" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <AnchorPane fx:id="mapp" layoutX="15.0" layoutY="315.0" prefHeight="139.0" prefWidth="402.0">
+                                 <children>
+                                    <GoogleMapView fx:id="mapviw" layoutX="-1.0" layoutY="3.0" prefHeight="136.0" prefWidth="402.0" />
+                                 </children>
+                              </AnchorPane>
                            </children></AnchorPane>
                      </children></AnchorPane>
                </content>
