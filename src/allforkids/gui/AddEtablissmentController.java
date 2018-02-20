@@ -38,13 +38,13 @@ public class AddEtablissmentController implements Initializable {
     @FXML
     private JFXTextField description;
     @FXML
-    private JFXTextField image;
-    @FXML
     private JFXButton enregistrer;
     @FXML
     private JFXButton annuler;
     @FXML
     private AnchorPane addetablissement;
+    @FXML
+    private JFXButton buttonimage;
 
     /**
      * Initializes the controller class.
@@ -108,6 +108,10 @@ public class AddEtablissmentController implements Initializable {
     private void annulerajout(ActionEvent event) {
         Stage stage =(Stage) addetablissement.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void ajouterimage(ActionEvent event) {
     }
     
 }

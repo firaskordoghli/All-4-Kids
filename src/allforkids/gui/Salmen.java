@@ -13,22 +13,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-
 /**
  *
  * @author FATNASSI
  */
-
 public class Salmen extends Application {
-    
+
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Ajouter Etablissement");
         Parent root = FXMLLoader.load(getClass().getResource("ListEtablissement.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -39,5 +36,5 @@ public class Salmen extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
