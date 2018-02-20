@@ -43,12 +43,15 @@
                      </font>
                   </Label>
                   <Button fx:id="cx" layoutX="42.0" layoutY="209.0" mnemonicParsing="false" onAction="#cnx" prefHeight="25.0" prefWidth="185.0" text="connexion" />
-                  <Hyperlink layoutX="69.0" layoutY="252.0" prefHeight="23.0" prefWidth="130.0" text="mot de passe oublier" wrapText="true" />
+                  <Hyperlink fx:id="MdpOublir" layoutX="69.0" layoutY="252.0" onAction="#MdpOublir" prefHeight="23.0" prefWidth="130.0" text="mot de passe oublier" wrapText="true" />
                   <Label layoutX="53.0" layoutY="14.0" prefHeight="48.0" prefWidth="164.0" text="Se connecté" textFill="WHITE">
                      <font>
                         <Font name="DK Cool Crayon" size="24.0" />
                      </font>
                   </Label>
+                  <Label fx:id="MailC" layoutX="101.0" layoutY="98.0" />
+                  <Label fx:id="PassC" layoutX="101.0" layoutY="158.0" />
+                  <Label fx:id="test" layoutX="54.0" layoutY="304.0" prefHeight="17.0" prefWidth="202.0" text="Label" textFill="RED" />
                </children>
             </AnchorPane>
          </children>

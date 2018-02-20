@@ -106,14 +106,14 @@ public class ServiceEvenement {
         }
         return list;
     }
-    public String getImgByid(int id)
-    { 
-      String s = "" ;  
-           try {
+
+    public String getImgByid(int id) {
+        String s = "";
+        try {
             String req = "SELECT * FROM evenement where id_evenement=?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-        
-            ste.setInt(1,id);
+
+            ste.setInt(1, id);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 s = result.getString("photo");
@@ -121,20 +121,20 @@ public class ServiceEvenement {
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return s ; 
+
+        return s;
     }
-    public Evenement  getIdByName(String nom )
-    { 
-      Evenement e = new Evenement() ;  
-           try {
+
+    public Evenement getIdByName(String nom) {
+        Evenement e = new Evenement();
+        try {
             String req = "SELECT * FROM evenement where nom=?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-        
-            ste.setString(1,nom);
+
+            ste.setString(1, nom);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
-                e.setId_evenement( result.getInt("id_evenement"));
+                e.setId_evenement(result.getInt("id_evenement"));
                 e.setNom(result.getString("nom"));
                 e.setLieu(result.getString("lieu"));
                 e.setDate(result.getDate("date"));
@@ -143,13 +143,15 @@ public class ServiceEvenement {
                 e.setEtat(result.getBoolean("etat"));
                 e.setId_user(result.getInt("id_user"));
                 e.setPhoto(result.getString("photo"));
-                  
+                e.setLatitude( result.getDouble("latitude"));   
+                e.setLongitude(result.getDouble("longitude"));
+
             }
-            return e ;
+            return e;
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return e ; 
+
+        return e;
     }
 }
