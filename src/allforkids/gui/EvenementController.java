@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -67,13 +67,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-
 /**
  * FXML Controller class
  *
  * @author slim
  */
-public class EvenementController implements Initializable , MapComponentInitializedListener {
+public class EvenementController implements Initializable {
 
     @FXML
     private Tab consultt;
@@ -93,12 +92,12 @@ public class EvenementController implements Initializable , MapComponentInitiali
     private Tab mesconsult;
     @FXML
     private Tab inscrit;
-    public  Evenement event;
+    public Evenement event;
     private ServiceEvenement s = new ServiceEvenement();
     @FXML
     private ListView<Label> myevent;
-  private static String  nnom ;
-   
+    private static String nnom;
+
     private DecimalFormat formatter = new DecimalFormat("###.00000");
     @FXML
     private DatePicker mdate;
@@ -126,28 +125,30 @@ public class EvenementController implements Initializable , MapComponentInitiali
     private TextField mtemp;
     @FXML
     private TextField mdescription;
-   private static String imgg="" ;
+
     @FXML
     private Label enom;
     @FXML
     private Label nlieu;
+    @FXML
     private Label ndate;
     @FXML
     private Label nnb;
     @FXML
     private Label nimg;
+
+    private static String imgg = "";
+    public static Double longe = 10.195556;
+    public static Double altud = 36.862499;
+    private GoogleMapView mapvView;
     @FXML
-    private AnchorPane mapp;
-    @FXML
-    private GoogleMapView mapviw;
-    public static Double longe  ;
-   public static Double altud  ;
-    /**
-     * Initializes the controller class.
-     */
+    private JFXButton mimage1;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      /*********Evenement*******/
+        /**
+         * *******Evenement******
+         */
         ObservableList<Label> a = FXCollections.observableArrayList();
         List<Evenement> e = new ArrayList<>();
 
@@ -170,10 +171,14 @@ public class EvenementController implements Initializable , MapComponentInitiali
             }
 
         }
-        /************Fin Evenement*****************/
-        
-        /************Mes Evenemet ****************/
-          List<String> list = new ArrayList();
+        /**
+         * **********Fin Evenement****************
+         */
+
+        /**
+         * **********Mes Evenemet ***************
+         */
+        List<String> list = new ArrayList();
         list.add("musique");
         list.add("cinema");
         list.add("theatre");
@@ -183,8 +188,8 @@ public class EvenementController implements Initializable , MapComponentInitiali
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
         mtype.setItems(ob);
-         List<Evenement> me = s.selectMesEvenement(6);
-         for (Evenement ev : me) {
+        List<Evenement> me = s.selectMesEvenement(6);
+        for (Evenement ev : me) {
             try {
 
                 Label l = new Label(ev.getNom());
@@ -201,13 +206,13 @@ public class EvenementController implements Initializable , MapComponentInitiali
             }
 
         }
-         
-        /************Fin Mes Evenement***********/
-        
-       
+
+        /**
+         * **********Fin Mes Evenement**********
+         */
         detail.setVisible(false);
-         modifay.setVisible(false);
-        mapp.setVisible(false);
+        modifay.setVisible(false);
+
     }
 
     @FXML
@@ -215,14 +220,14 @@ public class EvenementController implements Initializable , MapComponentInitiali
         detail.setVisible(true);
         String l = listevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
-        altud= event.getLatitude();
-        longe= event.getLongitude();
+        altud = event.getLatitude();
+        longe = event.getLongitude();
         event = s.getIdByName(l);
         titre.setText(l);
         description.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
         Image image = new Image(new FileInputStream(event.getPhoto()));
         img.setImage(image);
- 
+
     }
 
     @FXML
@@ -237,31 +242,27 @@ public class EvenementController implements Initializable , MapComponentInitiali
 
     @FXML
     public void afficherMap(ActionEvent event) {
-              
+
         try {
-           
-        
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GoogleMapEvenement.fxml"));
-          Parent  root1 = (Parent)fxmlLoader.load();
+            Parent root1 = (Parent) fxmlLoader.load();
             GoogleMapEvenementController c = fxmlLoader.getController();
-            
-            
+
             Scene scene = new Scene(root1);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
-         
-        
-        }
-        catch (IOException e) {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-     
+
     }
 
     @FXML
     private void Modifierimg(ActionEvent even) throws IOException {
-         Stage stage = new Stage();
+        Stage stage = new Stage();
         FileChooser fil = new FileChooser();
         fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
@@ -273,81 +274,82 @@ public class EvenementController implements Initializable , MapComponentInitiali
 
         save(img, name, p);
     }
+
     public void save(Image image, String name, String p) throws IOException {
         if (p.indexOf(".png") != -1) {
             File fileoutput = new File("src/icons/" + name + ".png");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
             ImageIO.write(BI, "png", fileoutput);
-            imgg=  "src/icons/" + name + ".png";
+            imgg = "src/icons/" + name + ".png";
         } else {
             File fileoutput = new File("src/icons/" + name + ".jpeg");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
 
             ImageIO.write(BI, "jpeg", fileoutput);
-             imgg=  "src/icons/" + name + ".png";
+            imgg = "src/icons/" + name + ".png";
         }
     }
 
     @FXML
     private void UpdateEvenement(ActionEvent even) throws IOException, SQLException {
+
         String l = myevent.getSelectionModel().getSelectedItem().getText();
-         
-         if (this.controleSaisie(l)) {
-          event = s.getIdByName(l);
-         int id = event.getId_evenement();
-          LocalDate d = mdate.getValue();
-         Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
-         if(imgg=="")
-         {
-         imgg= event.getPhoto();
-         }
-         Evenement e = new Evenement(mnom.getText(),mlieu.getText(), date,
-                      mtype.getValue(), Integer.parseInt(mnb.getText()),
-                      event.isEtat(), 6,imgg ,altud, longe);
-         s.updateEvenement(e, id);
-         }
+
+        if (this.controleSaisie(l)) {
+            event = s.getIdByName(l);
+            int id = event.getId_evenement();
+            LocalDate d = mdate.getValue();
+            Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            if (imgg == "") {
+                imgg = event.getPhoto();
+            }
+            Evenement e = new Evenement(mnom.getText(), mlieu.getText(), date,
+                    mtype.getValue(), Integer.parseInt(mnb.getText()),
+                    event.isEtat(), 6, imgg, altud, longe);
+            s.updateEvenement(e, id);
+        }
     }
-         
-    
 
     @FXML
     private void deleteEvenement(ActionEvent even) {
-         String l = myevent.getSelectionModel().getSelectedItem().getText();
-         event = s.getIdByName(l);
-         int id = event.getId_evenement();
-         s.deleteEvenement(id);
-   int a =     myevent.getSelectionModel().getSelectedIndex();
-      myevent.getItems().remove(a);
+
+        String l = myevent.getSelectionModel().getSelectedItem().getText();
+        event = s.getIdByName(l);
+        int id = event.getId_evenement();
+        s.deleteEvenement(id);
+        int a = myevent.getSelectionModel().getSelectedIndex();
+        myevent.getItems().remove(a);
         modifay.setVisible(false);
-        mapp.setVisible(false);
-      
-         
+
     }
 
     @FXML
     private void affichemodifay(MouseEvent even) throws FileNotFoundException {
         modifay.setVisible(true);
-        mapp.setVisible(true);
-          mapviw.addMapInializedListener(this);
-         String l = myevent.getSelectionModel().getSelectedItem().getText();
+    
+       
+        String l = myevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
+     altud = event.getLatitude();
+     longe = event.getLongitude();
         mnom.setText(event.getNom());
         mlieu.setText(event.getLieu());
-          Instant instant = Instant.ofEpochMilli(event.getDate().getTime());
-        LocalDate datt =    LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
-        .toLocalDate();
+        Instant instant = Instant.ofEpochMilli(event.getDate().getTime());
+        LocalDate datt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
+                .toLocalDate();
         mdate.setValue(datt);
         mtype.setValue(event.getType());
-        if(event.isEtat()== false){
+        if (event.isEtat() == false) {
             metat.setText("not full");
         }
-         Image image = new Image(new FileInputStream(event.getPhoto()));
-        
+        Image image = new Image(new FileInputStream(event.getPhoto()));
+
         mnb.setText(String.valueOf(event.getNbr_participation()));
-         mimg.setImage(image);
-        
+        mimg.setImage(image);
+
     }
-       public boolean controleSaisie(String nom) throws IOException, SQLException {
+
+    public boolean controleSaisie(String nom) throws IOException, SQLException {
         boolean saisie = true;
         ServiceEvenement es = new ServiceEvenement();
 
@@ -373,7 +375,7 @@ public class EvenementController implements Initializable , MapComponentInitiali
             saisie = false;
         }
         Evenement e = es.getIdByName(mnom.getText());
-        if (!((e.getNom() == null)||(mnom.getText().equals(nom)))) {
+        if (!((e.getNom() == null) || (mnom.getText().equals(nom)))) {
 
             enom.setText("le Nom Existe deja !");
             saisie = false;
@@ -382,8 +384,7 @@ public class EvenementController implements Initializable , MapComponentInitiali
             ndate.setText("* tout les champs doivent etre remplis");
             saisie = false;
         }
-        
-       
+
         if (mdate.getValue() != null) {
             LocalDate d = mdate.getValue();
             Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -395,52 +396,25 @@ public class EvenementController implements Initializable , MapComponentInitiali
                 ndate.setText("");
             }
         }
-        
+
         return saisie;
     }
+    @FXML
+    private void ModifierLieu(ActionEvent event) {
+          try {
 
-    @Override
-    public void mapInitialized() {
-         String l = myevent.getSelectionModel().getSelectedItem().getText();
-        Evenement e = s.getIdByName(l);
-      LatLong location = new LatLong(e.getLatitude(), e.getLongitude());
-             altud =e.getLatitude() ;
-             longe  = e.getLongitude();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Modifgooglemap.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            ModifgooglemapController c = fxmlLoader.getController();
 
-       
-        MapOptions mapOptions = new MapOptions();
+            Scene scene = new Scene(root1);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
 
-        mapOptions.center(new LatLong(e.getLatitude(), e.getLongitude()))
-                .mapType(MapTypeIdEnum.ROADMAP)
-                .overviewMapControl(false)
-                .panControl(false)
-                .rotateControl(false)
-                .scaleControl(false)
-                .streetViewControl(false)
-                .zoomControl(false)
-                .zoom(12);
-
-        GoogleMap map = mapviw.createMap(mapOptions);
-
-   
-        MarkerOptions markerOptions1 = new MarkerOptions();
-        markerOptions1.position(location).visible(Boolean.TRUE).title(e.getNom());
-        Marker marker1 = new Marker(markerOptions1);
-        map.addMarker(marker1);
-        
-        map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent even) -> {
-
-            map.clearMarkers();
-
-            LatLong latLong = even.getLatLong();
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLong).visible(Boolean.TRUE).title("fdshg");
-            Marker marker = new Marker(markerOptions);
-            map.addMarker(marker);
-             altud =latLong.getLatitude() ;
-             longe  = latLong.getLongitude();
-        });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-   
 }
