@@ -98,7 +98,7 @@
                   </Label>
                </children>
             </Pane>
-            <AnchorPane prefHeight="370.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5;">
+            <AnchorPane fx:id="details" prefHeight="370.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5;">
                <children>
                   <GridPane layoutX="2.0" layoutY="16.0" prefHeight="217.0" prefWidth="182.0">
                     <columnConstraints>
@@ -128,7 +128,7 @@
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="departt" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
@@ -173,43 +173,47 @@
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="132.0" prefHeight="36.0" prefWidth="121.0" text="Type:" textAlignment="CENTER" textFill="#030303" wrapText="true" GridPane.rowIndex="9">
+                        <Label fx:id="tttype" layoutX="10.0" layoutY="132.0" prefHeight="36.0" prefWidth="121.0" text="Type:" textAlignment="CENTER" textFill="#030303" wrapText="true" GridPane.rowIndex="9">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="99.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="arrivee" layoutX="124.0" layoutY="99.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="139.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label layoutX="124.0" layoutY="139.0" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="178.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="tel" layoutX="124.0" layoutY="178.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="217.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label fx:id="placee" layoutX="124.0" layoutY="217.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="256.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label fx:id="frais" layoutX="124.0" layoutY="256.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="295.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <Label fx:id="typee" layoutX="124.0" layoutY="295.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
                         <Separator prefHeight="0.0" prefWidth="170.0" GridPane.rowIndex="4" />
                         <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="description" prefHeight="23.0" prefWidth="103.0" text="**" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="DK Cool Crayon" size="15.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
                   <GridPane layoutY="328.0" prefHeight="35.0" prefWidth="190.0">
@@ -227,7 +231,7 @@
                               <Font name="DK Cool Crayon" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: #329932;" text="Rejoindre" textFill="WHITE" GridPane.columnIndex="2">
+                        <JFXButton onAction="#RejoindreCov" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: #329932;" text="Rejoindre" textFill="WHITE" GridPane.columnIndex="2">
                            <font>
                               <Font name="DK Cool Crayon" size="12.0" />
                            </font>
