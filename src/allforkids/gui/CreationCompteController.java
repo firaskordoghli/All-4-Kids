@@ -10,6 +10,7 @@ import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
 import allforkids.util.Validation;
+import com.google.code.facebookapi.schema.NotificationData.Notifications;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
@@ -95,6 +96,7 @@ public class CreationCompteController implements Initializable {
     private ChoiceBox<String> RoleC;
     @FXML
     private JFXButton photoC;
+    private static String imgg="" ;
 
     /**
      * Initializes the controller class.
@@ -188,21 +190,34 @@ public class CreationCompteController implements Initializable {
         return saisie;
 
     }
-   /* public void photo(ActionEvent e,Image image, String name) throws IOException{
-        Stage stage = new Stage();
-       FileChooser fil = new FileChooser();
-       fil.getExtensionFilters().addAll( new FileChooser.ExtensionFilter("PNG","*.png"), new FileChooser.ExtensionFilter("JPEG","*.jpeg") );
-       File selectedFile = fil.showOpenDialog(stage);
-       Image img =new Image(selectedFile.toURI().toString());
-    File fileoutput = new File("C:\\Users\\casa-net\\Documents\\NetBeansProjects\\All-4-Kids\\src\\allforkids\\icons");
-        BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-        ImageIO.write(BI, "png", fileoutput);
-    }
+  /*  public void photo(ActionEvent e,Image image, String name) throws IOException{
+       Stage stage = new Stage();
+        FileChooser fil = new FileChooser();
+        fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
+        File selectedFile = fil.showOpenDialog(stage);
+        Image img = new Image(selectedFile.toURI().toString());
+        String p = selectedFile.getPath();
+
+        int nam =1000;
+
+        save(img, nam, p);
+        nam++;
+    }*/
     
-    public void save (Image image, String name) throws IOException{
-    File fileoutput = new File("C:\\Users\\casa-net\\Documents\\NetBeansProjects\\All-4-Kids\\src\\allforkids\\icons");
-        BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-        ImageIO.write(BI, "png", fileoutput);
+    /*public void save (Image image, int name ,String p) throws IOException{
+    if (p.indexOf(".png") != -1) {
+            File fileoutput = new File("src/icons/" + name + ".png");
+            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
+            ImageIO.write(BI, "png", fileoutput);
+            imgg=  "src/icons/" + name + ".png";
+        } else {
+            File fileoutput = new File("src/icons/" + name + ".jpeg");
+            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
+
+            ImageIO.write(BI, "jpeg", fileoutput);
+             imgg=  "src/icons/" + name + ".png";
+        }
     }*/
     
     
@@ -241,7 +256,7 @@ public class CreationCompteController implements Initializable {
             String s = PassC.getText();
             String pw_hash = BCrypt.hashpw(s, BCrypt.gensalt());
 
-            User u = new User(CinC.getText(), NomC.getText(), PrenomC.getText(), MailC.getText(), date, "1", r, pw_hash);
+            User u = new User(CinC.getText(), NomC.getText(), PrenomC.getText(), MailC.getText(), date, imgg, r, pw_hash);
             a.insrerUser(u);
 
             /*   Notifications notificiationBuilder = Notifications.create()
@@ -277,24 +292,52 @@ public class CreationCompteController implements Initializable {
     private void vider(ActionEvent event) {
     }
 
-    @FXML
-    private void photoo(ActionEvent event) throws IOException {
+   /* private void photoo(ActionEvent event,Image image, String name) throws IOException {
         
-         Stage stage = new Stage();
-       FileChooser fil = new FileChooser();
-       fil.getExtensionFilters().addAll( new FileChooser.ExtensionFilter("PNG","*.png"), new FileChooser.ExtensionFilter("JPEG","*.jpeg") );
-       File selectedFile = fil.showOpenDialog(stage);
-       Image img =new Image(selectedFile.toURI().toString());
-        int name = Session.getIdThisUser();
-        save(img , name);
+        Stage stage = new Stage();
+        FileChooser fil = new FileChooser();
+        fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
+        File selectedFile = fil.showOpenDialog(stage);
+        Image img = new Image(selectedFile.toURI().toString());
+        String p = selectedFile.getPath();
+
+        int nam =Session.getIdThisUser();
+
+        save(img, nam, p);
         
-    }
+    }*/
     
-    public void save (Image image,int name) throws IOException{
+    public void save (Image image, String name ,String p) throws IOException{
        
-    File fileoutput = new File("C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/icons/"+name+".png");
-        BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-        ImageIO.write(BI, "png", fileoutput);
+    if (p.indexOf(".png") != -1) {
+            File fileoutput = new File("src/icons/" + name + ".png");
+            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
+            ImageIO.write(BI, "png", fileoutput);
+            imgg=  "src/icons/" + name + ".png";
+        } else {
+            File fileoutput = new File("src/icons/" + name + ".jpeg");
+            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
+
+            ImageIO.write(BI, "jpeg", fileoutput);
+             imgg=  "src/icons/" + name + ".png";
+        }
+    }
+
+    @FXML
+    private void AjouterPhoto(ActionEvent event) throws IOException {
+          Stage stage = new Stage();
+        FileChooser fil = new FileChooser();
+        fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
+        File selectedFile = fil.showOpenDialog(stage);
+        Image photoC = new Image(selectedFile.toURI().toString());
+        String p = selectedFile.getPath();
+
+        //int nam =Session.getIdThisUser();
+         String nam=CinC.getText();
+        save(photoC, nam, p);
+       
     }
 
    

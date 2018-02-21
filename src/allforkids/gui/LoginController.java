@@ -68,10 +68,10 @@ public class LoginController implements Initializable {
     private Label PassC;
     @FXML
     private static Label test;
-    @FXML
-    private JFXButton facebook;
     public static String maill ;
     public static String passl ;
+    @FXML
+    private Hyperlink facebk;
 
     /**
      * Initializes the controller class.
@@ -149,9 +149,66 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
     }
+
+    @FXML
+    private void facebk(ActionEvent event) {
+        org.apache.commons.httpclient.HttpClient http = new org.apache.commons.httpclient.HttpClient() ;
+               String session = null;
+        try {
+
+            http. getHostConfiguration().setHost("graph.facebook.com");
+            String api_key = "key";
+            String secret = "sec";
+            FacebookJaxbRestClient client = new FacebookJaxbRestClient(api_key, secret);
+                System.out.println("====>"+client.isDesktop());
+
+           // String token = client.auth_createToken();
+           String token ="180208849423131";
+//            test.setText("xfvdvdsx");
+            System.out.println(" :::::::"+token);
+            System.out.println(" :::::::::: "+token);
+            PostMethod post = new PostMethod("facebook.jsp?");
+
+            post.addParameter("api_key", api_key);
+
+    maill = "r4.cherif@gmail.com";
+    passl= "21945026Mr" ;
+            post.addParameter("email", maill);
+            post.addParameter("pass", passl);
+
+
+            int postStatus = http.executeMethod(post);
+                System.out.println("url : " + post.getURI());
+            System.out.println("Response : " + postStatus);
+            for (org.apache.commons.httpclient.Header h : post.getResponseHeaders()) {
+                System.out.println(h);
+            }
+             session = client.auth_getSession(token); // Here I am getting error
+            System.out.println("Session string: " + session);
+            long userid = client.users_getLoggedInUser();
+            //System.out.println("User Id is : " + userid);*/
+        
+    } catch (FacebookException fe) {
+
+            fe.printStackTrace();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+    }
+    
+    
+    
+
+    
+    
     
         
-    }
+    
 
    
     
