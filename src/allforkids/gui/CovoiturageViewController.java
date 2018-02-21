@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -62,6 +63,8 @@ public class CovoiturageViewController implements Initializable {
     private AnchorPane ajoutCovoiturage;
     @FXML
     private VBox detailsBox;
+    @FXML
+    private AnchorPane pane;
     /**
      * Initializes the controller class.
      */
@@ -111,6 +114,18 @@ public class CovoiturageViewController implements Initializable {
                 Logger.getLogger(CovoiturageViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    
+    @FXML
+    public void toFormulaire(MouseEvent event) throws IOException {
+            
+                Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovFormulaire.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+            
+        }
 
     @FXML
     private void deleteCov(ActionEvent event) {
@@ -120,4 +135,16 @@ public class CovoiturageViewController implements Initializable {
           int a = tableTransport.getSelectionModel().getFocusedIndex();
           tableTransport.getItems().remove(a);
     }
+    
+    @FXML
+    public void backToTransport(MouseEvent event) throws IOException {
+            
+                Parent covViewOarent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+            
+        }
 }

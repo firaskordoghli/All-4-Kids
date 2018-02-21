@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.CovoiturageViewController">
+<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.CovoiturageViewController">
    <children>
       <AnchorPane layoutX="71.0" layoutY="83.0" prefHeight="57.0" prefWidth="604.0" style="-fx-background-color: #32b1df; -fx-background-radius: 5;">
          <children>
@@ -73,7 +73,7 @@
             </Tab>
          </tabs>
       </JFXTabPane>
-      <AnchorPane fx:id="ajoutCovoiturage" layoutX="722.0" layoutY="82.0" onMouseClicked="#ajoutCov" prefHeight="57.0" prefWidth="190.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
+      <AnchorPane fx:id="ajoutCovoiturage" layoutX="722.0" layoutY="82.0" onMouseClicked="#toFormulaire" prefHeight="57.0" prefWidth="190.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
          <children>
             <ImageView fitHeight="42.0" fitWidth="50.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -240,5 +240,10 @@
             </AnchorPane>
          </children>
       </VBox>
+      <ImageView fitHeight="75.0" fitWidth="35.0" layoutX="102.0" layoutY="14.0" onMouseClicked="#backToTransport" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
