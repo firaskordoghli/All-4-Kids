@@ -29,13 +29,13 @@ public class DrawerController implements Initializable {
     @FXML
     private JFXButton divertissementBtn;
     @FXML
-    private JFXButton forumBtn;
-    @FXML
     private JFXButton reclamationBtn;
     @FXML
     private JFXButton deconnectéBtn;
     @FXML
     private JFXButton quitéBtn;
+    @FXML
+    private JFXButton profilBtn;
 
     /**
      * Initializes the controller class.
