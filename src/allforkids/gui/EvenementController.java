@@ -416,5 +416,15 @@ public class EvenementController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void add(MouseEvent even) throws IOException {
+        Stage stage = new Stage();
+        stage.setTitle("Ajouter Evenement");
+        Parent root = FXMLLoader.load(getClass().getResource("AjoutEvenment.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

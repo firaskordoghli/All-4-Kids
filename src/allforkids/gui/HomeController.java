@@ -63,7 +63,7 @@ public class HomeController implements Initializable {
             AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
             AnchorPane transportPane = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
             AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("AddEtablissment.fxml"));
+            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
 
             setNode(acceuil);
             drawer.setSidePane(sidePane);
