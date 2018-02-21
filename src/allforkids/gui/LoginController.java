@@ -10,11 +10,11 @@ import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
 import allforkids.util.Validation;
-import com.google.code.facebookapi.FacebookJaxbRestClient;
+//import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.exception.FacebookException;
+//import com.restfb.DefaultFacebookClient;
+//import com.restfb.FacebookClient;
+//import com.restfb.exception.FacebookException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -34,9 +34,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JSpinner;
-import org.apache.commons.httpclient.URIException;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.http.Header;
+//import org.apache.commons.httpclient.URIException;
+//import org.apache.commons.httpclient.methods.PostMethod;
+//import org.apache.http.Header;
 import org.openqa.selenium.remote.http.HttpClient;
 import org.openqa.selenium.remote.http.HttpRequest;
 import org.openqa.selenium.remote.http.HttpResponse;
@@ -150,8 +150,8 @@ public class LoginController implements Initializable {
                         app_stage.show();
     }
 
-    @FXML
-<<<<<<< HEAD
+   /* @FXML
+
     private void facebk(ActionEvent event) {
         org.apache.commons.httpclient.HttpClient http = new org.apache.commons.httpclient.HttpClient() ;
                String session = null;
@@ -171,7 +171,7 @@ public class LoginController implements Initializable {
         ServiceUser a = facebookClient.fetchObject("me", ServiceUser.class);*/
      
  
-        try {
+        /*try {
 
             HttpClient http = new HttpClient() {
                 @Override
@@ -240,7 +240,7 @@ public class LoginController implements Initializable {
             System.out.println("Session string: " + session);
             long userid = client.users_getLoggedInUser();
             //System.out.println("User Id is : " + userid);*/
-=======
+/*=======
             for (Header h : post.getResponseHeaders()) {
                 System.out.println(h);
             }
@@ -248,7 +248,7 @@ public class LoginController implements Initializable {
             System.out.println("Session string: " + session);
             long userid = client.users_getLoggedInUser();
             //System.out.println("User Id is : " + userid);*/
-        } catch (FacebookException fe) {
+    /*    } catch (FacebookException fe) {
 
             fe.printStackTrace();
 
@@ -269,7 +269,7 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
     }
-
+*/
 
 
     }
@@ -289,7 +289,7 @@ public class LoginController implements Initializable {
 
 
 
-
+/*
    @FXML
     private void MdpOublir(ActionEvent event) {
     }
@@ -297,3 +297,4 @@ public class LoginController implements Initializable {
     @FXML
     private void valider(ActionEvent event) {
     }
+*/
