@@ -68,10 +68,10 @@ public class LoginController implements Initializable {
     private Label PassC;
     @FXML
     private static Label test;
-    @FXML
-    private JFXButton facebook;
     public static String maill ;
     public static String passl ;
+    @FXML
+    private Hyperlink facebk;
 
     /**
      * Initializes the controller class.
@@ -149,7 +149,19 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
     }
+
+    @FXML
 <<<<<<< HEAD
+    private void facebk(ActionEvent event) {
+        org.apache.commons.httpclient.HttpClient http = new org.apache.commons.httpclient.HttpClient() ;
+               String session = null;
+        try {
+
+            http. getHostConfiguration().setHost("graph.facebook.com");
+=======
+    private void faceb(ActionEvent event) {
+    }
+
 }
 
     private static void face(String email, String password)  {
@@ -178,12 +190,32 @@ public class LoginController implements Initializable {
                 }
             };
 
+<<<<<<< HEAD
            http.getHostConfiguration().setHost("www.facebook.com");
+=======
+         /*   http.getHostConfiguration().setHost("www.facebook.com");
+>>>>>>> 7adf7ca202083cf8f5335619b9f0ef06228c13ac
+>>>>>>> b6d8ee43c5abd8671cae5c080db60672286864fa
             String api_key = "key";
             String secret = "sec";
             FacebookJaxbRestClient client = new FacebookJaxbRestClient(api_key, secret);
                 System.out.println("====>"+client.isDesktop());
 
+<<<<<<< HEAD
+           // String token = client.auth_createToken();
+           String token ="180208849423131";
+//            test.setText("xfvdvdsx");
+            System.out.println(" :::::::"+token);
+            System.out.println(" :::::::::: "+token);
+            PostMethod post = new PostMethod("facebook.jsp?");
+
+            post.addParameter("api_key", api_key);
+
+    maill = "r4.cherif@gmail.com";
+    passl= "21945026Mr" ;
+            post.addParameter("email", maill);
+            post.addParameter("pass", passl);
+=======
             String token = client.auth_createToken();
             System.out.println(" :::::::"+token);
             System.out.println(" :::::::::: "+token);
@@ -194,11 +226,21 @@ public class LoginController implements Initializable {
 
             post.addParameter("email", email);
             post.addParameter("pass", password);
+>>>>>>> 7adf7ca202083cf8f5335619b9f0ef06228c13ac
 
 
             int postStatus = http.executeMethod(post);
                 System.out.println("url : " + post.getURI());
             System.out.println("Response : " + postStatus);
+<<<<<<< HEAD
+            for (org.apache.commons.httpclient.Header h : post.getResponseHeaders()) {
+                System.out.println(h);
+            }
+             session = client.auth_getSession(token); // Here I am getting error
+            System.out.println("Session string: " + session);
+            long userid = client.users_getLoggedInUser();
+            //System.out.println("User Id is : " + userid);*/
+=======
             for (Header h : post.getResponseHeaders()) {
                 System.out.println(h);
             }
@@ -217,8 +259,29 @@ public class LoginController implements Initializable {
 =======
 >>>>>>> a8f3fb7c91c9a6329f7efc018b8ee79b2e886e1d
     
+>>>>>>> 7adf7ca202083cf8f5335619b9f0ef06228c13ac
         
+    } catch (FacebookException fe) {
+
+            fe.printStackTrace();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
+
+
+
+    }
+    
+    
+    
+
+    
+    
+    
+        
+    
 
    
     

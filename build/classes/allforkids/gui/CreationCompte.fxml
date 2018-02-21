@@ -43,7 +43,7 @@
       <Label layoutX="461.0" layoutY="420.0" text="Role" />
       <JFXPasswordField fx:id="PassC" layoutX="592.0" layoutY="195.0" />
       <JFXPasswordField fx:id="PassCC" layoutX="592.0" layoutY="292.0" />
-      <JFXButton fx:id="photoC" layoutX="644.0" layoutY="118.0" onAction="#photoo"  text="ajouter" />
+      <JFXButton fx:id="photoC" layoutX="644.0" layoutY="118.0" onAction="#AjouterPhoto" text="ajouter" />
       
    </children>
 </AnchorPane>
