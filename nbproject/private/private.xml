@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ConsulteEvenmentController.java</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AddEtablissment.fxml</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ModifierEtablissement.fxml</file>
@@ -23,6 +24,10 @@
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovoiturageViewController.java</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/DétailEtablissement.fxml</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Salmen.java</file>
+=======
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AddEtablissmentController.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/slim.java</file>
+>>>>>>> b7454ecc462bcacdce3dafa3d05bb01ff8740d65
         </group>
     </open-files>
 </project-private>
