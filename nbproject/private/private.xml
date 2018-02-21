@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeController.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EtablismentController.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Salmen.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AllForKids.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/slim.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EvenementController.java</file>
+=======
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Kordoghli.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Transportrejoindr.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovoiturageViewController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceTransportrejoindr.java</file>
+>>>>>>> 11216bd413e9ebebbbd681e381fadac0c2685a4c
         </group>
     </open-files>
 </project-private>
