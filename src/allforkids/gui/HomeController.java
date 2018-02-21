@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
  */
 
 public class HomeController implements Initializable {
-        
+
     @FXML
     private JFXDrawer drawer;
     @FXML

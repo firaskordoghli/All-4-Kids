@@ -174,8 +174,10 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "id_evenement=" + id_evenement + ", nom=" + nom + ", lieu=" + lieu + ", date=" + date + ", type=" + type + ", nbr_participation=" + nbr_participation + ", etat=" + etat + ", id_user=" + id_user + '}';
+        return "Evenement{" + "id_evenement=" + id_evenement + ", nom=" + nom + ", lieu=" + lieu + ", date=" + date + ", type=" + type + ", nbr_participation=" + nbr_participation + ", etat=" + etat + ", id_user=" + id_user + ", photo=" + photo + ", latitude=" + latitude + ", longitude=" + longitude + '}';
     }
+
+   
 
     
     
