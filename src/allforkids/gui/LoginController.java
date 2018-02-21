@@ -149,7 +149,11 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
     }
-<<<<<<< HEAD
+
+    @FXML
+    private void faceb(ActionEvent event) {
+    }
+
 }
 
    /* private static void face(String email, String password)  {
