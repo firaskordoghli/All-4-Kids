@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -84,16 +85,16 @@ public class AcceuilController implements Initializable {
                     Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-    public void switchToTransport(MouseEvent event) {
-                try {
-                    paneForum.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage driverStage = new Stage();
-                    driverStage.setScene(scene);
-                    driverStage.show();
-                } catch (IOException ex) {
-                    Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+
+    @FXML
+    public void switchToTransport(MouseEvent event) throws IOException {
+            
+                Parent covViewOarent = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+            
+        }
 }
