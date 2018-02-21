@@ -36,7 +36,11 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -122,8 +126,15 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
          
          Evenement e =new Evenement(tfNom.getText()
                  ,tflieu.getText(),date,tftype.getValue()
-            ,Integer.parseInt(tfnb.getText()),false,6,imgg,altud,longe);
+            ,Integer.parseInt(tfnb.getText()),false,Session.getIdThisUser(),imgg,altud,longe);
           eService.insrerEvenement(e);
+          
+          Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
         }
     }
 

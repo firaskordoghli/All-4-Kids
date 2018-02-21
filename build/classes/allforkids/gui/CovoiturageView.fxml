@@ -68,7 +68,21 @@
             </Tab>
             <Tab text="Historique">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableTransport1" onMouseClicked="#showDetail" prefHeight="364.0" prefWidth="595.0">
+                           <columns>
+                              <TableColumn fx:id="depart1" prefWidth="81.0" text="Depart" />
+                              <TableColumn fx:id="arrivé1" prefWidth="77.33334350585938" text="Arrivée" />
+                              <TableColumn fx:id="place1" prefWidth="118.0" text="Place dispo" />
+                              <TableColumn prefWidth="101.0">
+                                 <graphic>
+                                    <Button fx:id="load1" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="refresh" />
+                                 </graphic>
+                              </TableColumn>
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
               </content>
             </Tab>
          </tabs>
