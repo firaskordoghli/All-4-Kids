@@ -51,8 +51,7 @@
                   </Label>
                   <Label fx:id="MailC" layoutX="101.0" layoutY="98.0" />
                   <Label fx:id="PassC" layoutX="101.0" layoutY="158.0" />
-                  <Label fx:id="test" layoutX="109.0" layoutY="301.0" text="Label" />
-                  <JFXButton fx:id="facebook" layoutX="62.0" layoutY="231.0" onAction="#faceb" prefHeight="25.0" prefWidth="124.0" text="facebook" />
+                  <Hyperlink fx:id="facebk" layoutX="72.0" layoutY="232.0" onAction="#facebk" prefHeight="23.0" prefWidth="105.0" text="facebook" />
                </children>
             </AnchorPane>
          </children>
