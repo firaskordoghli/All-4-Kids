@@ -63,7 +63,8 @@ public class HomeController implements Initializable {
             AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
             AnchorPane transportPane = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
             AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("AddEtablissment.fxml"));
+            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
+            AnchorPane profilPane = FXMLLoader.load(getClass().getResource("Profil.fxml"));
 
             setNode(acceuil);
             drawer.setSidePane(sidePane);
@@ -88,6 +89,10 @@ public class HomeController implements Initializable {
                             case "divertissementMeni":
                                 drawer.close();                                
                                 setNode(evenmentPane);
+                                break;
+                                case "profilMenu":
+                                drawer.close();                                
+                                setNode(profilPane);
                                 break;
                         }
                     });

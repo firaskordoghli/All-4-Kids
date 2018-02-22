@@ -73,11 +73,19 @@ public class CovFormulaireController implements Initializable {
     }    
     
     @FXML
-    public void addCov (ActionEvent event){
+    public void addCov (ActionEvent event) throws IOException{
     ServiceCovoiturage cService = new ServiceCovoiturage();
     Transport t = new Transport(Region.getText(),ville.getText(),depart.getText(),arrivé.getText(),
             description.getText(),telephone.getText(),placeDispo.getText(),fraix.getText());
     cService.insrerCov(t);
+    
+    Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+                
     }
     
     

@@ -10,31 +10,98 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.EtablismentController">
    <children>
-      <TabPane layoutX="44.0" layoutY="108.0" prefHeight="390.0" prefWidth="653.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="25.0" layoutY="21.0" prefHeight="561.0" prefWidth="1035.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Liste établissements">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane fx:id="detail" layoutX="336.0" prefHeight="323.0" prefWidth="317.0" style="-fx-background-color: #00ccbb;">
+                        <AnchorPane fx:id="detail" layoutX="573.0" layoutY="25.0" prefHeight="350.0" prefWidth="265.0" style="-fx-background-color: #ffffff;">
                            <children>
-                              <Label fx:id="nometablissement" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
-                              <Label fx:id="description" layoutX="14.0" layoutY="151.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
-                              <Label fx:id="type" layoutX="14.0" layoutY="209.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
-                              <Label fx:id="region" layoutX="14.0" layoutY="253.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
-                              <Label fx:id="ville" layoutX="14.0" layoutY="300.0" prefHeight="17.0" prefWidth="99.0" text="Label" />
-                              <ImageView fx:id="imageview1" fitHeight="150.0" fitWidth="200.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imageview1" fitHeight="198.0" fitWidth="264.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+                              <GridPane layoutX="39.0" layoutY="199.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label fx:id="nometablissement" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="description" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="type" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="region" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="ville" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Nom:">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="description" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Type" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Region" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Ville" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
                            </children></AnchorPane>
-                        <TableView fx:id="tableview" onMouseClicked="#consulter" prefHeight="323.0" prefWidth="337.0">
+                        <TableView fx:id="tableview" onMouseClicked="#consulter" prefHeight="426.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn fx:id="nomCol" prefWidth="171.0" text="Nom Etablissement" />
-                            <TableColumn fx:id="typeCol" prefWidth="182.0" text="Type" />
+                            <TableColumn fx:id="nomCol" prefWidth="237.0" text="Nom Etablissement" />
+                            <TableColumn fx:id="typeCol" prefWidth="170.0" text="Type" />
                           </columns>
                         </TableView>
-                        <JFXButton fx:id="ajouter" layoutX="177.0" layoutY="323.0" onAction="#add" prefHeight="39.0" prefWidth="159.0" text="Ajouter" />
+                        <JFXButton fx:id="ajouter" layoutX="629.0" layoutY="387.0" onAction="#add" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: #329932;" text="Ajouter" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="14.0" />
+                           </font></JFXButton>
                      </children>
                   </AnchorPane>
             </content>
@@ -43,24 +110,46 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableview2" onMouseClicked="#consulter2" prefHeight="361.0" prefWidth="336.0">
+                        <TableView fx:id="tableview2" onMouseClicked="#consulter2" prefHeight="426.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn fx:id="nomCol2" prefWidth="163.0" text="Nom Etablissement" />
-                            <TableColumn fx:id="typeCol2" prefWidth="178.0" text="Type" />
+                            <TableColumn fx:id="nomCol2" prefWidth="236.0" text="Nom Etablissement" />
+                            <TableColumn fx:id="typeCol2" prefWidth="183.0" text="Type" />
                           </columns>
                         </TableView>
-                        <AnchorPane fx:id="detail2" layoutX="335.0" prefHeight="361.0" prefWidth="319.0" style="-fx-background-color: #00ccbb;">
+                        <AnchorPane fx:id="detail2" layoutX="576.0" layoutY="25.0" prefHeight="348.0" prefWidth="320.0" style="-fx-background-color: #ffffff;">
                            <children>
-                              <ImageView fx:id="viewimage" fitHeight="151.0" fitWidth="148.0" layoutX="172.0" pickOnBounds="true" preserveRatio="true" />
-                              <JFXButton fx:id="modifier" layoutX="253.0" layoutY="314.0" onAction="#modifer" text="Modifier" />
-                              <JFXButton fx:id="delete" layoutX="184.0" layoutY="314.0" onAction="#DeleteEtablissement" text="Supprimer" />
-                              <JFXTextField fx:id="nom" layoutX="14.0" layoutY="23.0" />
-                              <JFXTextField fx:id="description2" layoutX="14.0" layoutY="262.0" />
-                              <JFXComboBox fx:id="type2" layoutX="14.0" layoutY="83.0" prefHeight="25.0" prefWidth="121.0" />
-                              <JFXComboBox fx:id="region2" layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="127.0" />
-                              <JFXComboBox fx:id="ville2" layoutX="14.0" layoutY="213.0" prefHeight="25.0" prefWidth="124.0" />
-                              <JFXButton fx:id="boutonimage" layoutX="197.0" layoutY="168.0" onAction="#updateimage" text="Changer image" />
+                              <ImageView fx:id="viewimage" fitHeight="197.0" fitWidth="280.0" layoutX="15.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                              <GridPane layoutX="10.0" layoutY="228.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="144.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="0.0" prefWidth="10.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="146.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <JFXTextField fx:id="nom" prefHeight="25.0" prefWidth="168.0" />
+                                    <JFXComboBox fx:id="type2" prefHeight="25.0" prefWidth="186.0" GridPane.rowIndex="1" />
+                                    <JFXComboBox fx:id="region2" prefHeight="25.0" prefWidth="189.0" GridPane.rowIndex="2" />
+                                    <JFXComboBox fx:id="ville2" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="2" />
+                                    <JFXTextField fx:id="description2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <JFXButton fx:id="boutonimage" onAction="#updateimage" text="Changer image" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
                            </children></AnchorPane>
+                        <JFXButton fx:id="delete" layoutX="635.0" layoutY="389.0" onAction="#DeleteEtablissement" style="-fx-background-color: #c4232b;" text="Supprimer" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="modifier" layoutX="756.0" layoutY="389.0" onAction="#modifer" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #ffc425;" text="Modifier" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="14.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
             </content>

@@ -7,6 +7,7 @@ package allforkids.gui;
 
 import allforkids.entites.Evenement;
 import allforkids.entites.Participevenement;
+import allforkids.entites.Session;
 import allforkids.service.ServiceEvenement;
 import allforkids.service.ServiceParticipevenement;
 import allforkids.util.Validation;
@@ -188,7 +189,7 @@ public class EvenementController implements Initializable {
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
         mtype.setItems(ob);
-        List<Evenement> me = s.selectMesEvenement(6);
+        List<Evenement> me = s.selectMesEvenement(Session.getIdThisUser());
         for (Evenement ev : me) {
             try {
 
@@ -234,7 +235,7 @@ public class EvenementController implements Initializable {
     private void inscription(ActionEvent ev) {
         String l = listevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
-        Participevenement p = new Participevenement(event.getId_evenement(), 6, 6);
+        Participevenement p = new Participevenement(event.getId_evenement(), Session.getIdThisUser(), 6);
         ServiceParticipevenement sp = new ServiceParticipevenement();
         sp.insrerParticipevenement(p);
 
@@ -305,7 +306,7 @@ public class EvenementController implements Initializable {
             }
             Evenement e = new Evenement(mnom.getText(), mlieu.getText(), date,
                     mtype.getValue(), Integer.parseInt(mnb.getText()),
-                    event.isEtat(), 6, imgg, altud, longe);
+                    event.isEtat(), Session.getIdThisUser(), imgg, altud, longe);
             s.updateEvenement(e, id);
         }
     }
@@ -415,6 +416,16 @@ public class EvenementController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    @FXML
+    private void add(MouseEvent even) throws IOException {
+        Stage stage = new Stage();
+        stage.setTitle("Ajouter Evenement");
+        Parent root = FXMLLoader.load(getClass().getResource("AjoutEvenment.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
