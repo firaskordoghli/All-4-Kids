@@ -79,8 +79,8 @@ public class ServiceTransportrejoindr {
     public List<Transport> selectTransportrejoindhist( int id ) {
         List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM transportrejoindr tr ,trasnsport t where "
-                    + "t.id_trasnsport = tr.id_trasnsport AND tr.id_user = ? ";
+            String req = "SELECT * FROM transportrejoindr tr ,trasnsport t "
+                    + "where t.id_transport = tr.id_transport AND tr.id_user =? ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              ste.setInt(1, id);
             ResultSet result = ste.executeQuery();
