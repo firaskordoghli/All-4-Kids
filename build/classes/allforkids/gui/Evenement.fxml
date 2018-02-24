@@ -24,7 +24,7 @@
                <content>
                   <AnchorPane prefHeight="470.0" prefWidth="1165.0">
                      <children>
-                        <ListView fx:id="listevent" layoutX="14.0" layoutY="8.0" onMouseClicked="#afficherImage" prefHeight="471.0" prefWidth="539.0" />
+                        <ListView fx:id="listevent" layoutX="23.0" layoutY="11.0" onMouseClicked="#afficherImage" prefHeight="484.0" prefWidth="520.0" />
                         <AnchorPane fx:id="detail" layoutX="605.0" layoutY="70.0" prefHeight="404.0" prefWidth="223.0">
                            <children>
                               <Label fx:id="titre" alignment="CENTER" layoutX="2.0" prefHeight="50.0" prefWidth="232.0" style="-fx-background-color: #009ed8; -fx-background-radius: 5;" text="Label" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
@@ -181,7 +181,34 @@
             <Tab fx:id="inscrit" text="Evenement Inscrit">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                    </AnchorPane>
+                     <children>
+                        <ListView fx:id="listevent1" onMouseClicked="#afficherDetail" prefHeight="471.0" prefWidth="539.0" />
+                        <AnchorPane fx:id="detail1" layoutX="653.0" prefHeight="477.0" prefWidth="233.0">
+                           <children>
+                              <Label fx:id="titre1" alignment="CENTER" layoutX="2.0" prefHeight="50.0" prefWidth="232.0" style="-fx-background-color: #009ed8; -fx-background-radius: 5;" text="Label" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="img1" fitHeight="184.0" fitWidth="231.0" layoutX="2.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="description1" layoutX="2.0" layoutY="255.0" prefHeight="153.0" prefWidth="230.0" style="-fx-background-color: #ffffff;" text="description" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="inscript1" layoutX="2.0" layoutY="418.0" onAction="#dinscription" prefHeight="45.0" prefWidth="113.0" style="-fx-background-color: #e70707;" text="Anuller" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton layoutX="118.0" layoutY="418.0" onAction="#afficherMap" prefHeight="45.0" prefWidth="113.0" style="-fx-background-color: #ffc425;" text="MapView" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
