@@ -12,7 +12,31 @@
 
 <AnchorPane id="AnchorPane" fx:id="addetablissement" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.AddEtablissmentController">
    <children>
-      <Pane layoutX="195.0" layoutY="8.0" prefHeight="430.0" prefWidth="255.0" style="-fx-background-color: #ffffff;" />
+      <Pane layoutX="195.0" layoutY="8.0" prefHeight="443.0" prefWidth="255.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <HBox layoutX="12.0" layoutY="373.0" prefHeight="34.0" prefWidth="231.0">
+               <children>
+                  <JFXButton fx:id="enregistrer" onAction="#addetablissement" prefHeight="34.0" prefWidth="140.0" style="-fx-background-color: #329932;" text="Enregistrer" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="annuler" layoutX="10.0" layoutY="10.0" onAction="#annulerajout" prefHeight="34.0" prefWidth="147.0" style="-fx-background-color: #ffc425;" text="Annuler" textFill="WHITE">
+                     <font>
+                        <Font name="DK Cool Crayon" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+            <JFXButton fx:id="buttonimage" layoutX="22.0" layoutY="320.0" onAction="#ajouterimage" prefHeight="34.0" prefWidth="211.0" style="-fx-background-color: #32b1df;" text="Ajouter photo" textFill="WHITE">
+               <font>
+                  <Font name="DK Cool Crayon" size="14.0" />
+               </font>
+            </JFXButton>
+         </children></Pane>
       <VBox layoutX="205.0" layoutY="14.0" prefHeight="296.0" prefWidth="231.0" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="204.0" AnchorPane.topAnchor="14.0">
          <children>
             <JFXTextField fx:id="nom" labelFloat="true" prefHeight="25.0" prefWidth="502.0" promptText="Nom établissement">
@@ -42,26 +66,5 @@
             </JFXTextField>
          </children>
       </VBox>
-      <HBox layoutX="211.0" layoutY="383.0" prefHeight="34.0" prefWidth="231.0">
-         <children>
-            <JFXButton fx:id="enregistrer" onAction="#addetablissement" prefHeight="34.0" prefWidth="140.0" style="-fx-background-color: #329932;" text="Enregistrer" textFill="WHITE">
-               <font>
-                  <Font name="DK Cool Crayon" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="annuler" layoutX="10.0" layoutY="10.0" onAction="#annulerajout" prefHeight="34.0" prefWidth="147.0" style="-fx-background-color: #ffc425;" text="Annuler" textFill="WHITE">
-               <font>
-                  <Font name="DK Cool Crayon" size="14.0" />
-               </font>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets left="10.0" right="10.0" />
-         </padding>
-      </HBox>
-      <JFXButton fx:id="buttonimage" layoutX="221.0" layoutY="345.0" onAction="#ajouterimage" prefHeight="34.0" prefWidth="211.0" style="-fx-background-color: #32b1df;" text="Ajouter photo" textFill="WHITE">
-         <font>
-            <Font name="DK Cool Crayon" size="14.0" />
-         </font></JFXButton>
    </children>
 </AnchorPane>

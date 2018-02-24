@@ -94,8 +94,8 @@
                            </children></AnchorPane>
                         <TableView fx:id="tableview" onMouseClicked="#consulter" prefHeight="426.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn fx:id="nomCol" prefWidth="237.0" text="Nom Etablissement" />
-                            <TableColumn fx:id="typeCol" prefWidth="170.0" text="Type" />
+                            <TableColumn fx:id="nomCol" prefWidth="286.0" text="Nom Etablissement" />
+                            <TableColumn fx:id="typeCol" prefWidth="277.0" text="Type" />
                           </columns>
                         </TableView>
                         <JFXButton fx:id="ajouter" layoutX="629.0" layoutY="387.0" onAction="#add" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: #329932;" text="Ajouter" textFill="WHITE">
@@ -112,8 +112,9 @@
                      <children>
                         <TableView fx:id="tableview2" onMouseClicked="#consulter2" prefHeight="426.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn fx:id="nomCol2" prefWidth="236.0" text="Nom Etablissement" />
-                            <TableColumn fx:id="typeCol2" prefWidth="183.0" text="Type" />
+                            <TableColumn fx:id="nomCol2" prefWidth="194.99996948242188" text="Nom Etablissement" />
+                            <TableColumn fx:id="typeCol2" minWidth="0.0" prefWidth="186.0" text="Type" />
+                              <TableColumn fx:id="etatCol2" minWidth="0.0" prefWidth="182.0" text="Etat" />
                           </columns>
                         </TableView>
                         <AnchorPane fx:id="detail2" layoutX="576.0" layoutY="25.0" prefHeight="348.0" prefWidth="320.0" style="-fx-background-color: #ffffff;">

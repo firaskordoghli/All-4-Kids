@@ -7,7 +7,6 @@ package allforkids.gui;
 
 import allforkids.entites.Etablissement;
 import allforkids.entites.Session;
-import static allforkids.gui.ListEtablissementController.nb;
 import allforkids.service.ServiceEtablissement;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -19,6 +18,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,6 +101,8 @@ public class EtablismentController implements Initializable {
     private static String src="" ;
     @FXML
     private ImageView imageview1;
+    @FXML
+    private TableColumn<Etablissement, String> etatCol2;
     /**
      * Initializes the controller class.
      */
@@ -111,17 +114,21 @@ public class EtablismentController implements Initializable {
         try {
             tableview.setItems(sr1.selectEtablissement1());
 
-        } catch (SQLException ex) {
-            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
         nomCol2.setCellValueFactory(new PropertyValueFactory<>("nom"));
         typeCol2.setCellValueFactory(new PropertyValueFactory<>("type"));
+        etatCol2.setCellValueFactory(new PropertyValueFactory<>("verification"));
+         
+      
         ServiceEtablissement sr2 = new ServiceEtablissement();
+       
         try {
             tableview2.setItems(sr2.selectEtablissementById(32));
 
-        } catch (SQLException ex) {
-            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
         //Session.getIdThisUser();
         detail.setVisible(false);
@@ -181,8 +188,6 @@ public class EtablismentController implements Initializable {
         Etablissement e = sr1.GetEtablissemebtById(tableview2.getSelectionModel().getSelectedItem().getId());
         System.out.println(e);
         nom.setText(e.getNom());
-//        System.out.println(e.getType());
-//        System.out.println(e.getRegion());
         type2.setValue(e.getType());
         region2.setValue(e.getRegion());
         ville2.setValue(e.getVille());
@@ -190,10 +195,9 @@ public class EtablismentController implements Initializable {
         Image img;
         try {
             img = new Image(new FileInputStream(e.getImage()));
-
             viewimage.setImage(img);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(DétailEtablissementController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println("erreur");    
         }
 
     }
@@ -212,7 +216,8 @@ public class EtablismentController implements Initializable {
                 region2.getValue(),
                 ville2.getValue(),
                 description2.getText(),
-               src );
+               src
+                );
         sr1.updateEtablissement(et, id);
         nom.setText("");
         description2.setText("");
