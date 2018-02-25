@@ -120,8 +120,10 @@ public class LoginController implements Initializable {
              
             }else {ErrPass.setText("verrifer votre passe");}
 
-        }else{ErrMail.setText("verrifier votre mail");}
-    ErrMail.setText(u.toString());
+        }else{//ErrMail.setText("verrifier votre mail");}
+   // ErrMail.setText(u.toString());
+            System.out.println("");
+    }
     }
         
     
