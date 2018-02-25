@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -134,7 +135,6 @@
                                           <Font name="DK Cool Crayon" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="mtemp" prefHeight="31.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <Label prefHeight="21.0" prefWidth="42.0" text="Type:" GridPane.columnIndex="2">
                                        <font>
                                           <Font name="DK Cool Crayon" size="14.0" />
@@ -167,6 +167,7 @@
                                     <Label fx:id="nlieu" prefHeight="21.0" prefWidth="111.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label fx:id="nnb" prefHeight="21.0" prefWidth="97.0" textFill="RED" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                                     <Label fx:id="ndate" prefHeight="21.0" prefWidth="105.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <JFXTimePicker fx:id="temp" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                               <JFXButton fx:id="mimage1" layoutX="222.0" layoutY="457.0" onAction="#ModifierLieu" prefHeight="43.0" prefWidth="108.0" style="-fx-background-color: #32b1df;" text="Modifier lieu" textFill="WHITE">

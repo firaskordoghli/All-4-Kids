@@ -99,8 +99,9 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     private Label Imegee;
     public String filePath ;
     private static final int BUFFER_SIZE = 4096;
-    @FXML
     private JFXTimePicker temp;
+    @FXML
+    private JFXTimePicker asbaa;
     /**
      * Initializes the controller class.
      */
@@ -131,9 +132,9 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         LocalDate d = tfDate.getValue();
          Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
          
-         Evenement e =new Evenement(tfNom.getText()
+          Evenement e =new Evenement(tfNom.getText()
                  ,tflieu.getText(),date,tftype.getValue()
-            ,Integer.parseInt(tfnb.getText()),false,8,imgg,altud,longe);
+            ,Integer.parseInt(tfnb.getText()),false,8,imgg,altud,longe,java.sql.Time.valueOf(temp.getValue()));
           eService.insrerEvenement(e);
           
           Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));

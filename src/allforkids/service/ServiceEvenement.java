@@ -25,7 +25,7 @@ public class ServiceEvenement {
         try {
 
             java.sql.Date sqldate = new Date(e.getDate().getTime());
-            String req = "INSERT INTO evenement VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO evenement VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, e.getId_evenement());
             ste.setString(2, e.getNom());
@@ -38,6 +38,7 @@ public class ServiceEvenement {
             ste.setString(9, e.getPhoto());
             ste.setDouble(10, e.getLatitude());
             ste.setDouble(11, e.getLongitude());
+            ste.setTime(12,e.getTemp());
             ste.executeUpdate();
         } catch (SQLException ex) {
             log.log(Level.INFO, "{0}Erorr ServiceEvenement.insrerEvenement : ", ex.getMessage());
@@ -48,7 +49,7 @@ public class ServiceEvenement {
     public void updateEvenement(Evenement e, int id_evenement) {
         try {
             java.sql.Date sqldate = new Date(e.getDate().getTime());
-            String req = "UPDATE evenement SET  nom= ? ,lieu=?,date = ? ,type=? , nbr_participation=?,etat=?,photo=?,latitude=?,longitude=? WHERE id_evenement = ?";
+            String req = "UPDATE evenement SET  nom= ? ,lieu=?,date = ? ,type=? , nbr_participation=?,etat=?,photo=?,latitude=?,longitude=?, temp = ? WHERE id_evenement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, e.getNom());
             ste.setString(2, e.getLieu());
@@ -59,7 +60,8 @@ public class ServiceEvenement {
             ste.setString(7, e.getPhoto());
             ste.setDouble(8, e.getLatitude());
             ste.setDouble(9, e.getLongitude());
-            ste.setInt(10, id_evenement);
+            ste.setTime(10, e.getTemp());
+            ste.setInt(11, id_evenement);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,7 +99,8 @@ public class ServiceEvenement {
                                 result.getInt("id_user"),
                                 result.getString("photo"),
                                 result.getDouble("latitude"),
-                                result.getDouble("longitude")
+                                result.getDouble("longitude"),
+                                result.getTime("temp")
                         )
                 );
             }
@@ -145,6 +148,7 @@ public class ServiceEvenement {
                 e.setPhoto(result.getString("photo"));
                 e.setLatitude( result.getDouble("latitude"));   
                 e.setLongitude(result.getDouble("longitude"));
+                e.setTemp(result.getTime("temp"));
 
             }
             return e;
@@ -174,7 +178,8 @@ public class ServiceEvenement {
                                 result.getInt("id_user"),
                                 result.getString("photo"),
                                 result.getDouble("latitude"),
-                                result.getDouble("longitude")
+                                result.getDouble("longitude"),
+                                result.getTime("temp")
                         )
                 );
             }

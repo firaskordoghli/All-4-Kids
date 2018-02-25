@@ -14,6 +14,7 @@ import allforkids.util.Validation;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTimePicker;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
@@ -48,10 +49,12 @@ import javafx.scene.text.Font;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -127,8 +130,6 @@ public class EvenementController implements Initializable {
     @FXML
     private AnchorPane modifay;
     @FXML
-    private TextField mtemp;
-    @FXML
     private TextField mdescription;
 
     @FXML
@@ -163,6 +164,8 @@ public class EvenementController implements Initializable {
     private ServiceParticipevenement sp = new ServiceParticipevenement();
     private String filePath;
     private static final int BUFFER_SIZE = 4096;
+    @FXML
+    private JFXTimePicker temp;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          
@@ -352,12 +355,16 @@ public class EvenementController implements Initializable {
             int id = event.getId_evenement();
             LocalDate d = mdate.getValue();
             Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            LocalTime time = temp.getValue();
+           
+            Time t = new Time(id, id, id) ;
+      
             if (imgg == "") {
                 imgg = event.getPhoto();
             }
             Evenement e = new Evenement(mnom.getText(), mlieu.getText(), date,
                     mtype.getValue(), Integer.parseInt(mnb.getText()),
-                    event.isEtat(), 8, imgg, altud, longe);
+                    event.isEtat(), 8, imgg, altud, longe,t);
             s.updateEvenement(e, id);
             
             modifay.setVisible(false);

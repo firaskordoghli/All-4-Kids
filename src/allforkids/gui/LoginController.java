@@ -66,12 +66,12 @@ public class LoginController implements Initializable {
     private Label MailC;
     @FXML
     private Label PassC;
-    @FXML
-    private static Label test;
     public static String maill ;
     public static String passl ;
     @FXML
     private Hyperlink facebk;
+    @FXML
+    private JFXButton aaa;
 
     /**
      * Initializes the controller class.
