@@ -118,7 +118,7 @@ public class EtablismentController implements Initializable {
         typeCol2.setCellValueFactory(new PropertyValueFactory<>("type"));
         ServiceEtablissement sr2 = new ServiceEtablissement();
         try {
-            tableview2.setItems(sr2.selectEtablissementById(32));
+            tableview2.setItems(sr2.selectEtablissementById(Session.getIdThisUser()));
 
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
