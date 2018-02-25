@@ -193,7 +193,7 @@ public class EvenementController implements Initializable {
                   Label l = new Label(ev.getNom());
                 l.setFont(Font.font("DK Cool Crayon", 30));
                 ImageView i = new ImageView();
-                  i.setImage(new Image("ftp://slim:07471917@127.0.0.1/" + ev.getPhoto()));
+                  i.setImage(new Image("ftp://slim:07471917@"+Session.getIp()+"/" + ev.getPhoto()));
                 i.setFitHeight(90);
                 i.setFitWidth(90);
 
@@ -228,7 +228,7 @@ public class EvenementController implements Initializable {
                 Label l = new Label(ev.getNom());
                 l.setFont(Font.font("DK Cool Crayon", 30));
                 ImageView i = new ImageView();
-                  i.setImage(new Image("ftp://slim:07471917@127.0.0.1/" + ev.getPhoto()));
+                  i.setImage(new Image("ftp://slim:07471917@"+Session.getIp()+"/" + ev.getPhoto()));
                 i.setFitHeight(90);
                 i.setFitWidth(90);
 
@@ -251,7 +251,7 @@ public class EvenementController implements Initializable {
                 Label l = new Label(ev.getNom());
                 l.setFont(Font.font("DK Cool Crayon", 30));
                 ImageView i = new ImageView();
-                  i.setImage(new Image("ftp://slim:07471917@127.0.0.1/" + ev.getPhoto()));
+                  i.setImage(new Image("ftp://slim:07471917@"+Session.getIp()+"/" + ev.getPhoto()));
                 i.setFitHeight(90);
                 i.setFitWidth(90);
 
@@ -290,9 +290,9 @@ public class EvenementController implements Initializable {
         event = s.getIdByName(l);
         titre.setText(l);
         description.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
-        Image image =  new Image("ftp://slim:07471917@127.0.0.1/" + event.getPhoto());
+        Image image =  new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
         img.setImage(image);
-
+   
     }
 
     @FXML
@@ -396,7 +396,7 @@ public class EvenementController implements Initializable {
         if (event.isEtat() == false) {
             metat.setText("not full");
         }
-        Image image =  new Image("ftp://slim:07471917@127.0.0.1/" + event.getPhoto());
+        Image image =  new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
 
         mnb.setText(String.valueOf(event.getNbr_participation()));
         mimg.setImage(image);
@@ -491,7 +491,7 @@ public class EvenementController implements Initializable {
         event = s.getIdByName(l);
         titre1.setText(l);
         description1.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
-        Image image1 = new Image("ftp://slim:07471917@127.0.0.1/" + event.getPhoto());
+        Image image1 = new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
         img1.setImage(image1);
     }
 
@@ -512,7 +512,7 @@ public class EvenementController implements Initializable {
             System.out.println(filePath);
            
             String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = "127.0.0.1";
+            String host = Session.getIp();
             String user = "slim";
             String pass = "07471917";
     
@@ -548,7 +548,7 @@ public class EvenementController implements Initializable {
             System.out.println(filePath);
            
             String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = "127.0.0.1";
+            String host = Session.getIp();
             String user = "slim";
             String pass = "07471917";
     

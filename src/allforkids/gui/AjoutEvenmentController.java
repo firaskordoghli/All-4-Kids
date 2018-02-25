@@ -133,12 +133,12 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
             ,Integer.parseInt(tfnb.getText()),false,8,imgg,altud,longe);
           eService.insrerEvenement(e);
           
-         /* Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
+          Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
                 Scene covViewScene = new Scene(covViewOarent);
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 
                 window.setScene(covViewScene);
-                window.show();*/
+                window.show();
         }
     }
 
@@ -264,13 +264,13 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
 
     }
     public void saveimg(Image image , String name ,String p, File file)
- {        //   File file = new File("src/icons/" + name + ".png");
+ {        
        if (p.indexOf(".png") != -1) {
           filePath = file.getPath();
             System.out.println(filePath);
            
             String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = "127.0.0.1";
+            String host = Session.getIp();
             String user = "slim";
             String pass = "07471917";
     
@@ -306,7 +306,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
             System.out.println(filePath);
            
             String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = "127.0.0.1";
+            String host = Session.getIp();
             String user = "slim";
             String pass = "07471917";
     
