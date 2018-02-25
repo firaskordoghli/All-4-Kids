@@ -10,6 +10,7 @@ import allforkids.entites.Session;
 import allforkids.service.ServiceEvenement;
 import allforkids.util.Validation;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTimePicker;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
@@ -22,8 +23,11 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
+import java.net.URLConnection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -47,6 +51,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
@@ -85,8 +90,6 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     @FXML
     private AnchorPane maps;
     @FXML
-    private TextField tftemp;
-    @FXML
     private GoogleMapView mapView;
     GoogleMap map;
    private static Double longe  ;
@@ -94,7 +97,10 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
    private static String imgg="" ;
     @FXML
     private Label Imegee;
-
+    public String filePath ;
+    private static final int BUFFER_SIZE = 4096;
+    @FXML
+    private JFXTimePicker temp;
     /**
      * Initializes the controller class.
      */
@@ -112,6 +118,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         tftype.setItems(ob);
 
         mapView.addMapInializedListener(this);
+        
     }
 
     @FXML
@@ -126,7 +133,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
          
          Evenement e =new Evenement(tfNom.getText()
                  ,tflieu.getText(),date,tftype.getValue()
-            ,Integer.parseInt(tfnb.getText()),false,Session.getIdThisUser(),imgg,altud,longe);
+            ,Integer.parseInt(tfnb.getText()),false,8,imgg,altud,longe);
           eService.insrerEvenement(e);
           
           Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
@@ -150,24 +157,10 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
 
         String name = tfNom.getText();
 
-        save(img, name, p);
+        saveimg(img, name, p,selectedFile);
     }
 
-    public void save(Image image, String name, String p) throws IOException {
-        if (p.indexOf(".png") != -1) {
-            File fileoutput = new File("src/icons/" + name + ".png");
-            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-            ImageIO.write(BI, "png", fileoutput);
-            imgg=  "src/icons/" + name + ".png";
-        } else {
-            File fileoutput = new File("src/icons/" + name + ".jpeg");
-            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-
-            ImageIO.write(BI, "jpeg", fileoutput);
-             imgg=  "src/icons/" + name + ".png";
-        }
-    }
-
+    
     public boolean controleSaisie() throws IOException, SQLException {
         boolean saisie = true;
         ServiceEvenement es = new ServiceEvenement();
@@ -259,5 +252,81 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         });
 
     }
+ public void saveimg(Image image , String name ,String p, File file)
+ {        
+       if (p.indexOf(".png") != -1) {
+          filePath = file.getPath();
+            System.out.println(filePath);
+           
+            String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
+            String host = Session.getIp();
+            String user = "slim";
+            String pass = "07471917";
+    
+            String uploadPath = "/img/" +name+".png";
+            
+            ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
+            System.out.println("Upload URL: " + ftpUrl);
+
+            try {
+                URL url = new URL(ftpUrl);
+                URLConnection conn = url.openConnection();
+                OutputStream outputStream = conn.getOutputStream();
+                FileInputStream inputStream = new FileInputStream(filePath);
+
+                byte[] buffer = new byte[BUFFER_SIZE];
+                int bytesRead = -1;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+
+                inputStream.close();
+                outputStream.close();
+
+                System.out.println("File uploaded");
+                  imgg=  "/img/" + name + ".png";
+               
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+       }else{
+       
+           filePath = file.getPath();
+            System.out.println(filePath);
+           
+            String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
+            String host = Session.getIp();
+            String user = "slim";
+            String pass = "07471917";
+    
+            String uploadPath = "/img/" +name+".jpeg";
+            
+            ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
+            System.out.println("Upload URL: " + ftpUrl);
+
+            try {
+                URL url = new URL(ftpUrl);
+                URLConnection conn = url.openConnection();
+                OutputStream outputStream = conn.getOutputStream();
+                FileInputStream inputStream = new FileInputStream(filePath);
+
+                byte[] buffer = new byte[BUFFER_SIZE];
+                int bytesRead = -1;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+
+                inputStream.close();
+                outputStream.close();
+
+                System.out.println("File uploaded");
+                  imgg=  "/img/" + name + ".jpeg";
+           
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+       }
+ 
+ }
 
 }

@@ -5,6 +5,7 @@
  */
 package allforkids.service;
 
+import allforkids.entites.Evenement;
 import allforkids.entites.Participevenement;
 import allforkids.util.Config;
 import java.sql.PreparedStatement;
@@ -83,5 +84,102 @@ public class ServiceParticipevenement {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    public List<Participevenement> selectParticipevenementByid(int id) {
+          List<Participevenement> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM participevenement where id_user =? ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Participevenement(
+                                result.getInt("id_evenement"),
+                                result.getInt("id_user"),
+                                result.getInt("type")
+                              
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public List<Evenement> selectEvenementByid(int id) {
+          List<Evenement> list = new ArrayList<>();
+        try {
+            String req = "SELECT * From evenement e , participevenement p where p.id_user=? and e.id_evenement=p.id_evenement ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Evenement(
+                                result.getInt("id_evenement"),
+                                result.getString("nom"),
+                                result.getString("lieu"),
+                                result.getDate("date"),
+                                result.getString("type"),
+                                result.getInt("nbr_participation"),
+                                result.getBoolean("etat"),
+                                result.getInt("id_user"),
+                                result.getString("photo"),
+                                result.getDouble("latitude"),
+                                result.getDouble("longitude")
+                              
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+      public Participevenement selectParticipevenementByid2(int id,int id2) {
+          Participevenement e = null ;
+        try {
+            String req = "SELECT * FROM participevenement where id_user =? and id_evenement=? ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ste.setInt(2, id2);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+              
+                       e = new Participevenement(
+                                result.getInt("id_evenement"),
+                                result.getInt("id_user"),
+                                result.getInt("type")
+                        );
+                        
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
+    }
+       public int nbparticipent(int id) {
+          int nb = 0 ;
+        try {
+            String req = "SELECT  COUNT(*) as nb FROM participevenement where  id_evenement=? ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+              
+                    
+                         nb = result.getInt("nb");
+                              
+                        
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nb;
     }
 }
