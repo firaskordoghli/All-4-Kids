@@ -72,11 +72,15 @@ public class AdminController implements Initializable {
             System.out.println(ex);
         }
         detail.setVisible(false);
+        valider.setVisible(false);
+        supprimer.setVisible(false);
     }    
 
     @FXML
     private void consulter(MouseEvent event) {
          detail.setVisible(true);
+           valider.setVisible(true);
+           supprimer.setVisible(true);
         ServiceEtablissement sr1 = new ServiceEtablissement();
 
         Etablissement e = sr1.GetEtablissemebtById(tableview.getSelectionModel().getSelectedItem().getId());
@@ -86,6 +90,9 @@ public class AdminController implements Initializable {
         region.setText(e.getRegion());
         ville.setText(e.getVille());
         Image img;
+        if(e.getVerification().equals("Valide")){
+            valider.setVisible(false);
+        }
         try {
             img = new Image(new FileInputStream(e.getImage()));
             imageview1.setImage(img);
@@ -100,6 +107,7 @@ public class AdminController implements Initializable {
         Etablissement e = sr1.GetEtablissemebtById(tableview.getSelectionModel().getSelectedItem().getId());
         int id = e.getId();
         sr1.ValiderEtablissement(e, id);
+        valider.setVisible(false);
     }
 
     @FXML

@@ -155,6 +155,30 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Liste des éleves par établissement">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane fx:id="detail3" layoutX="573.0" layoutY="25.0" prefHeight="350.0" prefWidth="265.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <TableView fx:id="tableview4" onMouseClicked="#consulter4" prefHeight="401.0" prefWidth="271.0">
+                                <columns>
+                                  <TableColumn fx:id="nomeleve" prefWidth="137.0" text="Nom" />
+                                  <TableColumn fx:id="prenomeleve" prefWidth="133.0" text="Prenom" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <TableView fx:id="tableview3" onMouseClicked="#consulter3" prefHeight="426.0" prefWidth="564.0">
+                           <columns>
+                              <TableColumn fx:id="nomCol3" prefWidth="286.0" text="Nom Etablissement" />
+                              <TableColumn fx:id="typeCol3" prefWidth="277.0" text="Type" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
