@@ -58,4 +58,29 @@ public class ServiceRejoindre {
         return null;
 
     }
+    public Rejoindre GetIdUserById(int id) {
+        try {
+            String req = "SELECT * FROM rejoindre where id_etablissement=? ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ste.setInt(1, id);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+                Rejoindre r = new Rejoindre(
+                        result.getInt("id_etablissement"),
+                        result.getInt("id_user"),
+                        result.getString("verification")
+                );
+                return r;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return null;
+
+    }
 }

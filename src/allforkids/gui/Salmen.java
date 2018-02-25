@@ -24,7 +24,7 @@ public class Salmen extends Application {
         stage.setTitle("Gestion établissements");
         Parent root = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
 
-        Scene scene = new Scene(root); 
+        Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.show();

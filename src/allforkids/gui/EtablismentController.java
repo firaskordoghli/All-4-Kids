@@ -6,8 +6,12 @@
 package allforkids.gui;
 
 import allforkids.entites.Etablissement;
+import allforkids.entites.Rejoindre;
 import allforkids.entites.Session;
+import allforkids.entites.User;
 import allforkids.service.ServiceEtablissement;
+import allforkids.service.ServiceRejoindre;
+import allforkids.service.ServiceUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -103,11 +107,26 @@ public class EtablismentController implements Initializable {
     private ImageView imageview1;
     @FXML
     private TableColumn<Etablissement, String> etatCol2;
+    @FXML
+    private AnchorPane detail3;
+    @FXML
+    private TableView<User> tableview4;
+    @FXML
+    private TableColumn<User, String> nomeleve;
+    @FXML
+    private TableColumn<User, String> prenomeleve;
+    @FXML
+    private TableView<Etablissement> tableview3;
+    @FXML
+    private TableColumn<Etablissement, String> nomCol3;
+    @FXML
+    private TableColumn<Etablissement, String> typeCol3;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ////////////////////liste etablissement
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         ServiceEtablissement sr1 = new ServiceEtablissement();
@@ -117,6 +136,7 @@ public class EtablismentController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        //////////////////////Ma liste etablissements
         nomCol2.setCellValueFactory(new PropertyValueFactory<>("nom"));
         typeCol2.setCellValueFactory(new PropertyValueFactory<>("type"));
         etatCol2.setCellValueFactory(new PropertyValueFactory<>("verification"));
@@ -130,9 +150,24 @@ public class EtablismentController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        /////////////////////liste eleve par etablissement
+        nomCol3.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        typeCol3.setCellValueFactory(new PropertyValueFactory<>("type"));
+         
+      
+        ServiceEtablissement sr3 = new ServiceEtablissement();
+       
+        try {
+            tableview3.setItems(sr3.selectEtablissementById(32));
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
         //Session.getIdThisUser();
         detail.setVisible(false);
         detail2.setVisible(false);
+        detail3.setVisible(false);
+        
     }
 
     @FXML
@@ -219,11 +254,11 @@ public class EtablismentController implements Initializable {
                src
                 );
         sr1.updateEtablissement(et, id);
-        nom.setText("");
+        /*nom.setText("");
         description2.setText("");
         type2.setValue("");
         region2.setValue("");
-        ville2.setValue("");
+        ville2.setValue("");*/
         
     }
 
@@ -276,6 +311,39 @@ public class EtablismentController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML
+    private void consulter3(MouseEvent event) {
+       /* detail3.setVisible(true);
+        int a = tableview3.getSelectionModel().getSelectedItem().getId();
+        ServiceRejoindre sr1 = new ServiceRejoindre();
+        ServiceUser su = new ServiceUser();
+        Rejoindre r = sr1.GetIdUserById(a);
+         //User u = su.GetUserById(r.getId_user());
+        // u.getNom();
+         //u.getPrenom();
+        
+        
+        
+        
+        nomeleve.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenomeleve.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        
+        try {
+            tableview4.setItems(su.GetUserById2(r.getId_user()));
+           // tableview3.setItems(sr3.selectEtablissementById(32));
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        */
+    }
+
+    @FXML
+    private void consulter4(MouseEvent event) {
+    }
+
+    
 
 
 }
