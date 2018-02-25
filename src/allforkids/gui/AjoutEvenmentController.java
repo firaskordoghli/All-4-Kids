@@ -10,6 +10,7 @@ import allforkids.entites.Session;
 import allforkids.service.ServiceEvenement;
 import allforkids.util.Validation;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTimePicker;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
@@ -50,6 +51,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
@@ -88,8 +90,6 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     @FXML
     private AnchorPane maps;
     @FXML
-    private TextField tftemp;
-    @FXML
     private GoogleMapView mapView;
     GoogleMap map;
    private static Double longe  ;
@@ -99,6 +99,8 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     private Label Imegee;
     public String filePath ;
     private static final int BUFFER_SIZE = 4096;
+    @FXML
+    private JFXTimePicker temp;
     /**
      * Initializes the controller class.
      */
@@ -116,6 +118,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         tftype.setItems(ob);
 
         mapView.addMapInializedListener(this);
+        
     }
 
     @FXML
@@ -157,21 +160,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         saveimg(img, name, p,selectedFile);
     }
 
-    public void save(Image image, String name, String p) throws IOException {
-        if (p.indexOf(".png") != -1) {
-            File fileoutput = new File("src/icons/" + name + ".png");
-            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-            ImageIO.write(BI, "png", fileoutput);
-            imgg=  "src/icons/" + name + ".png";
-        } else {
-            File fileoutput = new File("src/icons/" + name + ".jpeg");
-            BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
-
-            ImageIO.write(BI, "jpeg", fileoutput);
-             imgg=  "src/icons/" + name + ".jpeg";
-        }
-    }
-
+    
     public boolean controleSaisie() throws IOException, SQLException {
         boolean saisie = true;
         ServiceEvenement es = new ServiceEvenement();
@@ -263,7 +252,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         });
 
     }
-    public void saveimg(Image image , String name ,String p, File file)
+ public void saveimg(Image image , String name ,String p, File file)
  {        
        if (p.indexOf(".png") != -1) {
           filePath = file.getPath();

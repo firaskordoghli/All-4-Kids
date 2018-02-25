@@ -156,7 +156,7 @@ public class AjouterLivreController implements Initializable {
                 URLConnection conn = url.openConnection();
                 OutputStream outputStream = conn.getOutputStream();
                 FileInputStream inputStream = new FileInputStream(filePath);
-
+                        
                 byte[] buffer = new byte[BUFFER_SIZE];
                 int bytesRead = -1;
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
