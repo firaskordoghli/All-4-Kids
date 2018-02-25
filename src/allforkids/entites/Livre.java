@@ -10,6 +10,7 @@ package allforkids.entites;
  * @author FATNASSI
  */
 public class Livre {
+
     private int id_livre;
     private String nom;
     private String categorie;
@@ -17,8 +18,10 @@ public class Livre {
     private String type;
     private int good;
     private int bad;
+    private String photo;
+    private String  url ;
 
-    public Livre(int id_livre, String nom, String categorie, String description, String type, int good, int bad) {
+    public Livre(int id_livre, String nom, String categorie, String description, String type, int good, int bad,String photo, String url) {
         this.id_livre = id_livre;
         this.nom = nom;
         this.categorie = categorie;
@@ -26,16 +29,36 @@ public class Livre {
         this.type = type;
         this.good = good;
         this.bad = bad;
+        this.photo = photo ;
+        this.url = url ;
     }
 
-    public Livre( String nom, String categorie, String description, String type, int good, int bad) {
-       
+    public Livre(String nom, String categorie, String description, String type, int good, int bad, String photo, String url) {
+
         this.nom = nom;
         this.categorie = categorie;
         this.description = description;
         this.type = type;
         this.good = good;
         this.bad = bad;
+        this.photo = photo;
+        this.url = url ;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Livre() {
@@ -124,10 +147,7 @@ public class Livre {
 
     @Override
     public String toString() {
-        return "Livre{" + "id_livre=" + id_livre + ", nom=" + nom + ", categorie=" + categorie + ", description=" + description + ", type=" + type + ", good=" + good + ", bad=" + bad + '}';
+        return "Livre{" + "id_livre=" + id_livre + ", nom=" + nom + ", categorie=" + categorie + ", description=" + description + ", type=" + type + ", good=" + good + ", bad=" + bad + "photo"+photo+'}';
     }
-    
-    
-    
-    
+
 }
