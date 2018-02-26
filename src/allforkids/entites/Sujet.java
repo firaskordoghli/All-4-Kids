@@ -126,6 +126,14 @@ public class Sujet {
     public String toString() {
         return "Sujet{" + "id_sujet=" + id_sujet + ", title=" + title + ", description=" + description + ", tag=" + tag + ", good=" + good + ", bad=" + bad + ", visibilite=" + visibilite + '}';
     }
+
+    public Sujet(String title, String description, String tag) {
+        this.title = title;
+        this.description = description;
+        this.tag = tag;
+    }
+
+   
     
     
 

@@ -26,6 +26,11 @@
       <Pane layoutX="-4.0" layoutY="312.0" prefHeight="289.0" prefWidth="804.0" style="-fx-background-color: rgb(0, 170, 207);" />
       <AnchorPane layoutX="219.0" layoutY="134.0" prefHeight="350.0" prefWidth="363.0" style="-fx-background-color: #ffffff;">
          <children>
+
+            <AnchorPane layoutX="32.0" layoutY="25.0" prefHeight="350.0" prefWidth="267.0" style="-fx-background-color: #7feaff;">
+              
+            </AnchorPane>
+
             <TextField id="mail" fx:id="mail" layoutX="146.0" layoutY="118.0" prefHeight="25.0" prefWidth="124.0" />
             <Label layoutX="89.0" layoutY="125.0" text="Email">
                <font>
@@ -54,6 +59,7 @@
                   <Image url="@../icons/Logo%204kids.png" />
                </image>
             </ImageView>
+
          </children>
       </AnchorPane>
       <Label fx:id="ErrMail" layoutX="359.0" layoutY="106.0" />

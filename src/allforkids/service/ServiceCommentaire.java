@@ -24,13 +24,15 @@ public class ServiceCommentaire {
 
     public void insrerCommentaire(Commentaire c) {
         try {
-            String req = "INSERT INTO commentaire VALUES(?,?,?,?)";
+            String req = "INSERT INTO commentaire(`description`, `good`, `bad`, `id_user`, `id_sujet`) VALUES(?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            ste.setInt(1, c.getId_commentaire());
-            ste.setString(2, c.getDescription());
-            ste.setInt(3, c.getGood());
-            ste.setInt(4, c.getBad());
-     
+            
+            ste.setString(1, c.getDescription());
+            ste.setInt(2, c.getGood());
+            ste.setInt(3, c.getBad());
+            ste.setInt(4, c.getId_user());
+            ste.setInt(5, c.getId_sujet());
+          
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,10 +75,10 @@ public class ServiceCommentaire {
             while (result.next()) {
                 list.add(
                         new Commentaire(
-                                result.getInt("id_commentaire"),
+                                
                                 result.getString("description"),
-                                result.getInt("good"),
-                                result.getInt("bad")
+                                result.getInt("id_user"),
+                                result.getInt("id_sujet")
                                 
                               
                         )
@@ -86,5 +88,34 @@ public class ServiceCommentaire {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    
+    public Commentaire GetSujetById(int id_sujet) {
+        try {
+            String req = "SELECT * FROM Commentaire where id_sujet=?  ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id_sujet);
+          
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+              Commentaire  C = new Commentaire(
+                        result.getString("description"),
+                        result.getInt("id_user"),
+                        result.getInt("id_sujet")
+                       
+                );
+                return C;
+            }
+
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            
+
+        }
+        return null ;
+
     }
 }
