@@ -6,9 +6,11 @@
 package allforkids.gui;
 
 import allforkids.entites.Commentaire;
+import allforkids.entites.Liverlike;
 import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceCommentaire;
+import allforkids.service.ServiceLiverlike;
 import allforkids.service.ServiceUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -52,6 +54,10 @@ public class SujetCommenterController implements Initializable {
     @FXML
     private ImageView img;
      private   ServiceCommentaire sc = new ServiceCommentaire();
+    @FXML
+    private JFXButton good;
+    @FXML
+    private JFXButton bad;
 
     /**
      * Initializes the controller class.
@@ -104,6 +110,19 @@ public class SujetCommenterController implements Initializable {
                         app_stage.setScene(scene);
 
                         app_stage.show();
+    }
+
+    @FXML
+    private void good(ActionEvent event) {
+   
+        
+        
+        
+        
+    }
+
+    @FXML
+    private void bad(ActionEvent event) {
     }
     
     

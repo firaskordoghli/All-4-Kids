@@ -7,6 +7,7 @@ package allforkids.gui;
 
 import allforkids.entites.Evenement;
 import allforkids.entites.Sujet;
+import allforkids.service.ServiceCommentaire;
 import allforkids.service.ServiceSujet;
 import com.jfoenix.controls.JFXListView;
 import com.sun.prism.impl.Disposer;
@@ -139,20 +140,12 @@ public class ListeSujetController implements Initializable {
     }
     // TODO
 
-    private void com(MouseEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("SujetCommenter.fxml"));
-        Scene scene = new Scene(root);
-
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        app_stage.setScene(scene);
-
-        app_stage.show();
-    }
+   
 
     @FXML
     private void commantaire(MouseEvent event) throws IOException {
+        ServiceCommentaire c = new ServiceCommentaire();
+        
         
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("SujetCommenter.fxml"));

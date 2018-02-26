@@ -12,16 +12,16 @@ import allforkids.util.BCrypt;
 import allforkids.util.Validation;
 //import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
-<<<<<<< HEAD
+ 
 import com.jfoenix.controls.JFXTimePicker;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.exception.FacebookException;
-=======
+
 //import com.restfb.DefaultFacebookClient;
 //import com.restfb.FacebookClient;
 //import com.restfb.exception.FacebookException;
->>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -246,7 +246,7 @@ public class LoginController implements Initializable {
             System.out.println("Session string: " + session);
             long userid = client.users_getLoggedInUser();
             //System.out.println("User Id is : " + userid);*/
-<<<<<<< HEAD
+
 
         /*    for (Header h : post.getResponseHeaders()) {
 =======
@@ -281,14 +281,11 @@ public class LoginController implements Initializable {
         }
 <<<<<<< HEAD
     }*/
-
-=======
     }
-*/
->>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
 
 
-    }
+
+    
     
     
     
