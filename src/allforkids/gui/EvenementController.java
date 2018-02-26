@@ -292,6 +292,8 @@ public class EvenementController implements Initializable {
         longe = event.getLongitude();
         event = s.getIdByName(l);
         titre.setText(l);
+      
+    
         description.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
         Image image =  new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
         img.setImage(image);
@@ -357,14 +359,14 @@ public class EvenementController implements Initializable {
             Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
            
            
-            Time t = new Time(id, id, id) ;
+    
       
             if (imgg == "") {
                 imgg = event.getPhoto();
             }
             Evenement e = new Evenement(mnom.getText(), mlieu.getText(), date,
                     mtype.getValue(), Integer.parseInt(mnb.getText()),
-                    event.isEtat(), 8, imgg, altud, longe,t);
+                    event.isEtat(), 8, imgg, altud, longe,java.sql.Time.valueOf(temp.getValue()));
             s.updateEvenement(e, id);
             
             modifay.setVisible(false);
@@ -391,10 +393,11 @@ public class EvenementController implements Initializable {
        
         String l = myevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
-     altud = event.getLatitude();
-     longe = event.getLongitude();
+        altud = event.getLatitude();
+        longe = event.getLongitude();
         mnom.setText(event.getNom());
         mlieu.setText(event.getLieu());
+         temp.setValue(event.getTemp().toLocalTime());
         Instant instant = Instant.ofEpochMilli(event.getDate().getTime());
         LocalDate datt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
                 .toLocalDate();

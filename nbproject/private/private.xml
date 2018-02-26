@@ -5,11 +5,9 @@
         <group>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AjoutEvenmentController.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Evenement.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceLivre.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/slim.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEvenement.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceParticipevenement.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/LoginController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeController.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EvenementController.java</file>
         </group>
     </open-files>

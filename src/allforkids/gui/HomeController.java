@@ -27,8 +27,8 @@ import javafx.scene.layout.VBox;
  * @author DELL
  */
 
-public class HomeController //implements Initializable {
-    {/*
+public class HomeController implements Initializable {
+    
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -39,7 +39,7 @@ public class HomeController //implements Initializable {
     /**
      * Initializes the controller class.
      */
-        /*
+        
   @Override
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -113,7 +113,7 @@ public class HomeController //implements Initializable {
         holderPane.getChildren().clear();
         holderPane.getChildren().add((Node) node);
     }
-    */
+    
     
 }
 

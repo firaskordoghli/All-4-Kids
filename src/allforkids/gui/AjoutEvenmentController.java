@@ -56,6 +56,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import static jdk.nashorn.internal.objects.NativeArray.map;
+import  org.controlsfx.control.NotificationPane ;
 
 /**
  * FXML Controller class
@@ -99,9 +100,10 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     private Label Imegee;
     public String filePath ;
     private static final int BUFFER_SIZE = 4096;
+    @FXML
     private JFXTimePicker temp;
     @FXML
-    private JFXTimePicker asbaa;
+    private Label tempp;
     /**
      * Initializes the controller class.
      */
@@ -127,8 +129,8 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
    
         if (this.controleSaisie()) {
                 ServiceEvenement eService = new ServiceEvenement();
+              
        
-
         LocalDate d = tfDate.getValue();
          Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
          
@@ -218,6 +220,10 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         }
         if(imgg.equals("")){
            Imegee.setText("*vous devez ajouter une image");
+        }
+        if(temp.getValue()== null){
+        tempp.setText("*vous devez ajouter le temps");
+        
         }
         return saisie;
     }
