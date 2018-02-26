@@ -3,10 +3,71 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Kordoghli.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/directionspage.html</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovFormulaireController.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/DetailCovController.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ElevesController.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/LoginController.java</file>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EtablismentController.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/LoginController.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEtablissement.java</file>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceUser.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Librairie.fxml</file>
+>>>>>>> 2884c2f59608be0012b56fe323d712fea71c7919
+>>>>>>> fe49512f494f90a9336ce3be143d1bb2455b6bd5
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AjoutEvenmentController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Evenement.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/slim.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEvenement.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceParticipevenement.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EvenementController.java</file>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Admin.fxml</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Eleves.fxml</file>
+>>>>>>> f13b2d6e1fc236710aa1c4c447895651b956e2d8
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Etablissement.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/User.java</file>
+>>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEtablissement.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AddEtablissmentController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EtablismentController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AdminController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Salmen.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceRejoindre.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Rejoindre.java</file>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fddbcab73dd88c5ebf456fa16d1e1b43c691d3a7
+>>>>>>> f13b2d6e1fc236710aa1c4c447895651b956e2d8
+>>>>>>> 2884c2f59608be0012b56fe323d712fea71c7919
+>>>>>>> b333626c61cc4b6ea81364c9a7b16af54c353ffa
+>>>>>>> fe49512f494f90a9336ce3be143d1bb2455b6bd5
+>>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
+>>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
+>>>>>>> 7dde7a630e1380642993c71f273570fd721d0b15
         </group>
     </open-files>
 </project-private>

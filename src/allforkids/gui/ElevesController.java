@@ -70,11 +70,13 @@ public class ElevesController implements Initializable {
             System.out.println(ex);
         }
         detail.setVisible(false);
+        rejoindrebt.setVisible(false);
     }    
 
     @FXML
     private void consulter(MouseEvent event) {
         detail.setVisible(true);
+        rejoindrebt.setVisible(true);
         ServiceEtablissement sr1 = new ServiceEtablissement();
 
         Etablissement e = sr1.GetEtablissemebtById(tableview.getSelectionModel().getSelectedItem().getId());
@@ -100,7 +102,7 @@ public class ElevesController implements Initializable {
         ServiceRejoindre sr1= new ServiceRejoindre();
         if(sr1.SelectIfDejaExiste(a, b) == null){
             sr1.insrerRejoindre(a, b);
-            Alert.afficher("Succée", " Votre demande à étez envoyer");
+            Alert.afficher("Succée", " Votre demande à été envoyé avec succès");
         }
         else{
            Alert.afficher("Alert", " Vous avez déja demander à rejoindre cette établissement. ");
