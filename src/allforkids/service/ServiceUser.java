@@ -154,7 +154,7 @@ public class ServiceUser {
         return null;
 
     }
-<<<<<<< HEAD
+
 
     public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] bytesOfMessage = password.getBytes("UTF-8");
@@ -168,13 +168,9 @@ public class ServiceUser {
         return hashtext;
     }
 
-    public User recevoirUser(String username) {
-=======
     
-     
 
       public User recevoirUser(String username) {
->>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
         return null;
         /* try {
           String req = "select username,email,password,nom,prenom,enabled,id,roles from utilisateur where username=?";
@@ -193,7 +189,6 @@ public class ServiceUser {
             l.setText("* verifier vos informations !");
         }
         return null;*/
-<<<<<<< HEAD
     }
 
     public void changerMDP(String newMdp, int id) {
@@ -212,8 +207,8 @@ public class ServiceUser {
             ex.printStackTrace();
         }*/
     }
-=======
-      }
+
+      
         
         
        public void changerMDP() {
@@ -221,7 +216,6 @@ public class ServiceUser {
 
        
     
->>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
 
     public User GetUserById(int id) {
         try {
