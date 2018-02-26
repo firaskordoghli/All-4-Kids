@@ -14,7 +14,9 @@ import allforkids.service.ServiceRejoindre;
 import allforkids.service.ServiceUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.prism.impl.Disposer.Record;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,6 +29,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +39,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,6 +49,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javax.imageio.ImageIO;
 
 /**
@@ -97,12 +103,11 @@ public class EtablismentController implements Initializable {
     @FXML
     private JFXComboBox<String> ville2;
 
-    
     @FXML
     private JFXTextField description2;
     @FXML
     private JFXButton ajouter;
-    private static String src="" ;
+    private static String src = "";
     @FXML
     private ImageView imageview1;
     @FXML
@@ -121,12 +126,22 @@ public class EtablismentController implements Initializable {
     private TableColumn<Etablissement, String> nomCol3;
     @FXML
     private TableColumn<Etablissement, String> typeCol3;
+    @FXML
+    private JFXListView<String> listview;
+    @FXML
+    private AnchorPane detail5;
+    @FXML
+    private JFXButton supprimer;
+    @FXML
+    private JFXButton accepter;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ////////////////////liste etablissement
+
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         ServiceEtablissement sr1 = new ServiceEtablissement();
@@ -137,13 +152,14 @@ public class EtablismentController implements Initializable {
             System.out.println(ex);
         }
         //////////////////////Ma liste etablissements
+        modifier.setVisible(false);
+        delete.setVisible(false);
         nomCol2.setCellValueFactory(new PropertyValueFactory<>("nom"));
         typeCol2.setCellValueFactory(new PropertyValueFactory<>("type"));
         etatCol2.setCellValueFactory(new PropertyValueFactory<>("verification"));
-         
-      
+
         ServiceEtablissement sr2 = new ServiceEtablissement();
-       
+
         try {
             tableview2.setItems(sr2.selectEtablissementById(Session.getIdThisUser()));
 
@@ -153,21 +169,50 @@ public class EtablismentController implements Initializable {
         /////////////////////liste eleve par etablissement
         nomCol3.setCellValueFactory(new PropertyValueFactory<>("nom"));
         typeCol3.setCellValueFactory(new PropertyValueFactory<>("type"));
-         
-      
+
         ServiceEtablissement sr3 = new ServiceEtablissement();
-       
+
+        User u1 = new User();
         try {
-            tableview3.setItems(sr3.selectEtablissementById(32));
+            tableview3.setItems(sr3.selectEtablissementById2(32));
 
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        /////////////////////////acceptation des éleves
+        ServiceRejoindre sr9 = new ServiceRejoindre();
+        ServiceUser su = new ServiceUser();
+        try {
+
+            List<Etablissement> list1 = sr3.selectEtablissementById(32);
+            for (Etablissement etablissement : list1) {
+                List<Rejoindre> r = sr9.selectIdUserById(etablissement.getId());
+                String a = etablissement.getNom();
+                int b = etablissement.getId();
+
+                for (Rejoindre re : r) {
+
+                    List<User> u = su.GetUserById3(re.getId_user());
+                    for (User user : u) {
+                        listview.getItems().add("L'éleve : "
+                                + user.getNom()
+                                + " "
+                                + user.getPrenom()
+                                + " veut rejoindre l'établissement : " + a);
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
         //Session.getIdThisUser();
         detail.setVisible(false);
         detail2.setVisible(false);
         detail3.setVisible(false);
-        
+        detail5.setVisible(false);
+
     }
 
     @FXML
@@ -186,12 +231,15 @@ public class EtablismentController implements Initializable {
             img = new Image(new FileInputStream(e.getImage()));
             imageview1.setImage(img);
         } catch (Exception ex) {
-            System.out.println(ex); }
+            System.out.println(ex);
+        }
     }
 
     @FXML
     private void consulter2(MouseEvent event) {
         detail2.setVisible(true);
+        modifier.setVisible(true);
+        delete.setVisible(true);
         type2.getItems().addAll(
                 "Garderie",
                 "jardin d'enfant",
@@ -232,7 +280,7 @@ public class EtablismentController implements Initializable {
             img = new Image(new FileInputStream(e.getImage()));
             viewimage.setImage(img);
         } catch (Exception ex) {
-            System.out.println("erreur");    
+            System.out.println("erreur");
         }
 
     }
@@ -243,23 +291,23 @@ public class EtablismentController implements Initializable {
         Etablissement e = sr1.GetEtablissemebtById(tableview2.getSelectionModel().getSelectedItem().getId());
         int id = e.getId();
         System.out.println(e);
-        if (src.equals("")){
-            src=e.getImage();
+        if (src.equals("")) {
+            src = e.getImage();
         }
         Etablissement et = new Etablissement(nom.getText(),
                 type2.getValue(),
                 region2.getValue(),
                 ville2.getValue(),
                 description2.getText(),
-               src
-                );
+                src
+        );
         sr1.updateEtablissement(et, id);
         /*nom.setText("");
         description2.setText("");
         type2.setValue("");
         region2.setValue("");
         ville2.setValue("");*/
-        
+
     }
 
     @FXML
@@ -311,39 +359,60 @@ public class EtablismentController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     @FXML
     private void consulter3(MouseEvent event) {
-       /* detail3.setVisible(true);
+        detail3.setVisible(true);
+        detail5.setVisible(false);
         int a = tableview3.getSelectionModel().getSelectedItem().getId();
-        ServiceRejoindre sr1 = new ServiceRejoindre();
+        //ServiceRejoindre sr1 = new ServiceRejoindre();
         ServiceUser su = new ServiceUser();
-        Rejoindre r = sr1.GetIdUserById(a);
-         //User u = su.GetUserById(r.getId_user());
+        //Rejoindre r = sr1.GetIdUserById(a);
+
+        //User u = su.GetUserById(r.getId_user());
         // u.getNom();
-         //u.getPrenom();
-        
-        
-        
-        
+        //u.getPrenom();
         nomeleve.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomeleve.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        
+
         try {
-            tableview4.setItems(su.GetUserById2(r.getId_user()));
-           // tableview3.setItems(sr3.selectEtablissementById(32));
+            tableview4.setItems(su.GetUserById2(a));
+            // tableview3.setItems(sr3.selectEtablissementById(32));
 
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        */
+
     }
 
     @FXML
     private void consulter4(MouseEvent event) {
+        detail5.setVisible(true);
+        accepter.setVisible(true);
+        ServiceRejoindre sr1 = new ServiceRejoindre();
+        if (sr1.SelectIfDejaExiste(tableview3.getSelectionModel().getSelectedItem().getId(),
+                 tableview4.getSelectionModel().getSelectedItem().getId())
+                .getVerification().equals("Valide")) {
+            accepter.setVisible(false);
+        }
+
     }
 
-    
+    @FXML
+    private void DeleteEleve(ActionEvent event) {
+        ServiceRejoindre sr1 = new ServiceRejoindre();
+        int a = tableview4.getSelectionModel().getSelectedIndex();
+        sr1.deleteEleve(tableview3.getSelectionModel().getSelectedItem().getId(), tableview4.getSelectionModel().getSelectedItem().getId());
+        tableview4.getItems().remove(a);
+        detail5.setVisible(false);
+    }
 
+    @FXML
+    private void AccepterEleve(ActionEvent event) {
+        ServiceRejoindre sr1 = new ServiceRejoindre();
+
+        sr1.accepterEleve(tableview3.getSelectionModel().getSelectedItem().getId(), tableview4.getSelectionModel().getSelectedItem().getId());
+
+    }
 
 }

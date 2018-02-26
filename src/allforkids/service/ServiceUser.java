@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.mail.Message;
@@ -126,12 +128,11 @@ public class ServiceUser {
             String req = "SELECT * FROM user where email=?  ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, e);
-          
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
 
-              User  u = new User(
+                User u = new User(
                         result.getInt("id_user"),
                         result.getString("cin"),
                         result.getString("nom"),
@@ -140,27 +141,42 @@ public class ServiceUser {
                         result.getDate("date"),
                         result.getString("picture"),
                         result.getInt("role"),
-                
                         result.getString("pass")
                 );
                 return u;
             }
 
-            
         } catch (SQLException ex) {
             ex.printStackTrace();
             l.setText("verifier votre information ");
 
         }
-        return null ;
+        return null;
 
     }
+<<<<<<< HEAD
+
+    public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        byte[] bytesOfMessage = password.getBytes("UTF-8");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] thedigest = md.digest(bytesOfMessage);
+        BigInteger bigInt = new BigInteger(1, thedigest);
+        String hashtext = bigInt.toString(16);
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
+    }
+
+    public User recevoirUser(String username) {
+=======
     
      
 
       public User recevoirUser(String username) {
+>>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
         return null;
-       /* try {
+        /* try {
           String req = "select username,email,password,nom,prenom,enabled,id,roles from utilisateur where username=?";
             PreparedStatement ps = Connection.prepareStatement(req);
             ps.setString(1,username);
@@ -177,6 +193,26 @@ public class ServiceUser {
             l.setText("* verifier vos informations !");
         }
         return null;*/
+<<<<<<< HEAD
+    }
+
+    public void changerMDP(String newMdp, int id) {
+        /*   try {
+            String reqUpdate = "update utilisateur set password=? where id=?";
+            PreparedStatement ps = Connection.prepareStatement(reqUpdate);
+          //  ps.setString(1, u.getEmail()); 
+            ps.setString(1, BCrypt.hashpw(newMdp,BCrypt.gensalt()));   
+          //  ps.setString(3, u.getNom());
+         //   ps.setString(4, u.getPrenom());
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            
+            System.out.println("envoyé");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }*/
+    }
+=======
       }
         
         
@@ -185,18 +221,19 @@ public class ServiceUser {
 
        
     
+>>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
 
-     public User GetUserById(int id) {
+    public User GetUserById(int id) {
         try {
             String req = "SELECT * FROM user where id_user=?  ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-            
-          ste.setInt(1, id);
+
+            ste.setInt(1, id);
 
             ResultSet result = ste.executeQuery();
             while (result.next()) {
 
-              User  u = new User(
+                User u = new User(
                         result.getInt("id_user"),
                         result.getString("cin"),
                         result.getString("nom"),
@@ -205,20 +242,62 @@ public class ServiceUser {
                         result.getDate("date"),
                         result.getString("picture"),
                         result.getInt("role"),
-                
                         result.getString("pass")
                 );
                 return u;
             }
 
-            
         } catch (SQLException ex) {
             ex.printStackTrace();
-           
 
         }
-        return null ;
+        return null;
 
     }
-    
+
+    public ObservableList<User> GetUserById2(int id) throws SQLException {
+        ObservableList<User> list = FXCollections.observableArrayList();
+        try {
+            String req = "SELECT * FROM user INNER JOIN rejoindre ON user.id_user = rejoindre.id_user WHERE id_etablissement=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new User(
+                                result.getInt("id_user"),
+                                result.getString("nom"),
+                                result.getString("prenom")
+                        )
+                );
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return list;
+
+    }
+      public List<User> GetUserById3(int id) throws SQLException {
+      List<User> list = FXCollections.observableArrayList();
+        try {
+            String req = "SELECT * FROM user WHERE id_user=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new User(
+                                result.getInt("id_user"),
+                                result.getString("nom"),
+                                result.getString("prenom")
+                        )
+                );
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return list;
+
+    }
+
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package allforkids.entites;
+
 import java.util.Date;
 import java.util.Calendar;
 import java.util.Objects;
@@ -37,6 +38,12 @@ public class User {
         this.picture = picture;
         this.role = role;
         this.pass = pass;
+    }
+
+    public User(int id, String nom, String prenom) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public User(String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass) {
@@ -155,5 +162,5 @@ public class User {
     public String toString() {
         return "User{" + "cin=" + cin + ", nom=" + ", prenom=" + prenom + ", mail=" + mail + ", date=" + date.toString() + ", picture=" + picture + ", role=" + role + '}';
     }
-  
+
 }

@@ -223,6 +223,27 @@ public class ServiceEtablissement {
         }
         return list;
     }
+    public ObservableList<Etablissement> selectEtablissementById2(int id) throws SQLException {
+        ObservableList<Etablissement> list = FXCollections.observableArrayList();
+        try {
+            String req = "SELECT * FROM etablissement WHERE id_user=? AND verification='Valide'";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Etablissement(
+                                result.getInt("id_etablissement"),
+                                result.getString("nom"),
+                                result.getString("type")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
     
         public void ValiderEtablissement(Etablissement e, int id){
         try {
