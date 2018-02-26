@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.CovoiturageViewController">
+<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.CovoiturageViewController">
    <children>
       <AnchorPane layoutX="71.0" layoutY="83.0" prefHeight="57.0" prefWidth="604.0" style="-fx-background-color: #32b1df; -fx-background-radius: 5;">
          <children>
@@ -68,12 +68,26 @@
             </Tab>
             <Tab text="Historique">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableTransport1" prefHeight="364.0" prefWidth="595.0">
+                           <columns>
+                              <TableColumn fx:id="depart1" prefWidth="81.0" text="Depart" />
+                              <TableColumn fx:id="arrivé1" prefWidth="77.33334350585938" text="Arrivée" />
+                              <TableColumn fx:id="place1" prefWidth="118.0" text="Place dispo" />
+                              <TableColumn prefWidth="101.0">
+                                 <graphic>
+                                    <Button fx:id="load1" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="refresh" />
+                                 </graphic>
+                              </TableColumn>
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
               </content>
             </Tab>
          </tabs>
       </JFXTabPane>
-      <AnchorPane fx:id="ajoutCovoiturage" layoutX="722.0" layoutY="82.0" onMouseClicked="#ajoutCov" prefHeight="57.0" prefWidth="190.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
+      <AnchorPane fx:id="ajoutCovoiturage" layoutX="722.0" layoutY="82.0" onMouseClicked="#toFormulaire" prefHeight="57.0" prefWidth="190.0" style="-fx-background-color: #329932; -fx-background-radius: 5;">
          <children>
             <ImageView fitHeight="42.0" fitWidth="50.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -98,7 +112,7 @@
                   </Label>
                </children>
             </Pane>
-            <AnchorPane prefHeight="370.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5;">
+            <AnchorPane fx:id="details" prefHeight="370.0" prefWidth="236.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5;">
                <children>
                   <GridPane layoutX="2.0" layoutY="16.0" prefHeight="217.0" prefWidth="182.0">
                     <columnConstraints>
@@ -128,7 +142,7 @@
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="departt" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
@@ -173,43 +187,47 @@
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="132.0" prefHeight="36.0" prefWidth="121.0" text="Type:" textAlignment="CENTER" textFill="#030303" wrapText="true" GridPane.rowIndex="9">
+                        <Label fx:id="tttype" layoutX="10.0" layoutY="132.0" prefHeight="36.0" prefWidth="121.0" text="Type:" textAlignment="CENTER" textFill="#030303" wrapText="true" GridPane.rowIndex="9">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="99.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="arrivee" layoutX="124.0" layoutY="99.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="139.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label layoutX="124.0" layoutY="139.0" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="178.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="tel" layoutX="124.0" layoutY="178.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="217.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label fx:id="placee" layoutX="124.0" layoutY="217.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="256.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label fx:id="frais" layoutX="124.0" layoutY="256.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="124.0" layoutY="295.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <Label fx:id="typee" layoutX="124.0" layoutY="295.0" text="**" textFill="#030303" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
                            </font>
                         </Label>
                         <Separator prefHeight="0.0" prefWidth="170.0" GridPane.rowIndex="4" />
                         <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="description" prefHeight="23.0" prefWidth="103.0" text="**" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="DK Cool Crayon" size="15.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
                   <GridPane layoutY="328.0" prefHeight="35.0" prefWidth="190.0">
@@ -227,7 +245,7 @@
                               <Font name="DK Cool Crayon" size="12.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: #329932;" text="Rejoindre" textFill="WHITE" GridPane.columnIndex="2">
+                        <JFXButton onAction="#RejoindreCov" prefHeight="54.0" prefWidth="126.0" style="-fx-background-color: #329932;" text="Rejoindre" textFill="WHITE" GridPane.columnIndex="2">
                            <font>
                               <Font name="DK Cool Crayon" size="12.0" />
                            </font>
@@ -240,5 +258,10 @@
             </AnchorPane>
          </children>
       </VBox>
+      <ImageView fitHeight="75.0" fitWidth="35.0" layoutX="102.0" layoutY="14.0" onMouseClicked="#backToTransport" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

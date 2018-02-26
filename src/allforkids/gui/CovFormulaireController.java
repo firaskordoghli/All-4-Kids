@@ -12,15 +12,26 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 /**
  * FXML Controller class
@@ -52,7 +63,9 @@ public class CovFormulaireController implements Initializable {
     private Button delButton;
     @FXML
     private ComboBox type;
-
+    @FXML
+    private WebView addwebview;
+    private WebEngine webEngine;
     /**
      * Initializes the controller class.
      */
@@ -61,14 +74,43 @@ public class CovFormulaireController implements Initializable {
         // TODO
         type.setValue("");
         type.setItems(typeList);
+         webEngine = addwebview.getEngine();
+         webEngine.load(getClass().getResource("addlocation.html").toString());
+        // webEngine.load("https://www.google.com");
     }    
     
     @FXML
-    public void addCov (ActionEvent event){
+    public void addCov (ActionEvent event) throws IOException{
+        
+        System.out.println(" arrive : "+webEngine.executeScript("getArrive();"));
+                System.out.println("depart : "+webEngine.executeScript("getDepart();"));
+
     ServiceCovoiturage cService = new ServiceCovoiturage();
     Transport t = new Transport(Region.getText(),ville.getText(),depart.getText(),arrivé.getText(),
             description.getText(),telephone.getText(),placeDispo.getText(),fraix.getText());
     cService.insrerCov(t);
+    
+    Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+                
     }
+    
+    
+    @FXML
+    public void backToCovoiturage(MouseEvent event) throws IOException {
+            
+                Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+            
+        }
+    
     
 }

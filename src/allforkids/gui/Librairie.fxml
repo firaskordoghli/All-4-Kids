@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="gied" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.LibrairieController">
+   <children>
+      <TabPane layoutX="243.0" layoutY="100.0" prefHeight="636.0" prefWidth="1022.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="conte25" text="conte  2-5 ans">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutX="155.0" layoutY="14.0" prefHeight="85.0" prefWidth="638.0">
+                           <children>
+                              <JFXTextField fx:id="cherche" layoutX="14.0" layoutY="27.0" prefHeight="31.0" prefWidth="320.0" />
+                              <JFXButton fx:id="search" layoutX="399.0" layoutY="27.0" prefHeight="32.0" prefWidth="81.0" style="-fx-background-color: #ffc425;" text="search" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <JFXListView fx:id="listconte25" layoutX="46.0" layoutY="99.0" onMouseClicked="#afichdetail" prefHeight="473.0" prefWidth="436.0" />
+                        <AnchorPane fx:id="detail" layoutX="543.0" layoutY="102.0" prefHeight="468.0" prefWidth="409.0">
+                           <children>
+                              <AnchorPane fx:id="titrecont" layoutX="63.0" layoutY="14.0" prefHeight="57.0" prefWidth="282.0" style="-fx-background-color: #009ed8;">
+                                 <children>
+                                    <Label fx:id="contett" layoutX="120.0" layoutY="18.0" textFill="WHITE">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fx:id="conteimg" fitHeight="150.0" fitWidth="281.0" layoutX="64.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="description" layoutX="67.0" layoutY="249.0" prefHeight="129.0" prefWidth="278.0" style="-fx-background-color: #ffffff;">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="like" layoutX="41.0" layoutY="422.0" onAction="#likee" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #329932;" text="j'aime" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="detest" layoutX="246.0" layoutY="422.0" onAction="#detestt" style="-fx-background-color: #f40202;" text="detest" textFill="WHITE">
+                                 <font>
+                                    <Font name="DK Cool Crayon" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label fx:id="nblike" layoutX="121.0" layoutY="429.0" prefHeight="20.0" prefWidth="110.0" text="Label" textFill="#085708">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nbdslike" layoutX="320.0" layoutY="424.0" prefHeight="30.0" prefWidth="87.0" text="Label" textFill="#bc0d0d">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <JFXButton fx:id="lire" layoutX="942.0" layoutY="122.0" onAction="#openconte" prefHeight="54.0" prefWidth="66.0" style="-fx-background-color: #166796;" text="Lire" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="conte 6-1 0 ans ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Cours ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="parascolaire" text="parascolaire">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="gied  parental">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label fx:id="titre" layoutX="584.0" layoutY="31.0" prefHeight="54.0" prefWidth="220.0">
+         <font>
+            <Font name="DK Cool Crayon" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

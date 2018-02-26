@@ -10,7 +10,7 @@ import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
 import allforkids.util.Validation;
-import com.google.code.facebookapi.schema.NotificationData.Notifications;
+//import com.google.code.facebookapi.schema.NotificationData.Notifications;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
@@ -44,6 +44,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -339,6 +340,19 @@ public class CreationCompteController implements Initializable {
         save(photoC, nam, p);
        
     }
+    
+    
+    @FXML
+    public void backToLogin(MouseEvent event) throws IOException {
+            
+                Parent covViewOarent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Scene covViewScene = new Scene(covViewOarent);
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                
+                window.setScene(covViewScene);
+                window.show();
+            
+        }
 
    
     

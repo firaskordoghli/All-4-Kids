@@ -18,8 +18,9 @@ public class Etablissement {
     private String region;
     private String ville;
     private String image;
+    private String verification;
 
-    public Etablissement(int id,String nom, String type, String region, String ville, String description,String image) {
+    public Etablissement(int id,String nom, String description, String type, String region, String ville,String image,String verification) {
        
         this.id = id;
         this.nom = nom;
@@ -28,8 +29,19 @@ public class Etablissement {
         this.region = region;
         this.ville = ville;
         this.image=image;
+        this.verification=verification;
     }
 
+    public Etablissement(String nom, String type, String region, String ville, String description,String image,String verification) {
+     
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.region = region;
+        this.ville = ville;
+        this.image=image;
+        this.verification=verification;
+    }
     public Etablissement(String nom, String type, String region, String ville, String description,String image) {
      
         this.nom = nom;
@@ -39,11 +51,32 @@ public class Etablissement {
         this.ville = ville;
         this.image=image;
     }
+
+    public Etablissement(int id, String nom, String description, String type, String region, String ville, String image) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.region = region;
+        this.ville = ville;
+        this.image = image;
+    }
+    
     public Etablissement(int id,String nom, String type) {
         this.id = id;
         this.nom = nom;
         this.type = type;
     }
+
+    public String getVerification() {
+        return verification;
+    }
+
+    public void setVerification(String verification) {
+        this.verification = verification;
+    }
+
+    
 
 
     public Etablissement() {

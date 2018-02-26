@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,9 +14,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.util.converter.TimeStringConverter ;
+
 import javafx.stage.Stage;
 
 /**
@@ -24,14 +23,15 @@ import javafx.stage.Stage;
  * @author slim
  */
 public class slim extends Application {
-    
+
     @Override
     public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("AjoutEvenment.fxml"));
-        
+
+            Parent root = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
+
         Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
+
+        stage.setScene(scene);  
         stage.show();
     }
 
@@ -41,5 +41,5 @@ public class slim extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -27,8 +27,8 @@ import javafx.scene.layout.VBox;
  * @author DELL
  */
 
-public class HomeController implements Initializable {
-        
+public class HomeController //implements Initializable {
+    {/*
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -39,7 +39,8 @@ public class HomeController implements Initializable {
     /**
      * Initializes the controller class.
      */
-   @Override
+        /*
+  @Override
     
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -63,7 +64,8 @@ public class HomeController implements Initializable {
             AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
             AnchorPane transportPane = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
             AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("AddEtablissment.fxml"));
+            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
+            AnchorPane profilPane = FXMLLoader.load(getClass().getResource("Profil.fxml"));
 
             setNode(acceuil);
             drawer.setSidePane(sidePane);
@@ -89,6 +91,10 @@ public class HomeController implements Initializable {
                                 drawer.close();                                
                                 setNode(evenmentPane);
                                 break;
+                                case "profilMenu":
+                                drawer.close();                                
+                                setNode(profilPane);
+                                break;
                         }
                     });
                 }
@@ -107,7 +113,7 @@ public class HomeController implements Initializable {
         holderPane.getChildren().clear();
         holderPane.getChildren().add((Node) node);
     }
-    
+    */
     
 }
 

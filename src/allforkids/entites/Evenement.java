@@ -5,6 +5,7 @@
  */
 package allforkids.entites;
 
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -24,8 +25,9 @@ public class Evenement {
     private String photo ;
     private Double latitude ;
     private Double longitude ;
+    private Time  temp ;
 
-    public Evenement(int id_evenement, String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude) {
+    public Evenement(int id_evenement, String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude,Time temp) {
         this.id_evenement = id_evenement;
         this.nom = nom;
         this.lieu = lieu;
@@ -37,9 +39,10 @@ public class Evenement {
         this.photo = photo;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.temp = temp ;
     }
 
-    public Evenement(String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude) {
+    public Evenement(String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude,Time temp) {
         this.nom = nom;
         this.lieu = lieu;
         this.date = date;
@@ -50,10 +53,19 @@ public class Evenement {
         this.photo = photo;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.temp = temp ;
     }
 
    
     public Evenement() {
+    }
+
+    public Time getTemp() {
+        return temp;
+    }
+
+    public void setTemp(Time temp) {
+        this.temp = temp;
     }
 
     public int getId_evenement() {
@@ -174,8 +186,10 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "id_evenement=" + id_evenement + ", nom=" + nom + ", lieu=" + lieu + ", date=" + date + ", type=" + type + ", nbr_participation=" + nbr_participation + ", etat=" + etat + ", id_user=" + id_user + '}';
+        return "Evenement{" + "id_evenement=" + id_evenement + ", nom=" + nom + ", lieu=" + lieu + ", date=" + date + ", type=" + type + ", nbr_participation=" + nbr_participation + ", etat=" + etat + ", id_user=" + id_user + ", photo=" + photo + ", latitude=" + latitude + ", longitude=" + longitude + '}';
     }
+
+   
 
     
     

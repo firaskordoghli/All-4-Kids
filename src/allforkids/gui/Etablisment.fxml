@@ -1,45 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.EtablismentController">
    <children>
-      <TabPane fx:id="tableview" layoutX="44.0" layoutY="108.0" prefHeight="390.0" prefWidth="653.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="25.0" layoutY="21.0" prefHeight="561.0" prefWidth="1035.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Untitled Tab 1">
+          <Tab text="Liste établissements">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane layoutX="362.0" layoutY="49.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00ccbb;" />
-                        <TableView fx:id="tableview" onMouseClicked="#consulter" prefHeight="363.0" prefWidth="306.0">
+                        <AnchorPane fx:id="detail" layoutX="573.0" layoutY="25.0" prefHeight="350.0" prefWidth="265.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <ImageView fx:id="imageview1" fitHeight="198.0" fitWidth="264.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+                              <GridPane layoutX="39.0" layoutY="199.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label fx:id="nometablissement" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="description" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="type" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="region" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="ville" prefHeight="17.0" prefWidth="99.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Nom:">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="description" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Type" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Region" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Ville" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="DK Cool Crayon" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
+                        <TableView fx:id="tableview" onMouseClicked="#consulter" prefHeight="426.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn fx:id="nomCol" prefWidth="131.0" text="Nom Etablissement" />
-                            <TableColumn fx:id="typeCol" prefWidth="174.0" text="Type" />
+                            <TableColumn fx:id="nomCol" prefWidth="286.0" text="Nom Etablissement" />
+                            <TableColumn fx:id="typeCol" prefWidth="277.0" text="Type" />
                           </columns>
                         </TableView>
+                        <JFXButton fx:id="ajouter" layoutX="629.0" layoutY="387.0" onAction="#add" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: #329932;" text="Ajouter" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="14.0" />
+                           </font></JFXButton>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Untitled Tab 2">
+          <Tab text="Mes établissements">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="76.0" layoutY="52.0" prefHeight="200.0" prefWidth="261.0">
+                        <TableView fx:id="tableview2" onMouseClicked="#consulter2" prefHeight="426.0" prefWidth="564.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="nomCol2" prefWidth="194.99996948242188" text="Nom Etablissement" />
+                            <TableColumn fx:id="typeCol2" minWidth="0.0" prefWidth="186.0" text="Type" />
+                              <TableColumn fx:id="etatCol2" minWidth="0.0" prefWidth="182.0" text="Etat" />
                           </columns>
                         </TableView>
-                        <AnchorPane layoutX="357.0" layoutY="52.0" prefHeight="241.0" prefWidth="262.0" style="-fx-background-color: #00ccbb;" />
+                        <AnchorPane fx:id="detail2" layoutX="576.0" layoutY="25.0" prefHeight="348.0" prefWidth="320.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <ImageView fx:id="viewimage" fitHeight="197.0" fitWidth="280.0" layoutX="15.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                              <GridPane layoutX="10.0" layoutY="228.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="144.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="0.0" prefWidth="10.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="146.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <JFXTextField fx:id="nom" prefHeight="25.0" prefWidth="168.0" />
+                                    <JFXComboBox fx:id="type2" prefHeight="25.0" prefWidth="186.0" GridPane.rowIndex="1" />
+                                    <JFXComboBox fx:id="region2" prefHeight="25.0" prefWidth="189.0" GridPane.rowIndex="2" />
+                                    <JFXComboBox fx:id="ville2" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="2" />
+                                    <JFXTextField fx:id="description2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <JFXButton fx:id="boutonimage" onAction="#updateimage" text="Changer image" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
+                        <JFXButton fx:id="delete" layoutX="635.0" layoutY="389.0" onAction="#DeleteEtablissement" style="-fx-background-color: #c4232b;" text="Supprimer" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="modifier" layoutX="756.0" layoutY="389.0" onAction="#modifer" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #ffc425;" text="Modifier" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="14.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Liste des éleves par établissement">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane fx:id="detail3" layoutX="573.0" layoutY="25.0" prefHeight="350.0" prefWidth="265.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <TableView fx:id="tableview4" onMouseClicked="#consulter4" prefHeight="401.0" prefWidth="271.0">
+                                <columns>
+                                  <TableColumn fx:id="nomeleve" prefWidth="137.0" text="Nom" />
+                                  <TableColumn fx:id="prenomeleve" prefWidth="133.0" text="Prenom" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <TableView fx:id="tableview3" onMouseClicked="#consulter3" prefHeight="426.0" prefWidth="564.0">
+                           <columns>
+                              <TableColumn fx:id="nomCol3" prefWidth="286.0" text="Nom Etablissement" />
+                              <TableColumn fx:id="typeCol3" prefWidth="277.0" text="Type" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

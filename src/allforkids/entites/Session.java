@@ -11,7 +11,13 @@ package allforkids.entites;
  */
 public class Session {
          private static int IdThisUser=0;
+         private static String ip = "127.0.0.1";
 
+    public static String getIp() {
+        return ip;
+    }
+         
+         
     public static int getIdThisUser() {
         return IdThisUser;
     }

@@ -11,7 +11,7 @@
    <children>
       <HBox fx:id="boxMenus" layoutX="211.0" layoutY="65.0" prefHeight="377.0" prefWidth="648.0" spacing="20.0">
          <children>
-            <AnchorPane fx:id="paneCovoiturage" accessibleText="covoiturgaeMenu" onMouseClicked="#switchToCov" prefHeight="449.0" prefWidth="347.0" style="-fx-background-color: #00ff99;" styleClass="root">
+            <AnchorPane fx:id="paneCovoiturage" accessibleText="covoiturgaeMenu" onMouseClicked="#toCovoiturage" prefHeight="449.0" prefWidth="347.0" style="-fx-background-color: #00ff99;" styleClass="root">
                <children>
                   <ImageView fitHeight="236.0" fitWidth="312.0" layoutX="5.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>

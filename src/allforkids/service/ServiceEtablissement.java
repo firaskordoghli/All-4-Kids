@@ -27,7 +27,8 @@ public class ServiceEtablissement {
 
     public void insrerEtablissement(Etablissement e) {
         try {
-            String req = "INSERT INTO `etablissement`(`nom`, `type`, `region`, `ville`, `description`,`image`) VALUES (?,?,?,?,?,?)";
+            System.out.println(e);
+            String req = "INSERT INTO `etablissement` ( `nom`, `type`, `region`, `ville`, `description`, `image`, `verification`) VALUES ( ?, ?, ?, ?, ?, ?, 'Non valide')";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ste.setString(1, e.getNom());
@@ -36,6 +37,7 @@ public class ServiceEtablissement {
             ste.setString(4, e.getVille());
             ste.setString(5, e.getDescription());
             ste.setString(6, e.getImage());
+            
 
             ste.executeUpdate();
         } catch (SQLException ex) {
@@ -45,7 +47,7 @@ public class ServiceEtablissement {
 
     public void updateEtablissement(Etablissement e, int id) {
         try {
-            String req = "UPDATE etablissement SET nom =?,type=?,region=?,ville=?,description=?,image=? WHERE id_etablissement = ?";
+            String req = "UPDATE etablissement SET nom=?,type=?,region=?,ville=?,description=?,image=? WHERE id_etablissement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ste.setString(1, e.getNom());
@@ -56,8 +58,8 @@ public class ServiceEtablissement {
             ste.setString(6, e.getImage());
             ste.setInt(7, id);
             ste.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex);  
         }
     }
 
@@ -88,7 +90,8 @@ public class ServiceEtablissement {
                                 result.getString("region"),
                                 result.getString("ville"),
                                 result.getString("description"),
-                                result.getString("image")
+                                result.getString("image"),
+                                result.getString("verification")
                         )
                 );
             }
@@ -101,7 +104,28 @@ public class ServiceEtablissement {
     public ObservableList<Etablissement> selectEtablissement1() throws SQLException {
         ObservableList<Etablissement> list = FXCollections.observableArrayList();
         try {
-            String req = "SELECT * FROM etablissement ";
+            String req = "SELECT * FROM etablissement where verification='Valide'";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Etablissement(
+                                result.getInt("id_etablissement"),
+                                result.getString("nom"),
+                                result.getString("type")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    public ObservableList<Etablissement> selectEtablissement2() throws SQLException {
+        ObservableList<Etablissement> list = FXCollections.observableArrayList();
+        try {
+            String req = "SELECT * FROM etablissement";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
@@ -122,7 +146,7 @@ public class ServiceEtablissement {
 
     public Etablissement GetEtablissemebtById(int id) {
         try {
-            String req = "SELECT * FROM etablissement where id_etablissement=?  ";
+            String req = "SELECT * FROM etablissement where id_etablissement=? ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ste.setInt(1, id);
@@ -133,11 +157,12 @@ public class ServiceEtablissement {
                 Etablissement u = new Etablissement(
                         result.getInt("id_etablissement"),
                         result.getString("nom"),
+                        result.getString("description"),
                         result.getString("type"),
                         result.getString("region"),
                         result.getString("ville"),
-                        result.getString("description"),
-                        result.getString("image")
+                        result.getString("image"),
+                        result.getString("verification")
                 );
                 return u;
             }
@@ -149,20 +174,18 @@ public class ServiceEtablissement {
         return null;
 
     }
-    public static int GetLastId(){
+
+    public static int GetLastId() {
         try {
             String req = "SELECT  Max(id_etablissement) as id FROM etablissement  ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             //ste.setInt(1, id);
-
             ResultSet result = ste.executeQuery();
             while (result.next()) {
-                int a=result.getInt("id");
+                int a = result.getInt("id");
 
-                
-                
-                return a+1;
+                return a + 1;
             }
 
         } catch (SQLException ex) {
@@ -170,6 +193,47 @@ public class ServiceEtablissement {
 
         }
         return 0;
-        
+
     }
+
+    public ObservableList<Etablissement> selectEtablissementById(int id) throws SQLException {
+        ObservableList<Etablissement> list = FXCollections.observableArrayList();
+        try {
+            String req = "SELECT * FROM etablissement where  id_user=?";
+
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Etablissement(
+                                result.getInt("id_etablissement"),
+                                result.getString("nom"),
+                                result.getString("type"),
+                                result.getString("region"),
+                                result.getString("ville"),
+                                result.getString("description"),
+                                result.getString("image"),
+                                result.getString("verification")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+        public void ValiderEtablissement(Etablissement e, int id){
+        try {
+            String req = "UPDATE `etablissement` SET `verification` = 'Valide' WHERE `etablissement`.`id_etablissement` =?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            
+            ste.setInt(1, id);
+            ste.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println(ex);  
+        }
+        
+        }
 }
