@@ -19,10 +19,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;  
+import javax.mail.*;  
+import javax.mail.internet.*; 
 
 /**
  *
@@ -145,18 +156,7 @@ public class ServiceUser {
 
     }
     
-     public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException
-        {
-            byte[] bytesOfMessage = password.getBytes("UTF-8");
-      MessageDigest md = MessageDigest.getInstance("MD5");
-      byte[] thedigest = md.digest(bytesOfMessage);
-      BigInteger bigInt = new BigInteger(1,thedigest);
-      String hashtext = bigInt.toString(16);
-      while(hashtext.length() < 32 ){
-            hashtext = "0"+hashtext;
-       }
-      return hashtext;
-        }  
+     
 
       public User recevoirUser(String username) {
         return null;
@@ -180,23 +180,11 @@ public class ServiceUser {
       }
         
         
-         public void changerMDP(String newMdp,int id)
-        {
-         /*   try {
-            String reqUpdate = "update utilisateur set password=? where id=?";
-            PreparedStatement ps = Connection.prepareStatement(reqUpdate);
-          //  ps.setString(1, u.getEmail()); 
-            ps.setString(1, BCrypt.hashpw(newMdp,BCrypt.gensalt()));   
-          //  ps.setString(3, u.getNom());
-         //   ps.setString(4, u.getPrenom());
-            ps.setInt(2,id);
-            ps.executeUpdate();
-            
-            System.out.println("envoyé");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }*/
-        }
+       public void changerMDP() {
+       }
+
+       
+    
 
      public User GetUserById(int id) {
         try {

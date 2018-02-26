@@ -12,6 +12,7 @@ import allforkids.util.BCrypt;
 import allforkids.util.Validation;
 import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTimePicker;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.exception.FacebookException;
@@ -66,8 +67,6 @@ public class LoginController implements Initializable {
     private Label MailC;
     @FXML
     private Label PassC;
-    @FXML
-    private static Label test;
     public static String maill ;
     public static String passl ;
     @FXML
@@ -150,19 +149,16 @@ public class LoginController implements Initializable {
                         app_stage.show();
     }
 
-    @FXML
-<<<<<<< HEAD
+   /* @FXML
+
     private void facebk(ActionEvent event) {
         org.apache.commons.httpclient.HttpClient http = new org.apache.commons.httpclient.HttpClient() ;
                String session = null;
         try {
 
             http. getHostConfiguration().setHost("graph.facebook.com");
-=======
-    private void faceb(ActionEvent event) {
-    }
 
-}
+   
 
    /* private static void face(String email, String password)  {
      /*   String accessToken="EAACEdEose0cBABdjq4NtQUnLhajFvfNIISUe7cvsYDYUonif1ZBXuRYFhs2I61E5YOG8VATaIocFIe5fZBlWClk76FXDPMteuwIwOIEt4HIuFZCvQ6u5ZCLQgnWKlYbBeUgHvQBlPpcTBEvRpvrYxO2MEpH9EzZCNDiZBtaa30PZBuX4U7ZBstoFIgStBFRX3LLruD8UMikTwQZDZD";
@@ -236,8 +232,8 @@ public class LoginController implements Initializable {
             System.out.println("Session string: " + session);
             long userid = client.users_getLoggedInUser();
             //System.out.println("User Id is : " + userid);*/
-=======
-            for (Header h : post.getResponseHeaders()) {
+
+        /*    for (Header h : post.getResponseHeaders()) {
                 System.out.println(h);
             }
             session = client.auth_getSession(token); // Here I am getting error
@@ -264,7 +260,7 @@ public class LoginController implements Initializable {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
+    }*/
 
 
 

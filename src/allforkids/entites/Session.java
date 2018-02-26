@@ -19,6 +19,5 @@ public class Session {
     public static void setIdThisUser(int IdThisUser) {
         Session.IdThisUser = IdThisUser;
     }
-
     
 }
