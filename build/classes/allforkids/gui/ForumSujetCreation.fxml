@@ -17,7 +17,6 @@
       <Button layoutX="408.0" layoutY="474.0" mnemonicParsing="false" onAction="#validerSujet" text="valider" />
       <JFXTextArea fx:id="Description" layoutX="152.0" layoutY="186.0" prefHeight="43.0" prefWidth="566.0" />
       <JFXTextField fx:id="Titre" layoutX="172.0" layoutY="129.0" prefHeight="26.0" prefWidth="371.0" />
-      <Label fx:id="aaa" layoutX="373.0" layoutY="378.0" text="Label" />
       <ChoiceBox fx:id="tag" layoutX="152.0" layoutY="267.0" prefHeight="28.0" prefWidth="141.0" />
    </children>
 </AnchorPane>

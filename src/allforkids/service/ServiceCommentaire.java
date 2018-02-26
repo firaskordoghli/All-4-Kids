@@ -90,7 +90,7 @@ public class ServiceCommentaire {
         return list;
     }
     
-    public Commentaire Get(int id_sujet) {
+    public Commentaire GetSujetById(int id_sujet) {
         try {
             String req = "SELECT * FROM Commentaire where id_sujet=?  ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
