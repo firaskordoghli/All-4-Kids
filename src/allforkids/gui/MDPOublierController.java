@@ -49,42 +49,33 @@ public class MDPOublierController implements Initializable {
     private void Changer(ActionEvent event) throws IOException {
            ServiceUser us = new ServiceUser();
         
-       /* 
-        User u=us.recevoirUser(MailC.getText());
-        if (MailC.getText().equals(u.getEmail()))
-        {
-            //generer mdp automatiquement
-            
-            String s=""+u.getId();
-            System.out.println(s);
-            for (int i=0;i<20;i++)
-            {
-           Random rand = new Random();
-           int a=rand.nextInt(10);
-           s=s+a;
-            }
-            
-            System.out.println(s);
-            
-            us.changerMDP(s,u.getId());
-            
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-         
-        Scene scene = new Scene(root);
-        
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  
-        
-        app_stage.setScene(scene);
-        
-        app_stage.show();
-        
-        
+       
+      
+                    //generer mdp automatiquement
+           
+            us.changerMDP();
+        /*Notifications notificiationBuilder = Notifications.create()
+                        .title("changer")
+                        .text("votre mot de passe a été changer !")
+                        .graphic(null)
+                        .hideAfter(Duration.seconds(10))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .onAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+                                System.out.println("Missing!");
+                            }
+                        });
+                notificiationBuilder.darkStyle();
+                notificiationBuilder.showConfirm();
         }
         else
+            loginL.setText("* verifier vos informations !");
+        } 
+                else
             loginL.setText("* verifier vos informations !");*/
-        
-                
     }
+
 
     @FXML
     private void Retour(ActionEvent event) throws IOException {

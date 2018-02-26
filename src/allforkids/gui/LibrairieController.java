@@ -109,12 +109,14 @@ public class LibrairieController  implements Initializable {
 
         }
         detail.setVisible(false);
+        lire.setVisible(false);
     }
 
     @FXML
     private void afichdetail(MouseEvent event) {
-        detail.setVisible(true);
-           Liverlike lvl = new Liverlike();
+            detail.setVisible(true);
+            lire.setVisible(true);
+            Liverlike lvl = new Liverlike();
             ServiceLiverlike slvl = new ServiceLiverlike();
             lvl = slvl.selectliverlikeByIdlivreuser(livre.getId_livre(), 8);
         String l = listconte25.getSelectionModel().getSelectedItem().getText();

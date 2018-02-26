@@ -19,12 +19,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;  
+import javax.mail.*;  
+import javax.mail.internet.*; 
 
 /**
  *
@@ -143,6 +154,7 @@ public class ServiceUser {
         return null;
 
     }
+<<<<<<< HEAD
 
     public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] bytesOfMessage = password.getBytes("UTF-8");
@@ -157,6 +169,12 @@ public class ServiceUser {
     }
 
     public User recevoirUser(String username) {
+=======
+    
+     
+
+      public User recevoirUser(String username) {
+>>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
         return null;
         /* try {
           String req = "select username,email,password,nom,prenom,enabled,id,roles from utilisateur where username=?";
@@ -175,6 +193,7 @@ public class ServiceUser {
             l.setText("* verifier vos informations !");
         }
         return null;*/
+<<<<<<< HEAD
     }
 
     public void changerMDP(String newMdp, int id) {
@@ -193,6 +212,16 @@ public class ServiceUser {
             ex.printStackTrace();
         }*/
     }
+=======
+      }
+        
+        
+       public void changerMDP() {
+       }
+
+       
+    
+>>>>>>> b2241b035ddcf70bbce9a4bcb3df5cf6946750ba
 
     public User GetUserById(int id) {
         try {

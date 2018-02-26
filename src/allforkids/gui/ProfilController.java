@@ -6,6 +6,7 @@
 package allforkids.gui;
 
 import allforkids.entites.Session;
+import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import com.jfoenix.controls.JFXButton;

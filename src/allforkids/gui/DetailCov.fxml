@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="allforkids.gui.DetailCovController">
+   <children>
+      <WebView fx:id="directionswebview" layoutX="42.0" layoutY="31.0" prefHeight="280.0" prefWidth="542.0" />
+      <Button layoutX="287.0" layoutY="345.0" mnemonicParsing="false" onAction="#getDirections" text="Button" />
+   </children>
+</AnchorPane>

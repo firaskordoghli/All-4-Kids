@@ -128,7 +128,8 @@ public class ServiceParticipevenement {
                                 result.getInt("id_user"),
                                 result.getString("photo"),
                                 result.getDouble("latitude"),
-                                result.getDouble("longitude")
+                                result.getDouble("longitude"),
+                                result.getTime("temp")
                               
                         )
                 );

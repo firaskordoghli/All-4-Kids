@@ -12,9 +12,16 @@ import allforkids.util.BCrypt;
 import allforkids.util.Validation;
 //import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
+<<<<<<< HEAD
+import com.jfoenix.controls.JFXTimePicker;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.exception.FacebookException;
+=======
 //import com.restfb.DefaultFacebookClient;
 //import com.restfb.FacebookClient;
 //import com.restfb.exception.FacebookException;
+>>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -66,12 +73,12 @@ public class LoginController implements Initializable {
     private Label MailC;
     @FXML
     private Label PassC;
-    @FXML
-    private static Label test;
     public static String maill ;
     public static String passl ;
     @FXML
     private Hyperlink facebk;
+    @FXML
+    private JFXButton aaa;
 
     /**
      * Initializes the controller class.
@@ -120,8 +127,10 @@ public class LoginController implements Initializable {
              
             }else {ErrPass.setText("verrifer votre passe");}
 
-        }else{ErrMail.setText("verrifier votre mail");}
-    ErrMail.setText(u.toString());
+        }else{//ErrMail.setText("verrifier votre mail");}
+   // ErrMail.setText(u.toString());
+            System.out.println("");
+    }
     }
         
     
@@ -158,11 +167,8 @@ public class LoginController implements Initializable {
         try {
 
             http. getHostConfiguration().setHost("graph.facebook.com");
-=======
-    private void faceb(ActionEvent event) {
-    }
 
-}
+   
 
     private static void face(String email, String password)  {
         String accessToken="EAACEdEose0cBABdjq4NtQUnLhajFvfNIISUe7cvsYDYUonif1ZBXuRYFhs2I61E5YOG8VATaIocFIe5fZBlWClk76FXDPMteuwIwOIEt4HIuFZCvQ6u5ZCLQgnWKlYbBeUgHvQBlPpcTBEvRpvrYxO2MEpH9EzZCNDiZBtaa30PZBuX4U7ZBstoFIgStBFRX3LLruD8UMikTwQZDZD";
@@ -240,8 +246,13 @@ public class LoginController implements Initializable {
             System.out.println("Session string: " + session);
             long userid = client.users_getLoggedInUser();
             //System.out.println("User Id is : " + userid);*/
+<<<<<<< HEAD
+
+        /*    for (Header h : post.getResponseHeaders()) {
+=======
 /*=======
             for (Header h : post.getResponseHeaders()) {
+>>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
                 System.out.println(h);
             }
             session = client.auth_getSession(token); // Here I am getting error
@@ -268,8 +279,13 @@ public class LoginController implements Initializable {
         }catch(Exception e){
             e.printStackTrace();
         }
+<<<<<<< HEAD
+    }*/
+
+=======
     }
 */
+>>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
 
 
     }
