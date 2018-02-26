@@ -355,7 +355,7 @@ public class EvenementController implements Initializable {
             int id = event.getId_evenement();
             LocalDate d = mdate.getValue();
             Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            LocalTime time = temp.getValue();
+           
            
             Time t = new Time(id, id, id) ;
       
