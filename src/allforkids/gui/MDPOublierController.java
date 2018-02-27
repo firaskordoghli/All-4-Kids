@@ -61,7 +61,7 @@ public class MDPOublierController implements Initializable {
     @FXML
     private void sendMail(ActionEvent event) throws MessagingException {
         ServiceMail Ma = new ServiceMail();
-        Ma.sendMail("r4.cherif@gmail", "subject", "test");
+        Ma.sendMail("rayen.cherif@esprit.tn", "subject", "test");
         
     }
 

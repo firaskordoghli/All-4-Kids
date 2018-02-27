@@ -93,6 +93,7 @@ public class CreationCompteController implements Initializable {
     @FXML
     private JFXButton vider;
 
+    @FXML
     private ChoiceBox<String> RoleC;
     @FXML
     private JFXButton photoC;
