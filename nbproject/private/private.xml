@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CreationCompteController.java</file>
             <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeAdminController.java</file>
             <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeAdmin.fxml</file>
-            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ListeSujetController.java</file>
-            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceUser.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CrationCompteAdmin.fxml</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CreationCompte.fxml</file>
             <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
             <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CrationCompteAdminController.java</file>
         </group>
