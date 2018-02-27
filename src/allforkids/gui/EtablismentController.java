@@ -6,12 +6,20 @@
 package allforkids.gui;
 
 import allforkids.entites.Etablissement;
+import allforkids.entites.Note;
 import allforkids.entites.Rejoindre;
 import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceEtablissement;
+import allforkids.service.ServiceNote;
 import allforkids.service.ServiceRejoindre;
 import allforkids.service.ServiceUser;
+import com.itextpdf.text.Anchor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -21,6 +29,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -38,6 +47,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -51,6 +61,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.imageio.ImageIO;
+import javax.swing.text.html.HTML;
 
 /**
  * FXML Controller class
@@ -134,6 +145,30 @@ public class EtablismentController implements Initializable {
     private JFXButton supprimer;
     @FXML
     private JFXButton accepter;
+    @FXML
+    private AnchorPane detail6;
+    @FXML
+    private TableView<User> tableview7;
+    @FXML
+    private TableColumn<User, String> nomeleve1;
+    @FXML
+    private TableColumn<User, String> prenomeleve1;
+    @FXML
+    private TableView<Etablissement> tableview6;
+    @FXML
+    private TableColumn<Etablissement, String> nomCol31;
+    @FXML
+    private TableColumn<Etablissement, String> typeCol31;
+    @FXML
+    private JFXTextField moyenne;
+    @FXML
+    private JFXButton ajouternote;
+    @FXML
+    private AnchorPane detail7;
+    @FXML
+    private JFXButton pdf;
+    @FXML
+    private PieChart pourcentage;
 
     /**
      * Initializes the controller class.
@@ -161,7 +196,7 @@ public class EtablismentController implements Initializable {
         ServiceEtablissement sr2 = new ServiceEtablissement();
 
         try {
-            tableview2.setItems(sr2.selectEtablissementById(Session.getIdThisUser()));
+            tableview2.setItems(sr2.selectEtablissementById(32));
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -172,7 +207,7 @@ public class EtablismentController implements Initializable {
 
         ServiceEtablissement sr3 = new ServiceEtablissement();
 
-        User u1 = new User();
+        //User u1 = new User();
         try {
             tableview3.setItems(sr3.selectEtablissementById2(32));
 
@@ -207,11 +242,29 @@ public class EtablismentController implements Initializable {
             System.out.println(ex);
         }
 
+        /////////////////////////Ajout note
+        nomCol31.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        typeCol31.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        try {
+            tableview6.setItems(sr3.selectEtablissementById2(32));
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        ////////////////////statistique
+        pourcentage.setData(createPieChart().getData());
+        pourcentage.setLabelsVisible(true);
+
         //Session.getIdThisUser();
         detail.setVisible(false);
         detail2.setVisible(false);
         detail3.setVisible(false);
         detail5.setVisible(false);
+        detail6.setVisible(false);
+        detail7.setVisible(false);
+
+        pdf.setVisible(false);
 
     }
 
@@ -364,6 +417,7 @@ public class EtablismentController implements Initializable {
     private void consulter3(MouseEvent event) {
         detail3.setVisible(true);
         detail5.setVisible(false);
+        pdf.setVisible(true);
         int a = tableview3.getSelectionModel().getSelectedItem().getId();
         //ServiceRejoindre sr1 = new ServiceRejoindre();
         ServiceUser su = new ServiceUser();
@@ -389,9 +443,11 @@ public class EtablismentController implements Initializable {
     private void consulter4(MouseEvent event) {
         detail5.setVisible(true);
         accepter.setVisible(true);
+        pdf.setVisible(false);
         ServiceRejoindre sr1 = new ServiceRejoindre();
+
         if (sr1.SelectIfDejaExiste(tableview3.getSelectionModel().getSelectedItem().getId(),
-                 tableview4.getSelectionModel().getSelectedItem().getId())
+                tableview4.getSelectionModel().getSelectedItem().getId())
                 .getVerification().equals("Valide")) {
             accepter.setVisible(false);
         }
@@ -414,5 +470,100 @@ public class EtablismentController implements Initializable {
         sr1.accepterEleve(tableview3.getSelectionModel().getSelectedItem().getId(), tableview4.getSelectionModel().getSelectedItem().getId());
 
     }
+
+    @FXML
+    private void consulter6(MouseEvent event) {
+        detail6.setVisible(true);
+        int a = tableview6.getSelectionModel().getSelectedItem().getId();
+        //ServiceRejoindre sr1 = new ServiceRejoindre();
+        ServiceUser su = new ServiceUser();
+        //Rejoindre r = sr1.GetIdUserById(a);
+
+        //User u = su.GetUserById(r.getId_user());
+        // u.getNom();
+        //u.getPrenom();
+        nomeleve1.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        prenomeleve1.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+
+        try {
+            tableview7.setItems(su.GetUserById2(a));
+            // tableview3.setItems(sr3.selectEtablissementById(32));
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+    }
+
+    @FXML
+    private void consulter7(MouseEvent event) {
+        ServiceNote sn = new ServiceNote();
+        if (sn.SelectMoyenneById(tableview7.getSelectionModel().getSelectedItem().getId()) == null) {
+            detail7.setVisible(true);
+        } else {
+            detail7.setVisible(false);
+            Alert.afficher("", "vous avez déja saisi la moyenne de cette éleve");
+        }
+
+    }
+
+    @FXML
+    private void insertmoyenne(ActionEvent event) {
+
+        ServiceNote sn = new ServiceNote();
+        Note n = new Note(tableview7.getSelectionModel().getSelectedItem().getId(),
+                 Float.parseFloat(moyenne.getText()));
+
+        sn.insrerMoyenne(n);
+        moyenne.clear();
+        detail7.setVisible(false);
+
+    }
+
+    @FXML
+    private void pdf(ActionEvent event) throws DocumentException {
+
+        String nometablissement = tableview3.getSelectionModel().getSelectedItem().getNom();
+        Document document = new Document(PageSize.A4);
+
+        //document.setMargins(50,50,50,50);
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\MBM info\\Desktop\\ListeEleve" + nometablissement + ".pdf"));
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+        document.open();
+
+        String titre = "                                                      La liste des éléves de l'établissement " + nometablissement;
+        Paragraph para1 = new Paragraph();
+        para1.add(titre);
+        para1.setSpacingAfter(50);
+
+        document.add(para1);
+        for (User u : tableview4.getItems()) {
+            String nom = u.getNom();
+            String prenom = u.getPrenom();
+
+            String n = ("Nom et prenom éleve : " + nom + " " + prenom + "\n");
+
+            Paragraph para = new Paragraph();
+
+            //para.setSpacingBefore(50);
+            para.add(n);
+
+            document.add(para);
+        }
+
+        document.close();
+
+        Alert.afficher("", "Votre PDF a été crée avec succès");
+    }
+
+    private PieChart createPieChart() {
+     
+    return null;
+    }
+    
 
 }
