@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -156,7 +157,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Gestion des éleves">
+            <Tab text="Consulter demande">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -238,6 +239,15 @@
                               <TableColumn fx:id="typeCol31" prefWidth="277.0" text="Type" />
                            </columns>
                         </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Liste établissements">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="pourcentage" layoutX="192.0" layoutY="66.0" />
                      </children>
                   </AnchorPane>
                </content>
