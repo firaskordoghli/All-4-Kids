@@ -17,6 +17,7 @@ import javax.mail.internet.MimeMessage;
 import allforkids.entites.User;
 import allforkids.service.ServiceMail;
 import allforkids.service.ServiceUser;
+import com.google.code.facebookapi.schema.NotificationData.Notifications;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -59,12 +60,52 @@ public class MDPOublierController implements Initializable {
     }    
 
     @FXML
-    private void sendMail(ActionEvent event) throws MessagingException {
-        ServiceMail Ma = new ServiceMail();
-        Ma.sendMail("rayen.cherif@esprit.tn", "subject", "test");
+    private void sendMail(ActionEvent event) throws MessagingException, IOException {
+     /*  ServiceMail Ma = new ServiceMail();
+        Ma.generateAndSendEmail("recuperation de mdp", "", "3","r4.cherif@gmail.com");*/
+       
+       
+       ServiceMail Ma = new ServiceMail();
+        ServiceUser us = new ServiceUser();
         
-    }
+        User u=us.recevoirUser(mail.getText());
+        
+            //generer mdp automatiquement
+            
+            
+            
+           Random rand = new Random(10000);
+           int a=rand.nextInt(10000);
+          //int a=h+1000;
+           
+          
+            
+            
+           // System.out.println(s);
+           Ma.generateAndSendEmail("recuperation de mdp", "test", a,"r4.cherif@gmail.com");
+            }
+            /*us.changerMDP(s,u.getId());
+            
+            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+         
+        Scene scene = new Scene(root);
+        
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  
+        
+        app_stage.setScene(scene);
+        
+        app_stage.show();*/
+        
+        
+                
+        }
+        
+        
+    
+        
+        
+    
+
 
     
   
-}
