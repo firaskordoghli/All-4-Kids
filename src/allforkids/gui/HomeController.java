@@ -5,6 +5,9 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Session;
+import allforkids.entites.User;
+import allforkids.service.ServiceUser;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -58,14 +61,21 @@ public class HomeController implements Initializable {
 
         });
         
+        ServiceUser su = new ServiceUser();
+        User u = su.GetUserById(Session.getIdThisUser());
+        
         try {
             VBox sidePane = FXMLLoader.load(getClass().getResource("Drawer.fxml"));
             
             AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
             AnchorPane transportPane = FXMLLoader.load(getClass().getResource("TransportView.fxml"));
             AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
+//            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
             AnchorPane profilPane = FXMLLoader.load(getClass().getResource("Profil.fxml"));
+            AnchorPane AdminService = FXMLLoader.load(getClass().getResource("ServiceAdmin.fxml"));
+            AnchorPane AdminReclamation = FXMLLoader.load(getClass().getResource("AdminReclamation.fxml"));
+            AnchorPane ConsulterService = FXMLLoader.load(getClass().getResource("ConsulterService.fxml"));
+            AnchorPane MesReclamation = FXMLLoader.load(getClass().getResource("MesReclamations.fxml"));
 
             setNode(acceuil);
             drawer.setSidePane(sidePane);
@@ -75,6 +85,18 @@ public class HomeController implements Initializable {
                 if (node.getAccessibleText() != null) {
                     node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent ev) -> {
                         switch (node.getAccessibleText()) {
+                            
+                            case "service":
+                                drawer.close();
+                                if(u.getRole()==0) {setNode(AdminService);}
+                                else{setNode(ConsulterService);}
+                                break;
+                            case "reclamationMenu":
+                                drawer.close();
+                                 if(u.getRole()==0) {setNode(AdminReclamation);}
+                                else{setNode(MesReclamation);}
+                               
+                                break;
                             case "acceuilMenu":
                                 drawer.close();
                                 setNode(acceuil);
@@ -85,7 +107,7 @@ public class HomeController implements Initializable {
                                 break;
                             case "etablissmentMenu":
                                 drawer.close();
-                                setNode(etablissementPane);
+                               // setNode(etablissementPane);
                                 break;
                             case "divertissementMeni":
                                 drawer.close();                                
