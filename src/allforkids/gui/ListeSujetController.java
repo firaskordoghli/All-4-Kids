@@ -62,21 +62,14 @@ public class ListeSujetController implements Initializable {
     private TableColumn<Sujet, String> tag;
     @FXML
     private TableView<Sujet> table;
-
+ public static int id_sujet ;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        /*   ServiceSujet s = new ServiceSujet();
-         ObservableList<Label> a = FXCollections.observableArrayList();
-        List<Sujet> e = new ArrayList<>();
-        e = s.selectSujet();
-        for (Sujet ev : e) {
-                Label l = new Label("titre :        "+ev.getTitle()+"         tag :     "+ev.getTag());
-                listeSujet.getItems().add(l);
-         */
+        
         ObservableList<Sujet> a = FXCollections.observableArrayList();
         titre.setCellValueFactory(new PropertyValueFactory<>("title"));
         tag.setCellValueFactory(new PropertyValueFactory<>("tag"));
@@ -145,7 +138,11 @@ public class ListeSujetController implements Initializable {
     @FXML
     private void commantaire(MouseEvent event) throws IOException {
         ServiceCommentaire c = new ServiceCommentaire();
+               int a =table.getSelectionModel().getSelectedItem().getId_sujet();
+         id_sujet = a ;
         
+        
+            
         
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("SujetCommenter.fxml"));

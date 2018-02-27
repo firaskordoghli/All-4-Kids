@@ -44,7 +44,7 @@ public class Rayen extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        System.out.println("kyckgvjhlbnl");
+       
         /* VBox root = new VBox();
         Scene scene = new Scene(root);
         
@@ -115,12 +115,17 @@ public class Rayen extends Application {
 
     public void setBtn(Button btn) {
         this.btn = btn;
-    }
-*/
-       Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        
         Scene scene = new Scene(root);
         
+        stage.setScene(scene);
+        stage.show();
+    }
+*/
+        
+        Parent root = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
+
+        Scene scene = new Scene(root);
+
         stage.setScene(scene);
         stage.show();
        
