@@ -120,7 +120,7 @@ public class ServiceParticipevenement {
                         new Evenement(
                                 result.getInt("id_evenement"),
                                 result.getString("nom"),
-                                result.getString("lieu"),
+                                result.getString("descriptionn"),
                                 result.getDate("date"),
                                 result.getString("type"),
                                 result.getInt("nbr_participation"),

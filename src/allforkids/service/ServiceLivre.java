@@ -20,14 +20,15 @@ import java.util.logging.Logger;
  * @author slim
  */
 public class ServiceLivre {
-       static Config ds = Config.getInstance();
+
+    static Config ds = Config.getInstance();
 
     public void insrerLivre(Livre l) {
         try {
             String req = "INSERT INTO livre VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, l.getId_livre());
-            ste.setString(2,l.getNom());
+            ste.setString(2, l.getNom());
             ste.setString(3, l.getCategorie());
             ste.setString(4, l.getDescription());
             ste.setString(5, l.getType());
@@ -45,13 +46,13 @@ public class ServiceLivre {
         try {
             String req = "UPDATE livre SET  nom= ?,categorie=? ,description=?,type = ? ,good=? , bad=? ,photo=?, url= ? WHERE id_livre = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-           ste.setString(1,l.getNom());
+            ste.setString(1, l.getNom());
             ste.setString(2, l.getCategorie());
             ste.setString(3, l.getDescription());
             ste.setString(4, l.getType());
             ste.setInt(5, l.getGood());
             ste.setInt(6, l.getBad());
-            ste.setString(7,l.getPhoto());
+            ste.setString(7, l.getPhoto());
             ste.setString(8, l.getUrl());
             ste.setInt(9, id);
             ste.executeUpdate();
@@ -90,7 +91,6 @@ public class ServiceLivre {
                                 result.getInt("bad"),
                                 result.getString("photo"),
                                 result.getString("url")
-                           
                         )
                 );
             }
@@ -99,7 +99,8 @@ public class ServiceLivre {
         }
         return list;
     }
-       public List<Livre> selectLivreByCatg(String categ) {
+
+    public List<Livre> selectLivreByCatg(String categ) {
         List<Livre> list = new ArrayList<>();
         try {
             String req = "SELECT * FROM livre where categorie= ?";
@@ -118,8 +119,6 @@ public class ServiceLivre {
                                 result.getInt("bad"),
                                 result.getString("photo"),
                                 result.getString("url")
-                                
-                           
                         )
                 );
             }
@@ -128,33 +127,60 @@ public class ServiceLivre {
         }
         return list;
     }
-        public Livre selectLivreByName(String nom) {
-       Livre l = null;
+
+    public Livre selectLivreByName(String nom) {
+        Livre l = null;
         try {
             String req = "SELECT * FROM livre where nom= ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, nom);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
-             
-                    l=    new Livre(
-                                result.getInt("id_livre"),
-                                result.getString("nom"),
-                                result.getString("categorie"),
-                                result.getString("description"),
-                                result.getString("type"),
-                                result.getInt("good"),
-                                result.getInt("bad"),
-                                result.getString("photo"),
-                                result.getString("url")
-                                
-                           
-                        );
-                
+
+                l = new Livre(
+                        result.getInt("id_livre"),
+                        result.getString("nom"),
+                        result.getString("categorie"),
+                        result.getString("description"),
+                        result.getString("type"),
+                        result.getInt("good"),
+                        result.getInt("bad"),
+                        result.getString("photo"),
+                        result.getString("url")
+                );
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return l;
+    }
+
+    public Livre getIdByName(String nom) {
+        Livre l = new Livre();
+        try {
+            String req = "SELECT * FROM livre where nom=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ste.setString(1, nom);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                l.setId_livre(result.getInt("id_livre"));
+                l.setNom(result.getString("nom"));
+                l.setCategorie(result.getString("categorie"));
+                l.setDescription(result.getString("description"));
+                l.setType(result.getString("type"));
+                l.setGood(result.getInt("good"));
+                l.setBad(result.getInt("bad"));
+                l.setPhoto(result.getString("photo"));
+                l.setUrl(result.getString("url"));
+
+            }
+            return l;
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return l;
     }
 }

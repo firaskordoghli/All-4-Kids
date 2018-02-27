@@ -16,7 +16,7 @@ public class Evenement {
     
     private int id_evenement;
     private String nom;
-    private String lieu;
+    private String descriptionn;
     private Date date;
     private String type;
     private int nbr_participation;
@@ -27,10 +27,10 @@ public class Evenement {
     private Double longitude ;
     private Time  temp ;
 
-    public Evenement(int id_evenement, String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude,Time temp) {
+    public Evenement(int id_evenement, String nom, String descriptionn, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude,Time temp) {
         this.id_evenement = id_evenement;
         this.nom = nom;
-        this.lieu = lieu;
+        this.descriptionn = descriptionn;
         this.date = date;
         this.type = type;
         this.nbr_participation = nbr_participation;
@@ -42,9 +42,9 @@ public class Evenement {
         this.temp = temp ;
     }
 
-    public Evenement(String nom, String lieu, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude,Time temp) {
+    public Evenement(String nom, String descriptionn, Date date, String type, int nbr_participation, boolean etat, int id_user, String photo, Double latitude, Double longitude,Time temp) {
         this.nom = nom;
-        this.lieu = lieu;
+        this.descriptionn = descriptionn;
         this.date = date;
         this.type = type;
         this.nbr_participation = nbr_participation;
@@ -93,12 +93,12 @@ public class Evenement {
         this.nom = nom;
     }
 
-    public String getLieu() {
-        return lieu;
+    public String getDescriptionn() {
+        return descriptionn;
     }
 
-    public void setLieu(String lieu) {
-        this.lieu = lieu;
+    public void setDescriptionn(String descriptionn) {
+        this.descriptionn = descriptionn;
     }
 
     public Date getDate() {
@@ -186,7 +186,7 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "id_evenement=" + id_evenement + ", nom=" + nom + ", lieu=" + lieu + ", date=" + date + ", type=" + type + ", nbr_participation=" + nbr_participation + ", etat=" + etat + ", id_user=" + id_user + ", photo=" + photo + ", latitude=" + latitude + ", longitude=" + longitude + '}';
+        return "Evenement{" + "id_evenement=" + id_evenement + ", nom=" + nom + ", descriptionn=" + descriptionn + ", date=" + date + ", type=" + type + ", nbr_participation=" + nbr_participation + ", etat=" + etat + ", id_user=" + id_user + ", photo=" + photo + ", latitude=" + latitude + ", longitude=" + longitude + '}';
     }
 
    
