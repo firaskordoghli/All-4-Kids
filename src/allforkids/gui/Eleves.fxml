@@ -97,9 +97,14 @@
                               <TableColumn fx:id="typeCol" prefWidth="277.0" text="Type" />
                            </columns>
                         </TableView>
-                        <JFXButton fx:id="rejoindrebt" layoutX="629.0" layoutY="387.0" onAction="#rejoindre" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: #329932;" text="Rejoindre" textFill="WHITE">
+                        <JFXButton fx:id="rejoindrebt" layoutX="705.0" layoutY="387.0" onAction="#rejoindre" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: #329932;" text="Rejoindre" textFill="WHITE">
                            <font>
                               <Font name="DK Cool Crayon" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="consulter" layoutX="573.0" layoutY="387.0" onAction="#comsulter" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: #329932;" text="Consulter moyenne" textFill="WHITE">
+                           <font>
+                              <Font name="DK Cool Crayon" size="11.0" />
                            </font>
                         </JFXButton>
                      </children>

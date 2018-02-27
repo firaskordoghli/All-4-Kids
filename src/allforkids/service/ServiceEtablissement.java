@@ -28,7 +28,11 @@ public class ServiceEtablissement {
     public void insrerEtablissement(Etablissement e) {
         try {
             System.out.println(e);
-            String req = "INSERT INTO `etablissement` ( `nom`, `type`, `region`, `ville`, `description`, `image`, `verification`) VALUES ( ?, ?, ?, ?, ?, ?, 'Non valide')";
+            String req = "INSERT INTO "
+                    + "`etablissement`"
+                    + " ( `nom`, `type`, `region`, `ville`, `description`, `image`, `verification`) "
+                    + "VALUES "
+                    + "( ?, ?, ?, ?, ?, ?, 'Non valide')";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ste.setString(1, e.getNom());

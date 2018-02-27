@@ -12,18 +12,21 @@ package allforkids.entites;
 public class Movie {
 
     private int id_movie;
-    private String categorie;
-    private String movie;
+    private String nom;
+    private String url;
+    private String img ;
 
-    public Movie(int id_movie, String categorie, String movie) {
+    public Movie(int id_movie, String nom, String url, String img) {
         this.id_movie = id_movie;
-        this.categorie = categorie;
-        this.movie = movie;
+        this.nom = nom;
+        this.url = url;
+        this.img = img ;
     }
 
-    public Movie(String categorie, String movie) {
-        this.categorie = categorie;
-        this.movie = movie;
+    public Movie(String nom, String url,String img) {
+        this.nom = nom;
+        this.url = url;
+        this.img = img ;
     }
 
     public Movie() {
@@ -37,21 +40,31 @@ public class Movie {
         this.id_movie = id_movie;
     }
 
-    public String getCategorie() {
-        return categorie;
+    public String getNom() {
+        return nom;
     }
 
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getMovie() {
-        return movie;
+    public String getUrl() {
+        return url;
     }
 
-    public void setMovie(String movie) {
-        this.movie = movie;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+  
 
     @Override
     public int hashCode() {
@@ -77,7 +90,11 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" + "categorie=" + categorie + ", movie=" + movie + '}';
+        return "Movie{" + "id_movie=" + id_movie + ", nom=" + nom + ", url=" + url + ", img=" + img + '}';
     }
+
+   
+
+   
 
 }

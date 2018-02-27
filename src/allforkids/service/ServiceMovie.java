@@ -24,11 +24,12 @@ public class ServiceMovie {
 
     public void insrerMovie(Movie m) {
         try {
-            String req = "INSERT INTO movie VALUES(?,?,?)";
+            String req = "INSERT INTO movie VALUES(?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, m.getId_movie());
-            ste.setString(2, m.getCategorie());
-            ste.setString(3, m.getMovie());
+            ste.setString(2, m.getNom());
+            ste.setString(3, m.getUrl());
+            ste.setString(4, m.getImg());
      
             ste.executeUpdate();
         } catch (SQLException ex) {
@@ -38,12 +39,13 @@ public class ServiceMovie {
 
     public void updateMovie(Movie m, int id) {
         try {
-            String req = "UPDATE movie SET  categorie= ? ,movie=? WHERE id_movie = ?";
+            String req = "UPDATE movie SET  nom= ? ,url=?, img =? WHERE id_movie = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
              
-            ste.setString(1, m.getCategorie());
-            ste.setString(2, m.getMovie());
-            ste.setInt(3, id);
+            ste.setString(1, m.getNom());
+            ste.setString(2, m.getUrl());
+             ste.setString(3, m.getImg());
+            ste.setInt(4, id);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,8 +74,9 @@ public class ServiceMovie {
                 list.add(
                         new Movie(
                                 result.getInt("id_movie"),
-                                result.getString("categorie"),
-                                result.getString("movie")
+                                result.getString("nom"),
+                                result.getString("url"),
+                                result.getString("img")
                               
                         )
                 );
