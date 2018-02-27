@@ -432,7 +432,7 @@ public class LibrairieController implements Initializable {
         JFrame f = new JFrame(l);
         f.setSize(1024, 768);
         f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         ServicePdf pdf = new ServicePdf("ftp://slim:07471917@" + Session.getIp() + livre.getUrl());
         f.setVisible(true);

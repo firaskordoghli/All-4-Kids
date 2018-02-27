@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.all4kids.controllers.AdminReclamationController">
+   <children>
+      <Label layoutX="23.0" layoutY="20.0" prefHeight="46.0" prefWidth="295.0" text="Reclamations traitées" textFill="#2233a1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvReclamation" layoutX="31.0" layoutY="66.0" prefHeight="184.0" prefWidth="1038.0">
+        <columns>
+          <TableColumn fx:id="colService" prefWidth="238.0" text="Service" />
+          <TableColumn fx:id="colUser" prefWidth="199.0" text="utilisateur" />
+            <TableColumn fx:id="colDescription" prefWidth="600.0" text="Description" />
+        </columns>
+      </TableView>
+      <Label layoutX="17.0" layoutY="250.0" prefHeight="46.0" prefWidth="401.0" text="Reclamations en attente" textFill="#2233a1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvReclamation1" layoutX="31.0" layoutY="298.0" prefHeight="184.0" prefWidth="1038.0">
+         <columns>
+            <TableColumn fx:id="colService1" prefWidth="238.0" text="Service" />
+            <TableColumn fx:id="colUser1" prefWidth="199.0" text="utilisateur" />
+            <TableColumn fx:id="colDescription1" prefWidth="600.0" text="Description" />
+         </columns>
+      </TableView>
+      <Button fx:id="btAccepter" layoutX="301.0" layoutY="501.0" mnemonicParsing="false" onAction="#accepter" prefHeight="53.0" prefWidth="212.0" text="Accepter reclamation" />
+      <Button fx:id="btRefuser" layoutX="523.0" layoutY="501.0" mnemonicParsing="false" onAction="#refuser" prefHeight="53.0" prefWidth="212.0" text="Refuser reclamation" />
+   </children>
+</AnchorPane>
