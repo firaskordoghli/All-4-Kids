@@ -21,7 +21,7 @@ public class ServiceMail {
     public static void sendMail(String to,String subject,String message) throws MessagingException
     {
   String host="smtp.gmail.com";  
-  final String user="r4.cherif@gmail.com";//change accordingly  
+  final String user="rayen.cherif@gmail.com";//change accordingly  
   final String password="21945026";//change accordingly  
         
   

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Movie.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/nbproject/project.properties</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceMovie.java</file>
@@ -13,6 +14,38 @@
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/LibrairieController.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/DetailCovController.java</file>
             <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/GoogleMapEvenementController.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceUser.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AjoutEvenmentController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEtablissement.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AddEtablissmentController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AdminController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/MDPOublierController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceRejoindre.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ElevesController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Note.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EtablismentController.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/util/Config.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Salmen.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Rejoindre.java</file>
+            <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceNote.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/nbproject/project.properties</file>
+=======
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CreationCompteController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/EvenementController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeAdminController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeAdmin.fxml</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AcceuilController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Alert2.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CreationCompte.fxml</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
+>>>>>>> d11372535d3305cbede5c2ea470e59d98fe4f990
+>>>>>>> 1878638e321cca2c1909a8ca37910a7219f770a1
+>>>>>>> b08939245440f39d077aaf3dbdf7a930e781cdde
         </group>
     </open-files>
 </project-private>
