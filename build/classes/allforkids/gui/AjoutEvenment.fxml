@@ -47,9 +47,9 @@
                      </font>
                   </Label>
                   <TextField id="Nom" fx:id="tfNom" GridPane.columnIndex="1" />
-                  <Label fx:id="Nom" prefHeight="26.0" prefWidth="184.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="Nom" prefHeight="33.0" prefWidth="184.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font name="DK Cool Crayon" size="10.0" />
+                        <Font name="DK Cool Crayon" size="9.0" />
                      </font>
                   </Label>
                   <Label text="Adresse:" GridPane.rowIndex="2">
@@ -72,7 +72,7 @@
                      </font>
                   </Label>
                   <DatePicker id="date" fx:id="tfDate" prefHeight="31.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="Datee" prefHeight="24.0" prefWidth="183.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Label fx:id="Datee" prefHeight="30.0" prefWidth="183.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font name="DK Cool Crayon" size="10.0" />
                      </font>
@@ -111,7 +111,7 @@
                   </JFXButton>
                   <Label fx:id="Nb" prefHeight="28.0" prefWidth="184.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
                      <font>
-                        <Font name="DK Cool Crayon" size="10.0" />
+                        <Font name="DK Cool Crayon" size="9.0" />
                      </font>
                   </Label>
                   <Label fx:id="Imegee" prefHeight="29.0" prefWidth="184.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
@@ -120,7 +120,7 @@
                      </font>
                   </Label>
                   <JFXTimePicker fx:id="temp" prefHeight="17.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label fx:id="tempp" prefHeight="21.0" prefWidth="176.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <Label fx:id="tempp" prefHeight="28.0" prefWidth="176.0" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font name="DK Cool Crayon" size="10.0" />
                      </font>
