@@ -6,7 +6,9 @@
 package allforkids.gui;
 
 import allforkids.entites.Etablissement;
+import allforkids.entites.Note;
 import allforkids.service.ServiceEtablissement;
+import allforkids.service.ServiceNote;
 import allforkids.service.ServiceRejoindre;
 import com.jfoenix.controls.JFXButton;
 import java.io.FileInputStream;
@@ -53,6 +55,8 @@ public class ElevesController implements Initializable {
     private TableColumn<Etablissement, String> typeCol;
     @FXML
     private JFXButton rejoindrebt;
+    @FXML
+    private JFXButton consulter;
 
     /**
      * Initializes the controller class.
@@ -69,14 +73,33 @@ public class ElevesController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        
+        
         detail.setVisible(false);
         rejoindrebt.setVisible(false);
+        consulter.setVisible(false);
     }    
 
     @FXML
     private void consulter(MouseEvent event) {
         detail.setVisible(true);
-        rejoindrebt.setVisible(true);
+        rejoindrebt.setVisible(false);
+        consulter.setVisible(false);
+        
+        ServiceRejoindre sr2= new ServiceRejoindre();
+        int a = tableview.getSelectionModel().getSelectedItem().getId();
+        int b =32;
+        if(sr2.SelectIfDejaExiste(a, b) == null){
+            rejoindrebt.setVisible(true);
+        }
+        else{
+            if(sr2.SelectIfDejaExiste(a, b).getVerification().equals("Valide")){
+             consulter.setVisible(true);   
+            } 
+        }
+        
+        
+        
         ServiceEtablissement sr1 = new ServiceEtablissement();
 
         Etablissement e = sr1.GetEtablissemebtById(tableview.getSelectionModel().getSelectedItem().getId());
@@ -86,6 +109,7 @@ public class ElevesController implements Initializable {
         region.setText(e.getRegion());
         ville.setText(e.getVille());
         Image img;
+       
         try {
             img = new Image(new FileInputStream(e.getImage()));
             imageview1.setImage(img);
@@ -100,14 +124,25 @@ public class ElevesController implements Initializable {
         int a = tableview.getSelectionModel().getSelectedItem().getId();
         int b =32;
         ServiceRejoindre sr1= new ServiceRejoindre();
-        if(sr1.SelectIfDejaExiste(a, b) == null){
+       
             sr1.insrerRejoindre(a, b);
             Alert.afficher("Succée", " Votre demande à été envoyé avec succès");
-        }
-        else{
-           Alert.afficher("Alert", " Vous avez déja demander à rejoindre cette établissement. ");
-        }
         
+        
+           rejoindrebt.setVisible(false);
+           consulter.setVisible(true);
+         
+    }
+
+    @FXML
+    private void comsulter(ActionEvent event) {
+        ServiceNote sr = new ServiceNote();
+        Float moyenne= sr.SelectMoyenneById(32).getMoyenne();
+        System.out.println(moyenne);
+        
+            Alert.afficher("Moyenne", "Votre moyenne est : "+moyenne);
+        
+       
     }
     
 }
