@@ -9,6 +9,7 @@ import allforkids.entites.Evenement;
 import allforkids.entites.Participevenement;
 import allforkids.entites.Session;
 import allforkids.service.ServiceEvenement;
+import allforkids.service.ServiceImage;
 import allforkids.service.ServiceParticipevenement;
 import allforkids.util.Validation;
 import com.jfoenix.controls.JFXButton;
@@ -58,6 +59,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.animation.PauseTransition;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,6 +68,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ScrollPane;
@@ -73,6 +77,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.imageio.ImageIO;
 
 /**
@@ -142,8 +147,6 @@ public class EvenementController implements Initializable {
     private Label nnb;
     @FXML
     private Label nimg;
-
-    private static String imgg = "";
     public static Double longe = 10.195556;
     public static Double altud = 36.862499;
     private GoogleMapView mapvView;
@@ -162,55 +165,49 @@ public class EvenementController implements Initializable {
     @FXML
     private JFXButton inscript1;
     private ServiceParticipevenement sp = new ServiceParticipevenement();
-    private String filePath;
-    private static final int BUFFER_SIZE = 4096;
+  
     @FXML
     private JFXTimePicker temp;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         
-       
-        
-            List<Evenement> me = s.selectMesEvenement(8);
-            List<Participevenement> pe = sp.selectParticipevenementByid(8);
-             List<Evenement> ppe = sp.selectEvenementByid(8);
-                  if(pe.isEmpty()){
-             inscrit.setDisable(true);
-            }
-            if (me.isEmpty()){
-               mesconsult.setDisable(true);
-            }
+
+        List<Evenement> me = s.selectMesEvenement(32);
+        List<Participevenement> pe = sp.selectParticipevenementByid(8);
+        List<Evenement> ppe = sp.selectEvenementByid(8);
+        if (pe.isEmpty()) {
+            inscrit.setDisable(true);
+        }
+        if (me.isEmpty()) {
+            mesconsult.setDisable(true);
+        }
         /**
          * *******Evenement******
          */
-        
-            
-        ObservableList<Label> a = FXCollections.observableArrayList();
+
+       
         List<Evenement> e = new ArrayList<>();
-          // int u = Session.getIdThisUser();
-         
+        // int u = Session.getIdThisUser();
+
         e = s.selectEvenement();
         for (Evenement ev : e) {
-           
 
-                  Label l = new Label(ev.getNom());
-                l.setFont(Font.font("DK Cool Crayon", 30));
-                ImageView i = new ImageView();
-                  i.setImage(new Image("ftp://slim:07471917@"+Session.getIp()+"/" + ev.getPhoto()));
-                i.setFitHeight(90);
-                i.setFitWidth(90);
+            Label l = new Label(ev.getNom());
+            l.setFont(Font.font("DK Cool Crayon", 30));
+            ImageView i = new ImageView();
+            i.setImage(new Image("ftp://slim:07471917@" + Session.getIp() + "/" + ev.getPhoto()));
+            i.setFitHeight(90);
+            i.setFitWidth(90);
 
-                l.setGraphic(i);
-                listevent.getItems().add(l);
-                listevent.setStyle("-fx-background-color: #B7D7F2");
-                 
+            l.setGraphic(i);
+            listevent.getItems().add(l);
+            listevent.setStyle("-fx-background-color: #B7D7F2");
 
         }
-    
+
         /**
          * **********Fin Evenement****************
          */
-
         /**
          * **********Mes Evenemet ***************
          */
@@ -224,21 +221,19 @@ public class EvenementController implements Initializable {
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
         mtype.setItems(ob);
-        
+
         for (Evenement ev : me) {
-           
 
-                Label l = new Label(ev.getNom());
-                l.setFont(Font.font("DK Cool Crayon", 30));
-                ImageView i = new ImageView();
-                  i.setImage(new Image("ftp://slim:07471917@"+Session.getIp()+"/" + ev.getPhoto()));
-                i.setFitHeight(90);
-                i.setFitWidth(90);
+            Label l = new Label(ev.getNom());
+            l.setFont(Font.font("DK Cool Crayon", 30));
+            ImageView i = new ImageView();
+            i.setImage(new Image("ftp://slim:07471917@" + Session.getIp() + "/" + ev.getPhoto()));
+            i.setFitHeight(90);
+            i.setFitWidth(90);
 
-                l.setGraphic(i);
-                myevent.getItems().add(l);
-                myevent.setStyle("-fx-background-color: #B7D7F2");
-            
+            l.setGraphic(i);
+            myevent.getItems().add(l);
+            myevent.setStyle("-fx-background-color: #B7D7F2");
 
         }
 
@@ -248,26 +243,24 @@ public class EvenementController implements Initializable {
         /**
          * ******* Evenment Inscrit*************
          */
-         for (Evenement ev : ppe) {
-           
+        for (Evenement ev : ppe) {
 
-                Label l = new Label(ev.getNom());
-                l.setFont(Font.font("DK Cool Crayon", 30));
-                ImageView i = new ImageView();
-                  i.setImage(new Image("ftp://slim:07471917@"+Session.getIp()+"/" + ev.getPhoto()));
-                i.setFitHeight(90);
-                i.setFitWidth(90);
+            Label l = new Label(ev.getNom());
+            l.setFont(Font.font("DK Cool Crayon", 30));
+            ImageView i = new ImageView();
+            i.setImage(new Image("ftp://slim:07471917@" + Session.getIp() + "/" + ev.getPhoto()));
+            i.setFitHeight(90);
+            i.setFitWidth(90);
 
-                l.setGraphic(i);
-                listevent1.getItems().add(l);
-                listevent1.setStyle("-fx-background-color: #B7D7F2");
-            
+            l.setGraphic(i);
+            listevent1.getItems().add(l);
+            listevent1.setStyle("-fx-background-color: #B7D7F2");
 
         }
-    
+
         /*
         ********** FIn Evenment Inscrit*********
-        */
+         */
         detail.setVisible(false);
         modifay.setVisible(false);
         detail1.setVisible(false);
@@ -276,28 +269,31 @@ public class EvenementController implements Initializable {
     @FXML
     private void afficherImage(MouseEvent me) throws FileNotFoundException {
         detail.setVisible(true);
-         inscript.setDisable(false);
+        inscript.setDisable(false);
         String l = listevent.getSelectionModel().getSelectedItem().getText();
+        for (Label o :  myevent.getItems()) {
+            if(o.getText().equals(l)){
+            inscript.setDisable(true);
+            }
+        }
+     
         event = s.getIdByName(l);
-        Participevenement e ;
+        Participevenement e;
         e = sp.selectParticipevenementByid2(8, event.getId_evenement());
         int a = sp.nbparticipent(event.getId_evenement());
-        a = event.getNbr_participation()-a ;
-        if((e != null)|| (a == 0))
-        {
+        a = event.getNbr_participation() - a;
+        if ((e != null) || (a == 0)) {
             inscript.setDisable(true);
-        } else {
         }
         altud = event.getLatitude();
         longe = event.getLongitude();
         event = s.getIdByName(l);
         titre.setText(l);
-      
-    
-        description.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
-        Image image =  new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
+
+        description.setText("Description: " + event.getDescriptionn() + "\n" + "Date: " + event.getDate().toString() + "A" + event.getTemp().toString() + "\n" + "Type: " + event.getType());
+        Image image = new Image("ftp://slim:07471917@" + Session.getIp() + "/" + event.getPhoto());
         img.setImage(image);
-   
+
     }
 
     @FXML
@@ -307,7 +303,8 @@ public class EvenementController implements Initializable {
         Participevenement p = new Participevenement(event.getId_evenement(), 8, 6);
         ServiceParticipevenement sp = new ServiceParticipevenement();
         sp.insrerParticipevenement(p);
-
+        Alert2.afficherSuccses("Succses", "Votre inscription  à été  Enregistre avec succses");
+        inscript.setDisable(true);
     }
 
     @FXML
@@ -342,10 +339,8 @@ public class EvenementController implements Initializable {
 
         String name = mnom.getText();
 
-        saveimg(img, name, p,selectedFile);
+        ServiceImage.saveimg(img, name, p, selectedFile);
     }
-
-   
 
     @FXML
     private void UpdateEvenement(ActionEvent even) throws IOException, SQLException {
@@ -357,56 +352,62 @@ public class EvenementController implements Initializable {
             int id = event.getId_evenement();
             LocalDate d = mdate.getValue();
             Date date = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
-           
-           
-    
-      
-            if (imgg == "") {
-                imgg = event.getPhoto();
+
+            if (ServiceImage.getImgg().equals("")) {
+                ServiceImage.setImgg(event.getPhoto());
             }
             Evenement e = new Evenement(mnom.getText(), mlieu.getText(), date,
                     mtype.getValue(), Integer.parseInt(mnb.getText()),
-                    event.isEtat(), 8, imgg, altud, longe,java.sql.Time.valueOf(temp.getValue()));
+                    event.isEtat(), 8, ServiceImage.getImgg(), altud, longe, java.sql.Time.valueOf(temp.getValue()));
             s.updateEvenement(e, id);
-            
+         Alert2.afficherSuccses("Succes", "Votre évenement à été modifier avec succses");
+        
             modifay.setVisible(false);
         }
     }
 
     @FXML
     private void deleteEvenement(ActionEvent even) {
-
+ 
         String l = myevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
+        javafx.scene.control.Alert alert = new  javafx.scene.control.Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("voulez-vous vraiment supprimer " + l + " ?");
+        alert.showAndWait();
+
+     if (alert.getResult() == ButtonType.YES) {
         int id = event.getId_evenement();
         s.deleteEvenement(id);
         int a = myevent.getSelectionModel().getSelectedIndex();
         myevent.getItems().remove(a);
         modifay.setVisible(false);
+    }
+        
 
     }
 
     @FXML
     private void affichemodifay(MouseEvent even) throws FileNotFoundException {
         modifay.setVisible(true);
-    
-       
         String l = myevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
         altud = event.getLatitude();
         longe = event.getLongitude();
         mnom.setText(event.getNom());
-        mlieu.setText(event.getLieu());
-         temp.setValue(event.getTemp().toLocalTime());
+        mlieu.setText(event.getDescriptionn());
+        temp.setValue(event.getTemp().toLocalTime());
         Instant instant = Instant.ofEpochMilli(event.getDate().getTime());
         LocalDate datt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
                 .toLocalDate();
         mdate.setValue(datt);
         mtype.setValue(event.getType());
-        if (event.isEtat() == false) {
-            metat.setText("not full");
+        if (event.isEtat() == true) {
+            metat.setText("L'evenment est complet");
+        } else {
+            int a = sp.nbparticipent(event.getId_evenement());
+            metat.setText(String.valueOf(a) + "Participent");
         }
-        Image image =  new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
+        Image image = new Image("ftp://slim:07471917@" + Session.getIp() + "/" + event.getPhoto());
 
         mnb.setText(String.valueOf(event.getNbr_participation()));
         mimg.setImage(image);
@@ -421,7 +422,7 @@ public class EvenementController implements Initializable {
             saisie = false;
         }
 
-        if (!Validation.texAlphNum(mlieu, nlieu, "* le prenom de doit contenir que des lettre")) {
+        if (!Validation.texAlphNum(mlieu, nlieu, "* la descrpiont  doit contenir que des lettre")) {
             saisie = false;
         }
         if (!Validation.texNum(mnb, nnb, "*  Nb Doit contenir que des Nombre")) {
@@ -460,12 +461,23 @@ public class EvenementController implements Initializable {
                 ndate.setText("");
             }
         }
+         if (temp.getValue() == null) {
+         
+         }
+      int np = sp.nbparticipent(e.getId_evenement());
+        int a = Integer.parseInt(mnb.getText());
+        a = a - np;
+        if (a <= 0) {
+            nnb.setText("le nombre sasier est deja depasse");
+            saisie = false;
+        }
 
         return saisie;
     }
+
     @FXML
     private void ModifierLieu(ActionEvent event) {
-          try {
+        try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Modifgooglemap.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -480,7 +492,7 @@ public class EvenementController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     private void add(MouseEvent even) throws IOException {
         Stage stage = new Stage();
@@ -492,7 +504,7 @@ public class EvenementController implements Initializable {
     }
 
     @FXML
-    private void afficherDetail(MouseEvent even)  {
+    private void afficherDetail(MouseEvent even) {
         detail1.setVisible(true);
         String l = listevent1.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
@@ -500,8 +512,8 @@ public class EvenementController implements Initializable {
         longe = event.getLongitude();
         event = s.getIdByName(l);
         titre1.setText(l);
-        description1.setText("Lieu: " + event.getLieu() + "\n" + "Date: " + event.getDate().toString() + "\n" + "Type: " + event.getType());
-        Image image1 = new Image("ftp://slim:07471917@"+Session.getIp()+"/" + event.getPhoto());
+        description1.setText("Description: " + event.getDescriptionn() + "\n" + "Date: " + event.getDate().toString() + " A" + event.getTemp().toString() + "\n" + "Type: " + event.getType());
+        Image image1 = new Image("ftp://slim:07471917@" + Session.getIp() + "/" + event.getPhoto());
         img1.setImage(image1);
     }
 
@@ -509,86 +521,19 @@ public class EvenementController implements Initializable {
     private void dinscription(ActionEvent even) {
         String l = listevent1.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
+         javafx.scene.control.Alert alert = new  javafx.scene.control.Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("voulez-vous vraiment Anuller votre Reservation  " + l + " ?");
+        alert.showAndWait();
+
+     if (alert.getResult() == ButtonType.YES) {
         int id = event.getId_evenement();
-       sp.deleteParticipevenement(id,8);
+        sp.deleteParticipevenement(id, 8);
         int a = listevent1.getSelectionModel().getSelectedIndex();
         listevent1.getItems().remove(a);
         detail1.setVisible(false);
+     }
     }
-      public void saveimg(Image image , String name ,String p, File file)
- {        //   File file = new File("src/icons/" + name + ".png");
-       if (p.indexOf(".png") != -1) {
-          filePath = file.getPath();
-            System.out.println(filePath);
-           
-            String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = Session.getIp();
-            String user = "slim";
-            String pass = "07471917";
-    
-            String uploadPath = "/img/" +name+".png";
-            
-            ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
-            System.out.println("Upload URL: " + ftpUrl);
 
-            try {
-                URL url = new URL(ftpUrl);
-                URLConnection conn = url.openConnection();
-                OutputStream outputStream = conn.getOutputStream();
-                FileInputStream inputStream = new FileInputStream(filePath);
+  
 
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int bytesRead = -1;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-
-                inputStream.close();
-                outputStream.close();
-
-                System.out.println("File uploaded");
-                  imgg=  "/img/" + name + ".png";
-               
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-       }else{
-       
-           filePath = file.getPath();
-            System.out.println(filePath);
-           
-            String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = Session.getIp();
-            String user = "slim";
-            String pass = "07471917";
-    
-            String uploadPath = "/img/" +name+".jpeg";
-            
-            ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
-            System.out.println("Upload URL: " + ftpUrl);
-
-            try {
-                URL url = new URL(ftpUrl);
-                URLConnection conn = url.openConnection();
-                OutputStream outputStream = conn.getOutputStream();
-                FileInputStream inputStream = new FileInputStream(filePath);
-
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int bytesRead = -1;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-
-                inputStream.close();
-                outputStream.close();
-
-                System.out.println("File uploaded");
-                  imgg=  "/img/" + name + ".jpeg";
-           
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-       }
- }
- 
 }

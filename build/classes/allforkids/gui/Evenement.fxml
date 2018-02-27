@@ -118,9 +118,9 @@
                                        </font>
                                     </Label>
                                     <TextField fx:id="mnom" prefHeight="31.0" prefWidth="190.0" GridPane.columnIndex="1" />
-                                    <Label text="addresse :" GridPane.rowIndex="2">
+                                    <Label text="Description" wrapText="true" GridPane.rowIndex="2">
                                        <font>
-                                          <Font name="DK Cool Crayon" size="14.0" />
+                                          <Font name="DK Cool Crayon" size="13.0" />
                                        </font>
                                     </Label>
                                     <TextField fx:id="mlieu" prefHeight="31.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

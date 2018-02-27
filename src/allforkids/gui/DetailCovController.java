@@ -5,6 +5,8 @@
  */
 package allforkids.gui;
 
+import static allforkids.gui.CovoiturageViewController.CorArr;
+import static allforkids.gui.CovoiturageViewController.CorDep;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,6 +25,7 @@ public class DetailCovController implements Initializable {
     @FXML
     private WebView directionswebview;
     private WebEngine webEngine;
+    
     /**
      * Initializes the controller class.
      */
@@ -35,8 +38,28 @@ public class DetailCovController implements Initializable {
 
     @FXML
     private void getDirections(ActionEvent event) {
-        webEngine.executeScript("getDirections(35.82450290000001, 10.634584000000018,33.886917, 9.537499000000025);");
+        String CorDep =CovoiturageViewController.CorDep;
+        String CorArr =CovoiturageViewController.CorArr;
+        
+        CorDep = CorDep.substring(1);
+        CorArr = CorArr.substring(1);
+        
+        CorDep = CorDep.substring(0, CorDep.length() - 1);
+        CorArr = CorArr.substring(0, CorArr.length() - 1);
+        
+        String[] partsDepart = CorDep.split(",");
+        String DepLat = partsDepart[0]; 
+        String DepLng = partsDepart[1];
+        
+        String[] partsArrivé = CorArr.split(",");
+        String ArrLat = partsArrivé[0]; 
+        String ArrLng = partsArrivé[1];
+
+        
+        
+        webEngine.executeScript("getDirections("+DepLat+","+DepLng+","+ArrLat+","+ArrLng+");");
   //webEngine.executeScript("initMap();");
     }
     
 }
+ 

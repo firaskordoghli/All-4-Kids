@@ -47,7 +47,7 @@
             <Hyperlink fx:id="MdpOublir" layoutX="110.0" layoutY="218.0" onAction="#MdpOublir" prefHeight="23.0" prefWidth="130.0" text="mot de passe oublier" wrapText="true" />
             <Label fx:id="MailC" layoutX="101.0" layoutY="98.0" />
             <Label fx:id="PassC" layoutX="101.0" layoutY="158.0" />
-            <Hyperlink fx:id="facebk" layoutX="26.0" layoutY="323.0" prefHeight="23.0" prefWidth="105.0" text="facebook" />
+            <Hyperlink fx:id="facebook" layoutX="26.0" layoutY="323.0" onAction="#facebook" prefHeight="23.0" prefWidth="105.0" text="facebook" />
             <JFXButton layoutX="254.0" layoutY="320.0" onAction="#valider" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #329932;" text="sign up" textFill="WHITE" />
             <ImageView fitHeight="69.0" fitWidth="67.0" layoutX="150.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
                <image>

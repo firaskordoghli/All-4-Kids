@@ -29,7 +29,7 @@ public class ServiceEvenement {
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, e.getId_evenement());
             ste.setString(2, e.getNom());
-            ste.setString(3, e.getLieu());
+            ste.setString(3, e.getDescriptionn());
             ste.setDate(4, sqldate);
             ste.setString(5, e.getType());
             ste.setInt(6, e.getNbr_participation());
@@ -49,10 +49,10 @@ public class ServiceEvenement {
     public void updateEvenement(Evenement e, int id_evenement) {
         try {
             java.sql.Date sqldate = new Date(e.getDate().getTime());
-            String req = "UPDATE evenement SET  nom= ? ,lieu=?,date = ? ,type=? , nbr_participation=?,etat=?,photo=?,latitude=?,longitude=?, temp = ? WHERE id_evenement = ?";
+            String req = "UPDATE evenement SET  nom= ? ,descriptionn=?,date = ? ,type=? , nbr_participation=?,etat=?,photo=?,latitude=?,longitude=?, temp = ? WHERE id_evenement = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, e.getNom());
-            ste.setString(2, e.getLieu());
+            ste.setString(2, e.getDescriptionn());
             ste.setDate(3, sqldate);
             ste.setString(4, e.getType());
             ste.setInt(5, e.getNbr_participation());
@@ -91,7 +91,7 @@ public class ServiceEvenement {
                         new Evenement(
                                 result.getInt("id_evenement"),
                                 result.getString("nom"),
-                                result.getString("lieu"),
+                                result.getString("descriptionn"),
                                 result.getDate("date"),
                                 result.getString("type"),
                                 result.getInt("nbr_participation"),
@@ -139,7 +139,7 @@ public class ServiceEvenement {
             while (result.next()) {
                 e.setId_evenement(result.getInt("id_evenement"));
                 e.setNom(result.getString("nom"));
-                e.setLieu(result.getString("lieu"));
+                e.setDescriptionn(result.getString("descriptionn"));
                 e.setDate(result.getDate("date"));
                 e.setType(result.getString("type"));
                 e.setNbr_participation(result.getInt("nbr_participation"));
@@ -170,7 +170,7 @@ public class ServiceEvenement {
                         new Evenement(
                                 result.getInt("id_evenement"),
                                 result.getString("nom"),
-                                result.getString("lieu"),
+                                result.getString("descriptionn"),
                                 result.getDate("date"),
                                 result.getString("type"),
                                 result.getInt("nbr_participation"),

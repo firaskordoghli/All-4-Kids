@@ -8,6 +8,7 @@ package allforkids.gui;
 import allforkids.entites.Evenement;
 import allforkids.entites.Session;
 import allforkids.service.ServiceEvenement;
+import allforkids.service.ServiceImage;
 import allforkids.util.Validation;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTimePicker;
@@ -95,7 +96,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
     GoogleMap map;
    private static Double longe  ;
    private static Double altud  ;
-   private static String imgg="" ;
+  
     @FXML
     private Label Imegee;
     public String filePath ;
@@ -136,9 +137,9 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
          
           Evenement e =new Evenement(tfNom.getText()
                  ,tflieu.getText(),date,tftype.getValue()
-            ,Integer.parseInt(tfnb.getText()),false,8,imgg,altud,longe,java.sql.Time.valueOf(temp.getValue()));
+            ,Integer.parseInt(tfnb.getText()),false,8,ServiceImage.getImgg(),altud,longe,java.sql.Time.valueOf(temp.getValue()));
           eService.insrerEvenement(e);
-          
+          Alert2.afficherSuccses("Succses", "Votre evenement est Ajouter avec succses");
           Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
                 Scene covViewScene = new Scene(covViewOarent);
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -160,7 +161,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
 
         String name = tfNom.getText();
 
-        saveimg(img, name, p,selectedFile);
+       ServiceImage.saveimg(img, name, p,selectedFile);
     }
 
     
@@ -168,11 +169,11 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         boolean saisie = true;
         ServiceEvenement es = new ServiceEvenement();
 
-        if (!Validation.textalphabet(tfNom, Nom, "* le nom de doit contenir que des lettre")) {
+        if (!Validation.textalphabet(tfNom, Nom, "* le nom  doit contenir que des lettre")) {
             saisie = false;
         }
 
-        if (!Validation.texAlphNum(tflieu, Lieu, "* le prenom de doit contenir que des lettre")) {
+        if (!Validation.texAlphNum(tflieu, Lieu, "* la  Description  doit contenir que des lettre")) {
             saisie = false;
         }
         if (!Validation.texNum(tfnb, Nb, "* Nb Doit contenir que des Nombre")) {
@@ -218,14 +219,19 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
                 Datee.setText("");
             }
         }
-        if(imgg.equals("")){
+        if(ServiceImage.getImgg().equals("")){
            Imegee.setText("*vous devez ajouter une image");
+             saisie = false;
         }
         if(temp.getValue()== null){
         tempp.setText("*vous devez ajouter le temps");
-        
+            saisie = false;
         }
-        return saisie;
+        if((altud == null )&&(longe == null )){
+             Alert2.afficherWARNING("Erreur", "Vous devez marker votre emplacement sur la map ");
+               saisie = false;
+        }
+           return saisie;
     }
 
     @Override
@@ -259,81 +265,6 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
         });
 
     }
- public void saveimg(Image image , String name ,String p, File file)
- {        
-       if (p.indexOf(".png") != -1) {
-          filePath = file.getPath();
-            System.out.println(filePath);
-           
-            String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = Session.getIp();
-            String user = "slim";
-            String pass = "07471917";
-    
-            String uploadPath = "/img/" +name+".png";
-            
-            ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
-            System.out.println("Upload URL: " + ftpUrl);
-
-            try {
-                URL url = new URL(ftpUrl);
-                URLConnection conn = url.openConnection();
-                OutputStream outputStream = conn.getOutputStream();
-                FileInputStream inputStream = new FileInputStream(filePath);
-
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int bytesRead = -1;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-
-                inputStream.close();
-                outputStream.close();
-
-                System.out.println("File uploaded");
-                  imgg=  "/img/" + name + ".png";
-               
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-       }else{
-       
-           filePath = file.getPath();
-            System.out.println(filePath);
-           
-            String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-            String host = Session.getIp();
-            String user = "slim";
-            String pass = "07471917";
-    
-            String uploadPath = "/img/" +name+".jpeg";
-            
-            ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
-            System.out.println("Upload URL: " + ftpUrl);
-
-            try {
-                URL url = new URL(ftpUrl);
-                URLConnection conn = url.openConnection();
-                OutputStream outputStream = conn.getOutputStream();
-                FileInputStream inputStream = new FileInputStream(filePath);
-
-                byte[] buffer = new byte[BUFFER_SIZE];
-                int bytesRead = -1;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-
-                inputStream.close();
-                outputStream.close();
-
-                System.out.println("File uploaded");
-                  imgg=  "/img/" + name + ".jpeg";
-           
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-       }
  
- }
 
 }

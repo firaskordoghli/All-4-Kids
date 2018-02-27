@@ -97,6 +97,17 @@ public class CovoiturageViewController implements Initializable {
     private TableColumn<Transport, String> place1;
     @FXML
     private Button load1;
+    
+    public static String CorDep ;
+    
+    public static String CorArr;
+    
+    public static String DepLat ;
+    public static String DepLng ;
+    public static String ArrLat;
+    public static String ArrLng ;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -114,7 +125,7 @@ public class CovoiturageViewController implements Initializable {
     public void showTransport()
     {
      // TODO
-        details.setVisible(false);
+        detailsBox.setVisible(false);
         data = FXCollections.observableArrayList();
         data.addAll(s.selectCov());
         
@@ -129,7 +140,7 @@ public class CovoiturageViewController implements Initializable {
     @FXML
     public void showDetail(MouseEvent D)
     {
-        details.setVisible(true);
+        detailsBox.setVisible(true);
         // TODO
         row = tableTransport.getSelectionModel().getSelectedItem();
         region.setText(row.getRegion());
@@ -140,13 +151,27 @@ public class CovoiturageViewController implements Initializable {
         tel.setText(row.getTelephone());
         placee.setText(row.getPlace());
         frais.setText(row.getFrais());
-        if(row.getType()==1){
-        typee.setText("Full");
-        }else{
-           typee.setVisible(false);
-           tttype.setVisible(false);
-        }
+        
     }
+    
+    @FXML
+    public void getCov(ActionEvent event) throws IOException{
+        
+        row = tableTransport.getSelectionModel().getSelectedItem();
+        
+        CorDep = (row.getDepart());
+        CorArr = (row.getArrivé());
+        
+        
+        
+        Parent root = FXMLLoader.load(getClass().getResource("DetailCov.fxml"));
+                Scene scene = new Scene(root);
+                Stage driverStage = new Stage();
+                driverStage.setScene(scene);
+                driverStage.show();
+    }
+    
+    
     
     public void ajoutCov(MouseEvent event) {
             try {
@@ -204,10 +229,12 @@ public class CovoiturageViewController implements Initializable {
         str.insrerTransportrejoindr(tr);
         
     }
+    
+    
      public void showTransportHistor()
     {
            
-        details.setVisible(false);
+        detailsBox.setVisible(false);
         data = FXCollections.observableArrayList();
         ServiceTransportrejoindr str = new ServiceTransportrejoindr();
         data.addAll(str.selectTransportrejoindhist(Session.getIdThisUser()));
@@ -218,5 +245,14 @@ public class CovoiturageViewController implements Initializable {
 
         tableTransport1.setItems(null);
         tableTransport1.setItems(data);
+    }
+
+    @FXML
+    private void voirMap(ActionEvent event) throws IOException {
+                Parent root = FXMLLoader.load(getClass().getResource("DetailCov.fxml"));
+                Scene scene = new Scene(root);
+                Stage driverStage = new Stage();
+                driverStage.setScene(scene);
+                driverStage.show();
     }
 }

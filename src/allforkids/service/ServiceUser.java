@@ -34,6 +34,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;  
+import javafx.event.ActionEvent;
 import javax.mail.*;  
 import javax.mail.internet.*; 
 
@@ -156,17 +157,7 @@ public class ServiceUser {
     }
 
 
-    public String MD5(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        byte[] bytesOfMessage = password.getBytes("UTF-8");
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] thedigest = md.digest(bytesOfMessage);
-        BigInteger bigInt = new BigInteger(1, thedigest);
-        String hashtext = bigInt.toString(16);
-        while (hashtext.length() < 32) {
-            hashtext = "0" + hashtext;
-        }
-        return hashtext;
-    }
+    
 
     
 
@@ -191,31 +182,30 @@ public class ServiceUser {
         return null;*/
     }
 
-    public void changerMDP(String newMdp, int id) {
-        /*   try {
-            String reqUpdate = "update utilisateur set password=? where id=?";
-            PreparedStatement ps = Connection.prepareStatement(reqUpdate);
-          //  ps.setString(1, u.getEmail()); 
-            ps.setString(1, BCrypt.hashpw(newMdp,BCrypt.gensalt()));   
-          //  ps.setString(3, u.getNom());
-         //   ps.setString(4, u.getPrenom());
-            ps.setInt(2,id);
-            ps.executeUpdate();
-            
-            System.out.println("envoyé");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }*/
-    }
+    public static void sendMail2( String to, String cc, String from, String subject, String text, String smtpHost) {
+		
+            try {
+			Properties properties = new Properties();
+			properties.put("mail.smtp.host", smtpHost);
+			Session emailSession = Session.getDefaultInstance(properties);
 
-      
-        
-        
-       public void changerMDP() {
-       }
+			Message emailMessage = new MimeMessage(emailSession);
+			emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			emailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(cc));
+			emailMessage.setFrom(new InternetAddress(from));
+			emailMessage.setSubject(subject);
+			emailMessage.setText(text);
 
-       
-    
+			emailSession.setDebug(true);
+
+			Transport.send(emailMessage);
+		} catch (AddressException e) {
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
+
 
     public User GetUserById(int id) {
         try {
@@ -248,6 +238,40 @@ public class ServiceUser {
         return null;
 
     }
+    
+    
+     public User GetUserByRole(int role) {
+        try {
+            String req = "SELECT * FROM user where role=?  ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ste.setInt(1, role);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+                User u = new User(
+                        result.getInt("id_user"),
+                        result.getString("cin"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("email"),
+                        result.getDate("date"),
+                        result.getString("picture"),
+                        result.getInt("role"),
+                        result.getString("pass")
+                );
+                return u;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return null;
+
+    }
+    
 
     public ObservableList<User> GetUserById2(int id) throws SQLException {
         ObservableList<User> list = FXCollections.observableArrayList();

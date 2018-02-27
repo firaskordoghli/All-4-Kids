@@ -90,7 +90,8 @@ public class ServiceCommentaire {
         return list;
     }
     
-    public Commentaire GetSujetById(int id_sujet) {
+    public List<Commentaire> GetSujetById(int id_sujet) {
+        List<Commentaire> list = new ArrayList<>();
         try {
             String req = "SELECT * FROM Commentaire where id_sujet=?  ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
@@ -100,13 +101,13 @@ public class ServiceCommentaire {
             ResultSet result = ste.executeQuery();
             while (result.next()) {
 
-              Commentaire  C = new Commentaire(
+                list.add(new Commentaire(
                         result.getString("description"),
                         result.getInt("id_user"),
                         result.getInt("id_sujet")
                        
-                );
-                return C;
+                ));
+                return list;
             }
 
             
