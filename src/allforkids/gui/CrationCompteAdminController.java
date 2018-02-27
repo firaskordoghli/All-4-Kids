@@ -56,7 +56,7 @@ import javax.imageio.ImageIO;
  *
  * @author casa-net
  */
-public class CreationCompteController implements Initializable {
+public class CrationCompteAdminController implements Initializable {
 
     @FXML
     private JFXTextField NomC;
@@ -105,9 +105,8 @@ public class CreationCompteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         List<String> list = new ArrayList();
-        list.add("Enfant");
-        list.add("Parent");
-        list.add("Eatblissement");
+        list.add("ADMIN");
+        
 
         ObservableList<String> ob = FXCollections.observableArrayList();
         ob.addAll(list);
@@ -121,13 +120,7 @@ public class CreationCompteController implements Initializable {
         String z;
         int r = 0;
         z = RoleC.getValue();
-        if (z == "Enfant") {
-            r = 1;
-        } else if (z == "Parent") {
-            r = 2;
-        } else if (z == "Eatblissement") {
-            r = 3;
-        }
+        
 
         if (!Validation.textalphabet(NomC, Nom, "* le nom de doit contenir que des lettre")) {
             saisie = false;
@@ -246,13 +239,9 @@ public class CreationCompteController implements Initializable {
              String z;
             int r = 0;
             z = RoleC.getValue();
-            if (z == "Enfant") {
-                r = 1;
-            } else if (z == "Parent") {
-                r = 2;
-            } else if (z == "Eatblissement") {
-                r = 3;
-            }
+            if (z == "ADMIN") {
+                r = 0;
+            } 
             String s = PassC.getText();
             String pw_hash = BCrypt.hashpw(s, BCrypt.gensalt());
 

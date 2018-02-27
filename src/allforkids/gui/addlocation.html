@@ -13,37 +13,46 @@
         padding: 0;
       }
     </style>
-<input id="departinput" type="text"/><input id="arriv" type="text"/>
+    
+<input id="departinput" type="text"/>
 
-  <div hidden id="map"></div>
+<input id="arriv" type="text"/>
+
+<div hidden id="map"></div>
+
 <script type="text/javascript">
      var map;
           var depart;
           var arrive;
-          function getArrive(){
-      return arrive;
-      }
-       function getDepart(){
-      return depart;
-      }
+          
+        function getArrive(){
+            return arrive;
+        }
+        
+        function getDepart(){
+             return depart;
+        }
          
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 8
         });
+        
         var departinput = document.getElementById('departinput');
-      var autocomplete =  new google.maps.places.Autocomplete(departinput);
-             var arriv = document.getElementById('arriv');
-      var autocompletearriv =  new google.maps.places.Autocomplete(arriv);
+        var autocomplete =  new google.maps.places.Autocomplete(departinput);
+        var arriv = document.getElementById('arriv');
+        var autocompletearriv =  new google.maps.places.Autocomplete(arriv);
+        
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    var data = $("#search_form").serialize();
+            var data = $("#search_form").serialize();
         depart = autocomplete.getPlace().geometry.location;
            markerdep = new google.maps.Marker({
             position: depart,
             map: map
         });
-    alert(depart);
+        
+        alert(depart);
       //  show_submit_data(data);
 });
                 google.maps.event.addListener(autocompletearriv, 'place_changed', function() {

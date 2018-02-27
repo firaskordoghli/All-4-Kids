@@ -263,5 +263,6 @@
             <Image url="@../icons/back.png" />
          </image>
       </ImageView>
+      <JFXButton layoutX="945.0" layoutY="320.0" onAction="#getCov" prefHeight="67.0" prefWidth="97.0" text="voir sur la carte" />
    </children>
 </AnchorPane>

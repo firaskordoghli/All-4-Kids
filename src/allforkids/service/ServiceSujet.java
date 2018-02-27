@@ -5,7 +5,9 @@
  */
 package allforkids.service;
 
+import allforkids.entites.Commentaire;
 import allforkids.entites.Sujet;
+import static allforkids.service.ServiceCommentaire.ds;
 import allforkids.util.Config;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -95,7 +97,39 @@ public class ServiceSujet {
     }
     
     
-    
-    
-    
+    public List<Sujet> GetSujetByIdd(int id_sujet) {
+        List<Sujet> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM Sujet where id_sujet=?  ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id_sujet);
+          
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+                list.add(new Sujet(
+                        result.getString("title"),
+                        result.getString("description"),
+                        result.getString("tag"),
+                         result.getInt("good"),
+                         result.getInt("bad"),
+                         result.getBoolean("visibilite")
+                       
+                ));
+                return list;
+            }
+
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            
+
+        }
+        return null ;
+
+    }
 }
+    
+    
+

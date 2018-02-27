@@ -10,13 +10,16 @@ import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
 import allforkids.util.Validation;
+import com.google.code.facebookapi.FacebookJaxbRestClient;
 //import com.google.code.facebookapi.FacebookJaxbRestClient;
 import com.jfoenix.controls.JFXButton;
  
 import com.jfoenix.controls.JFXTimePicker;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.Version;
 import com.restfb.exception.FacebookException;
+import com.restfb.types.FacebookType;
 
 //import com.restfb.DefaultFacebookClient;
 //import com.restfb.FacebookClient;
@@ -41,6 +44,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JSpinner;
+import org.apache.commons.httpclient.Header;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 //import org.apache.commons.httpclient.URIException;
 //import org.apache.commons.httpclient.methods.PostMethod;
 //import org.apache.http.Header;
@@ -76,9 +83,7 @@ public class LoginController implements Initializable {
     public static String maill ;
     public static String passl ;
     @FXML
-    private Hyperlink facebk;
-    @FXML
-    private JFXButton aaa;
+    private Hyperlink facebook;
 
     /**
      * Initializes the controller class.
@@ -113,6 +118,30 @@ public class LoginController implements Initializable {
 
                         app_stage.show();
                 } else if (u.getRole() == 2) {
+                       // envoi vers page admin 
+                 Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
+                  Scene scene = new Scene(root);
+
+                        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                        app_stage.setScene(scene);
+
+                        app_stage.show();
+                    //envoi vers page parents
+                }
+                else if (u.getRole() == 3) {
+                       // envoi vers page admin 
+                 Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
+                  Scene scene = new Scene(root);
+
+                        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                        app_stage.setScene(scene);
+
+                        app_stage.show();
+                    //envoi vers page parents
+                }
+                else if (u.getRole() == 0) {
                        // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);
@@ -159,130 +188,44 @@ public class LoginController implements Initializable {
                         app_stage.show();
     }
 
-   /* @FXML
-
-    private void facebk(ActionEvent event) {
-        org.apache.commons.httpclient.HttpClient http = new org.apache.commons.httpclient.HttpClient() ;
-               String session = null;
-        try {
-
-            http. getHostConfiguration().setHost("graph.facebook.com");
-
-   
-
-    private static void face(String email, String password)  {
-        String accessToken="EAACEdEose0cBABdjq4NtQUnLhajFvfNIISUe7cvsYDYUonif1ZBXuRYFhs2I61E5YOG8VATaIocFIe5fZBlWClk76FXDPMteuwIwOIEt4HIuFZCvQ6u5ZCLQgnWKlYbBeUgHvQBlPpcTBEvRpvrYxO2MEpH9EzZCNDiZBtaa30PZBuX4U7ZBstoFIgStBFRX3LLruD8UMikTwQZDZD";
-  
-       FacebookClient facebookClient = new DefaultFacebookClient(accessToken);
-        ServiceUser a = facebookClient.fetchObject("me", ServiceUser.class);*/
-     
- 
-        /*try {
-
-            HttpClient http = new HttpClient() {
-                @Override
-                public HttpResponse execute(HttpRequest request, boolean followRedirects) throws IOException {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-
-                @Override
-                public HttpResponse execute(HttpRequest request) throws IOException {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-
-                @Override
-                public void close() throws IOException {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-            };
-
-<<<<<<< HEAD
-           http.getHostConfiguration().setHost("www.facebook.com");
-=======
-         /*   http.getHostConfiguration().setHost("www.facebook.com");
->>>>>>> 7adf7ca202083cf8f5335619b9f0ef06228c13ac
->>>>>>> b6d8ee43c5abd8671cae5c080db60672286864fa
-            String api_key = "key";
-            String secret = "sec";
-            FacebookJaxbRestClient client = new FacebookJaxbRestClient(api_key, secret);
-                System.out.println("====>"+client.isDesktop());
-
-<<<<<<< HEAD
-           // String token = client.auth_createToken();
-           String token ="180208849423131";
-//            test.setText("xfvdvdsx");
-            System.out.println(" :::::::"+token);
-            System.out.println(" :::::::::: "+token);
-            PostMethod post = new PostMethod("facebook.jsp?");
-
-            post.addParameter("api_key", api_key);
-
-    maill = "r4.cherif@gmail.com";
-    passl= "21945026Mr" ;
-            post.addParameter("email", maill);
-            post.addParameter("pass", passl);
-=======
-            String token = client.auth_createToken();
-            System.out.println(" :::::::"+token);
-            System.out.println(" :::::::::: "+token);
-            PostMethod post = new PostMethod("/login.php?");
-
-            post.addParameter("api_key", api_key);
-
-
-            post.addParameter("email", email);
-            post.addParameter("pass", password);
->>>>>>> 7adf7ca202083cf8f5335619b9f0ef06228c13ac
-
-
-            int postStatus = http.executeMethod(post);
-                System.out.println("url : " + post.getURI());
-            System.out.println("Response : " + postStatus);
-<<<<<<< HEAD
-            for (org.apache.commons.httpclient.Header h : post.getResponseHeaders()) {
-                System.out.println(h);
-            }
-             session = client.auth_getSession(token); // Here I am getting error
-            System.out.println("Session string: " + session);
-            long userid = client.users_getLoggedInUser();
-            //System.out.println("User Id is : " + userid);*/
-
-
-        /*    for (Header h : post.getResponseHeaders()) {
-=======
-/*=======
-            for (Header h : post.getResponseHeaders()) {
->>>>>>> 651cbcdac6cddac909bcb7f9d7f4bfd76aa57eac
-                System.out.println(h);
-            }
-            session = client.auth_getSession(token); // Here I am getting error
-            System.out.println("Session string: " + session);
-            long userid = client.users_getLoggedInUser();
-            //System.out.println("User Id is : " + userid);*/
-    /*    } catch (FacebookException fe) {
-
-            fe.printStackTrace();
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+    @FXML
+    private void facebook(ActionEvent event) {
         
-=======
->>>>>>> a8f3fb7c91c9a6329f7efc018b8ee79b2e886e1d
-    
->>>>>>> 7adf7ca202083cf8f5335619b9f0ef06228c13ac
-        
-    } catch (FacebookException fe) {
-
-            fe.printStackTrace();
-
-        }catch(Exception e){
-            e.printStackTrace();
+        String domain = "http://google.com";
+        String appId = "1957709750923073";
+       
+        String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=user_about_me,"
+                + "user_actions.books,user_actions.fitness,user_actions.music,user_actions.news,user_actions.video,user_activities,user_birthday,user_education_history,"
+                + "user_events,user_photos,user_friends,user_games_activity,user_groups,user_hometown,user_interests,user_likes,user_location,user_photos,user_relationship_details,"
+                + "user_relationships,user_religion_politics,user_status,user_tagged_places,user_videos,user_website,user_work_history,ads_management,ads_read,email,"
+                + "manage_notifications,manage_pages,publish_actions,read_friendlists,read_insights,read_mailbox,read_page_mailboxes,read_stream,rsvp_event";
+       
+        System.setProperty("webdirver.chrome.driver", "chromedriver.exe");
+       
+        WebDriver driver = new ChromeDriver();
+        driver.get(authUrl);
+        String accessToken;
+        while(true){
+       
+            if(!driver.getCurrentUrl().contains("facebook.com")){
+            String url = driver.getCurrentUrl();
+            accessToken = url.replaceAll(".*#access_token=(.+)&.*", "$1");
+           
+            driver.quit();
+           
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken);
+                User user = fbClient.fetchObject("me",User.class);
+               
+                lb.setText(user.getMail());
+           
+            }
+       
         }
-<<<<<<< HEAD
-    }*/
+       
     }
 
+  
+}
 
 
     
