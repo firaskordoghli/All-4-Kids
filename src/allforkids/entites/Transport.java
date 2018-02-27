@@ -5,6 +5,8 @@
  */
 package allforkids.entites;
 
+import java.util.Date;
+
 /**
  *
  * @author DELL
@@ -19,9 +21,10 @@ public class Transport {
     private String telephone;
     private String place;
     private String frais;
-    private int type;
+    private String type;
+    private Date date;
 
-    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, int type) {
+    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type,Date date) {
         this.id_transport = id_transport;
         this.region = region;
         this.ville = ville;
@@ -32,6 +35,7 @@ public class Transport {
         this.place = place;
         this.frais = frais;
         this.type = type;
+        this.date = date;
     }
 
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
@@ -44,6 +48,41 @@ public class Transport {
         this.telephone = telephone;
         this.place = place;
         this.frais = frais;
+    }
+    
+    public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
+            String place, String frais,Date date) {
+        this.region = region;
+        this.ville = ville;
+        this.depart = depart;
+        this.arrivé = arrivé;
+        this.description = description;
+        this.telephone = telephone;
+        this.place = place;
+        this.frais = frais;
+        this.date = date;
+    }
+    
+    public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
+            String place, String frais,String type,Date date) {
+        this.region = region;
+        this.ville = ville;
+        this.depart = depart;
+        this.arrivé = arrivé;
+        this.description = description;
+        this.telephone = telephone;
+        this.place = place;
+        this.frais = frais;
+        this.type = type;
+        this.date = date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
 
@@ -83,7 +122,7 @@ public class Transport {
         return frais;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
@@ -123,7 +162,7 @@ public class Transport {
         this.frais = frais;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

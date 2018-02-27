@@ -10,10 +10,14 @@ import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,16 +43,12 @@ import javafx.scene.web.WebView;
  * @author DELL
  */
 public class CovFormulaireController implements Initializable {
-    
+
     ObservableList<String> typeList = FXCollections.observableArrayList("auccasionellement", "regulierement");
-    @FXML
-    private JFXTextField depart;
     @FXML
     private JFXTextField Region;
     @FXML
     private JFXTextField ville;
-    @FXML
-    private JFXTextField arrivé;
     @FXML
     private JFXTextArea description;
     @FXML
@@ -61,56 +61,69 @@ public class CovFormulaireController implements Initializable {
     private Button addButton;
     @FXML
     private Button delButton;
-    @FXML
     private ComboBox type;
     @FXML
     private WebView addwebview;
+    @FXML
+    private JFXDatePicker date;
+
     private WebEngine webEngine;
+    @FXML
+    private JFXComboBox<String> typeCov;
+    
+    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        type.setValue("");
-        type.setItems(typeList);
-         webEngine = addwebview.getEngine();
-         webEngine.load(getClass().getResource("addlocation.html").toString());
-        // webEngine.load("https://www.google.com");
-    }    
-    
-    @FXML
-    public void addCov (ActionEvent event) throws IOException{
+        typeCov.setValue("");
+        typeCov.setItems(typeList);
         
-        System.out.println(" arrive : "+webEngine.executeScript("getArrive();"));
-                System.out.println("depart : "+webEngine.executeScript("getDepart();"));
-
-    ServiceCovoiturage cService = new ServiceCovoiturage();
-    Transport t = new Transport(Region.getText(),ville.getText(),depart.getText(),arrivé.getText(),
-            description.getText(),telephone.getText(),placeDispo.getText(),fraix.getText());
-    cService.insrerCov(t);
-    
-    Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
-                Scene covViewScene = new Scene(covViewOarent);
-                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-                
-                window.setScene(covViewScene);
-                window.show();
-                
+        webEngine = addwebview.getEngine();
+        webEngine.load(getClass().getResource("addlocation.html").toString());
+        // webEngine.load("https://www.google.com");
     }
-    
-    
+
+    @FXML
+    public void addCov(ActionEvent event) throws IOException {
+
+        System.out.println(" arrive : " + webEngine.executeScript("getArrive();"));
+        System.out.println("depart : " + webEngine.executeScript("getDepart();"));
+        
+        String dep = String.valueOf(webEngine.executeScript("getDepart();"));
+        String arr = String.valueOf(webEngine.executeScript("getArrive();"));
+        
+        LocalDate d = date.getValue();
+        Date date1 = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        
+        
+        ServiceCovoiturage cService = new ServiceCovoiturage();
+        Transport t = new Transport(Region.getText(), ville.getText(), dep, arr,
+                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1);
+        cService.insrerCov(t);
+
+        Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+        Scene covViewScene = new Scene(covViewOarent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(covViewScene);
+        window.show();
+
+    }
+
     @FXML
     public void backToCovoiturage(MouseEvent event) throws IOException {
-            
-                Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
-                Scene covViewScene = new Scene(covViewOarent);
-                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-                
-                window.setScene(covViewScene);
-                window.show();
-            
-        }
-    
-    
+
+        Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+        Scene covViewScene = new Scene(covViewOarent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(covViewScene);
+        window.show();
+
+    }
+
 }

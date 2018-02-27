@@ -27,8 +27,9 @@ public class ServiceCovoiturage {
     
     public void insrerCov(Transport t) {
         try {
-            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais)"
-                    + " VALUES(?,?,?,?,?,?,?,?)";
+            java.sql.Date sqldate = new Date(t.getDate().getTime());
+            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais,type,date)"
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, t.getRegion());
             ste.setString(2, t.getVille());
@@ -38,6 +39,8 @@ public class ServiceCovoiturage {
             ste.setString(6, t.getTelephone());
             ste.setString(7, t.getPlace());
             ste.setString(8, t.getFrais());
+            ste.setString(9, t.getType());
+            ste.setDate(10, sqldate);
             
             ste.executeUpdate();
         } catch (SQLException ex) {
@@ -96,7 +99,8 @@ public class ServiceCovoiturage {
                                 result.getString("telephone"),
                                 result.getString("place"),
                                 result.getString("frais"),
-                                result.getInt("type")
+                                result.getString("type"),
+                                result.getDate("date")
                         )
                 );
             }
@@ -125,7 +129,8 @@ public class ServiceCovoiturage {
                                 result.getString("telephone"),
                                 result.getString("place"),
                                 result.getString("frais"),
-                                result.getInt("type")
+                                result.getString("type"),
+                                result.getDate("date")
                         )
                 );
             }
