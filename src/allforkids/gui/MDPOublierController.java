@@ -5,9 +5,10 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Session;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Session;
+//import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -49,6 +50,8 @@ public class MDPOublierController implements Initializable {
     private JFXTextField mail;
     @FXML
     private JFXButton sendMail;
+    @FXML
+    private Label l;
 
 
     /**
@@ -56,34 +59,48 @@ public class MDPOublierController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
         // TODO
     }    
 
     @FXML
     private void sendMail(ActionEvent event) throws MessagingException, IOException {
-     /*  ServiceMail Ma = new ServiceMail();
-        Ma.generateAndSendEmail("recuperation de mdp", "", "3","r4.cherif@gmail.com");*/
-       
-       
-       ServiceMail Ma = new ServiceMail();
+         String email = mail.getText();
+     ServiceMail Ma = new ServiceMail();
+        Ma.generateAndSendEmail("recuperation de mdp", "", 3,email);
+       // String email = mail.getText();
+      
+      /* ServiceMail Ma = new ServiceMail();
         ServiceUser us = new ServiceUser();
+        User u = us.GetUserByMail(email,l);
         
-        User u=us.recevoirUser(mail.getText());
-        
+   
             //generer mdp automatiquement
             
-            
+            if(email==u.getMail()){
             
            Random rand = new Random(10000);
-           int a=rand.nextInt(10000);
-          //int a=h+1000;
-           
-          
+          CodeController.setCodeMail(rand.nextInt(10000));
+           Ma.generateAndSendEmail("recuperation de mdp", "test", CodeController.getCodeMail(),mail.getText());
             
-            
-           // System.out.println(s);
-           Ma.generateAndSendEmail("recuperation de mdp", "test", a,"r4.cherif@gmail.com");
             }
+             
+            Parent root = FXMLLoader.load(getClass().getResource("Code.fxml"));
+         
+        Scene scene = new Scene(root);
+        
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  
+        
+        app_stage.setScene(scene);
+        
+        app_stage.show();
+    
+    
+    
+    
+    
+    
+    }
             /*us.changerMDP(s,u.getId());
             
             Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -96,9 +113,11 @@ public class MDPOublierController implements Initializable {
         
         app_stage.show();*/
         
-        
-                
         }
+}
+
+                
+        
         
         
     

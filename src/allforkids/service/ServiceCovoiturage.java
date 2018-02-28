@@ -28,8 +28,8 @@ public class ServiceCovoiturage {
     public void insrerCov(Transport t) {
         try {
             java.sql.Date sqldate = new Date(t.getDate().getTime());
-            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais,type,date)"
-                    + " VALUES(?,?,?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais,type,date,arriveName,departName)"
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, t.getRegion());
             ste.setString(2, t.getVille());
@@ -41,6 +41,8 @@ public class ServiceCovoiturage {
             ste.setString(8, t.getFrais());
             ste.setString(9, t.getType());
             ste.setDate(10, sqldate);
+            ste.setString(11, t.getArriveName());
+            ste.setString(12, t.getDepartName());
             
             ste.executeUpdate();
         } catch (SQLException ex) {
@@ -100,7 +102,9 @@ public class ServiceCovoiturage {
                                 result.getString("place"),
                                 result.getString("frais"),
                                 result.getString("type"),
-                                result.getDate("date")
+                                result.getDate("date"),
+                                result.getString("arriveName"),
+                                result.getString("departName")
                         )
                 );
             }
@@ -130,7 +134,9 @@ public class ServiceCovoiturage {
                                 result.getString("place"),
                                 result.getString("frais"),
                                 result.getString("type"),
-                                result.getDate("date")
+                                result.getDate("date"),
+                                result.getString("arriveName"),
+                                result.getString("departName")
                         )
                 );
             }

@@ -243,11 +243,21 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Liste établissements">
+            <Tab text="statistique par établissement">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PieChart fx:id="pourcentage" layoutX="192.0" layoutY="66.0" />
+                        <AnchorPane fx:id="detail8" layoutX="573.0" layoutY="66.0" prefHeight="282.0" prefWidth="324.0">
+                           <children>
+                              <PieChart fx:id="pourcentage" prefHeight="318.0" prefWidth="361.0" />
+                           </children>
+                        </AnchorPane>
+                        <TableView fx:id="tableview8" onMouseClicked="#consulter8" prefHeight="426.0" prefWidth="564.0">
+                           <columns>
+                              <TableColumn fx:id="nomCol311" prefWidth="286.0" text="Nom Etablissement" />
+                              <TableColumn fx:id="typeCol311" prefWidth="277.0" text="Type" />
+                           </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
                </content>

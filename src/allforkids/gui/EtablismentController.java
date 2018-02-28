@@ -40,8 +40,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -89,86 +92,55 @@ public class EtablismentController implements Initializable {
     private Label region;
     @FXML
     private Label ville;
-    @FXML
     private TableColumn<Etablissement, String> nomCol2;
-    @FXML
     private TableColumn<Etablissement, String> typeCol2;
-    @FXML
     private TableView<Etablissement> tableview2;
-    @FXML
     private ImageView viewimage;
-    @FXML
     private JFXButton modifier;
-    @FXML
     private JFXButton delete;
-    @FXML
     private JFXTextField nom;
-    @FXML
-    private JFXButton boutonimage;
-    @FXML
     private AnchorPane detail2;
-    @FXML
     private JFXComboBox<String> type2;
-    @FXML
     private JFXComboBox<String> region2;
-    @FXML
     private JFXComboBox<String> ville2;
 
-    @FXML
     private JFXTextField description2;
     @FXML
     private JFXButton ajouter;
     private static String src = "";
     @FXML
     private ImageView imageview1;
-    @FXML
     private TableColumn<Etablissement, String> etatCol2;
-    @FXML
     private AnchorPane detail3;
-    @FXML
     private TableView<User> tableview4;
-    @FXML
     private TableColumn<User, String> nomeleve;
-    @FXML
     private TableColumn<User, String> prenomeleve;
-    @FXML
     private TableView<Etablissement> tableview3;
-    @FXML
     private TableColumn<Etablissement, String> nomCol3;
-    @FXML
     private TableColumn<Etablissement, String> typeCol3;
-    @FXML
     private JFXListView<String> listview;
-    @FXML
     private AnchorPane detail5;
-    @FXML
-    private JFXButton supprimer;
-    @FXML
     private JFXButton accepter;
-    @FXML
     private AnchorPane detail6;
-    @FXML
     private TableView<User> tableview7;
-    @FXML
     private TableColumn<User, String> nomeleve1;
-    @FXML
     private TableColumn<User, String> prenomeleve1;
-    @FXML
     private TableView<Etablissement> tableview6;
-    @FXML
     private TableColumn<Etablissement, String> nomCol31;
-    @FXML
     private TableColumn<Etablissement, String> typeCol31;
-    @FXML
     private JFXTextField moyenne;
-    @FXML
-    private JFXButton ajouternote;
-    @FXML
     private AnchorPane detail7;
-    @FXML
     private JFXButton pdf;
     @FXML
     private PieChart pourcentage;
+    @FXML
+    private TableView<Etablissement> tableview8;
+    @FXML
+    private TableColumn<Etablissement, String> nomCol311;
+    @FXML
+    private TableColumn<Etablissement, String> typeCol311;
+    @FXML
+    private AnchorPane detail8;
 
     /**
      * Initializes the controller class.
@@ -253,8 +225,20 @@ public class EtablismentController implements Initializable {
             System.out.println(ex);
         }
         ////////////////////statistique
-        pourcentage.setData(createPieChart().getData());
-        pourcentage.setLabelsVisible(true);
+        nomCol311.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        typeCol311.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        ServiceEtablissement sr5 = new ServiceEtablissement();
+
+        //User u1 = new User();
+        try {
+            tableview8.setItems(sr5.selectEtablissementById2(32));
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+        
 
         //Session.getIdThisUser();
         detail.setVisible(false);
@@ -263,6 +247,7 @@ public class EtablismentController implements Initializable {
         detail5.setVisible(false);
         detail6.setVisible(false);
         detail7.setVisible(false);
+        detail8.setVisible(false);
 
         pdf.setVisible(false);
 
@@ -288,7 +273,6 @@ public class EtablismentController implements Initializable {
         }
     }
 
-    @FXML
     private void consulter2(MouseEvent event) {
         detail2.setVisible(true);
         modifier.setVisible(true);
@@ -338,7 +322,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void modifer(ActionEvent event) {
         ServiceEtablissement sr1 = new ServiceEtablissement();
         Etablissement e = sr1.GetEtablissemebtById(tableview2.getSelectionModel().getSelectedItem().getId());
@@ -363,7 +346,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void DeleteEtablissement(ActionEvent event) {
         ServiceEtablissement sr1 = new ServiceEtablissement();
         int a = tableview2.getSelectionModel().getSelectedIndex();
@@ -372,7 +354,6 @@ public class EtablismentController implements Initializable {
         detail2.setVisible(false);
     }
 
-    @FXML
     private void updateimage(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FileChooser fil = new FileChooser();
@@ -413,7 +394,6 @@ public class EtablismentController implements Initializable {
         stage.show();
     }
 
-    @FXML
     private void consulter3(MouseEvent event) {
         detail3.setVisible(true);
         detail5.setVisible(false);
@@ -439,7 +419,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void consulter4(MouseEvent event) {
         detail5.setVisible(true);
         accepter.setVisible(true);
@@ -454,7 +433,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void DeleteEleve(ActionEvent event) {
         ServiceRejoindre sr1 = new ServiceRejoindre();
         int a = tableview4.getSelectionModel().getSelectedIndex();
@@ -463,7 +441,6 @@ public class EtablismentController implements Initializable {
         detail5.setVisible(false);
     }
 
-    @FXML
     private void AccepterEleve(ActionEvent event) {
         ServiceRejoindre sr1 = new ServiceRejoindre();
 
@@ -471,7 +448,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void consulter6(MouseEvent event) {
         detail6.setVisible(true);
         int a = tableview6.getSelectionModel().getSelectedItem().getId();
@@ -495,7 +471,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void consulter7(MouseEvent event) {
         ServiceNote sn = new ServiceNote();
         if (sn.SelectMoyenneById(tableview7.getSelectionModel().getSelectedItem().getId()) == null) {
@@ -507,9 +482,7 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void insertmoyenne(ActionEvent event) {
-
         ServiceNote sn = new ServiceNote();
         Note n = new Note(tableview7.getSelectionModel().getSelectedItem().getId(),
                  Float.parseFloat(moyenne.getText()));
@@ -520,7 +493,6 @@ public class EtablismentController implements Initializable {
 
     }
 
-    @FXML
     private void pdf(ActionEvent event) throws DocumentException {
 
         String nometablissement = tableview3.getSelectionModel().getSelectedItem().getNom();
@@ -561,8 +533,34 @@ public class EtablismentController implements Initializable {
     }
 
     private PieChart createPieChart() {
-     
-    return null;
+        int et = tableview8.getSelectionModel().getSelectedItem().getId();
+        ServiceNote sn = new ServiceNote();
+        
+        ObservableList<PieChart.Data> donner = FXCollections.observableArrayList(
+             new PieChart.Data("Note suppérieur à 10", sn.statistiquesupp(et)),
+             new PieChart.Data("Note inférieur à 10", sn.statistiqueinf(et))
+        );
+        
+    return new PieChart(donner);
+    }
+
+    @FXML
+    private void consulter8(MouseEvent event) {
+        int a = tableview8.getSelectionModel().getSelectedItem().getId();
+        ServiceNote sn =new ServiceNote();
+        if(sn.verification(a)==0){
+            Alert.afficher("Note non saisi pour cette établissement","Impossible d'afficher les satatistique");
+        }
+        else{
+            detail8.setVisible(true);
+        
+        
+        
+        pourcentage.setData(createPieChart().getData());
+        pourcentage.setLabelsVisible(true);
+        }
+        
+        
     }
     
 

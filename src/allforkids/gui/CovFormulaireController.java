@@ -90,6 +90,12 @@ public class CovFormulaireController implements Initializable {
     @FXML
     public void addCov(ActionEvent event) throws IOException {
 
+        System.out.println(" arrive name : " + webEngine.executeScript("getArriveName();"));
+        System.out.println("depart name : " + webEngine.executeScript("getDepartName();"));
+        
+        String arriveName = String.valueOf(webEngine.executeScript("getArriveName();"));
+        String departName = String.valueOf(webEngine.executeScript("getDepartName();"));
+        
         System.out.println(" arrive : " + webEngine.executeScript("getArrive();"));
         System.out.println("depart : " + webEngine.executeScript("getDepart();"));
         
@@ -102,7 +108,7 @@ public class CovFormulaireController implements Initializable {
         
         ServiceCovoiturage cService = new ServiceCovoiturage();
         Transport t = new Transport(Region.getText(), ville.getText(), dep, arr,
-                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1);
+                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName);
         cService.insrerCov(t);
 
         Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));

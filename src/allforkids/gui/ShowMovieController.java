@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -32,26 +33,23 @@ public class ShowMovieController implements Initializable {
     @FXML
     private MediaView mv;
   private  MediaPlayer mp ;
+    @FXML
+    private ProgressBar progresbar;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      File f = new File("C:\\Users\\slim\\Desktop\\33.mp4");
-
+      play.setText("play");
       Media m = new Media(f.toURI().toString());
        mp = new MediaPlayer(m);
        System.out.println(mp.getMedia().getSource().toString());
        mv.setMediaPlayer(mp); 
-   
-        
-
-      
-
        
-        
+       progresbar.setMaxWidth(400);
        
- 
+       
     }    
 
     @FXML
