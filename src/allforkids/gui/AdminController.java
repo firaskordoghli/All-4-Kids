@@ -78,9 +78,11 @@ public class AdminController implements Initializable {
 
     @FXML
     private void consulter(MouseEvent event) {
-         detail.setVisible(true);
+         
            valider.setVisible(true);
            supprimer.setVisible(true);
+           imageview1.setVisible(true);
+         detail.setVisible(true);
         ServiceEtablissement sr1 = new ServiceEtablissement();
 
         Etablissement e = sr1.GetEtablissemebtById(tableview.getSelectionModel().getSelectedItem().getId());
@@ -99,6 +101,8 @@ public class AdminController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex); }
          etat.setText(e.getVerification());
+         imageview1.setVisible(true);
+         detail.setVisible(true);
     }
 
     @FXML
