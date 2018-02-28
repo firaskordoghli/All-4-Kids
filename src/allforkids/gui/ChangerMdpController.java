@@ -9,6 +9,7 @@ import allforkids.entites.Session;
 import allforkids.entites.User;
 import allforkids.service.ServiceUser;
 import allforkids.util.BCrypt;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -27,11 +28,9 @@ import javafx.fxml.Initializable;
 public class ChangerMdpController implements Initializable {
 
     @FXML
-    private JFXTextField oldPassword;
+    private JFXPasswordField newPassword;
     @FXML
-    private JFXTextField newPassword;
-    @FXML
-    private JFXTextField confirmNewPassword;
+    private JFXPasswordField confirmNewPassword;
 
     /**
      * Initializes the controller class.
@@ -51,7 +50,8 @@ public class ChangerMdpController implements Initializable {
           if (newPassword.getText().equals(confirmNewPassword.getText()))
           {
               u.changerMDP(newPassword.getText(),Session.getIdThisUser());
-          }
+              Alert2.afficherSuccses("", "votre mot de passe a été changée avec success");
+          } else {Alert2.afficherSuccses("", "verifier vos champs ");}
       }
      
     }
