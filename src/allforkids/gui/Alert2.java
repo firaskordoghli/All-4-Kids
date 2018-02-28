@@ -26,7 +26,7 @@ public class Alert2 {
             alert.setTitle(titre);
             alert.setHeaderText(message);
             alert.show();
-            PauseTransition delay = new PauseTransition(Duration.seconds(4));
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(event -> alert.close());
             delay.play();
 

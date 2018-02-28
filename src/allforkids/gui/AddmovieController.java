@@ -49,7 +49,7 @@ public class AddmovieController implements Initializable {
     private Label nfich;
     @FXML
     private JFXButton ajout;
-    
+
     private static String urlmp4 = "";
     public String fiilePath;
     private static final int BUFFER_SIZE = 4096;
@@ -60,11 +60,11 @@ public class AddmovieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void Imagadd(ActionEvent event) {
-         Stage stage = new Stage();
+        Stage stage = new Stage();
         FileChooser fil = new FileChooser();
         fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PNG", "*.png"),
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
@@ -74,18 +74,18 @@ public class AddmovieController implements Initializable {
 
         String name = nom.getText();
 
-       ServiceImage.saveimg(img, name, p,selectedFile);
+        ServiceImage.saveimg(img, name, p, selectedFile);
     }
 
     @FXML
     private void addfile(ActionEvent event) {
-          Stage stage = new Stage();
+        Stage stage = new Stage();
         FileChooser fil = new FileChooser();
         fil.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("MP4", "*.mp4"));
         File selectedFile = fil.showOpenDialog(stage);
-       
+
         String p = selectedFile.getPath();
-         String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
+        String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
         String host = Session.getIp();
         String user = "slim";
         String pass = "07471917";
@@ -112,7 +112,7 @@ public class AddmovieController implements Initializable {
 
             System.out.println("File uploaded");
             urlmp4 = "/movie/" + nom.getText() + ".mp4";
-           
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -120,26 +120,27 @@ public class AddmovieController implements Initializable {
 
     @FXML
     private void Enregistre(ActionEvent event) throws IOException, SQLException {
-          if (controleSaisie()) {
-              Movie m = new Movie(nom.getText(),urlmp4,ServiceImage.getImgg());
-            ServiceMovie s =new ServiceMovie();
+        if (controleSaisie()) {
+            Movie m = new Movie(nom.getText(), urlmp4, ServiceImage.getImgg());
+            ServiceMovie s = new ServiceMovie();
             s.insrerMovie(m);
-           Alert2.afficherSuccses("Succses", "Movie  Ajouter avec succses");
-          }
+            Alert2.afficherSuccses("Succses", "Movie  Ajouter avec succses");
+        }
     }
+
     public boolean controleSaisie() throws IOException, SQLException {
-      boolean saisie = true;
+        boolean saisie = true;
         ServiceMovie s = new ServiceMovie();
-       if (!Validation.texAlphNum(nom, nnom, "* le nom  doit contenir que des lettre")) {
+        if (!Validation.texAlphNum(nom, nnom, "* le nom  doit contenir que des lettre")) {
             saisie = false;
         }
         Movie m = s.getIdByName(nom.getText());
-         if (!(m.getNom() == null)) {
+        if (!(m.getNom() == null)) {
 
             nnom.setText("le Nom Existe deja !");
             saisie = false;
         }
-          if (ServiceImage.getImgg().equals("")) {
+        if (ServiceImage.getImgg().equals("")) {
             nimg.setText("*vous devez ajouter une image");
             saisie = false;
         }
@@ -147,7 +148,7 @@ public class AddmovieController implements Initializable {
             nfich.setText("*vous devez ajouter le Fichier ");
             saisie = false;
         }
-       return saisie ;
-    
+        return saisie;
+
     }
 }

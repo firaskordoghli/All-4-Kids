@@ -172,9 +172,9 @@ public class EvenementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        List<Evenement> me = s.selectMesEvenement(32);
-        List<Participevenement> pe = sp.selectParticipevenementByid(8);
-        List<Evenement> ppe = sp.selectEvenementByid(8);
+        List<Evenement> me = s.selectMesEvenement(Session.getIdThisUser());
+        List<Participevenement> pe = sp.selectParticipevenementByid(Session.getIdThisUser());
+        List<Evenement> ppe = sp.selectEvenementByid(Session.getIdThisUser());
         if (pe.isEmpty()) {
             inscrit.setDisable(true);
         }
@@ -279,7 +279,7 @@ public class EvenementController implements Initializable {
      
         event = s.getIdByName(l);
         Participevenement e;
-        e = sp.selectParticipevenementByid2(8, event.getId_evenement());
+        e = sp.selectParticipevenementByid2(Session.getIdThisUser(), event.getId_evenement());
         int a = sp.nbparticipent(event.getId_evenement());
         a = event.getNbr_participation() - a;
         if ((e != null) || (a == 0)) {
@@ -300,7 +300,7 @@ public class EvenementController implements Initializable {
     private void inscription(ActionEvent ev) {
         String l = listevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
-        Participevenement p = new Participevenement(event.getId_evenement(), 8, 6);
+        Participevenement p = new Participevenement(event.getId_evenement(), Session.getIdThisUser(), 6);
         ServiceParticipevenement sp = new ServiceParticipevenement();
         sp.insrerParticipevenement(p);
         Alert2.afficherSuccses("Succses", "Votre inscription  à été  Enregistre avec succses");
@@ -358,7 +358,7 @@ public class EvenementController implements Initializable {
             }
             Evenement e = new Evenement(mnom.getText(), mlieu.getText(), date,
                     mtype.getValue(), Integer.parseInt(mnb.getText()),
-                    event.isEtat(), 8, ServiceImage.getImgg(), altud, longe, java.sql.Time.valueOf(temp.getValue()));
+                    event.isEtat(), Session.getIdThisUser(), ServiceImage.getImgg(), altud, longe, java.sql.Time.valueOf(temp.getValue()));
             s.updateEvenement(e, id);
          Alert2.afficherSuccses("Succes", "Votre évenement à été modifier avec succses");
         
@@ -527,7 +527,7 @@ public class EvenementController implements Initializable {
 
      if (alert.getResult() == ButtonType.YES) {
         int id = event.getId_evenement();
-        sp.deleteParticipevenement(id, 8);
+        sp.deleteParticipevenement(id, Session.getIdThisUser());
         int a = listevent1.getSelectionModel().getSelectedIndex();
         listevent1.getItems().remove(a);
         detail1.setVisible(false);
