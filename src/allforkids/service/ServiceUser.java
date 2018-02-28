@@ -338,5 +338,25 @@ public class ServiceUser {
             ex.printStackTrace();
         }
         }
+        
+        
+         public String recevoirMDPavecId(int id)
+        {
+            String MDP ="vide";
+            
+          try{
+              String reqRec = "select pass from user where id_user=?";
+             PreparedStatement ps = ds.getConnection().prepareStatement(reqRec);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                MDP=rs.getString(1);
+            }
+          }
+            
+          catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+         return MDP;}
           
 }

@@ -19,6 +19,7 @@ public class Etablissement {
     private String ville;
     private String image;
     private String verification;
+    private int id_user;
 
     public Etablissement(int id,String nom, String description, String type, String region, String ville,String image,String verification) {
        
@@ -67,6 +68,39 @@ public class Etablissement {
         this.nom = nom;
         this.type = type;
     }
+
+    public Etablissement(int id, String nom, String description, String type, String region, String ville, String image, String verification, int id_user) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.region = region;
+        this.ville = ville;
+        this.image = image;
+        this.verification = verification;
+        this.id_user = id_user;
+    }
+    public Etablissement(int id, String nom, String description, String type, String region, String ville, String image, int id_user) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.region = region;
+        this.ville = ville;
+        this.image = image;
+        this.id_user = id_user;
+    }
+
+   
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+    
 
     public String getVerification() {
         return verification;

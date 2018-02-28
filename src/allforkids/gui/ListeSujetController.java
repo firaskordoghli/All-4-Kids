@@ -10,6 +10,7 @@ import allforkids.entites.Sujet;
 import allforkids.service.ServiceCommentaire;
 import allforkids.service.ServiceSujet;
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextField;
 import com.sun.prism.impl.Disposer;
 import com.sun.prism.impl.Disposer.Record;
 import java.io.FileInputStream;
@@ -26,6 +27,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,6 +36,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
@@ -53,7 +56,7 @@ import javafx.util.Callback;
  * @author casa-net
  */
 public class ListeSujetController implements Initializable {
-
+private Sujet row;
     @FXML
     private TableColumn<Sujet, String> titre;
     @FXML
@@ -63,6 +66,9 @@ public class ListeSujetController implements Initializable {
     @FXML
     private TableView<Sujet> table;
  public static int id_sujet ;
+     ServiceSujet s = new ServiceSujet();
+    @FXML
+    private JFXTextField SujetRechercher;
     /**
      * Initializes the controller class.
      */
@@ -75,11 +81,12 @@ public class ListeSujetController implements Initializable {
         tag.setCellValueFactory(new PropertyValueFactory<>("tag"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         //avis.setCellValueFactory(new PropertyValueFactory<>("good"));
-        TableColumn col_action = new TableColumn<>("good");
+        TableColumn col_action = new TableColumn<>("delete");
         table.getColumns().add(col_action);
 
         col_action.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
+               
+             new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
 
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
@@ -98,28 +105,7 @@ public class ListeSujetController implements Initializable {
 
         });
         
-        TableColumn col_action2 = new TableColumn<>("bad");
-        table.getColumns().add(col_action2);
-
-        col_action2.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
-
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
-
-        //Adding the Button to the cell
-        col_action2.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell();
-            }
-
-        });
+       
         
         ServiceSujet s = new ServiceSujet();
         a.addAll(s.selectSujet());
@@ -150,4 +136,56 @@ public class ListeSujetController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
+    
+    
+    public void delete(ActionEvent event) {
+        
+        row = table.getSelectionModel().getSelectedItem();
+        int id = row.getId_sujet();
+        s.deleteSujet(id);
+          int a = table.getSelectionModel().getFocusedIndex();
+          table.getItems().remove(a);
+    }
+    
+    
+    
+    
+    
+    void Recherche(ActionEvent event) {
+         ArrayList<Sujet> listeSearch= new ArrayList<Sujet>();
+        table.getColumns().clear();
+        ServiceSujet serv =new ServiceSujet();
+        listeSearch = serv.RechercherSujet(SujetRechercher.getText());
+         titre.setCellValueFactory(new PropertyValueFactory<>("title"));
+        tag.setCellValueFactory(new PropertyValueFactory<>("tag"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        //avis.setCellValueFactory(new PropertyValueFactory<>("good"));
+        TableColumn col_action = new TableColumn<>("delete");
+        table.getColumns().add(col_action);
+
+        col_action.setCellValueFactory(
+               
+             new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
+                return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+
+        //Adding the Button to the cell
+        col_action.setCellFactory(
+                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
+
+            @Override
+            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
+                return new ButtonCell();
+            }
+
+        });
+        
+         
+    }
+    
 }

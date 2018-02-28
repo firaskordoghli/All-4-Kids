@@ -86,4 +86,25 @@ public class ServiceMovie {
         }
         return list;
     }
+     public Movie getIdByName(String nom) {
+        Movie m = new Movie();
+        try {
+            String req = "SELECT * FROM movie where nom=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ste.setString(1, nom);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                m.setId_movie(result.getInt("id_movie"));
+                m.setNom(result.getString("nom"));
+                m.setUrl(result.getString("url"));
+                m.setImg(result.getString("img"));
+
+            }
+            return m;
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return m ;
+     }
 }

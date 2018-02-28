@@ -14,10 +14,10 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
 import allforkids.entites.User;
 import allforkids.service.ServiceMail;
 import allforkids.service.ServiceUser;
+import allforkids.util.Validation;
 import com.google.code.facebookapi.schema.NotificationData.Notifications;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -52,25 +52,57 @@ public class MDPOublierController implements Initializable {
     private JFXButton sendMail;
     @FXML
     private Label l;
-
+    @FXML
+    private Label Maill;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        boolean saisie = true;
+        if (!Validation.texMail(mail, Maill, "* verifier votre mail")) {
+            saisie = false;
+        }
+
         // TODO
-    }    
+    }
 
     @FXML
     private void sendMail(ActionEvent event) throws MessagingException, IOException {
-         String email = mail.getText();
-     ServiceMail Ma = new ServiceMail();
-        Ma.generateAndSendEmail("recuperation de mdp", "", 3,email);
-       // String email = mail.getText();
-      
-      /* ServiceMail Ma = new ServiceMail();
+        String email = mail.getText();
+        ServiceMail Ma = new ServiceMail();
+          ServiceUser us = new ServiceUser();
+        User u = us.GetUserByMail(email, l);
+        
+        
+        
+        if (email != u.getMail()) {
+            Random rand = new Random(100000);
+            int a = rand.nextInt(100000);
+            CodeController.setCodeMail(a);
+
+            Ma.generateAndSendEmail("recuperation de mdp", "votre code est :", CodeController.getCodeMail(), email);
+
+        }
+        
+        
+        
+        Parent root = FXMLLoader.load(getClass().getResource("code.fxml"));
+         
+        Scene scene = new Scene(root);
+        
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  
+        
+        app_stage.setScene(scene);
+        
+        app_stage.show();
+        
+        }
+            
+        // String email = mail.getText();
+
+        /* ServiceMail Ma = new ServiceMail();
         ServiceUser us = new ServiceUser();
         User u = us.GetUserByMail(email,l);
         
@@ -112,19 +144,5 @@ public class MDPOublierController implements Initializable {
         app_stage.setScene(scene);
         
         app_stage.show();*/
-        
-        }
-}
+    }
 
-                
-        
-        
-        
-    
-        
-        
-    
-
-
-    
-  

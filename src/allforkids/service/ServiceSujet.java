@@ -58,7 +58,7 @@ public class ServiceSujet {
         }
     }
 
-    public static void deleteSujet(int id) {
+    public  void deleteSujet(int id) {
         try {
             String req = "DELETE FROM sujet WHERE id_sujet = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
@@ -128,6 +128,39 @@ public class ServiceSujet {
         }
         return null ;
 
+    }
+    
+    
+    
+   
+    public ArrayList<Sujet> RechercherSujet(String tag) {
+         try {
+        
+            String requete = "select * from sujet where tag= ?";
+             PreparedStatement ps = ds.getConnection().prepareStatement(requete);
+          
+             ps.setString(1, tag);
+             
+             
+             ResultSet result = ps.executeQuery();
+           // ArrayList<Sujet> sujet= new ArrayList<Sujet>();
+            while (result.next()) {
+               Sujet sujet1 = new Sujet();
+               sujet1.setId_sujet(result.getInt(1));
+               sujet1.setDescription(result.getString(2));
+               sujet1.setTitle(result.getString(3));
+               sujet1.setGood(result.getInt(5));
+               sujet1.setBad(result.getInt(6));
+               sujet1.setTag(result.getString(7));
+               
+              
+               
+                
+            }
+        } catch (Exception ee) {
+            System.out.println("erreur  " + ee.getMessage());
+        }
+        return null;
     }
 }
     
