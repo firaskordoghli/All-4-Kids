@@ -16,40 +16,36 @@
    <children>
       <Pane layoutX="-4.0" layoutY="-6.0" prefHeight="237.0" prefWidth="804.0" style="-fx-background-color: rgb(0, 170, 207);">
          <children>
-            <ImageView fitHeight="359.0" fitWidth="805.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="418.0" fitWidth="805.0" layoutY="-62.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/b1.jpg" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="-4.0" layoutY="312.0" prefHeight="289.0" prefWidth="804.0" style="-fx-background-color: rgb(0, 170, 207);" />
-      <AnchorPane layoutX="219.0" layoutY="134.0" prefHeight="350.0" prefWidth="363.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="-4.0" layoutY="312.0" prefHeight="289.0" prefWidth="804.0" style="-fx-background-color: #fffff;" />
+      <AnchorPane layoutX="219.0" layoutY="134.0" prefHeight="430.0" prefWidth="363.0" style="-fx-background-color: #ffffff;">
          <children>
 
-            <AnchorPane layoutX="32.0" layoutY="25.0" prefHeight="350.0" prefWidth="267.0" style="-fx-background-color: #7feaff;">
-              
-            </AnchorPane>
-
-            <TextField id="mail" fx:id="mail" layoutX="146.0" layoutY="118.0" prefHeight="25.0" prefWidth="124.0" />
-            <Label layoutX="89.0" layoutY="125.0" text="Email">
+            <TextField id="mail" fx:id="mail" layoutX="101.0" layoutY="118.0" prefHeight="31.0" prefWidth="244.0" />
+            <Label layoutX="30.0" layoutY="125.0" text="Email">
                <font>
                   <Font name="DK Cool Crayon" size="12.0" />
                </font>
             </Label>
-            <PasswordField fx:id="pass" layoutX="147.0" layoutY="153.0" prefHeight="25.0" prefWidth="124.0" />
-            <Label layoutX="87.0" layoutY="155.0" text="password">
+            <PasswordField fx:id="pass" layoutX="101.0" layoutY="153.0" prefHeight="31.0" prefWidth="244.0" />
+            <Label layoutX="28.0" layoutY="155.0" text="password">
                <font>
                   <Font name="DK Cool Crayon" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="cx" layoutX="86.0" layoutY="186.0" mnemonicParsing="false" onAction="#cnx" prefHeight="25.0" prefWidth="185.0" style="-fx-background-color: rgb(0, 170, 207);" text="connexion" textFill="WHITE" />
-            <Hyperlink fx:id="MdpOublir" layoutX="110.0" layoutY="218.0" onAction="#MdpOublir" prefHeight="23.0" prefWidth="130.0" text="mot de passe oublier" wrapText="true" />
+            <Button fx:id="cx" layoutX="88.0" layoutY="234.0" mnemonicParsing="false" onAction="#cnx" prefHeight="25.0" prefWidth="185.0" style="-fx-background-color: rgb(0, 170, 207);" text="connexion" textFill="WHITE" />
+            <Hyperlink fx:id="MdpOublir" layoutX="107.0" layoutY="271.0" onAction="#MdpOublir" prefHeight="29.0" prefWidth="159.0" text="mot de passe oublier" wrapText="true" />
             <Label fx:id="MailC" layoutX="101.0" layoutY="98.0" />
             <Label fx:id="PassC" layoutX="101.0" layoutY="158.0" />
-            <Hyperlink fx:id="facebook" layoutX="26.0" layoutY="323.0" onAction="#facebook" prefHeight="23.0" prefWidth="105.0" text="facebook" />
-            <JFXButton layoutX="254.0" layoutY="320.0" onAction="#valider" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #329932;" text="sign up" textFill="WHITE" />
-            <ImageView fitHeight="69.0" fitWidth="67.0" layoutX="150.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+            <Hyperlink fx:id="facebook" layoutX="26.0" layoutY="394.0" onAction="#facebook" prefHeight="23.0" prefWidth="105.0" text="facebook" />
+            <JFXButton layoutX="254.0" layoutY="391.0" onAction="#valider" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #329932;" text="sign up" textFill="WHITE" />
+            <ImageView fitHeight="69.0" fitWidth="67.0" layoutX="150.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/Preloader_9.gif" />
                </image>

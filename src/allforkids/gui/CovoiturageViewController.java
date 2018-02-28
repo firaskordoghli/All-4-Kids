@@ -283,7 +283,7 @@ public class CovoiturageViewController implements Initializable {
         
         sendSMS  send = new sendSMS() ;
         
-        send.sendSms(num);
+        send.sendSms("216"+num);
     }
     
     

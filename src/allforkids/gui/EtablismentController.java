@@ -213,7 +213,7 @@ public class EtablismentController implements Initializable {
         ServiceEtablissement sr2 = new ServiceEtablissement();
 
         try {
-            tableview2.setItems(sr2.selectEtablissementById(Session.getIdThisUser()));
+            tableview2.setItems(sr2.selectEtablissementById(32));
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -226,7 +226,7 @@ public class EtablismentController implements Initializable {
 
         //User u1 = new User();
         try {
-            tableview3.setItems(sr3.selectEtablissementById2(Session.getIdThisUser()));
+            tableview3.setItems(sr3.selectEtablissementById2(32));
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -236,7 +236,7 @@ public class EtablismentController implements Initializable {
         ServiceUser su = new ServiceUser();
         try {
 
-            List<Etablissement> list1 = sr3.selectEtablissementById(Session.getIdThisUser());
+            List<Etablissement> list1 = sr3.selectEtablissementById(32);
             for (Etablissement etablissement : list1) {
                 List<Rejoindre> r = sr9.selectIdUserById(etablissement.getId());
                 String a = etablissement.getNom();
@@ -264,7 +264,7 @@ public class EtablismentController implements Initializable {
         typeCol31.setCellValueFactory(new PropertyValueFactory<>("type"));
 
         try {
-            tableview6.setItems(sr3.selectEtablissementById2(Session.getIdThisUser()));
+            tableview6.setItems(sr3.selectEtablissementById2(32));
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -286,8 +286,7 @@ public class EtablismentController implements Initializable {
 
         //User u1 = new User();
         try {
-            tableview8.setItems(sr5.selectEtablissementById2(Session.getIdThisUser()
-            ));
+            tableview8.setItems(sr5.selectEtablissementById2(32));
 
         } catch (Exception ex) {
             System.out.println(ex);

@@ -133,16 +133,6 @@ public class CovFormulaireController implements Initializable {
 
     
 
-    @FXML
-    public void backToCovoiturage(MouseEvent event) throws IOException {
 
-        Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
-        Scene covViewScene = new Scene(covViewOarent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(covViewScene);
-        window.show();
-
-    }
 
 }

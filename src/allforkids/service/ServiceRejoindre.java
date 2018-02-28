@@ -135,4 +135,30 @@ public class ServiceRejoindre {
         
         }
     
+    /*public Rejoindre getmoyennebyiduser(int id) {
+        try {
+            String req = "select moyenne from note n join rejoindre r where r.id_user=n.id_user and r.user=?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ste.setInt(1, id);
+
+            ResultSet result = ste.executeQuery();
+            
+            while (result.next()) {
+
+                Rejoindre r = new Rejoindre(
+                        result.getInt("id_etablissement"),
+                        result.getInt("id_user"),
+                        result.getString("verification")
+                );
+                return r;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return null;
+
+    }*/
 }

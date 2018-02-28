@@ -31,7 +31,7 @@ public class ServiceEtablissement {
             String req = "INSERT INTO `etablissement` ( `nom`, `type`, `region`, `ville`, `description`, `image`, `verification`, `id_user`) VALUES ( ?, ?, ?, ?, ?, ?, 'Non valide',?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
-                ste.setInt(1, u);
+                
             
             ste.setString(1, e.getNom());
             ste.setString(2, e.getType());

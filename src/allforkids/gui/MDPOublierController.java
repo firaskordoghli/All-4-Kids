@@ -64,7 +64,20 @@ public class MDPOublierController implements Initializable {
         if (!Validation.texMail(mail, Maill, "* verifier votre mail")) {
             saisie = false;
         }
+        else saisie = false;
+        
+        
+        if (Validation.texMail(mail, Maill, "* la forme de mail est invalide")) {
 
+            String validationString = null;
+            if (!mail.getText().matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)+$")) {
+                saisie = false;
+
+            }
+
+            Maill.setText("* la forme de mail est invalide");
+            System.out.println(saisie);
+        }
         // TODO
     }
 
@@ -84,7 +97,7 @@ public class MDPOublierController implements Initializable {
 
             Ma.generateAndSendEmail("recuperation de mdp", "votre code est :", CodeController.getCodeMail(), email);
 
-        }
+           }
         
         
         
@@ -97,52 +110,9 @@ public class MDPOublierController implements Initializable {
         app_stage.setScene(scene);
         
         app_stage.show();
-        
+        Alert2.afficherSuccses("", "verifier votre boite mail!!!!!!!!!! ");
         }
             
-        // String email = mail.getText();
-
-        /* ServiceMail Ma = new ServiceMail();
-        ServiceUser us = new ServiceUser();
-        User u = us.GetUserByMail(email,l);
-        
-   
-            //generer mdp automatiquement
-            
-            if(email==u.getMail()){
-            
-           Random rand = new Random(10000);
-          CodeController.setCodeMail(rand.nextInt(10000));
-           Ma.generateAndSendEmail("recuperation de mdp", "test", CodeController.getCodeMail(),mail.getText());
-            
-            }
-             
-            Parent root = FXMLLoader.load(getClass().getResource("Code.fxml"));
-         
-        Scene scene = new Scene(root);
-        
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  
-        
-        app_stage.setScene(scene);
-        
-        app_stage.show();
-    
-    
-    
-    
-    
-    
-    }
-            /*us.changerMDP(s,u.getId());
-            
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-         
-        Scene scene = new Scene(root);
-        
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();  
-        
-        app_stage.setScene(scene);
-        
-        app_stage.show();*/
+       
     }
 
