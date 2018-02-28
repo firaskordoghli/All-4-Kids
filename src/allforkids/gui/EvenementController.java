@@ -165,7 +165,7 @@ public class EvenementController implements Initializable {
     @FXML
     private JFXButton inscript1;
     private ServiceParticipevenement sp = new ServiceParticipevenement();
-  
+
     @FXML
     private JFXTimePicker temp;
     @FXML
@@ -189,7 +189,6 @@ public class EvenementController implements Initializable {
          * *******Evenement******
          */
 
-       
         List<Evenement> e = new ArrayList<>();
         // int u = Session.getIdThisUser();
 
@@ -275,12 +274,12 @@ public class EvenementController implements Initializable {
         detail.setVisible(true);
         inscript.setDisable(false);
         String l = listevent.getSelectionModel().getSelectedItem().getText();
-        for (Label o :  myevent.getItems()) {
-            if(o.getText().equals(l)){
-            inscript.setDisable(true);
+        for (Label o : myevent.getItems()) {
+            if (o.getText().equals(l)) {
+                inscript.setDisable(true);
             }
         }
-     
+
         event = s.getIdByName(l);
         Participevenement e;
         e = sp.selectParticipevenementByid2(Session.getIdThisUser(), event.getId_evenement());
@@ -364,29 +363,28 @@ public class EvenementController implements Initializable {
                     mtype.getValue(), Integer.parseInt(mnb.getText()),
                     event.isEtat(), Session.getIdThisUser(), ServiceImage.getImgg(), altud, longe, java.sql.Time.valueOf(temp.getValue()));
             s.updateEvenement(e, id);
-         Alert2.afficherSuccses("Succes", "Votre évenement à été modifier avec succses");
-        
+            Alert2.afficherSuccses("Succes", "Votre évenement à été modifier avec succses");
+
             modifay.setVisible(false);
         }
     }
 
     @FXML
     private void deleteEvenement(ActionEvent even) {
- 
+
         String l = myevent.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
-        javafx.scene.control.Alert alert = new  javafx.scene.control.Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText("voulez-vous vraiment supprimer " + l + " ?");
         alert.showAndWait();
 
-     if (alert.getResult() == ButtonType.YES) {
-        int id = event.getId_evenement();
-        s.deleteEvenement(id);
-        int a = myevent.getSelectionModel().getSelectedIndex();
-        myevent.getItems().remove(a);
-        modifay.setVisible(false);
-    }
-        
+        if (alert.getResult() == ButtonType.YES) {
+            int id = event.getId_evenement();
+            s.deleteEvenement(id);
+            int a = myevent.getSelectionModel().getSelectedIndex();
+            myevent.getItems().remove(a);
+            modifay.setVisible(false);
+        }
 
     }
 
@@ -465,10 +463,10 @@ public class EvenementController implements Initializable {
                 ndate.setText("");
             }
         }
-         if (temp.getValue() == null) {
-         
-         }
-      int np = sp.nbparticipent(e.getId_evenement());
+        if (temp.getValue() == null) {
+
+        }
+        int np = sp.nbparticipent(e.getId_evenement());
         int a = Integer.parseInt(mnb.getText());
         a = a - np;
         if (a <= 0) {
@@ -525,45 +523,37 @@ public class EvenementController implements Initializable {
     private void dinscription(ActionEvent even) {
         String l = listevent1.getSelectionModel().getSelectedItem().getText();
         event = s.getIdByName(l);
-         javafx.scene.control.Alert alert = new  javafx.scene.control.Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText("voulez-vous vraiment Anuller votre Reservation  " + l + " ?");
         alert.showAndWait();
 
-     if (alert.getResult() == ButtonType.YES) {
-        int id = event.getId_evenement();
-        sp.deleteParticipevenement(id, Session.getIdThisUser());
-        int a = listevent1.getSelectionModel().getSelectedIndex();
-        listevent1.getItems().remove(a);
-        detail1.setVisible(false);
-     }
+        if (alert.getResult() == ButtonType.YES) {
+            int id = event.getId_evenement();
+            sp.deleteParticipevenement(id, Session.getIdThisUser());
+            int a = listevent1.getSelectionModel().getSelectedIndex();
+            listevent1.getItems().remove(a);
+            detail1.setVisible(false);
+        }
     }
-    
-        public void toLib(ActionEvent event) throws IOException {
-            
-                
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("Librairie.fxml"));
+
+    public void toLib(ActionEvent event) throws IOException {
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Librairie.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-            
-        }
-        
-        public void toFilm(ActionEvent event) throws IOException {
-            
-                
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
+
+    }
+
+    public void toFilm(ActionEvent event) throws IOException {
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-            
-        }
-    
-    
-    
 
-
-  
+    }
 
 }
