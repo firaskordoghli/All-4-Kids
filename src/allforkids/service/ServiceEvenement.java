@@ -6,6 +6,7 @@
 package allforkids.service;
 
 import allforkids.entites.Evenement;
+import allforkids.entites.User;
 import allforkids.util.Config;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -180,6 +181,27 @@ public class ServiceEvenement {
                                 result.getDouble("latitude"),
                                 result.getDouble("longitude"),
                                 result.getTime("temp")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+      public List<User> selectUsers( int id) {
+        List<User> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM evenement Where id_user = ? ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, id);
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new User(
+                                result.getInt("id_user"),
+                                result.getString("nom"),
+                                result.getString("prenom")
                         )
                 );
             }
