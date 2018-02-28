@@ -49,7 +49,7 @@ public class AdminevenmentController implements Initializable {
     private TableColumn<Evenement, Date> date;
     @FXML
     private TableColumn<Evenement, String> nbplase;
- 
+
     @FXML
     private JFXButton delete;
     @FXML
@@ -65,63 +65,61 @@ public class AdminevenmentController implements Initializable {
     private Label nb;
     @FXML
     private ImageView img;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Evenement> oe = FXCollections.observableArrayList(); 
-        
+        ObservableList<Evenement> oe = FXCollections.observableArrayList();
+
         oe.addAll(s.selectEvenement());
-       
-       
-           nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-           date.setCellValueFactory(new PropertyValueFactory<>("date"));
-           nbplase.setCellValueFactory(new PropertyValueFactory<>("nbr_participation"));
-          
-           tabevent.setItems(oe);
-           detail.setVisible(false);
-    }    
+
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        nbplase.setCellValueFactory(new PropertyValueFactory<>("nbr_participation"));
+
+        tabevent.setItems(oe);
+        detail.setVisible(false);
+    }
 
     @FXML
     private void dleteslect(ActionEvent event) {
-          Evenement e = tabevent.getSelectionModel().getSelectedItem();
-        
-        javafx.scene.control.Alert alert = new  javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        Evenement e = tabevent.getSelectionModel().getSelectedItem();
+
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText("voulez-vous vraiment supprimer " + e.getNom() + " ?");
         alert.showAndWait();
 
-     if (alert.getResult() == ButtonType.YES) {
-        int id = e.getId_evenement();
-        s.deleteEvenement(id);
-        int a = tabevent.getSelectionModel().getSelectedIndex();
-        tabevent.getItems().remove(a);
-        detail.setVisible(false);
-    }
-      
+        if (alert.getResult() == ButtonType.YES) {
+            int id = e.getId_evenement();
+            s.deleteEvenement(id);
+            int a = tabevent.getSelectionModel().getSelectedIndex();
+            tabevent.getItems().remove(a);
+            detail.setVisible(false);
+        }
+
     }
 
     @FXML
-    private void supprimedepasse(ActionEvent event)  {
-       
-        
-        javafx.scene.control.Alert alert = new  javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+    private void supprimedepasse(ActionEvent event) {
+
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText("voulez-vous vraiment supprimer les evenement  depasse ?");
         alert.showAndWait();
 
-     if (alert.getResult() == ButtonType.YES) {
-        
-        s.deleteEvenementdepas();
-       
-       
-        detail.setVisible(false);
-    }
-      
+        if (alert.getResult() == ButtonType.YES) {
+
+            s.deleteEvenementdepas();
+
+            detail.setVisible(false);
+        }
+
     }
 
     @FXML
     private void Ajoterevenment(ActionEvent event) throws IOException {
-          Stage stage = new Stage();
+        Stage stage = new Stage();
         stage.setTitle("Ajouter Evenement");
         Parent root = FXMLLoader.load(getClass().getResource("AjoutEvenment.fxml"));
         Scene scene = new Scene(root);
@@ -131,15 +129,15 @@ public class AdminevenmentController implements Initializable {
 
     @FXML
     private void detailee(MouseEvent event) {
-         ServiceParticipevenement sp = new ServiceParticipevenement();
-       Evenement e = tabevent.getSelectionModel().getSelectedItem();
-            String u = s.selectUsers(e.getId_user());
-            createur.setText(u);
-            int nbr = sp.nbparticipent(e.getId_evenement());
-            nb.setText(String.valueOf(nbr));
-             Image image = new Image("ftp://slim:07471917@" + Session.getIp() + "/" + e.getPhoto());
+        ServiceParticipevenement sp = new ServiceParticipevenement();
+        Evenement e = tabevent.getSelectionModel().getSelectedItem();
+        String u = s.selectUsers(e.getId_user());
+        createur.setText(u);
+        int nbr = sp.nbparticipent(e.getId_evenement());
+        nb.setText(String.valueOf(nbr));
+        Image image = new Image("ftp://slim:07471917@" + Session.getIp() + "/" + e.getPhoto());
         img.setImage(image);
         detail.setVisible(true);
     }
-    
+
 }

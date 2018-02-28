@@ -4,11 +4,24 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.MDPOublierController">
    <children>
-      <Label fx:id="l" layoutX="128.0" layoutY="183.0" prefHeight="17.0" prefWidth="96.0" text="mail" />
-      <JFXTextField fx:id="mail" layoutX="241.0" layoutY="188.0" prefHeight="25.0" prefWidth="301.0" />
-      <JFXButton fx:id="sendMail" layoutX="405.0" layoutY="256.0" onAction="#sendMail" text="envoi" />
+      <Label fx:id="l" layoutX="63.0" layoutY="209.0" prefHeight="17.0" prefWidth="96.0" text="mail">
+         <font>
+            <Font name="DK Cool Crayon" size="24.0" />
+         </font></Label>
+      <JFXTextField fx:id="mail" layoutX="212.0" layoutY="199.0" prefHeight="25.0" prefWidth="301.0" />
+      <JFXButton fx:id="sendMail" layoutX="397.0" layoutY="279.0" onAction="#sendMail" prefHeight="53.0" prefWidth="121.0" style="-fx-background-color: #008000;" text="envoyer" textFill="WHITE">
+         <font>
+            <Font name="DK Cool Crayon" size="18.0" />
+         </font></JFXButton>
+      <Label layoutX="56.0" layoutY="75.0" prefHeight="45.0" prefWidth="489.0" text="récuperation de mot de passe">
+         <font>
+            <Font name="DK Cool Crayon" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="Maill" layoutX="241.0" layoutY="222.0" prefHeight="17.0" prefWidth="156.0" />
    </children>
 </AnchorPane>

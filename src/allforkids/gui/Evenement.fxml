@@ -19,11 +19,11 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.EvenementController">
    <children>
-      <TabPane layoutX="19.0" layoutY="15.0" prefHeight="539.0" prefWidth="1001.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="19.0" layoutY="15.0" prefHeight="539.0" prefWidth="880.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="consultt" text="Evenement">
                <content>
-                  <AnchorPane prefHeight="470.0" prefWidth="1165.0">
+                  <AnchorPane prefHeight="500.0" prefWidth="924.0">
                      <children>
                         <ListView fx:id="listevent" layoutX="23.0" layoutY="11.0" onMouseClicked="#afficherImage" prefHeight="484.0" prefWidth="520.0" />
                         <AnchorPane fx:id="detail" layoutX="605.0" layoutY="70.0" prefHeight="404.0" prefWidth="223.0">
@@ -214,5 +214,15 @@
             </Tab>
         </tabs>
       </TabPane>
+      <JFXButton fx:id="libbtn" layoutX="915.0" layoutY="127.0" onAction="#toLib" prefHeight="109.0" prefWidth="151.0" style="-fx-background-color: #04dc7a;" text="Consuler librarie" textFill="WHITE">
+         <font>
+            <Font name="DK Cool Crayon" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="filmbtn" layoutX="915.0" layoutY="269.0" onAction="#toFilm" prefHeight="109.0" prefWidth="151.0" style="-fx-background-color: #c80e2d;" text="film" textFill="WHITE">
+         <font>
+            <Font name="DK Cool Crayon" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

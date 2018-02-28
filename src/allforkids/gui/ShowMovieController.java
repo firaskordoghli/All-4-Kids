@@ -5,10 +5,16 @@
  */
 package allforkids.gui;
 
+import allforkids.entites.Movie;
+import allforkids.entites.Session;
 import com.jfoenix.controls.JFXButton;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +26,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
 /**
  * FXML Controller class
@@ -40,7 +47,16 @@ public class ShowMovieController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     File f = new File("C:\\Users\\slim\\Desktop\\33.mp4");
+     
+        try {
+            url = new URL("ftp://slim:07471917@" + Session.getIp() + MovieController.url);
+      
+        String tDir = System.getProperty("java.io.tmpdir");
+        String path = tDir + "tmp" + ".mp4";
+         File  file = new File(path);
+        file.deleteOnExit();
+        FileUtils.copyURLToFile(url, file);
+     File f = new File(path);
       play.setText("play");
       Media m = new Media(f.toURI().toString());
        mp = new MediaPlayer(m);
@@ -48,6 +64,14 @@ public class ShowMovieController implements Initializable {
        mv.setMediaPlayer(mp); 
        
        progresbar.setMaxWidth(400);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(ShowMovieController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ShowMovieController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+     
        
        
     }    

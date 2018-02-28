@@ -24,7 +24,8 @@ public class Transport {
     private String type;
     private Date date;
     private String arriveName;
-    private String departName;  
+    private String departName;
+    private int id_user ;
 
     public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type,Date date, String arriveName, String departName) {
         this.id_transport = id_transport;
@@ -43,7 +44,7 @@ public class Transport {
     }
 
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
-            String place, String frais, String arriveName, String departName) {
+            String place, String frais, String arriveName, String departName,int id_user) {
         this.region = region;
         this.ville = ville;
         this.depart = depart;
@@ -53,11 +54,12 @@ public class Transport {
         this.place = place;
         this.frais = frais;
         this.arriveName = arriveName;
-        this.departName = departName;
+        this.id_user = id_user;
+        
     }
     
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
-            String place, String frais,Date date, String arriveName, String departName) {
+            String place, String frais,Date date, String arriveName, String departName,int is_user) {
         this.region = region;
         this.ville = ville;
         this.depart = depart;
@@ -69,10 +71,11 @@ public class Transport {
         this.date = date;
         this.arriveName = arriveName;
         this.departName = departName;
+        this.id_user = id_user;
     }
     
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
-            String place, String frais,String type,Date date, String arriveName, String departName) {
+            String place, String frais,String type,Date date, String arriveName, String departName,int id_user) {
         this.region = region;
         this.ville = ville;
         this.depart = depart;
@@ -85,6 +88,15 @@ public class Transport {
         this.date = date;
         this.arriveName = arriveName;
         this.departName = departName;
+        this.id_user = id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public int getId_user() {
+        return id_user;
     }
 
     public void setArriveName(String arriveName) {
@@ -219,8 +231,12 @@ public class Transport {
 
     @Override
     public String toString() {
-        return "Transport{" + "id_transport=" + id_transport + ", region=" + region + ", ville=" + ville + ", depart=" + depart + ", arriv\u00e9=" + arrivé + ", description=" + description + ", telephone=" + telephone + ", place=" + place + ", frais=" + frais + ", type=" + type + '}';
+        return "Transport{" + "id_transport=" + id_transport + ", region=" + region + ", ville=" + ville + ", depart=" + depart + ", arriv\u00e9=" + arrivé + ", description=" + description + ", telephone=" + telephone + ", place=" + place + ", frais=" + frais + ", type=" + type + ", date=" + date + ", arriveName=" + arriveName + ", departName=" + departName + ", id_user=" + id_user + '}';
     }
+
+    
+
+    
     
     
 }

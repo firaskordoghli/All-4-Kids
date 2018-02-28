@@ -6,6 +6,7 @@
 package allforkids.gui;
 
 import allforkids.entites.Covoiturage;
+import allforkids.entites.Session;
 import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
 import com.jfoenix.controls.JFXButton;
@@ -33,6 +34,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -71,6 +73,7 @@ public class CovFormulaireController implements Initializable {
     @FXML
     private JFXComboBox<String> typeCov;
     
+  
     
 
     /**
@@ -85,11 +88,14 @@ public class CovFormulaireController implements Initializable {
         webEngine = addwebview.getEngine();
         webEngine.load(getClass().getResource("addlocation.html").toString());
         // webEngine.load("https://www.google.com");
+        
     }
 
     @FXML
     public void addCov(ActionEvent event) throws IOException {
-
+        
+        int id_user = Session.getIdThisUser();
+        
         System.out.println(" arrive name : " + webEngine.executeScript("getArriveName();"));
         System.out.println("depart name : " + webEngine.executeScript("getDepartName();"));
         
@@ -103,22 +109,29 @@ public class CovFormulaireController implements Initializable {
         String arr = String.valueOf(webEngine.executeScript("getArrive();"));
         
         LocalDate d = date.getValue();
+         if (date.getValue() != null) {
+           
+            Date date0 = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Date date2 = new Date();
+            if (date0.before(date2)) {
+               Alert2.afficherWARNING("Erreur", "la date sasier invalid ");
+                
+            } 
+         }
         Date date1 = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
         
         ServiceCovoiturage cService = new ServiceCovoiturage();
         Transport t = new Transport(Region.getText(), ville.getText(), dep, arr,
-                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName);
+                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName,id_user);
         cService.insrerCov(t);
-
-        Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
-        Scene covViewScene = new Scene(covViewOarent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(covViewScene);
-        window.show();
-
+        Alert2.afficherSuccses("Enregistre", "Covaturage ajouter avec succée");
+     
     }
+
+        
+
+    
 
     @FXML
     public void backToCovoiturage(MouseEvent event) throws IOException {

@@ -7,6 +7,8 @@ package allforkids.service;
 
 import allforkids.entites.Covoiturage;
 import allforkids.entites.Transport;
+import allforkids.entites.Transportrejoindr;
+import static allforkids.service.ServiceTransportrejoindr.ds;
 import allforkids.util.Config;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -28,8 +30,8 @@ public class ServiceCovoiturage {
     public void insrerCov(Transport t) {
         try {
             java.sql.Date sqldate = new Date(t.getDate().getTime());
-            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais,type,date,arriveName,departName)"
-                    + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais,type,date,arriveName,departName,id_user)"
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, t.getRegion());
             ste.setString(2, t.getVille());
@@ -43,7 +45,7 @@ public class ServiceCovoiturage {
             ste.setDate(10, sqldate);
             ste.setString(11, t.getArriveName());
             ste.setString(12, t.getDepartName());
-            
+            ste.setInt(13, t.getId_user());
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,6 +114,19 @@ public class ServiceCovoiturage {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    
+    public String getNum (Transportrejoindr p) throws SQLException{
+            String num = "54000673" ;
+            String req = "SELECT telephone FROM trasnsport where id_user= ?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, p.getId_user());
+             ResultSet result = ste.executeQuery();
+               while (result.next()) {
+                   num = result.getString("telephone");
+                   return num;
+               }
+               return num ;
     }
     
     public List<Transport> selectCovById(int id) {
