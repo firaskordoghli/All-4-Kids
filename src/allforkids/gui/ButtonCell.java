@@ -30,9 +30,10 @@ public class ButtonCell extends TableCell<Disposer.Record, Boolean> {
             super.updateItem(t, empty);
             if(!empty){
                 setGraphic(cellButton);
+                ActionEvent event=null;
                 
-                
-               
+             /*  ListeSujetController ls = new ListeSujetController();
+               ls.delete(event);*/
             }
         }
         
