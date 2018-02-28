@@ -83,7 +83,12 @@ public class MDPOublierController implements Initializable {
 
     @FXML
     private void sendMail(ActionEvent event) throws MessagingException, IOException {
-        String email = mail.getText();
+        ServiceMail Ma = new ServiceMail();
+            Ma.generateAndSendEmail("recuperation de mdp", "votre code est :", 4, "r4.cherif@gmail.com");
+
+        
+        
+        /*String email = mail.getText();
         ServiceMail Ma = new ServiceMail();
           ServiceUser us = new ServiceUser();
         User u = us.GetUserByMail(email, l);
@@ -101,7 +106,7 @@ public class MDPOublierController implements Initializable {
         
         
         
-        Parent root = FXMLLoader.load(getClass().getResource("code.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Code.fxml"));
          
         Scene scene = new Scene(root);
         
@@ -113,6 +118,6 @@ public class MDPOublierController implements Initializable {
         Alert2.afficherSuccses("", "verifier votre boite mail!!!!!!!!!! ");
         }
             
-       
+       */
     }
-
+}

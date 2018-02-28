@@ -3,22 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Kordoghli.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Alert2.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceTransportrejoindr.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AdminmovieController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/sendSMS.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovoiturageViewController.java</file>
-            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovFormulaireController.java</file>
-=======
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AllForKids.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/DrawerController.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovFormulaireController.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/util/Config.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/HomeController.java</file>
-            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovoiturageViewController.java</file>
->>>>>>> b0ff6b1e17fd417db0c6a990234e5f50e20f7731
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/util/Config.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ChangerMdpController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/SujetCommenterController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceCommentaire.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/MDPOublierController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceMail.java</file>
         </group>
     </open-files>
 </project-private>
