@@ -62,7 +62,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneForum" layoutX="10.0" layoutY="10.0" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #ff3366;">
+            <AnchorPane fx:id="paneForum" layoutX="10.0" layoutY="10.0" onMouseClicked="#switchToForum" prefHeight="517.0" prefWidth="377.0" style="-fx-background-color: #ff3366;">
                <children>
                   <ImageView fitHeight="218.0" fitWidth="216.0" layoutX="59.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
