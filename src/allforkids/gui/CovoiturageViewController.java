@@ -11,13 +11,17 @@ import allforkids.entites.Transport;
 import allforkids.entites.Transportrejoindr;
 import allforkids.service.ServiceCovoiturage;
 import allforkids.service.ServiceTransportrejoindr;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -52,15 +57,18 @@ public class CovoiturageViewController implements Initializable {
     @FXML
     private TableColumn<Transport, String> place;
     @FXML
+    private TableColumn<Transport, String> Type;
+    @FXML
     private Button load;
     
     private final ServiceCovoiturage s = new ServiceCovoiturage();
     
     ObservableList<Transport> data;
+    
+    FilteredList filter ;
+    
     @FXML
     private Label region;
-    @FXML
-    private Label ville;
     
     private Transport row;
     @FXML
@@ -96,6 +104,8 @@ public class CovoiturageViewController implements Initializable {
     @FXML
     private TableColumn<Transport, String> place1;
     @FXML
+    private TableColumn<Transport, String> Type1;
+    @FXML
     private Button load1;
     
     public static String CorDep ;
@@ -106,6 +116,10 @@ public class CovoiturageViewController implements Initializable {
     public static String DepLng ;
     public static String ArrLat;
     public static String ArrLng ;
+    @FXML
+    private JFXTextField searsh;
+    
+    
     
     
     /**
@@ -129,9 +143,13 @@ public class CovoiturageViewController implements Initializable {
         data = FXCollections.observableArrayList();
         data.addAll(s.selectCov());
         
-        depart.setCellValueFactory(new PropertyValueFactory<>("depart"));
-        arrivé.setCellValueFactory(new PropertyValueFactory<>("arrivé"));
+        filter = new FilteredList(data,e->true);
+        
+        depart.setCellValueFactory(new PropertyValueFactory<>("departName"));
+        arrivé.setCellValueFactory(new PropertyValueFactory<>("arriveName"));
         place.setCellValueFactory(new PropertyValueFactory<>("place"));
+        Type.setCellValueFactory(new PropertyValueFactory<>("Type"));
+        
 
         tableTransport.setItems(null);
         tableTransport.setItems(data);
@@ -144,13 +162,13 @@ public class CovoiturageViewController implements Initializable {
         // TODO
         row = tableTransport.getSelectionModel().getSelectedItem();
         region.setText(row.getRegion());
-        ville.setText(row.getVille());
-        departt.setText(row.getDepart());
-        arrivee.setText(row.getArrivé());
+        departt.setText(row.getDepartName());
+        arrivee.setText(row.getArriveName());
         description.setText(row.getDescription());
         tel.setText(row.getTelephone());
         placee.setText(row.getPlace());
         frais.setText(row.getFrais());
+        typee.setText(row.getType());
         
     }
     
@@ -161,9 +179,7 @@ public class CovoiturageViewController implements Initializable {
         
         CorDep = (row.getDepart());
         CorArr = (row.getArrivé());
-        
-        
-        
+
         Parent root = FXMLLoader.load(getClass().getResource("DetailCov.fxml"));
                 Scene scene = new Scene(root);
                 Stage driverStage = new Stage();
@@ -247,7 +263,6 @@ public class CovoiturageViewController implements Initializable {
         tableTransport1.setItems(data);
     }
 
-    @FXML
     private void voirMap(ActionEvent event) throws IOException {
                 Parent root = FXMLLoader.load(getClass().getResource("DetailCov.fxml"));
                 Scene scene = new Scene(root);
@@ -255,4 +270,24 @@ public class CovoiturageViewController implements Initializable {
                 driverStage.setScene(scene);
                 driverStage.show();
     }
+    
+    @FXML
+    private void searsh(KeyEvent event) {
+        searsh.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter.setPredicate((Predicate<? super Transport>) (Transport transport)->{
+                if (newValue.isEmpty() || newValue==null){
+                    return true;
+                }
+                else if (transport.getDepartName().contains(newValue)){
+                    return true;
+                }
+                return false; 
+            });
+            SortedList sort = new SortedList(filter);
+            sort.comparatorProperty().bind(tableTransport.comparatorProperty());
+            tableTransport.setItems(sort);
+        });
+    }
+    
+
 }

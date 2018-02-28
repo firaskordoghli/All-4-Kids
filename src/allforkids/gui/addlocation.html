@@ -22,9 +22,11 @@
 
 <script type="text/javascript">
      var map;
-          var depart;
-          var arrive;
-          
+        var depart;
+        var arrive;
+        var arriveName;
+        var departName;
+        
         function getArrive(){
             return arrive;
         }
@@ -32,6 +34,8 @@
         function getDepart(){
              return depart;
         }
+        
+        
          
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -66,6 +70,16 @@
       //  show_submit_data(data);
 });
       }
+      
+      function getArriveName(){
+            arriveName = document.getElementById('arriv').value;
+            return arriveName;
+        }
+        
+        function getDepartName(){
+            departName = document.getElementById('departinput').value;
+            return departName;
+        }
 
 
 </script>
