@@ -19,21 +19,14 @@ public class ButtonCell extends TableCell<Disposer.Record, Boolean> {
 
     public ButtonCell() {
     }
-    final Button cellButton = new Button("good");
-    final Button cellButton2 = new Button("bad");
+    final Button cellButton = new Button("delete");
+    
         
       
 
-        //Display button if the row is not empty
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if(!empty){
-                setGraphic(cellButton);
-                setGraphic(cellButton2);
-               
-            }
-        }
+        
+        
+        
     }
     
 

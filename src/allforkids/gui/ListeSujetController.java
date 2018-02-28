@@ -75,11 +75,12 @@ public class ListeSujetController implements Initializable {
         tag.setCellValueFactory(new PropertyValueFactory<>("tag"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         //avis.setCellValueFactory(new PropertyValueFactory<>("good"));
-        TableColumn col_action = new TableColumn<>("good");
+        TableColumn col_action = new TableColumn<>("delete");
         table.getColumns().add(col_action);
 
         col_action.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
+               
+             new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
 
             @Override
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
@@ -98,28 +99,7 @@ public class ListeSujetController implements Initializable {
 
         });
         
-        TableColumn col_action2 = new TableColumn<>("bad");
-        table.getColumns().add(col_action2);
-
-        col_action2.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Record, Boolean>, ObservableValue<Boolean>>() {
-
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Record, Boolean> p) {
-                return new SimpleBooleanProperty(p.getValue() != null);
-            }
-        });
-
-        //Adding the Button to the cell
-        col_action2.setCellFactory(
-                new Callback<TableColumn<Record, Boolean>, TableCell<Record, Boolean>>() {
-
-            @Override
-            public TableCell<Record, Boolean> call(TableColumn<Record, Boolean> p) {
-                return new ButtonCell();
-            }
-
-        });
+       
         
         ServiceSujet s = new ServiceSujet();
         a.addAll(s.selectSujet());
