@@ -89,7 +89,7 @@ public class ElevesController implements Initializable {
         
         ServiceRejoindre sr2= new ServiceRejoindre();
         int a = tableview.getSelectionModel().getSelectedItem().getId();
-        int b =23;
+        int b =Session.getIdThisUser();
         if(sr2.SelectIfDejaExiste(a, b) == null){
             rejoindrebt.setVisible(true);
         }
@@ -123,7 +123,7 @@ public class ElevesController implements Initializable {
         
         
         int a = tableview.getSelectionModel().getSelectedItem().getId();
-        int b =23;
+        int b =Session.getIdThisUser();
         ServiceRejoindre sr1= new ServiceRejoindre();
        
             sr1.insrerRejoindre(a, b);
@@ -143,12 +143,12 @@ public class ElevesController implements Initializable {
     @FXML
     private void comsulter(ActionEvent event) {
         ServiceNote sr = new ServiceNote();
-        if (sr.SelectMoyenneById(23)==null){
+        if (sr.SelectMoyenneById(Session.getIdThisUser())==null){
             
         Alert.afficher("", "Note non encore saisi");
         }
         else{
-           Float moyenne= sr.SelectMoyenneById(23).getMoyenne();
+           Float moyenne= sr.SelectMoyenneById(Session.getIdThisUser()).getMoyenne();
         System.out.println(moyenne);
         
             Alert.afficher("Moyenne", "Votre moyenne est : "+moyenne); 

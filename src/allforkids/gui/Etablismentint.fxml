@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.EtablismentintController">
+   <children>
+      <JFXButton fx:id="responsable" layoutX="103.0" layoutY="90.0" onAction="#responsable" prefHeight="50.0" prefWidth="158.0" text="Responsable" />
+      <JFXButton fx:id="eleve" layoutX="317.0" layoutY="90.0" onAction="#eleve" prefHeight="33.0" prefWidth="112.0" text="Eléve" />
+      <JFXButton fx:id="parent" layoutX="103.0" layoutY="140.0" onAction="#parent" prefHeight="50.0" prefWidth="158.0" text="Parent" />
+      <JFXButton fx:id="admin" layoutX="294.0" layoutY="140.0" onAction="#admin" prefHeight="50.0" prefWidth="158.0" text="Admin" />
+   </children>
+</AnchorPane>
