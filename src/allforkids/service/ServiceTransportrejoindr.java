@@ -116,7 +116,7 @@ public class ServiceTransportrejoindr {
             while (result.next()) {
                 list.add(
                         new Transport(
-                                     result.getInt("id_transport"),
+                                result.getInt("id_transport"),
                                 result.getString("region"),
                                 result.getString("ville"),
                                 result.getString("depart"),
