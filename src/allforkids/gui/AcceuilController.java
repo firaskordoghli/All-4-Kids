@@ -76,7 +76,7 @@ public class AcceuilController implements Initializable {
     public void switchToForum(MouseEvent event) {
                 try {
                     paneForum.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("Etablissemnt.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("ListeSujet.fxml"));
                     Scene scene = new Scene(root);
                     Stage driverStage = new Stage();
                     driverStage.setScene(scene);
