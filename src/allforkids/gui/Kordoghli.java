@@ -20,7 +20,7 @@ public class Kordoghli extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
         
         Scene scene = new Scene(root);
         

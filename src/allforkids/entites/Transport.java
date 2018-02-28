@@ -23,8 +23,10 @@ public class Transport {
     private String frais;
     private String type;
     private Date date;
+    private String arriveName;
+    private String departName;  
 
-    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type,Date date) {
+    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type,Date date, String arriveName, String departName) {
         this.id_transport = id_transport;
         this.region = region;
         this.ville = ville;
@@ -36,10 +38,12 @@ public class Transport {
         this.frais = frais;
         this.type = type;
         this.date = date;
+        this.arriveName = arriveName;
+        this.departName = departName;
     }
 
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
-            String place, String frais) {
+            String place, String frais, String arriveName, String departName) {
         this.region = region;
         this.ville = ville;
         this.depart = depart;
@@ -48,10 +52,12 @@ public class Transport {
         this.telephone = telephone;
         this.place = place;
         this.frais = frais;
+        this.arriveName = arriveName;
+        this.departName = departName;
     }
     
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
-            String place, String frais,Date date) {
+            String place, String frais,Date date, String arriveName, String departName) {
         this.region = region;
         this.ville = ville;
         this.depart = depart;
@@ -61,10 +67,12 @@ public class Transport {
         this.place = place;
         this.frais = frais;
         this.date = date;
+        this.arriveName = arriveName;
+        this.departName = departName;
     }
     
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
-            String place, String frais,String type,Date date) {
+            String place, String frais,String type,Date date, String arriveName, String departName) {
         this.region = region;
         this.ville = ville;
         this.depart = depart;
@@ -75,6 +83,24 @@ public class Transport {
         this.frais = frais;
         this.type = type;
         this.date = date;
+        this.arriveName = arriveName;
+        this.departName = departName;
+    }
+
+    public void setArriveName(String arriveName) {
+        this.arriveName = arriveName;
+    }
+
+    public void setDepartName(String departName) {
+        this.departName = departName;
+    }
+
+    public String getArriveName() {
+        return arriveName;
+    }
+
+    public String getDepartName() {
+        return departName;
     }
 
     public void setDate(Date date) {
