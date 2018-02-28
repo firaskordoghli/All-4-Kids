@@ -26,7 +26,7 @@ public class slim extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AjouterLivre.fxml"));
 
         Scene scene = new Scene(root);
 

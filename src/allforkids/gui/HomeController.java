@@ -76,6 +76,7 @@ public class HomeController implements Initializable {
             AnchorPane AdminReclamation = FXMLLoader.load(getClass().getResource("AdminReclamation.fxml"));
             AnchorPane ConsulterService = FXMLLoader.load(getClass().getResource("ConsulterService.fxml"));
             AnchorPane MesReclamation = FXMLLoader.load(getClass().getResource("MesReclamations.fxml"));
+             AnchorPane Adminevenment = FXMLLoader.load(getClass().getResource("Adminevenment.fxml"));
 
             setNode(acceuil);
             drawer.setSidePane(sidePane);
@@ -110,8 +111,9 @@ public class HomeController implements Initializable {
                                setNode(etablissementPane);
                                 break;
                             case "divertissementMeni":
-                                drawer.close();                                
-                                setNode(evenmentPane);
+                                drawer.close();  
+                                 if(u.getRole()==0) {setNode(Adminevenment);}
+                                 else{ setNode(evenmentPane);}
                                 break;
                                 case "profilMenu":
                                 drawer.close();                                

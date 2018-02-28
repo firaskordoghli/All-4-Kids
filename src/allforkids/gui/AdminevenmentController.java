@@ -65,6 +65,10 @@ public class AdminevenmentController implements Initializable {
     private Label nb;
     @FXML
     private ImageView img;
+    @FXML
+    private JFXButton libbtn;
+    @FXML
+    private JFXButton filmbtn;
 
     /**
      * Initializes the controller class.
@@ -138,6 +142,24 @@ public class AdminevenmentController implements Initializable {
         Image image = new Image("ftp://slim:07471917@" + Session.getIp() + "/" + e.getPhoto());
         img.setImage(image);
         detail.setVisible(true);
+    }
+
+    @FXML
+    private void toLib(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Adminlaiberi.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void toFilm(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
