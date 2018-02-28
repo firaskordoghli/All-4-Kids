@@ -13,6 +13,7 @@ public class Session {
          private static int IdThisUser=0;
          private static String ip = "127.0.0.1";
          private static int IdThisSujet=0;
+          public static String addImage = "file:///C:/Users/slim/Desktop/";
 
     public static String getIp() {
         return ip;

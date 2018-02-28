@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="edu.esprit.all4kids.controllers.MesReclamationsController">
+   <children>
+      <Label layoutX="33.0" layoutY="30.0" prefHeight="46.0" prefWidth="295.0" text="Mes réclamations" textFill="#2233a1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvReclamation" layoutX="41.0" layoutY="127.0" prefHeight="387.0" prefWidth="1038.0">
+         <columns>
+            <TableColumn fx:id="colService" prefWidth="238.0" text="Service" />
+            <TableColumn fx:id="colDescription" prefWidth="600.0" text="Description" />
+            <TableColumn fx:id="colEtat" prefWidth="199.0" text="Etat" />
+         </columns>
+      </TableView>
+      <Button fx:id="reload" layoutX="41.0" layoutY="76.0" mnemonicParsing="false" onAction="#Reload" prefHeight="38.0" prefWidth="53.0" text="R">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

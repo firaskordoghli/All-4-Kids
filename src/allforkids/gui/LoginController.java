@@ -98,6 +98,7 @@ public class LoginController implements Initializable {
     private void cnx(ActionEvent event) throws SQLException, IOException {
         String email = mail.getText();
         String mdp = pass.getText();
+        
  
         ServiceUser su = new ServiceUser();
         User u = su.GetUserByMail(email,lb);

@@ -53,7 +53,7 @@ public class DrawerController implements Initializable {
     
     @FXML
     private void exit(ActionEvent event) {
-        Platform.exit();
+        //Platform.exit();
     }
     
     @FXML
