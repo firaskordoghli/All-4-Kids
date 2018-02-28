@@ -19,8 +19,8 @@ public class ButtonCell extends TableCell<Disposer.Record, Boolean> {
 
     public ButtonCell() {
     }
-    final Button cellButton = new Button("good");
-    final Button cellButton2 = new Button("bad");
+    final Button cellButton = new Button("delete");
+    
         
       
 
@@ -30,10 +30,13 @@ public class ButtonCell extends TableCell<Disposer.Record, Boolean> {
             super.updateItem(t, empty);
             if(!empty){
                 setGraphic(cellButton);
-                setGraphic(cellButton2);
+                
+                
                
             }
         }
+        
+        
     }
     
 

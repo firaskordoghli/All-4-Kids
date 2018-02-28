@@ -58,7 +58,7 @@ public class ServiceSujet {
         }
     }
 
-    public static void deleteSujet(int id) {
+    public  void deleteSujet(int id) {
         try {
             String req = "DELETE FROM sujet WHERE id_sujet = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
