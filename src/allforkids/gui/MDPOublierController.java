@@ -65,11 +65,12 @@ public class MDPOublierController implements Initializable {
 
     @FXML
     private void sendMail(ActionEvent event) throws MessagingException, IOException {
-     /*  ServiceMail Ma = new ServiceMail();
-        Ma.generateAndSendEmail("recuperation de mdp", "", "3","r4.cherif@gmail.com");*/
-        String email = mail.getText();
+         String email = mail.getText();
+     ServiceMail Ma = new ServiceMail();
+        Ma.generateAndSendEmail("recuperation de mdp", "", 3,email);
+       // String email = mail.getText();
       
-       ServiceMail Ma = new ServiceMail();
+      /* ServiceMail Ma = new ServiceMail();
         ServiceUser us = new ServiceUser();
         User u = us.GetUserByMail(email,l);
         
@@ -80,13 +81,6 @@ public class MDPOublierController implements Initializable {
             
            Random rand = new Random(10000);
           CodeController.setCodeMail(rand.nextInt(10000));
-           
-          
-           
-          
-            
-            
-          
            Ma.generateAndSendEmail("recuperation de mdp", "test", CodeController.getCodeMail(),mail.getText());
             
             }
@@ -120,6 +114,7 @@ public class MDPOublierController implements Initializable {
         app_stage.show();*/
         
         }
+}
 
                 
         
