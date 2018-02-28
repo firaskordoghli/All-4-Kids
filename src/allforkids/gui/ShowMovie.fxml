@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.media.MediaView?>
 
@@ -10,6 +11,7 @@
       <AnchorPane layoutX="349.0" layoutY="636.0" prefHeight="68.0" prefWidth="800.0">
          <children>
             <JFXButton fx:id="play" layoutX="25.0" layoutY="19.0" onAction="#playMovie" text="Play" />
+            <ProgressBar fx:id="progresbar" layoutX="216.0" layoutY="23.0" prefHeight="23.0" prefWidth="486.0" progress="0.0" />
          </children>
       </AnchorPane>
    </children>

@@ -72,7 +72,46 @@ public class ServiceNote {
     
     public int statistiquesupp(int id) {
         try {
-            String req = "SELECT COUNT(*) AS nb FROM note WHERE moyenne AND id_etablissement=?";
+            String req = "select count(*) as supp from note n join rejoindre r on n.id_user=r.id_user join etablissement e on e.id_etablissement=r.id_etablissement where e.id_etablissement=? and n.moyenne>=10";
+            
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            
+            ste.setInt(1, id);
+            
+            ResultSet result=ste.executeQuery();
+            while(result.next())
+            {
+                return result.getInt("supp");    
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);    
+        }
+        return -1;
+    }
+        public int statistiqueinf(int id) {
+        try {
+            String req = "select count(*) as inf from note n join rejoindre r on n.id_user=r.id_user join etablissement e on e.id_etablissement=r.id_etablissement where e.id_etablissement=? and n.moyenne<10";
+            
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            
+            ste.setInt(1, id);
+            
+            ResultSet result=ste.executeQuery();
+            while(result.next())
+            {
+                return result.getInt("inf");    
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);    
+        }
+        return -1;
+    }
+    public int verification(int id) {
+        try {
+        String req = "select count(*) as nb from note n join rejoindre r on n.id_user=r.id_user join etablissement e on e.id_etablissement=r.id_etablissement where e.id_etablissement=?";
+            
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             
             ste.setInt(1, id);
@@ -88,6 +127,5 @@ public class ServiceNote {
         }
         return -1;
     }
-    
     
 }

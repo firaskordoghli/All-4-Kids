@@ -90,7 +90,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" + "id_movie=" + id_movie + ", nom=" + nom + ", url=" + url + ", img=" + img + '}';
+        return "Movie{" + "id_movie=" + id_movie + ",nom=" + nom + ", url=" + url + ", img=" + img + '}';
     }
 
    
