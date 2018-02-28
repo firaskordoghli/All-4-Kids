@@ -8,6 +8,7 @@ package allforkids.service;
 import allforkids.entites.Participevenement;
 import allforkids.entites.Transport;
 import allforkids.entites.Transportrejoindr;
+import allforkids.entites.User;
 import allforkids.util.Config;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,12 +31,40 @@ public class ServiceTransportrejoindr {
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, p.getId_transport());
             ste.setInt(2, p.getId_user());
-            
-     
             ste.executeUpdate();
+            
+            String req1 = "UPDATE trasnsport SET place =  place -1 WHERE id_transport = ?";
+            PreparedStatement ste1 = ds.getConnection().prepareStatement(req1);
+            ste1.setInt(1, p.getId_transport());
+            ste1.executeUpdate();
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    
+    public List<Transportrejoindr> getCovUser(Transportrejoindr p) {
+        List<Transportrejoindr> list = new ArrayList<>();
+        try {
+            String req = "select * FROM transportrejoindr WHERE id_transport = ? and id_user = ?";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+            ste.setInt(1, p.getId_transport());
+            ste.setInt(2, p.getId_user());
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+                list.add(
+                        new Transportrejoindr(
+                                result.getInt("id_transport"),
+                                result.getInt("id_user")
+                        )
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return list;
     }
 
   
