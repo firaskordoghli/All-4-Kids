@@ -136,7 +136,7 @@
                                  <children>
                                     <JFXTextField fx:id="nom" prefHeight="25.0" prefWidth="168.0" />
                                     <JFXComboBox fx:id="type2" prefHeight="25.0" prefWidth="186.0" GridPane.rowIndex="1" />
-                                    <JFXComboBox fx:id="region2" prefHeight="25.0" prefWidth="189.0" GridPane.rowIndex="2" />
+                                    <JFXComboBox fx:id="region2" onAction="#selectville" prefHeight="25.0" prefWidth="189.0" GridPane.rowIndex="2" />
                                     <JFXComboBox fx:id="ville2" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="2" />
                                     <JFXTextField fx:id="description2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <JFXButton fx:id="boutonimage" onAction="#updateimage" text="Changer image" GridPane.columnIndex="2" GridPane.rowIndex="2" />

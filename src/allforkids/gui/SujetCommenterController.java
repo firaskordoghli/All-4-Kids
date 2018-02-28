@@ -137,6 +137,10 @@ public class SujetCommenterController implements Initializable {
        good.setDisable(true);
        
        
+       
+       
+       
+       
         
 
     }

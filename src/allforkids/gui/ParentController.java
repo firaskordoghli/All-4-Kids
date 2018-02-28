@@ -128,7 +128,7 @@ public class ParentController implements Initializable {
         int a = tableview8.getSelectionModel().getSelectedItem().getId();
         ServiceNote sn =new ServiceNote();
         if(sn.verification(a)==0){
-            Alert.afficher("Impossible","Note non saisi pour cette établissement");
+            Alert.afficher("Impossible","Notes non saisis pour cette établissement");
         }
         else{
             detail8.setVisible(true);

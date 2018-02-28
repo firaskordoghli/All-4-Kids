@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -18,5 +19,6 @@
             <TableColumn fx:id="description" prefWidth="206.0" text="desc" />
         </columns>
       </TableView>
+      <JFXTextField fx:id="SujetRechercher" layoutX="41.0" layoutY="78.0" prefHeight="25.0" prefWidth="218.0" promptText="search" />
    </children>
 </AnchorPane>

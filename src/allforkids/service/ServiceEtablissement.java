@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -25,22 +25,21 @@ public class ServiceEtablissement {
 
     static Config ds = Config.getInstance();
 
-    public void insrerEtablissement(Etablissement e) {
+    public void insrerEtablissement(Etablissement e,int u) {
         try {
             System.out.println(e);
-            String req = "INSERT INTO "
-                    + "`etablissement`"
-                    + " ( `nom`, `type`, `region`, `ville`, `description`, `image`, `verification`) "
-                    + "VALUES "
-                    + "( ?, ?, ?, ?, ?, ?, 'Non valide')";
+            String req = "INSERT INTO `etablissement` ( `nom`, `type`, `region`, `ville`, `description`, `image`, `verification`, `id_user`) VALUES ( ?, ?, ?, ?, ?, ?, 'Non valide',?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
+                ste.setInt(1, u);
+            
             ste.setString(1, e.getNom());
             ste.setString(2, e.getType());
             ste.setString(3, e.getRegion());
             ste.setString(4, e.getVille());
             ste.setString(5, e.getDescription());
             ste.setString(6, e.getImage());
+            ste.setInt(7, u);
             
 
             ste.executeUpdate();
