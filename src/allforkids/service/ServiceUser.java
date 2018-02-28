@@ -318,4 +318,25 @@ public class ServiceUser {
 
     }
 
+      
+      
+        public void changerMDP(String newMdp,int id)
+        {
+            
+            
+             try {
+            String reqUpdate = "UPDATE user set pass=? where id_user=?";
+            PreparedStatement ps = ds.getConnection().prepareStatement(reqUpdate);
+          
+            ps.setString(1, BCrypt.hashpw(newMdp,BCrypt.gensalt()));   
+          
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            
+            System.out.println("envoyé");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        }
+          
 }
