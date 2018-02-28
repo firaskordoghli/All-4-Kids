@@ -106,7 +106,8 @@ public class ServiceCovoiturage {
                                 result.getString("type"),
                                 result.getDate("date"),
                                 result.getString("arriveName"),
-                                result.getString("departName")
+                                result.getString("departName"),
+                                result.getInt("id_user")
                         )
                 );
             }
@@ -151,7 +152,8 @@ public class ServiceCovoiturage {
                                 result.getString("type"),
                                 result.getDate("date"),
                                 result.getString("arriveName"),
-                                result.getString("departName")
+                                result.getString("departName"),
+                                result.getInt("id_user")
                         )
                 );
             }

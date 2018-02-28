@@ -27,7 +27,7 @@ public class Transport {
     private String departName;
     private int id_user ;
 
-    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type,Date date, String arriveName, String departName) {
+    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type, Date date, String arriveName, String departName) {
         this.id_transport = id_transport;
         this.region = region;
         this.ville = ville;
@@ -43,6 +43,23 @@ public class Transport {
         this.departName = departName;
     }
 
+    public Transport(int id_transport, String region, String ville, String depart, String arrivé, String description, String telephone, String place, String frais, String type,Date date, String arriveName, String departName,int id_user) {
+        this.id_transport = id_transport;
+        this.region = region;
+        this.ville = ville;
+        this.depart = depart;
+        this.arrivé = arrivé;
+        this.description = description;
+        this.telephone = telephone;
+        this.place = place;
+        this.frais = frais;
+        this.type = type;
+        this.date = date;
+        this.arriveName = arriveName;
+        this.departName = departName;
+        this.id_user = id_user;
+    }
+
     public Transport(String region, String ville, String depart, String arrivé, String description, String telephone,
             String place, String frais, String arriveName, String departName,int id_user) {
         this.region = region;
@@ -54,6 +71,7 @@ public class Transport {
         this.place = place;
         this.frais = frais;
         this.arriveName = arriveName;
+        this.departName = departName;
         this.id_user = id_user;
         
     }

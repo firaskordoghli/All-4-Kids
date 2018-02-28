@@ -171,7 +171,7 @@ public class CovoiturageViewController implements Initializable {
     {   
         detailsBox.setVisible(true);
         rejoindrebtn.setVisible(true);
-        supBtn.setVisible(true);
+        supBtn.setVisible(false);
         // TODO
         row = tableTransport.getSelectionModel().getSelectedItem();
         region.setText(row.getRegion());
@@ -192,9 +192,10 @@ public class CovoiturageViewController implements Initializable {
             rejoindrebtn.setVisible(false);
             System.out.println(st.getCovUser(tr));
         } 
-        
+        System.out.println(row.getId_user());
+        System.out.println(Session.getIdThisUser());
         if (row.getId_user()== Session.getIdThisUser() ){
-            supBtn.setVisible(false);
+            supBtn.setVisible(true);
             System.out.println(st.getCovUser(tr));
         } 
         
