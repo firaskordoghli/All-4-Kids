@@ -7,6 +7,7 @@ package allforkids.gui;
 
 import allforkids.entites.Etablissement;
 import allforkids.entites.Note;
+import allforkids.entites.Session;
 import allforkids.service.ServiceEtablissement;
 import allforkids.service.ServiceNote;
 import allforkids.service.ServiceRejoindre;
@@ -88,7 +89,7 @@ public class ElevesController implements Initializable {
         
         ServiceRejoindre sr2= new ServiceRejoindre();
         int a = tableview.getSelectionModel().getSelectedItem().getId();
-        int b =32;
+        int b =Session.getIdThisUser();
         if(sr2.SelectIfDejaExiste(a, b) == null){
             rejoindrebt.setVisible(true);
         }
@@ -122,7 +123,7 @@ public class ElevesController implements Initializable {
         
         
         int a = tableview.getSelectionModel().getSelectedItem().getId();
-        int b =32;
+        int b =Session.getIdThisUser();
         ServiceRejoindre sr1= new ServiceRejoindre();
        
             sr1.insrerRejoindre(a, b);
@@ -137,7 +138,7 @@ public class ElevesController implements Initializable {
     @FXML
     private void comsulter(ActionEvent event) {
         ServiceNote sr = new ServiceNote();
-        Float moyenne= sr.SelectMoyenneById(32).getMoyenne();
+        Float moyenne= sr.SelectMoyenneById(Session.getIdThisUser()).getMoyenne();
         System.out.println(moyenne);
         
             Alert.afficher("Moyenne", "Votre moyenne est : "+moyenne);
