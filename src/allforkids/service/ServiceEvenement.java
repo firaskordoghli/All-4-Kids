@@ -189,25 +189,33 @@ public class ServiceEvenement {
         }
         return list;
     }
-      public List<User> selectUsers( int id) {
-        List<User> list = new ArrayList<>();
+      public String selectUsers( int id) {
+        String a = "";
         try {
-            String req = "SELECT * FROM evenement Where id_user = ? ";
+            String req = "SELECT concat(u.nom,' ', u.prenom) as ut From user u , evenement e WHERE e.id_user=? and u.id_user=e.id_user";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
-                list.add(
-                        new User(
-                                result.getInt("id_user"),
-                                result.getString("nom"),
-                                result.getString("prenom")
-                        )
-                );
+              
+                     
+                      a = result.getString("ut");
+                        
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
+        return a;
+    }
+       public  void deleteEvenementdepas() {
+        try {
+            String req = "DELETE FROM evenement WHERE Date <  SYSDATE() ";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+           
+            ste.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
