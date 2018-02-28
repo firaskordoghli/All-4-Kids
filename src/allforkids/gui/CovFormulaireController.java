@@ -34,6 +34,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -87,6 +88,7 @@ public class CovFormulaireController implements Initializable {
         webEngine = addwebview.getEngine();
         webEngine.load(getClass().getResource("addlocation.html").toString());
         // webEngine.load("https://www.google.com");
+        
     }
 
     @FXML
@@ -107,6 +109,15 @@ public class CovFormulaireController implements Initializable {
         String arr = String.valueOf(webEngine.executeScript("getArrive();"));
         
         LocalDate d = date.getValue();
+         if (date.getValue() != null) {
+           
+            Date date0 = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Date date2 = new Date();
+            if (date0.before(date2)) {
+               Alert2.afficherWARNING("Erreur", "la date sasier invalid ");
+                
+            } 
+         }
         Date date1 = Date.from(d.atStartOfDay(ZoneId.systemDefault()).toInstant());
         
         
@@ -114,16 +125,13 @@ public class CovFormulaireController implements Initializable {
         Transport t = new Transport(Region.getText(), ville.getText(), dep, arr,
                 description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName,id_user);
         cService.insrerCov(t);
-/*
-        Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
-        Scene covViewScene = new Scene(covViewOarent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Alert2.afficherSuccses("Enregistre", "Covaturage ajouter avec succée");
+     
+    }
 
-        window.setScene(covViewScene);
-        window.show();*/
         
 
-    }
+    
 
     @FXML
     public void backToCovoiturage(MouseEvent event) throws IOException {
