@@ -5,6 +5,7 @@
  */
 package allforkids.util;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -111,5 +112,32 @@ public class Validation {
                 }
                 return confirm;
             }
+
+    public static boolean textValidation(Label nometablissement) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static boolean textValidation(JFXComboBox combo){
+    
+    boolean b=true;
+    if (combo.getSelectionModel().getSelectedItem()==null){
+        b=false;
+    }
+    return b;
+    
+    }
+    
+    public static boolean textValidation(JFXComboBox combo ,Label lb,String errorMessage){
+    
+    boolean b=true;
+    String mag=null;
+    if (!textValidation(combo)){
+    b=false;
+    mag=errorMessage;
+    }
+   lb.setText(mag);
+    return b;
+    
+    }
     
 }
