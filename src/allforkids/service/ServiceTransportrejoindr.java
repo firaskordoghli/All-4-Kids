@@ -97,8 +97,9 @@ public class ServiceTransportrejoindr {
                                 result.getString("place"),
                                 result.getString("frais"),
                                 result.getString("type"),
-                                result.getDate("date")
-                            
+                                result.getDate("date"),
+                                result.getString("arriveName"),
+                                result.getString("departName")
                               
                         )
                 );
