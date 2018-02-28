@@ -15,7 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
 import javafx.stage.Stage;
 
 /**
@@ -27,11 +26,11 @@ public class slim extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-            Parent root = FXMLLoader.load(getClass().getResource("Adminevenment.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Adminlaiberi.fxml"));
 
         Scene scene = new Scene(root);
 
-        stage.setScene(scene);  
+        stage.setScene(scene);
         stage.show();
     }
 
