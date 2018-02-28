@@ -8,17 +8,24 @@ package allforkids.gui;
 import allforkids.entites.Movie;
 import allforkids.entites.Session;
 import allforkids.service.ServiceMovie;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -30,6 +37,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -71,30 +79,20 @@ public class MovieController implements Initializable {
 
     @FXML
     private void lesFilm(MouseEvent event) {
-        final File f = new File("C:\\Users\\slim\\Desktop\\33.mp4");
+         try {
 
-        final Media m = new Media(f.toURI().toString());
-        final MediaPlayer mp = new MediaPlayer(m);
-        final MediaView mv = new MediaView(mp);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ShowMovie.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            GoogleMapEvenementController c = fxmlLoader.getController();
 
-        final DoubleProperty width = mv.fitWidthProperty();
-        final DoubleProperty height = mv.fitHeightProperty();
+            Scene scene = new Scene(root1);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
 
-        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
-        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
-
-        mv.setPreserveRatio(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
-        StackPane root = new StackPane();
-        root.getChildren().add(mv);
-
-        Scene scene = new Scene(root, 960, 540);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Full Screen Video Player");
-        stage.setFullScreen(true);
-        stage.show();
-
-        mp.play();
     }
 }

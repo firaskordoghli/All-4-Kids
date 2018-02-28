@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceUser.java</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AjoutEvenmentController.java</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEtablissement.java</file>
@@ -23,6 +24,25 @@
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Rejoindre.java</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceNote.java</file>
             <file>file:/C:/Users/MBM%20info/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ParentController.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Movie.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovFormulaireController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/ShowMovieController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/slim.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/AdminevenmentController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/service/ServiceEvenement.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/MovieController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CovoiturageViewController.java</file>
+            <file>file:/C:/Users/slim/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Adminevenment.fxml</file>
+=======
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/CodeController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Rayen.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/Code.fxml</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/gui/MDPOublierController.java</file>
+            <file>file:/C:/Users/casa-net/Documents/NetBeansProjects/All-4-Kids/src/allforkids/entites/Session.java</file>
+>>>>>>> 61f85e8a5560d98a4634cd31ceaa5c980fa38acb
+>>>>>>> 88badebe7ee8217955348879356a21a10de5718d
         </group>
     </open-files>
 </project-private>
