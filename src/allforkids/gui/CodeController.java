@@ -49,10 +49,10 @@ public static int codeMail;
     @FXML
     private void ValiderCode(ActionEvent event) throws IOException {
        
-       // if (Session.getCode()==Integer.parseInt(code.getText()) ){
+        if (CodeController.getCodeMail()==Integer.parseInt(code.getText()) ){
             
          
-            Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ChangerMdp.fxml"));
          
         Scene scene = new Scene(root);
         
@@ -66,6 +66,6 @@ public static int codeMail;
         }
                 
                 
-    }
+    }}
     
 
