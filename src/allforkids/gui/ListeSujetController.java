@@ -26,6 +26,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,7 +54,7 @@ import javafx.util.Callback;
  * @author casa-net
  */
 public class ListeSujetController implements Initializable {
-
+private Sujet row;
     @FXML
     private TableColumn<Sujet, String> titre;
     @FXML
@@ -63,6 +64,7 @@ public class ListeSujetController implements Initializable {
     @FXML
     private TableView<Sujet> table;
  public static int id_sujet ;
+     ServiceSujet s = new ServiceSujet();
     /**
      * Initializes the controller class.
      */
@@ -130,4 +132,15 @@ public class ListeSujetController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
+    
+    
+    private void deleteCov(ActionEvent event) {
+        row = table.getSelectionModel().getSelectedItem();
+        int id = row.getId_sujet();
+        s.deleteSujet(id);
+          int a = table.getSelectionModel().getFocusedIndex();
+          table.getItems().remove(a);
+    }
+    
 }
