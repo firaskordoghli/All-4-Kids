@@ -168,6 +168,10 @@ public class EvenementController implements Initializable {
   
     @FXML
     private JFXTimePicker temp;
+    @FXML
+    private JFXButton libbtn;
+    @FXML
+    private JFXButton filmbtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -533,6 +537,32 @@ public class EvenementController implements Initializable {
         detail1.setVisible(false);
      }
     }
+    
+        public void toLib(ActionEvent event) throws IOException {
+            
+                
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("Librairie.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+            
+        }
+        
+        public void toFilm(ActionEvent event) throws IOException {
+            
+                
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+            
+        }
+    
+    
+    
+
 
   
 

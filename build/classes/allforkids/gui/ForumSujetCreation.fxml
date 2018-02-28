@@ -6,17 +6,36 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="allforkids.gui.ForumSujetCreationController">
    <children>
-      <Label layoutX="213.0" layoutY="25.0" prefHeight="91.0" prefWidth="174.0" text="Creer votre sujet" textAlignment="CENTER" />
-      <Label layoutX="56.0" layoutY="133.0" text="Titre de sujet" />
-      <Label layoutX="63.0" layoutY="207.0" text="Discription" />
-      <Label layoutX="63.0" layoutY="261.0" text="tag" />
-      <Button layoutX="163.0" layoutY="467.0" mnemonicParsing="false" text="vider" />
-      <Button layoutX="408.0" layoutY="474.0" mnemonicParsing="false" onAction="#validerSujet" text="valider" />
-      <JFXTextArea fx:id="Description" layoutX="152.0" layoutY="186.0" prefHeight="43.0" prefWidth="566.0" />
-      <JFXTextField fx:id="Titre" layoutX="172.0" layoutY="129.0" prefHeight="26.0" prefWidth="371.0" />
-      <ChoiceBox fx:id="tag" layoutX="152.0" layoutY="267.0" prefHeight="28.0" prefWidth="141.0" />
+      <Label layoutX="370.0" layoutY="23.0" prefHeight="91.0" prefWidth="390.0" text="Creer votre sujet" textAlignment="CENTER">
+         <font>
+            <Font name="DK Cool Crayon" size="36.0" />
+         </font></Label>
+      <Label layoutX="288.0" layoutY="130.0" prefHeight="84.0" prefWidth="119.0" text="Titre de sujet" wrapText="true">
+         <font>
+            <Font name="DK Cool Crayon" size="24.0" />
+         </font></Label>
+      <Label layoutX="288.0" layoutY="240.0" text="Discription">
+         <font>
+            <Font name="DK Cool Crayon" size="24.0" />
+         </font></Label>
+      <Label layoutX="296.0" layoutY="312.0" prefHeight="49.0" prefWidth="82.0" text="tag">
+         <font>
+            <Font name="DK Cool Crayon" size="24.0" />
+         </font></Label>
+      <Button layoutX="416.0" layoutY="416.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" style="-fx-background-color: #ffb400;" text="vider" textFill="WHITE">
+         <font>
+            <Font name="DK Cool Crayon" size="24.0" />
+         </font></Button>
+      <Button layoutX="575.0" layoutY="416.0" mnemonicParsing="false" onAction="#validerSujet" prefHeight="60.0" prefWidth="119.0" style="-fx-background-color: #008000;" text="valider" textFill="WHITE">
+         <font>
+            <Font name="DK Cool Crayon" size="24.0" />
+         </font></Button>
+      <JFXTextArea fx:id="Description" layoutX="420.0" layoutY="219.0" prefHeight="43.0" prefWidth="371.0" />
+      <JFXTextField fx:id="Titre" layoutX="422.0" layoutY="150.0" prefHeight="26.0" prefWidth="371.0" />
+      <ChoiceBox fx:id="tag" layoutX="418.0" layoutY="321.0" prefHeight="28.0" prefWidth="141.0" />
    </children>
 </AnchorPane>
