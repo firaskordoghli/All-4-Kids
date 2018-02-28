@@ -17,6 +17,7 @@ import javax.mail.internet.MimeMessage;
 import allforkids.entites.User;
 import allforkids.service.ServiceMail;
 import allforkids.service.ServiceUser;
+import allforkids.util.Validation;
 import com.google.code.facebookapi.schema.NotificationData.Notifications;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -51,12 +52,18 @@ public class MDPOublierController implements Initializable {
     private JFXButton sendMail;
     @FXML
     private Label l;
+    @FXML
+    private Label Maill;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        boolean saisie = true;
+        if (!Validation.texMail(mail, Maill, "* verifier votre mail")) {
+            saisie = false;
+        }
 
         // TODO
     }
@@ -75,7 +82,7 @@ public class MDPOublierController implements Initializable {
             int a = rand.nextInt(100000);
             CodeController.setCodeMail(a);
 
-            Ma.generateAndSendEmail("recuperation de mdp", "", CodeController.getCodeMail(), email);
+            Ma.generateAndSendEmail("recuperation de mdp", "votre code est :", CodeController.getCodeMail(), email);
 
         }
         

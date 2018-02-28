@@ -155,11 +155,11 @@ public class LoginController implements Initializable {
                     //envoi vers page parents
                 }
              
-            }else {ErrPass.setText("verrifer votre passe");}
+            }else {Alert2.afficherSuccses("Erreur login", "mot de passe  ou mail incorrect");}
 
         }else{//ErrMail.setText("verrifier votre mail");}
    // ErrMail.setText(u.toString());
-            System.out.println("");
+            Alert2.afficherSuccses("Erreur login", "les champs sont vide!!");
     }
     }
         
