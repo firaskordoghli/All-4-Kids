@@ -137,7 +137,7 @@ public class AjoutEvenmentController implements Initializable, MapComponentIniti
          
           Evenement e =new Evenement(tfNom.getText()
                  ,tflieu.getText(),date,tftype.getValue()
-            ,Integer.parseInt(tfnb.getText()),false,8,ServiceImage.getImgg(),altud,longe,java.sql.Time.valueOf(temp.getValue()));
+            ,Integer.parseInt(tfnb.getText()),false,Session.getIdThisUser(),ServiceImage.getImgg(),altud,longe,java.sql.Time.valueOf(temp.getValue()));
           eService.insrerEvenement(e);
           Alert2.afficherSuccses("Succses", "Votre evenement est Ajouter avec succses");
           Parent covViewOarent = FXMLLoader.load(getClass().getResource("Evenement.fxml"));

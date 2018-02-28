@@ -27,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,7 +51,9 @@ public class MovieController implements Initializable {
     @FXML
     private JFXListView<Label> listMovie;
     private ServiceMovie sm = new ServiceMovie();
-
+  public static String url ;
+    @FXML
+    private Button toolbar;
     /**
      * Initializes the controller class.
      */
@@ -80,19 +83,18 @@ public class MovieController implements Initializable {
     @FXML
     private void lesFilm(MouseEvent event) {
          try {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ShowMovie.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            GoogleMapEvenementController c = fxmlLoader.getController();
-
-            Scene scene = new Scene(root1);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
+           String nom = listMovie.getSelectionModel().getSelectedItem().getText();
+           Movie m = sm.getIdByName(nom);
+           url = m.getUrl();
+          
+         Stage stage = new Stage();
+        stage.setTitle("Ajouter Evenement");
+        Parent root = FXMLLoader.load(getClass().getResource("ShowMovie.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+         }catch(Exception e){
+         
+         }
     }
 }

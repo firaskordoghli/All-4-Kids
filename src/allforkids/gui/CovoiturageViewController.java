@@ -11,6 +11,7 @@ import allforkids.entites.Transport;
 import allforkids.entites.Transportrejoindr;
 import allforkids.service.ServiceCovoiturage;
 import allforkids.service.ServiceTransportrejoindr;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -61,7 +62,9 @@ public class CovoiturageViewController implements Initializable {
     @FXML
     private Button load;
     
-    private final ServiceCovoiturage s = new ServiceCovoiturage();
+    private ServiceCovoiturage s = new ServiceCovoiturage();
+    
+    private ServiceTransportrejoindr st = new ServiceTransportrejoindr();
     
     ObservableList<Transport> data;
     
@@ -118,6 +121,10 @@ public class CovoiturageViewController implements Initializable {
     public static String ArrLng ;
     @FXML
     private JFXTextField searsh;
+    @FXML
+    private JFXButton rejoindrebtn;
+    @FXML
+    private JFXButton supBtn;
     
     
     
@@ -128,6 +135,7 @@ public class CovoiturageViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     showTransport();
+    
     }
     
     @FXML
@@ -153,12 +161,17 @@ public class CovoiturageViewController implements Initializable {
 
         tableTransport.setItems(null);
         tableTransport.setItems(data);
+        
+        
+        
     }
     
     @FXML
     public void showDetail(MouseEvent D)
-    {
+    {   
         detailsBox.setVisible(true);
+        rejoindrebtn.setVisible(true);
+        supBtn.setVisible(true);
         // TODO
         row = tableTransport.getSelectionModel().getSelectedItem();
         region.setText(row.getRegion());
@@ -169,6 +182,21 @@ public class CovoiturageViewController implements Initializable {
         placee.setText(row.getPlace());
         frais.setText(row.getFrais());
         typee.setText(row.getType());
+        
+        int u  = Session.getIdThisUser();
+        row = tableTransport.getSelectionModel().getSelectedItem();
+        int id = row.getId_transport();
+        Transportrejoindr tr = new Transportrejoindr(id,u);
+        
+        if (st.getCovUser(tr).isEmpty() == false ){
+            rejoindrebtn.setVisible(false);
+            System.out.println(st.getCovUser(tr));
+        } 
+        
+        if (row.getId_user()== Session.getIdThisUser() ){
+            supBtn.setVisible(false);
+            System.out.println(st.getCovUser(tr));
+        } 
         
     }
     
@@ -204,13 +232,19 @@ public class CovoiturageViewController implements Initializable {
     
     @FXML
     public void toFormulaire(MouseEvent event) throws IOException {
-            
+            /*
                 Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovFormulaire.fxml"));
                 Scene covViewScene = new Scene(covViewOarent);
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 
                 window.setScene(covViewScene);
                 window.show();
+                */
+                Parent root = FXMLLoader.load(getClass().getResource("CovFormulaire.fxml"));
+                Scene scene = new Scene(root);
+                Stage driverStage = new Stage();
+                driverStage.setScene(scene);
+                driverStage.show();
             
         }
 
@@ -237,13 +271,19 @@ public class CovoiturageViewController implements Initializable {
 
     @FXML
     private void RejoindreCov(ActionEvent event) {
-       int u  = Session.getIdThisUser();
+        int u  = Session.getIdThisUser();
         row = tableTransport.getSelectionModel().getSelectedItem();
         int id = row.getId_transport();
         Transportrejoindr tr = new Transportrejoindr(id,u);
         ServiceTransportrejoindr str = new ServiceTransportrejoindr();
         str.insrerTransportrejoindr(tr);
         
+        String num = row.getTelephone();
+        System.out.println(num);
+        
+        sendSMS  send = new sendSMS() ;
+        
+        send.sendSms(num);
     }
     
     
@@ -255,9 +295,9 @@ public class CovoiturageViewController implements Initializable {
         ServiceTransportrejoindr str = new ServiceTransportrejoindr();
         data.addAll(str.selectTransportrejoindhist(Session.getIdThisUser()));
         
-        depart1.setCellValueFactory(new PropertyValueFactory<>("depart"));
-        arrivé1.setCellValueFactory(new PropertyValueFactory<>("arrivé"));
-        place1.setCellValueFactory(new PropertyValueFactory<>("place"));
+        depart1.setCellValueFactory(new PropertyValueFactory<>("departName"));
+        arrivé1.setCellValueFactory(new PropertyValueFactory<>("arriveName"));
+        place1.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         tableTransport1.setItems(null);
         tableTransport1.setItems(data);
@@ -272,7 +312,7 @@ public class CovoiturageViewController implements Initializable {
     }
     
     @FXML
-    private void searsh(KeyEvent event) {
+    private void searshDepart(KeyEvent event) {
         searsh.textProperty().addListener((observable, oldValue, newValue) -> {
             filter.setPredicate((Predicate<? super Transport>) (Transport transport)->{
                 if (newValue.isEmpty() || newValue==null){
@@ -286,8 +326,12 @@ public class CovoiturageViewController implements Initializable {
             SortedList sort = new SortedList(filter);
             sort.comparatorProperty().bind(tableTransport.comparatorProperty());
             tableTransport.setItems(sort);
+            System.out.println(filter);
+            
         });
     }
     
 
+
 }
+//rejoindrebtn.setVisible(false);
