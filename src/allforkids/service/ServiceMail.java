@@ -82,7 +82,7 @@ public class ServiceMail {
 		generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(sender));
 		generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(sender));
 		generateMailMessage.setSubject(Titre);
-		String emailBody = ""+ "<br> "+Contenu+"<br><br><br>"+Reponse+ "<br><br> ";
+		String emailBody = ""+ "<br> "+"<br><br><br>"+Reponse+ "<br><br> ";
 		generateMailMessage.setContent(emailBody, "text/html");
 		System.out.println("Mail Session has been created successfully..");
  
