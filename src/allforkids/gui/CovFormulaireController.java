@@ -6,6 +6,7 @@
 package allforkids.gui;
 
 import allforkids.entites.Covoiturage;
+import allforkids.entites.Session;
 import allforkids.entites.Transport;
 import allforkids.service.ServiceCovoiturage;
 import com.jfoenix.controls.JFXButton;
@@ -71,6 +72,7 @@ public class CovFormulaireController implements Initializable {
     @FXML
     private JFXComboBox<String> typeCov;
     
+  
     
 
     /**
@@ -89,7 +91,9 @@ public class CovFormulaireController implements Initializable {
 
     @FXML
     public void addCov(ActionEvent event) throws IOException {
-
+        
+        int id_user = Session.getIdThisUser();
+        
         System.out.println(" arrive name : " + webEngine.executeScript("getArriveName();"));
         System.out.println("depart name : " + webEngine.executeScript("getDepartName();"));
         
@@ -108,15 +112,16 @@ public class CovFormulaireController implements Initializable {
         
         ServiceCovoiturage cService = new ServiceCovoiturage();
         Transport t = new Transport(Region.getText(), ville.getText(), dep, arr,
-                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName);
+                description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName,id_user);
         cService.insrerCov(t);
-
+/*
         Parent covViewOarent = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
         Scene covViewScene = new Scene(covViewOarent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.setScene(covViewScene);
-        window.show();
+        window.show();*/
+        
 
     }
 
