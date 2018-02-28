@@ -65,10 +65,10 @@ public class ServiceCommentaire {
         }
     }
 
-    public List<Commentaire> selectCommentaire() {
+    public List<Commentaire> selectCommentaire(int id_sujet) {
         List<Commentaire> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM commentaire ";
+            String req = "SELECT * FROM commentaire where id_sujet=? ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();

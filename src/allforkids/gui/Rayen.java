@@ -122,7 +122,7 @@ public class Rayen extends Application {
     }
 */
         
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ListeSujet.fxml"));
 
         Scene scene = new Scene(root);
 

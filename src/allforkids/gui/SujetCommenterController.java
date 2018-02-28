@@ -77,13 +77,14 @@ public class SujetCommenterController implements Initializable {
             Image image;
             try {
                 image = new Image(new FileInputStream(u.getPicture()));
+                
                 img.setImage(image);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(SujetCommenterController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             for (Commentaire commentaire : c) {
-                try {
+               try {
                     Label l = new Label(commentaire.getDescription());
                     ImageView i;
 

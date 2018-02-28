@@ -107,7 +107,7 @@ public class AddEtablissmentController implements Initializable {
 
     @FXML
     private void addetablissement(ActionEvent event) throws IOException, SQLException {
-        int u=Session.getIdThisUser();
+        int u=32;
         if (this.controleSaisie()) {
         ServiceEtablissement eService = new ServiceEtablissement();
         Etablissement e = new Etablissement(nom.getText(),
