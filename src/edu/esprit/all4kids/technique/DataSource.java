@@ -13,7 +13,7 @@ import java.sql.DriverManager;
  * @author Ourabi
  */
 public class DataSource {
-    private String url = "jdbc:mysql://localhost:3306/allkids";
+    private String url = "jdbc:mysql://localhost:3306/allforkids2";
     private String login = "root";
     private String password = "";
     private Connection connection;

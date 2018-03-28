@@ -70,8 +70,9 @@ public class ServiceCommentaire {
         try {
             String req = "SELECT * FROM commentaire where id_sujet=? ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
-
+ste.setInt(1, id_sujet);
             ResultSet result = ste.executeQuery();
+            
             while (result.next()) {
                 list.add(
                         new Commentaire(
