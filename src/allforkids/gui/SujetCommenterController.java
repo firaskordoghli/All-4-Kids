@@ -67,7 +67,7 @@ public class SujetCommenterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         List<Commentaire> c = new ArrayList<>();
-        c.addAll(sc.GetSujetById(ListeSujetController.id_sujet));
+        c.addAll(sc.selectCommentaire(ListeSujetController.id_sujet));
         ServiceUser su = new ServiceUser();
         ServiceCommentaire c1 = new ServiceCommentaire();
         if (c.size() == 0) {
@@ -101,9 +101,9 @@ public class SujetCommenterController implements Initializable {
 
             Session.getIdThisUser();
             User u = su.GetUserById(32);
-            Nom.setText(u.getNom());
             Image image;
             try {
+            Nom.setText(u.getNom());
                 image = new Image(new FileInputStream(u.getPicture()));
                 img.setImage(image);
             } catch (FileNotFoundException ex) {

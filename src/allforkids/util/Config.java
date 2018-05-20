@@ -29,7 +29,7 @@ public class Config {
         }
         return instance;
     }
-    private String url = "jdbc:mysql://localhost:3306/allforkids2";
+    private String url = "jdbc:mysql://localhost:3306/allforkids";
     private String user = "root";
     private String password = "";
     private Connection connection;

@@ -102,6 +102,12 @@
                      </font>
                   </Label>
                   <ChoiceBox fx:id="RoleC" accessibleText="wscwcv" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label prefHeight="18.0" prefWidth="86.0" text="UserName" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="DK Cool Crayon" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="username" prefHeight="17.0" prefWidth="135.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                </children>
             </GridPane>
             <JFXButton fx:id="vider" layoutX="141.0" layoutY="409.0" onAction="#vider" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #ffc425;" text="vider">

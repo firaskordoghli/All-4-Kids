@@ -24,11 +24,13 @@ public class User {
     private String picture;
     private int role;
     private String pass;
+    private String username ;
+    private String roles ;
 
     public User() {
     }
 
-    public User(int id, String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass) {
+    public User(int id, String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass ,String username) {
         this.id = id;
         this.cin = cin;
         this.nom = nom;
@@ -38,6 +40,7 @@ public class User {
         this.picture = picture;
         this.role = role;
         this.pass = pass;
+        this.username = username ;
     }
 
     public User(int id, String nom, String prenom) {
@@ -46,7 +49,7 @@ public class User {
         this.prenom = prenom;
     }
 
-    public User(String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass) {
+    public User(String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass ,String username ) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -55,6 +58,7 @@ public class User {
         this.picture = picture;
         this.role = role;
         this.pass = pass;
+        this.username = username ;
     }
 
     public int getId() {
@@ -129,6 +133,36 @@ public class User {
         this.pass = pass;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public User(int id, String cin, String nom, String prenom, String mail, Date date, String picture, int role, String pass, String username, String roles) {
+        this.id = id;
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.date = date;
+        this.picture = picture;
+        this.role = role;
+        this.pass = pass;
+        this.username = username;
+        this.roles = roles;
+    }
+   
     @Override
     public int hashCode() {
         int hash = 7;
