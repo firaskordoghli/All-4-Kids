@@ -29,13 +29,14 @@ public class ServiceEvenement {
             String req = "INSERT INTO evenement VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, e.getId_evenement());
-            ste.setString(2, e.getNom());
-            ste.setString(3, e.getDescriptionn());
-            ste.setDate(4, sqldate);
-            ste.setString(5, e.getType());
-            ste.setInt(6, e.getNbr_participation());
-            ste.setBoolean(7, e.isEtat());
-            ste.setInt(8, e.getId_user());
+            ste.setInt(2, e.getId_user());
+            ste.setString(3, e.getNom());
+            ste.setString(4, e.getDescriptionn());
+            ste.setDate(5, sqldate);
+            ste.setString(6, e.getType());
+            ste.setInt(7, e.getNbr_participation());
+            ste.setBoolean(8, e.isEtat());
+           
             ste.setString(9, e.getPhoto());
             ste.setDouble(10, e.getLatitude());
             ste.setDouble(11, e.getLongitude());
@@ -192,7 +193,7 @@ public class ServiceEvenement {
       public String selectUsers( int id) {
         String a = "";
         try {
-            String req = "SELECT concat(u.nom,' ', u.prenom) as ut From user u , evenement e WHERE e.id_user=? and u.id_user=e.id_user";
+            String req = "SELECT concat(u.nom,' ', u.prenom) as ut From user u , evenement e WHERE e.id_user=? and u.id =e.id_user";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ResultSet result = ste.executeQuery();
