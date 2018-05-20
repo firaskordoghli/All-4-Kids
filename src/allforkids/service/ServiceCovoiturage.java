@@ -30,7 +30,7 @@ public class ServiceCovoiturage {
     public void insrerCov(Transport t) {
         try {
             java.sql.Date sqldate = new Date(t.getDate().getTime());
-            String req = "INSERT INTO trasnsport (region,ville,depart,arrivé,description,telephone,place,frais,type,date,arriveName,departName,id_user)"
+            String req = "INSERT INTO transport (region,ville,depart,arrive,description,telephone,place,frais,type,date,arriveName,departName,idCreateur)"
                     + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, t.getRegion());
@@ -75,7 +75,7 @@ public class ServiceCovoiturage {
 
     public  void deleteCovoiturage(int id) {
         try {
-            String req = "DELETE FROM trasnsport WHERE id_transport = ?";
+            String req = "DELETE FROM transport WHERE id_transport = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
@@ -87,7 +87,7 @@ public class ServiceCovoiturage {
     public List<Transport> selectCov() {
         List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM trasnsport ";
+            String req = "SELECT * FROM transport ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ResultSet result = ste.executeQuery();
@@ -98,7 +98,7 @@ public class ServiceCovoiturage {
                                 result.getString("region"),
                                 result.getString("ville"),
                                 result.getString("depart"),
-                                result.getString("arrivé"),
+                                result.getString("arrive"),
                                 result.getString("description"),
                                 result.getString("telephone"),
                                 result.getString("place"),
@@ -107,7 +107,7 @@ public class ServiceCovoiturage {
                                 result.getDate("date"),
                                 result.getString("arriveName"),
                                 result.getString("departName"),
-                                result.getInt("id_user")
+                                result.getInt("idCreateur")
                         )
                 );
             }
@@ -119,7 +119,7 @@ public class ServiceCovoiturage {
     
     public String getNum (Transportrejoindr p) throws SQLException{
             String num = "54000673" ;
-            String req = "SELECT telephone FROM trasnsport where id_user= ?";
+            String req = "SELECT telephone FROM transport where idCreateur= ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, p.getId_user());
              ResultSet result = ste.executeQuery();
@@ -133,7 +133,7 @@ public class ServiceCovoiturage {
     public List<Transport> selectCovById(int id) {
         List<Transport> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM trasnsport where id_transport = ?";
+            String req = "SELECT * FROM transport where id_transport = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1,id);
             ResultSet result = ste.executeQuery();

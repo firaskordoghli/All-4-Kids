@@ -122,7 +122,7 @@ public class CovFormulaireController implements Initializable {
         
         
         ServiceCovoiturage cService = new ServiceCovoiturage();
-        Transport t = new Transport(Region.getText(), ville.getText(), dep, arr,
+        Transport t = new Transport( dep, arr,
                 description.getText(), telephone.getText(), placeDispo.getText(), fraix.getText(), typeCov.getValue(),date1,arriveName,departName,id_user);
         cService.insrerCov(t);
         Alert2.afficherSuccses("Enregistre", "Covaturage ajouter avec succée");
