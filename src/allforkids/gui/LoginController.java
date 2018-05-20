@@ -108,7 +108,7 @@ public class LoginController implements Initializable {
                 
                 //ajouter une variable ou id 
                 Session.setIdThisUser(u.getId());
-                if (u.getRole() == 1) {
+                if (u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ELEVE\";}")) {
                     // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);
@@ -118,7 +118,7 @@ public class LoginController implements Initializable {
                         app_stage.setScene(scene);
 
                         app_stage.show();
-                } else if (u.getRole() == 2) {
+                } else if (u.getRoles().equals("a:1:{i:0;s:11:\"ROLE_PARENT\";}")) {
                        // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);
@@ -130,7 +130,7 @@ public class LoginController implements Initializable {
                         app_stage.show();
                     //envoi vers page parents
                 }
-                else if (u.getRole() == 3) {
+                else if (u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_RESPONSABLE\";}")) {
                        // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);
@@ -142,7 +142,7 @@ public class LoginController implements Initializable {
                         app_stage.show();
                     //envoi vers page parents
                 }
-                else if (u.getRole() == 0) {
+                else if (u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {
                        // envoi vers page admin 
                  Parent root =FXMLLoader.load(getClass().getResource("Home.fxml"));
                   Scene scene = new Scene(root);

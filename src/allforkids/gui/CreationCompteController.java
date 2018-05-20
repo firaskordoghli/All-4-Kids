@@ -98,6 +98,8 @@ public class CreationCompteController implements Initializable {
     @FXML
     private JFXButton photoC;
     private static String imgg="" ;
+    @FXML
+    private JFXTextField username;
 
     /**
      * Initializes the controller class.
@@ -246,19 +248,23 @@ public class CreationCompteController implements Initializable {
              
              String z;
             int r = 0;
+            String ro ="";
             z = RoleC.getValue();
             if (z == "Enfant") {
                 r = 1;
+                ro="a:1:{i:0;s:10:\"ROLE_ELEVE\";}";
             } else if (z == "Parent") {
                 r = 2;
+                 ro="a:1:{i:0;s:11:\"ROLE_PARENT\";}";
             } else if (z == "Eatblissement") {
                 r = 3;
+                 ro="a:1:{i:0;s:16:\"ROLE_RESPONSABLE\";}";
             }
             String s = PassC.getText();
             String pw_hash = BCrypt.hashpw(s, BCrypt.gensalt());
 
-            User u = new User(CinC.getText(), NomC.getText(), PrenomC.getText(), MailC.getText(), date, imgg, r, pw_hash);
-            a.insrerUser(u);
+            User u = new User(CinC.getText(), NomC.getText(), PrenomC.getText(), MailC.getText(), date, imgg, r, pw_hash,username.getText());
+            a.insrerUser(u,ro);
 
             /*   Notifications notificiationBuilder = Notifications.create()
                         .title("créer")
@@ -312,16 +318,16 @@ public class CreationCompteController implements Initializable {
     public void save (Image image, String name ,String p) throws IOException{
        
     if (p.indexOf(".png") != -1) {
-            File fileoutput = new File("src/icons/" + name + ".png");
+            File fileoutput = new File("C:/wamp64/www/Allforkids/web/uploads/images/" + name + ".png");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
             ImageIO.write(BI, "png", fileoutput);
-            imgg=  "src/icons/" + name + ".png";
+            imgg=  "C:/wamp64/www/Allforkids/web/uploads/images/" + name + ".png";
         } else {
-            File fileoutput = new File("src/icons/" + name + ".jpeg");
+            File fileoutput = new File("C:/wamp64/www/Allforkids/web/uploads/images/" + name + ".jpeg");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
 
             ImageIO.write(BI, "jpeg", fileoutput);
-             imgg=  "src/icons/" + name + ".png";
+             imgg=  "C:/wamp64/www/Allforkids/web/uploads/images/" + name + ".png";
         }
     }
 

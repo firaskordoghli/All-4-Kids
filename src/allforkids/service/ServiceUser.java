@@ -46,10 +46,10 @@ public class ServiceUser {
 
     static Config ds = Config.getInstance();
 
-    public void insrerUser(User u) {
+    public void insrerUser(User u,String ro) {
         try {
             java.sql.Date sqldate = new Date(u.getDate().getTime());
-            String req = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?)";
+            String req = "INSERT INTO user (`id`, `cin`, `nom`, `prenom`,`password`,`email`, `date`, `picture`, `roles`, `username`,`username_canonical`,`email_canonical`,`enabled`)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, u.getId());
             ste.setString(2, u.getCin());
@@ -59,7 +59,11 @@ public class ServiceUser {
             ste.setString(6, u.getMail());
             ste.setDate(7, sqldate);
             ste.setString(8, u.getPicture());
-            ste.setInt(9, u.getRole());
+            ste.setString(9,ro);
+            ste.setString(10, u.getUsername());
+              ste.setString(11, u.getUsername());
+               ste.setString(12, u.getMail());
+                ste.setInt(13, 1);
             ste.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(allforkids.gui.AllForKids.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,7 +73,7 @@ public class ServiceUser {
     public void updateUser(User u, int id) {
         try {
             java.sql.Date sqldate = new Date(u.getDate().getTime());
-            String req = "UPDATE user SET  cin= ? ,nom=?,prenom = ? ,email=? , date=?,picture=?,role=? WHERE id_user = ?";
+            String req = "UPDATE user SET  cin= ? ,nom=?,prenom = ? ,email=? , date=?,picture=?,role=? WHERE id = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setString(1, u.getCin());
             ste.setString(2, u.getNom());
@@ -87,7 +91,7 @@ public class ServiceUser {
 
     public static void deleteUser(int id) {
         try {
-            String req = "DELETE FROM user WHERE id_user = ?";
+            String req = "DELETE FROM user WHERE id = ?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ste.executeUpdate();
@@ -114,7 +118,8 @@ public class ServiceUser {
                                 result.getDate("date"),
                                 result.getString("picture"),
                                 result.getInt("role"),
-                                result.getString("pass")
+                                result.getString("password"),
+                                result.getString("username")
                         )
                 );
             }
@@ -134,7 +139,7 @@ public class ServiceUser {
             while (result.next()) {
 
                 User u = new User(
-                        result.getInt("id_user"),
+                        result.getInt("id"),
                         result.getString("cin"),
                         result.getString("nom"),
                         result.getString("prenom"),
@@ -142,8 +147,12 @@ public class ServiceUser {
                         result.getDate("date"),
                         result.getString("picture"),
                         result.getInt("role"),
-                        result.getString("pass")
+                        result.getString("password"),
+                        result.getString("username"),
+                        result.getString("roles")
+                       
                 );
+                System.out.println(u.getRoles());
                 return u;
             }
 
@@ -209,7 +218,7 @@ public class ServiceUser {
 
     public User GetUserById(int id) {
         try {
-            String req = "SELECT * FROM user where id_user=?  ";
+            String req = "SELECT * FROM user where id=?  ";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
 
             ste.setInt(1, id);
@@ -218,7 +227,7 @@ public class ServiceUser {
             while (result.next()) {
 
                 User u = new User(
-                        result.getInt("id_user"),
+                        result.getInt("id"),
                         result.getString("cin"),
                         result.getString("nom"),
                         result.getString("prenom"),
@@ -226,7 +235,8 @@ public class ServiceUser {
                         result.getDate("date"),
                         result.getString("picture"),
                         result.getInt("role"),
-                        result.getString("pass")
+                        result.getString("password"),
+                         result.getString("username")
                 );
                 return u;
             }
@@ -251,7 +261,7 @@ public class ServiceUser {
             while (result.next()) {
 
                 User u = new User(
-                        result.getInt("id_user"),
+                        result.getInt("id"),
                         result.getString("cin"),
                         result.getString("nom"),
                         result.getString("prenom"),
@@ -259,7 +269,8 @@ public class ServiceUser {
                         result.getDate("date"),
                         result.getString("picture"),
                         result.getInt("role"),
-                        result.getString("pass")
+                        result.getString("password"),
+                        result.getString("username")
                 );
                 return u;
             }
@@ -276,14 +287,14 @@ public class ServiceUser {
     public ObservableList<User> GetUserById2(int id) throws SQLException {
         ObservableList<User> list = FXCollections.observableArrayList();
         try {
-            String req = "SELECT * FROM user INNER JOIN rejoindre ON user.id_user = rejoindre.id_user WHERE id_etablissement=?";
+            String req = "SELECT * FROM user INNER JOIN rejoindre ON user.id  = rejoindre.id_user WHERE id_etablissement=?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
                         new User(
-                                result.getInt("id_user"),
+                                result.getInt("id"),
                                 result.getString("nom"),
                                 result.getString("prenom")
                         )
@@ -298,14 +309,14 @@ public class ServiceUser {
       public List<User> GetUserById3(int id) throws SQLException {
       List<User> list = FXCollections.observableArrayList();
         try {
-            String req = "SELECT * FROM user WHERE id_user=?";
+            String req = "SELECT * FROM user WHERE id=?";
             PreparedStatement ste = ds.getConnection().prepareStatement(req);
             ste.setInt(1, id);
             ResultSet result = ste.executeQuery();
             while (result.next()) {
                 list.add(
                         new User(
-                                result.getInt("id_user"),
+                                result.getInt("id"),
                                 result.getString("nom"),
                                 result.getString("prenom")
                         )
@@ -325,7 +336,7 @@ public class ServiceUser {
             
             
              try {
-            String reqUpdate = "UPDATE user set pass=? where id_user=?";
+            String reqUpdate = "UPDATE user set password=? where id=?";
             PreparedStatement ps = ds.getConnection().prepareStatement(reqUpdate);
           
             ps.setString(1, BCrypt.hashpw(newMdp,BCrypt.gensalt()));   
@@ -345,7 +356,7 @@ public class ServiceUser {
             String MDP ="vide";
             
           try{
-              String reqRec = "select pass from user where id_user=?";
+              String reqRec = "select pass from user where id=?";
              PreparedStatement ps = ds.getConnection().prepareStatement(reqRec);
             ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();
