@@ -41,7 +41,7 @@ public class ServiceImage {
             String user = "slim";
             String pass = "07471917";
 
-            String uploadPath = "/img/" + name + ".png";
+            String uploadPath =  name + ".png";
 
             ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
             System.out.println("Upload URL: " + ftpUrl);
@@ -62,7 +62,7 @@ public class ServiceImage {
                 outputStream.close();
 
                 System.out.println("File uploaded");
-                imgg = "/img/" + name + ".png";
+                imgg =  name + ".png";
 
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -77,7 +77,7 @@ public class ServiceImage {
             String user = "slim";
             String pass = "07471917";
 
-            String uploadPath = "/img/" + name + ".jpeg";
+            String uploadPath = name + ".jpeg";
 
             ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
             System.out.println("Upload URL: " + ftpUrl);
@@ -98,7 +98,7 @@ public class ServiceImage {
                 outputStream.close();
 
                 System.out.println("File uploaded");
-                imgg = "/img/" + name + ".jpeg";
+                imgg =  name + ".jpeg";
 
             } catch (IOException ex) {
                 ex.printStackTrace();

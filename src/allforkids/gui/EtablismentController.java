@@ -439,13 +439,13 @@ public class EtablismentController implements Initializable {
             File fileoutput = new File("src/icons/" + id + name + ".png");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
             ImageIO.write(BI, "png", fileoutput);
-            src = "src/icons/" + id + name + ".png";
+            src = "C:/wamp64/www/Allforkids/web/uploads/images/" + id + name + ".png";
         } else {
             File fileoutput = new File("src/icons/" + id + name + ".jpeg");
             BufferedImage BI = SwingFXUtils.fromFXImage(image, null);
 
             ImageIO.write(BI, "jpeg", fileoutput);
-            src = "src/icons/" + id + name + ".png";
+            src = "C:/wamp64/www/Allforkids/web/uploads/images/" + id + name + ".png";
         }
     }
 
@@ -573,7 +573,7 @@ public class EtablismentController implements Initializable {
 
         //document.setMargins(50,50,50,50);
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\MBM info\\Desktop\\ListeEleve " + nometablissement + ".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:/wamp64/www/Allforkids/web/uploads/images/ " + nometablissement + ".pdf"));
         } catch (Exception ex) {
             System.out.println(ex);
         }

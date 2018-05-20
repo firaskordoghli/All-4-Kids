@@ -68,7 +68,7 @@ public class HomeController implements Initializable {
             VBox sidePane = FXMLLoader.load(getClass().getResource("Drawer.fxml"));
             
             AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
-//            AnchorPane transportPane = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+            AnchorPane transportPane = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
             AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
             AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablismentint.fxml"));
             AnchorPane profilPane = FXMLLoader.load(getClass().getResource("Profil.fxml"));
@@ -104,7 +104,7 @@ public class HomeController implements Initializable {
                                 break;
                             case "transportMenu":
                                 drawer.close();                               
-                            //    setNode(transportPane);
+                                setNode(transportPane);
                                 break;
                             case "etablissmentMenu":
                                 drawer.close();
@@ -112,7 +112,7 @@ public class HomeController implements Initializable {
                                 break;
                             case "divertissementMeni":
                                 drawer.close();  
-                                 if(u.getRole()==0) {setNode(evenmentPane);}
+                                 if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {setNode(evenmentPane);}
                                  else{ setNode(evenmentPane);}
                                 break;
                                 case "profilMenu":

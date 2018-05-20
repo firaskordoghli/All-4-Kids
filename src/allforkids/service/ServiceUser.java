@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -110,7 +110,7 @@ public class ServiceUser {
             while (result.next()) {
                 list.add(
                         new User(
-                                result.getInt("id_user"),
+                                result.getInt("id"),
                                 result.getString("cin"),
                                 result.getString("nom"),
                                 result.getString("prenom"),

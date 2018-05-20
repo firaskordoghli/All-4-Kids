@@ -434,7 +434,7 @@ public class LibrairieController implements Initializable {
         f.setLocationRelativeTo(null);
 
 
-        ServicePdf pdf = new ServicePdf("ftp://slim:07471917@" + Session.getIp() + livre.getUrl());
+        ServicePdf pdf = new ServicePdf("ftp://slim:07471917@" + Session.getIp() +"/"+livre.getUrl());
         f.setVisible(true);
         f.getContentPane().add(pdf);
 
