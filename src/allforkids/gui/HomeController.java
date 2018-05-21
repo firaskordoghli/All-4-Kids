@@ -68,16 +68,22 @@ public class HomeController implements Initializable {
             VBox sidePane = FXMLLoader.load(getClass().getResource("Drawer.fxml"));
             
             AnchorPane acceuil = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
-            AnchorPane transportPane = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
+          //  AnchorPane transportPane = FXMLLoader.load(getClass().getResource("CovoiturageView.fxml"));
             AnchorPane evenmentPane = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablismentint.fxml"));
+            AnchorPane etablissementPane = FXMLLoader.load(getClass().getResource("Etablisment.fxml"));
             AnchorPane profilPane = FXMLLoader.load(getClass().getResource("Profil.fxml"));
           //  AnchorPane AdminService = FXMLLoader.load(getClass().getResource("ServiceAdmin.fxml"));
          //   AnchorPane AdminReclamation = FXMLLoader.load(getClass().getResource("AdminReclamation.fxml"));
          //   AnchorPane ConsulterService = FXMLLoader.load(getClass().getResource("ConsulterService.fxml"));
         //    AnchorPane MesReclamation = FXMLLoader.load(getClass().getResource("MesReclamations.fxml"));
-             AnchorPane Adminevenment = FXMLLoader.load(getClass().getResource("Adminevenment.fxml"));
-
+              AnchorPane Adminevenment = FXMLLoader.load(getClass().getResource("Adminevenment.fxml"));
+              AnchorPane Adminetablisment = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+              AnchorPane eleve = FXMLLoader.load(getClass().getResource("Eleves.fxml"));
+              AnchorPane Parent = FXMLLoader.load(getClass().getResource("Parent.fxml"));
+              AnchorPane Librairie = FXMLLoader.load(getClass().getResource("Librairie.fxml"));
+              AnchorPane Adminlaiberi = FXMLLoader.load(getClass().getResource("Adminlaiberi.fxml"));
+              AnchorPane ListeSujet = FXMLLoader.load(getClass().getResource("ListeSujet.fxml"));
+               AnchorPane ForumSujetCreation = FXMLLoader.load(getClass().getResource("ForumSujetCreation.fxml"));
             setNode(acceuil);
             drawer.setSidePane(sidePane);
             
@@ -89,13 +95,13 @@ public class HomeController implements Initializable {
                             
                             case "service":
                                 drawer.close();
-                              //  if(u.getRole()==0) {setNode(AdminService);}
-                              //  else{setNode(ConsulterService);}
+                                if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {setNode(Adminlaiberi);}
+                                else{  setNode(Librairie);}
                                 break;
                             case "reclamationMenu":
                                 drawer.close();
-                               //  if(u.getRole()==0) {setNode(AdminReclamation);}
-                               // else{setNode(MesReclamation);}
+                                if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {setNode(ForumSujetCreation);}
+                                else{setNode(ListeSujet);}
                                
                                 break;
                             case "acceuilMenu":
@@ -104,15 +110,18 @@ public class HomeController implements Initializable {
                                 break;
                             case "transportMenu":
                                 drawer.close();                               
-                                setNode(transportPane);
+                                //setNode(transportPane);
                                 break;
                             case "etablissmentMenu":
                                 drawer.close();
-                               setNode(etablissementPane);
+                                if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {setNode(Adminetablisment);}
+                                 else if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ELEVE\";}")){setNode(eleve);}
+                                 else if(u.getRoles().equals("a:1:{i:0;s:11:\"ROLE_PARENT\";}")){setNode(Parent);}
+                              else{ setNode(etablissementPane);}
                                 break;
                             case "divertissementMeni":
                                 drawer.close();  
-                                 if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {setNode(evenmentPane);}
+                                 if(u.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")) {setNode(Adminevenment);}
                                  else{ setNode(evenmentPane);}
                                 break;
                                 case "profilMenu":

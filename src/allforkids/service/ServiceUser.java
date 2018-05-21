@@ -236,7 +236,8 @@ public class ServiceUser {
                         result.getString("picture"),
                         result.getInt("role"),
                         result.getString("password"),
-                         result.getString("username")
+                         result.getString("username"),
+                         result.getString("roles")
                 );
                 return u;
             }

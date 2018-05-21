@@ -175,7 +175,8 @@ public class EvenementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+ libbtn.setVisible(false);
+ filmbtn.setVisible(false);
         List<Evenement> me = s.selectMesEvenement(Session.getIdThisUser());
         List<Participevenement> pe = sp.selectParticipevenementByid(Session.getIdThisUser());
         List<Evenement> ppe = sp.selectEvenementByid(Session.getIdThisUser());
