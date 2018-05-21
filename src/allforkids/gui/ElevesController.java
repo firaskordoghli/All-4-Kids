@@ -143,12 +143,12 @@ public class ElevesController implements Initializable {
     @FXML
     private void comsulter(ActionEvent event) {
         ServiceNote sr = new ServiceNote();
-        if (sr.SelectMoyenneById(Session.getIdThisUser())==null){
+        if (sr.CalculeMoyenneById(Session.getIdThisUser())==0.0){
             
         Alert.afficher("", "Note non encore saisi");
         }
         else{
-           Float moyenne= sr.SelectMoyenneById(Session.getIdThisUser()).getMoyenne();
+           Double moyenne= sr.CalculeMoyenneById(Session.getIdThisUser());
         System.out.println(moyenne);
         
             Alert.afficher("Moyenne", "Votre moyenne est : "+moyenne); 

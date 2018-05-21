@@ -127,5 +127,25 @@ public class ServiceNote {
         }
         return -1;
     }
-    
+     public double CalculeMoyenneById(int id) {
+        try {
+            String req = "SELECT  sum(n.note*m.coeff)/sum(m.coeff)  as moyen from matiere m JOIN note n on m.id = n.id_matiere WHERE id_user = ? ;";
+            PreparedStatement ste = ds.getConnection().prepareStatement(req);
+
+            ste.setInt(1, id);
+
+            ResultSet result = ste.executeQuery();
+            while (result.next()) {
+
+               Double u =  result.getDouble("moyen") ;
+                return u;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return 0.0;
+
+    }
 }
